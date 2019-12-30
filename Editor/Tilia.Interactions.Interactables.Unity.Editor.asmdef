@@ -1,0 +1,19 @@
+{
+    "name": "Tilia.Interactions.Interactables.Unity.Editor",
+    "references": [
+        "Tilia.Interactions.Interactables.Unity.Runtime",
+        "Zinnia.Runtime"
+    ],
+    "optionalUnityReferences": [],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": true,
+    "precompiledReferences": [
+        "Malimbe.FodyRunner.UnityIntegration.dll"
+    ],
+    "autoReferenced": true,
+    "defineConstraints": []
+}
