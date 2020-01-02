@@ -1,20 +1,22 @@
 {
-    "name": "io.extendreality.tilia.{scope}.{feature}.{platform?}",
-    "displayName": "Tilia {scope}.{feature}.{platform?}",
-    "description": "{Description of feature.}",
+    "name": "io.extendreality.tilia.interactions.interactables.unity",
+    "displayName": "Tilia Interactions Interactables Unity",
+    "description": "A variety of mechanisms for interacting between interactors and interactables in a spatial scene for the Unity software.",
     "version": "1.0.0",
     "unity": "2018.3",
     "unityRelease": "10f1",
     "keywords": [
-        "pattern"
+        "interactions",
+        "interactors",
+        "interactables"
     ],
-    "homepage": "https://github.com/ExtendRealityLtd/Tilia.{scope}.{feature}.{platform?}/",
+    "homepage": "https://github.com/ExtendRealityLtd/Tilia.Interactions.Interactables.Unity/",
     "bugs": {
-        "url": "https://github.com/ExtendRealityLtd/Tilia.{scope}.{feature}.{platform?}/issues"
+        "url": "https://github.com/ExtendRealityLtd/Tilia.Interactions.Interactables.Unity/issues"
     },
     "repository": {
         "type": "git",
-        "url": "ssh://git@github.com/ExtendRealityLtd/Tilia.{scope}.{feature}.{platform?}.git"
+        "url": "ssh://git@github.com/ExtendRealityLtd/Tilia.Interactions.Interactables.Unity.git"
     },
     "license": "MIT",
     "author": {
@@ -23,7 +25,7 @@
         "url": "https://github.com/ExtendRealityLtd"
     },
     "dependencies": {
-        "io.extendreality.zinnia.unity": "X.Y.Z"
+        "io.extendreality.zinnia.unity": "1.11.0"
     },
     "files": [
         "*.md",
@@ -31,6 +33,7 @@
         "*.asmdef",
         "*.xml",
         "Documentation",
+        "Editor",
         "Runtime"
     ]
 }
