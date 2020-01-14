@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.1.0](https://github.com/ExtendRealityLtd/Tilia.Interactions.Interactables.Unity/compare/v1.0.0...v1.1.0) (2020-01-14)
+
+#### Features
+
+* **HowToGuides:** add guide for adding an interactor ([36e7d63](https://github.com/ExtendRealityLtd/Tilia.Interactions.Interactables.Unity/commit/36e7d634207e9f247cc77e1021fedc901d6fc456))
+  > adding initial guide for adding an interactor.
+
 ## 1.0.0 (2020-01-02)
 
 #### Features
