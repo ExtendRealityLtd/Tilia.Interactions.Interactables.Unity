@@ -212,7 +212,7 @@
             }
 
             int actualSelectedAction = template[selectedAction - 1];
-            GameObject actionPrefab = Instantiate(facade.Configuration.GrabConfiguration.ActionTypes.NonSubscribableElements[actualSelectedAction], facade.Configuration.GrabConfiguration.ActionTypes.transform);
+            GameObject actionPrefab = (GameObject)PrefabUtility.InstantiatePrefab(facade.Configuration.GrabConfiguration.ActionTypes.NonSubscribableElements[actualSelectedAction], facade.Configuration.GrabConfiguration.ActionTypes.transform);
             actionPrefab.transform.SetSiblingIndex(siblingPosition);
             return actionPrefab.GetComponent<GrabInteractableAction>();
         }
