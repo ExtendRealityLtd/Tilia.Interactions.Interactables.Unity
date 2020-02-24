@@ -1,5 +1,18 @@
 # Changelog
 
+### [1.4.2](https://github.com/ExtendRealityLtd/Tilia.Interactions.Interactables.Unity/compare/v1.4.1...v1.4.2) (2020-02-24)
+
+#### Bug Fixes
+
+* **Interactions:** allow for multiple grab orientation handles ([814998e](https://github.com/ExtendRealityLtd/Tilia.Interactions.Interactables.Unity/commit/814998eefc0b36e1bc676e53a6144a2e074a5b36))
+  > There was an issue with the interactable when using multiple grab orientation handles as it was always set up by default to get the first GameObject relation, which meant when multiple orientation handles were required then the nested prefab logic would also need changing.
+  > 
+  > It's now possible to do all of the logic required in the event flow due to a new event on the GameObjectRelations component.
+  > 
+  > The new functionality is to attempt to match the Interactor GameObject as the key in the GameObjectRelations and if it's not found then the new event will simply attempt to look up the first relation as this is what happened previously.
+* **Interactions:** instantiate a prefab instead of gameobject in helper ([0eeffc9](https://github.com/ExtendRealityLtd/Tilia.Interactions.Interactables.Unity/commit/0eeffc9921179019aab049463a6003476eee9764))
+  > The InteractableFacadeEditor helper now will instantiate a copy of the grab action prefab instead of an actual GameObject. This means that the Interactable prefab in the scene still contains nested prefabs which should auto update with any changes to the internal nested grab action prefab.
+
 ### [1.4.1](https://github.com/ExtendRealityLtd/Tilia.Interactions.Interactables.Unity/compare/v1.4.0...v1.4.1) (2020-02-24)
 
 #### Miscellaneous Chores
