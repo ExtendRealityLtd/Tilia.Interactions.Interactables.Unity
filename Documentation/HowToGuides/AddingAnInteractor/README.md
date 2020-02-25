@@ -25,7 +25,7 @@ The `Interactions.Interactor` prefab comes with an `ExampleAvatar` GameObject, w
 
 > If you followed the [Add the Tilia.CameraRigs.TrackedAlias.Unity] guide and added in custom GameObjects for controller avatars, you can delete them now as the `ExampleAvatar` GameObject will provide us with a basic controller avatar instead.
 
-Expand the `Tilia Interactors Interactables Unity` Package directory in the Unity Project window and then select `Packages -> Tilia Interactors Interactables Unity -> Runtime -> Interactors -> Prefabs`. For this example, we’re going to add the `Interactions.Interactor` prefab to our controller aliases within our `CameraRigs.TrackedAlias` prefab, so expand the `CameraRigs.TrackedAlias` prefab in the Unity Hierarchy window until the `LeftControllerAlias` and `RightControllerAlias` GameObjects are visible.
+Expand the `Tilia Interactors Interactables Unity` Package directory in the Unity Project window and select the `Packages -> Tilia Interactors Interactables Unity -> Runtime -> Interactors -> Prefabs` directory. For this example, we’re going to add the `Interactions.Interactor` prefab to our controller aliases within our `CameraRigs.TrackedAlias` prefab, so expand the `CameraRigs.TrackedAlias` prefab in the Unity Hierarchy window until the `LeftControllerAlias` and `RightControllerAlias` GameObjects are visible.
 
 Drag and drop the `Interactions.Interactor` prefab to be a child of the `LeftControllerAlias` then drag and drop another `Interactions.Interactor` prefab to be a child of the `RightControllerAlias`.
 
@@ -41,9 +41,9 @@ We need to specify an action that initiates the Interactor’s Grab notification
 
 For this example we will set up the interactors to use the simulator controls utilizing the mouse.
 
-Expand `CameraRigs.SpatialSimulator -> Input -> Control Objects Input -> Right Controller Input -> Buttons`.
+Expand the `CameraRigs.SpatialSimulator -> Input -> Control Objects Input -> Right Controller Input -> Buttons` GameObject.
 
-`Button One` is the left mouse button and we'll use this to activate the grab action on our left interactor so drag and drop the `Button One` GameObject into the `Grab Action` parameter on the `Interactor Facade` component on the `Interactions.Interactor` prefab nested inside `LeftControllerAlias` Gameobject
+`Button One` is the left mouse button and we'll use this to activate the grab action on our left interactor so drag and drop the `Button One` GameObject into the `Grab Action` parameter on the `Interactor Facade` component on the `Interactions.Interactor` prefab nested inside `LeftControllerAlias` GameObject
 
 ![Drag And Drop Button One Into Grab Activation Parameter](assets/images/DragAndDropButtonOneIntoGrabActivationParameter.png)
 

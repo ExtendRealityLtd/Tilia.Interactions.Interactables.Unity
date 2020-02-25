@@ -26,7 +26,7 @@ Disable `CameraRigs.SpatialSimulator` and enable `CameraRigs.UnityXR`
 
 ### Step 2
 
-Expand the `Tilia Input UnityInputManager` Package directory in the Unity Project window and then select `Packages -> Runtime -> Prefabs -> ControllerMappings`. For this example we are going to add the `Input.UnityInputManager.Oculus.TouchLeftController` prefab and the `Input.UnityInputManager.Oculus.TouchRightController`prefab.
+Expand the `Tilia Input UnityInputManager` Package directory in the Unity Project window and select the `Packages -> Runtime -> Prefabs -> ControllerMappings` directory. For this example we are going to add the `Input.UnityInputManager.Oculus.TouchLeftController` prefab and the `Input.UnityInputManager.Oculus.TouchRightController`prefab.
 
 Drag and Drop those two items into the Unity Scene.
 
@@ -36,9 +36,9 @@ Drag and Drop those two items into the Unity Scene.
 
 We need to update our Interactors to listen to the Grip Button on our controller to grab the object. Expand `CameraRigs.TrackedAlias` and find the Interactors in the `LeftControllerAlias` and `RightControllerAlias`.
 
-For the `LeftControllerAlias`, Expand `CameraRigs.TrackedAlias -> Aliases -> LeftControllerAlias` and click on the `Interactions.Interactor` Gameobject.
+For the `LeftControllerAlias`, expand `CameraRigs.TrackedAlias -> Aliases -> LeftControllerAlias` GameObject and click on the `Interactions.Interactor` GameObject.
 
-Expand the `Input.UnityInputManager.Oculus.TouchLeftController -> Input Actions -> LeftGrip` and drag and drop the `LeftGrip_Press` GameObject onto the `Grab Action` parameter on the `Interactor Facade` component of the `CameraRigs.TrackedAlias -> Aliases -> LeftControllerAlias -> Interactions.Interactor` GameObject. 
+Expand the `Input.UnityInputManager.Oculus.TouchLeftController -> Input Actions -> LeftGrip` GameObject then drag and drop the `LeftGrip_Press` GameObject onto the `Grab Action` parameter on the `Interactor Facade` component of the `CameraRigs.TrackedAlias -> Aliases -> LeftControllerAlias -> Interactions.Interactor` GameObject. 
 
 ![Drag And Drop Left Grip Into Grab Action](assets/images/DragAndDropLeftGripIntoGrabAction.png)
 
@@ -46,11 +46,11 @@ Expand the `Input.UnityInputManager.Oculus.TouchLeftController -> Input Actions 
 
 ### Step 4
 
-Expand the `Tilia Interactions Interactables Unity` Package directory in the Unity project window until the `Packages -> Tilia Interactions Interactables Unity -> Runtime -> Interactors -> Prefabs`, then drag and drop the `Interactions.ActionPublisher` into the `CameraRigs.TrackedAlias -> Aliases -> LeftControllerAlias`.
+Expand the `Tilia Interactions Interactables Unity` Package directory in the Unity project window and select the `Packages -> Tilia Interactions Interactables Unity -> Runtime -> Interactors -> Prefabs` directory then drag and drop the `Interactions.ActionPublisher` into the `CameraRigs.TrackedAlias -> Aliases -> LeftControllerAlias`.
 
 ![Drag And Drop Action Publisher Into Left Controller Alias](assets/images/DragAndDropActionPublisherIntoLeftControllerAlias.png)
 
-Expand the `Input.UnityInputManager.Oculus.TouchLeftController -> Input Actions -> LeftTrigger` until you can see the `LeftTrigger_Axis[9]` GameObject, select the `Interactions.ActionPublisher` and drag and drop the `LeftTrigger_Axis[9]` GameObject into the `Source Action` property on the `Interactor Action Publisher Facade` component.
+Expand the `Input.UnityInputManager.Oculus.TouchLeftController -> Input Actions -> LeftTrigger` GameObject until you can see the `LeftTrigger_Axis[9]` GameObject, select the `Interactions.ActionPublisher` and drag and drop the `LeftTrigger_Axis[9]` GameObject into the `Source Action` property on the `Interactor Action Publisher Facade` component.
 
 ![Drag And Drop Left Axis9 Into Source Property](assets/images/DragAndDropLeftAxis9IntoSourceProperty.png)
 
@@ -84,7 +84,7 @@ then drag and drop the `Interactions.Interactable` GameObject to be a child of t
 
 ### Step 8
 
-Expand the `Tilia Interactions Interactables Unity` Package directory in the Unity project window until the `Packages -> Tilia Interactions Interactables Unity -> Runtime -> Interactors -> Prefabs`, then drag and drop the `Interactions.ActionReceiver` as a child of the `OpacityChangingInteractable` GameObject
+Expand the `Tilia Interactions Interactables Unity` Package directory in the Unity project window and select the `Packages -> Tilia Interactions Interactables Unity -> Runtime -> Interactors -> Prefabs` directory then drag and drop the `Interactions.ActionReceiver` as a child of the `OpacityChangingInteractable` GameObject
 
 ![Drag And Drop Action Receiver](assets/images/DragAndDropActionReceiver.png)
 
