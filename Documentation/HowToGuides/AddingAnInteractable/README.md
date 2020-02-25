@@ -35,7 +35,7 @@ Rename the new `Cube` to `Table`.
 
 ### Step 2
 
-Expand the `Tilia Interactors Interactables Unity` Package directory in the Unity Project window until the `Packages -> Tilia Interactors Interactables Unity -> Runtime -> Interactables -> Prefabs` then drag and drop the`Interactions.Interactable` prefab into the Unity Hierarchy window.
+Expand the `Tilia Interactors Interactables Unity` Package directory in the Unity Project window and select the `Packages -> Tilia Interactors Interactables Unity -> Runtime -> Interactables -> Prefabs` directory then drag and drop the`Interactions.Interactable` prefab into the Unity Hierarchy window.
 
 ![Drag And Drop Interactables Prefab Into Hierachy](assets/images/DragAndDropInteractablesPrefabIntoHierachy.png)
 
