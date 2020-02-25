@@ -1,5 +1,14 @@
 # Changelog
 
+### [1.4.3](https://github.com/ExtendRealityLtd/Tilia.Interactions.Interactables.Unity/compare/v1.4.2...v1.4.3) (2020-02-25)
+
+#### Bug Fixes
+
+* **HowToGuides:** provide better grammatical sentences ([5e38dc7](https://github.com/ExtendRealityLtd/Tilia.Interactions.Interactables.Unity/commit/5e38dc74e0b7b3cd965d73e9bb3a9f059e76358a))
+  > A number of the guides have been slightly updated to provide better grammar in the sentences and one of the images has been fixed where the wrong event action box was highlighted.
+* **HowToGuides:** provide correct package name in installation guide ([ab2ebb0](https://github.com/ExtendRealityLtd/Tilia.Interactions.Interactables.Unity/commit/ab2ebb027ee413b45a23412d720c2b8feb292de6))
+  > The package name at the bottom of the installation guide was incorrect and referenced the wrong package. This has now been updated to reflect the correct package name.
+
 ### [1.4.2](https://github.com/ExtendRealityLtd/Tilia.Interactions.Interactables.Unity/compare/v1.4.1...v1.4.2) (2020-02-24)
 
 #### Bug Fixes
