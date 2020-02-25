@@ -68,7 +68,7 @@ The `Interactors/Interactions.ActionReceiver` prefab provides a mechanism for re
 
 ### Done
 
-The `Tilia CameraRigs SpatialSimulator Unity` package will now be available in your Unity project `Packages` directory ready for use in your project.
+The `Tilia Interactions Interactables Unity` package will now be available in your Unity project `Packages` directory ready for use in your project.
 
 The package will now also show up in the Unity Package Manager UI. From then on the package can be updated by selecting the package in the Unity Package Manager and clicking on the `Update` button or using the version selection UI.
 
