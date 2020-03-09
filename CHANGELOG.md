@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.5.0](https://github.com/ExtendRealityLtd/Tilia.Interactions.Interactables.Unity/compare/v1.4.4...v1.5.0) (2020-03-09)
+
+#### Features
+
+* **HowToGuides:** add guide for orientation handles ([66f8112](https://github.com/ExtendRealityLtd/Tilia.Interactions.Interactables.Unity/commit/66f811290b7fa645b8b55a6d63c3737d827b7da1))
+  > added guide to show how to use orientation handles when grabbing an interactable.
+
 ### [1.4.4](https://github.com/ExtendRealityLtd/Tilia.Interactions.Interactables.Unity/compare/v1.4.3...v1.4.4) (2020-03-05)
 
 #### Miscellaneous Chores
