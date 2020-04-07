@@ -57,6 +57,12 @@
         [field: DocumentedByXml, Restricted]
         public GrabInteractableInteractorProvider GrabProvider { get; protected set; }
         /// <summary>
+        /// The potential options for the <see cref="GrabProvider"/>.
+        /// </summary>
+        [Serialized]
+        [field: DocumentedByXml, Restricted]
+        public GrabInteractableInteractorProvider[] GrabProviderOptions { get; protected set; } = new GrabInteractableInteractorProvider[0];
+        /// <summary>
         /// The <see cref="GameObjectObservableList"/> that contains the available grab action prefabs.
         /// </summary>
         [Serialized, Cleared]
@@ -151,11 +157,36 @@
             ConfigureActionContainer(SecondaryAction);
         }
 
-        protected virtual void OnEnable()
+        /// <summary>
+        /// Sets the <see cref="GrabProvider"/> to the index of the <see cref="GrabProviderOptions"/> collection.
+        /// </summary>
+        /// <param name="providerIndex">The index of the <see cref="GrabProviderOptions"/> to set the <see cref="GrabProvider"/> to.</param>
+        public virtual void SetGrabProvider(int providerIndex)
         {
+            if (providerIndex >= GrabProviderOptions.Length)
+            {
+                return;
+            }
+
+            GrabProvider = GrabProviderOptions[providerIndex];
+
+            for (int index = 0; index < GrabProviderOptions.Length; index++)
+            {
+                GrabProviderOptions[index].gameObject.SetActive(index == providerIndex);
+            }
+
+            UnlinkReceiverToProvider();
+            UnlinkToPrimaryAction();
+            UnlinkToSecondaryAction();
+
             LinkReceiverToProvider();
             LinkToPrimaryAction();
             LinkToSecondaryAction();
+        }
+
+        protected virtual void OnEnable()
+        {
+            SetGrabProvider(Facade.GrabProviderIndex);
             ConfigureContainer();
             GrabReceiver.GrabValidity.ReceiveValidity = Facade.Configuration.DisallowedGrabInteractors;
             GrabReceiver.GrabType = Facade.GrabType;

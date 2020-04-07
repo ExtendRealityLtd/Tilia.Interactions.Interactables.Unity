@@ -87,6 +87,12 @@
         [Serialized]
         [field: Header("Grab Action Settings"), DocumentedByXml]
         public GrabInteractableReceiver.ActiveType GrabType { get; set; }
+        /// <summary>
+        /// The <see cref="GrabInteractableInteractorProvider"/> to use.
+        /// </summary>
+        [Serialized]
+        [field: DocumentedByXml]
+        public int GrabProviderIndex { get; set; }
         #endregion
 
         /// <summary>
@@ -162,6 +168,15 @@
         protected virtual void OnAfterGrabTypeChange()
         {
             Configuration.GrabConfiguration.GrabReceiver.GrabType = GrabType;
+        }
+
+        /// <summary>
+        /// Called after <see cref="GrabProviderIndex"/> has been changed.
+        /// </summary>
+        [CalledAfterChangeOf(nameof(GrabProviderIndex))]
+        protected virtual void OnAfterGrabProviderIndexChange()
+        {
+            Configuration.GrabConfiguration.SetGrabProvider(GrabProviderIndex);
         }
     }
 }
