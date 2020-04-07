@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.6.0](https://github.com/ExtendRealityLtd/Tilia.Interactions.Interactables.Unity/compare/v1.5.1...v1.6.0) (2020-04-07)
+
+#### Features
+
+* **Interactions:** add option to choose grab provider for interactable ([873d237](https://github.com/ExtendRealityLtd/Tilia.Interactions.Interactables.Unity/commit/873d237abe7c40a72cb092f63adbe304ca6429f6))
+  > The Interactable now has both the Stack and Set GrabProvider embedded within the prefab and an option on the InteractableFacade allows this GrabProvider to be changed at edit or runtime.
+
 ### [1.5.1](https://github.com/ExtendRealityLtd/Tilia.Interactions.Interactables.Unity/compare/v1.5.0...v1.5.1) (2020-04-03)
 
 #### Miscellaneous Chores
