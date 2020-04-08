@@ -1,5 +1,12 @@
 # Changelog
 
+### [1.6.1](https://github.com/ExtendRealityLtd/Tilia.Interactions.Interactables.Unity/compare/v1.6.0...v1.6.1) (2020-04-08)
+
+#### Bug Fixes
+
+* **Interactions:** fix spelling error on InteractableFacade editor ([7e29690](https://github.com/ExtendRealityLtd/Tilia.Interactions.Interactables.Unity/commit/7e29690d93415099b7b5479c85f7190e16f1b67b))
+  > There was a small spelling error on the custom InteractableFacade editor, which has now been corrected.
+
 ## [1.6.0](https://github.com/ExtendRealityLtd/Tilia.Interactions.Interactables.Unity/compare/v1.5.1...v1.6.0) (2020-04-07)
 
 #### Features
