@@ -140,7 +140,7 @@
                 EditorGUILayout.EndHorizontal();
             }
 
-            showFollowAdvancedFeatures = EditorGUILayout.Foldout(showFollowAdvancedFeatures, "Advanced Follow Serttings");
+            showFollowAdvancedFeatures = EditorGUILayout.Foldout(showFollowAdvancedFeatures, "Advanced Follow Settings");
             if (showFollowAdvancedFeatures)
             {
                 EditorGUI.indentLevel++;
