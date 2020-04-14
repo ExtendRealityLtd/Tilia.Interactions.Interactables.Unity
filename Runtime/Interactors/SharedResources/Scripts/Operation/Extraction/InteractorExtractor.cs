@@ -1,53 +1,36 @@
-﻿namespace Tilia.Interactions.Interactables.Interactors
+﻿namespace Tilia.Interactions.Interactables.Interactors.Operation.Extraction
 {
+    using System;
     using UnityEngine;
     using Zinnia.Data.Operation.Extraction;
 
     /// <summary>
     /// Extracts a <see cref="GameObject"/> relevant to the extraction method from an <see cref="InteractorFacade"/>.
     /// </summary>
-    public class InteractorExtractor : GameObjectExtractor
+    public class InteractorExtractor : ComponentGameObjectExtractor
     {
         /// <summary>
-        /// Extracts the <see cref="GameObject"/> the <see cref="InteractorFacade"/> is residing on.
+        /// The cached Grab Attach Point if trying to Extract Attach Point;
         /// </summary>
-        /// <param name="interactor">The Interactor to extract from.</param>
-        /// <returns>The residing <see cref="GameObject"/>.</returns>
-        public virtual GameObject Extract(InteractorFacade interactor)
-        {
-            if (interactor == null)
-            {
-                Result = null;
-                return null;
-            }
-
-            Result = interactor.gameObject;
-            return base.Extract();
-        }
-
-        /// <summary>
-        /// Extracts the <see cref="GameObject"/> the <see cref="InteractorFacade"/> is residing on.
-        /// </summary>
-        /// <param name="interactor">The Interactor to extract from.</param>
-        public virtual void DoExtract(InteractorFacade interactor)
-        {
-            Extract(interactor);
-        }
+        protected GameObject cachedGrabAttachPoint;
 
         /// <summary>
         /// Extracts the attach point associated with the grabbing functionality of the Interactor.
         /// </summary>
         /// <param name="interactor">The Interactor to extract from.</param>
         /// <returns>The attach point.</returns>
+        [Obsolete("Use `InteractorAttachPointExtractor.Extract()` instead.")]
         public virtual GameObject ExtractAttachPoint(InteractorFacade interactor)
         {
+            Debug.LogWarning("`InteractorExtractor.ExtractAttachPoint()` has been deprecated. Use `InteractorAttachPointExtractor.Extract()` instead.", gameObject);
+
             if (interactor == null || interactor.GrabConfiguration == null)
             {
                 Result = null;
                 return null;
             }
 
-            Result = interactor.GrabAttachPoint;
+            cachedGrabAttachPoint = interactor.GrabAttachPoint;
             return base.Extract();
         }
 
@@ -55,6 +38,7 @@
         /// Extracts the attach point associated with the grabbing functionality of the Interactor.
         /// </summary>
         /// <param name="interactor">The Interactor to extract from.</param>
+        [Obsolete("Use `InteractorAttachPointExtractor -> DoExtract` instead.")]
         public virtual void DoExtractAttachPoint(InteractorFacade interactor)
         {
             ExtractAttachPoint(interactor);
@@ -65,6 +49,7 @@
         /// </summary>
         /// <param name="interactorContainer">The container that has an <see cref="InteractorFacade"/> component to extract from.</param>
         /// <returns>The attach point.</returns>
+        [Obsolete("Use `InteractorAttachPointExtractor -> Extract` instead.")]
         public virtual GameObject ExtractAttachPoint(GameObject interactorContainer)
         {
             return ExtractAttachPoint(interactorContainer.GetComponent<InteractorFacade>());
@@ -74,9 +59,23 @@
         /// Extracts the attach point associated with the grabbing functionality of the Interactor.
         /// </summary>
         /// <param name="interactorContainer">The container that has an <see cref="InteractorFacade"/> component to extract from.</param>
+        [Obsolete("Use `InteractorAttachPointExtractor -> DoExtract` instead.")]
         public virtual void DoExtractAttachPoint(GameObject interactorContainer)
         {
-            ExtractAttachPoint(interactorContainer.GetComponent<InteractorFacade>());
+            ExtractAttachPoint(interactorContainer);
+        }
+
+        /// <inheritdoc />
+        protected override GameObject ExtractValue()
+        {
+            if (cachedGrabAttachPoint != null)
+            {
+                GameObject toReturn = cachedGrabAttachPoint;
+                cachedGrabAttachPoint = null;
+                return toReturn;
+            }
+
+            return Source.GetType() == typeof(InteractorFacade) ? base.ExtractValue() : null;
         }
     }
 }
