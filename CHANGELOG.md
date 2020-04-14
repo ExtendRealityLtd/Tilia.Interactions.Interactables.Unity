@@ -1,5 +1,22 @@
 # Changelog
 
+## [1.7.0](https://github.com/ExtendRealityLtd/Tilia.Interactions.Interactables.Unity/compare/v1.6.1...v1.7.0) (2020-04-14)
+
+#### Features
+
+* **Extraction:** update Extractors to use new Zinnia generic types ([b564002](https://github.com/ExtendRealityLtd/Tilia.Interactions.Interactables.Unity/commit/b564002de8c40edb44fecbd24172f9024821dd90))
+  > Zinnia version 1.15.0 has new generic Extractor types that offer a consistent Extractor API.
+  > 
+  > The Interactable and Interactor extractors have been updated so they extend these new generic types so they also offer a consistent API.
+  > 
+  > The InteractorExtractor has had the `ExtractAttachPoint` method deprecated in place of a new InteractorAttachPoint extractor, which does the same job but is responsible for this specific action.
+  > 
+  > The extractors have also been moved to a sub directory named: `Operation/Extraction` to follow the convention used in Zinnia.
+  > 
+  > Also, the proxy emitter has been moved to `Event/Proxy` to follow the same Zinnia convention.
+  > 
+  > The prefabs that used the old `ExtractAttachPoint` have been updated to now use the `InteractorAttachPoint` extractor and any 3rd party calling the `ExtractAttachPoint` method will get a log warning of the obsolete usage of this method.
+
 ### [1.6.1](https://github.com/ExtendRealityLtd/Tilia.Interactions.Interactables.Unity/compare/v1.6.0...v1.6.1) (2020-04-08)
 
 #### Bug Fixes
