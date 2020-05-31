@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.8.0](https://github.com/ExtendRealityLtd/Tilia.Interactions.Interactables.Unity/compare/v1.7.4...v1.8.0) (2020-05-31)
+
+#### Features
+
+* **Interactions:** add rotate around angular velocity follow type ([968c19b](https://github.com/ExtendRealityLtd/Tilia.Interactions.Interactables.Unity/commit/968c19b8517adeb23281944798733574d89f7fdc))
+  > The new Rotate Around Angular Velocity follow type allows the interactable to follow the rotation of the interactor's angular velocity and can be useful for interactions such as turning something with wrist motion rather than controller positional changes.
+
 ### [1.7.4](https://github.com/ExtendRealityLtd/Tilia.Interactions.Interactables.Unity/compare/v1.7.3...v1.7.4) (2020-05-31)
 
 #### Miscellaneous Chores
