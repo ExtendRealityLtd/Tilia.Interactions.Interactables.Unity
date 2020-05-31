@@ -36,7 +36,11 @@
             /// <summary>
             /// Updates the transform rotation based on the position difference of the source.
             /// </summary>
-            FollowTransformPositionDifferenceRotate
+            FollowTransformPositionDifferenceRotate,
+            /// <summary>
+            /// Updates the transform rotation based on the rotation of the interactor's angular velocity around a given axis.
+            /// </summary>
+            FollowRotateAroundAngularVelocity
         }
 
         /// <summary>
@@ -145,6 +149,12 @@
         [field: DocumentedByXml, Restricted]
         public FollowModifier FollowTransformRotateOnPositionDifferenceModifier { get; protected set; }
         /// <summary>
+        /// The <see cref="FollowModifier"/> to rotate by the angular velocity of the source interactor.
+        /// </summary>
+        [Serialized]
+        [field: DocumentedByXml, Restricted]
+        public FollowModifier FollowRotateAroundAngularVelocityModifier { get; protected set; }
+        /// <summary>
         /// The <see cref="Zinnia.Tracking.Velocity.VelocityApplier"/> to apply velocity on ungrab.
         /// </summary>
         [Serialized]
@@ -217,6 +227,7 @@
                     FollowRigidbodyModifier.gameObject.SetActive(false);
                     FollowRigidbodyForceRotateModifier.gameObject.SetActive(false);
                     FollowTransformRotateOnPositionDifferenceModifier.gameObject.SetActive(false);
+                    FollowRotateAroundAngularVelocityModifier.gameObject.SetActive(false);
                     ObjectFollower.FollowModifier = FollowTransformModifier;
                     IsKinematicWhenActive = true;
                     break;
@@ -225,6 +236,7 @@
                     FollowRigidbodyModifier.gameObject.SetActive(true);
                     FollowRigidbodyForceRotateModifier.gameObject.SetActive(false);
                     FollowTransformRotateOnPositionDifferenceModifier.gameObject.SetActive(false);
+                    FollowRotateAroundAngularVelocityModifier.gameObject.SetActive(false);
                     ObjectFollower.FollowModifier = FollowRigidbodyModifier;
                     IsKinematicWhenActive = false;
                     break;
@@ -233,6 +245,7 @@
                     FollowRigidbodyModifier.gameObject.SetActive(false);
                     FollowRigidbodyForceRotateModifier.gameObject.SetActive(true);
                     FollowTransformRotateOnPositionDifferenceModifier.gameObject.SetActive(false);
+                    FollowRotateAroundAngularVelocityModifier.gameObject.SetActive(false);
                     ObjectFollower.FollowModifier = FollowRigidbodyForceRotateModifier;
                     IsKinematicWhenActive = false;
                     break;
@@ -241,7 +254,17 @@
                     FollowRigidbodyModifier.gameObject.SetActive(false);
                     FollowRigidbodyForceRotateModifier.gameObject.SetActive(false);
                     FollowTransformRotateOnPositionDifferenceModifier.gameObject.SetActive(true);
+                    FollowRotateAroundAngularVelocityModifier.gameObject.SetActive(false);
                     ObjectFollower.FollowModifier = FollowTransformRotateOnPositionDifferenceModifier;
+                    IsKinematicWhenActive = true;
+                    break;
+                case TrackingType.FollowRotateAroundAngularVelocity:
+                    FollowTransformModifier.gameObject.SetActive(false);
+                    FollowRigidbodyModifier.gameObject.SetActive(false);
+                    FollowRigidbodyForceRotateModifier.gameObject.SetActive(false);
+                    FollowTransformRotateOnPositionDifferenceModifier.gameObject.SetActive(false);
+                    FollowRotateAroundAngularVelocityModifier.gameObject.SetActive(true);
+                    ObjectFollower.FollowModifier = FollowRotateAroundAngularVelocityModifier;
                     IsKinematicWhenActive = true;
                     break;
             }

@@ -8,6 +8,7 @@
     using UnityEngine;
     using UnityEngine.SceneManagement;
     using Zinnia.Rule;
+    using Zinnia.Tracking.Follow.Modifier.Property.Rotation;
 
     /// <summary>
     /// 
@@ -126,7 +127,14 @@
             GrabInteractableFollowAction followAction = (GrabInteractableFollowAction)actionProperty;
             SerializedObject actionObject = new SerializedObject(followAction);
 
-            DrawPropertyFieldWithChangeHandlers(actionObject, "followTracking", undoRedoWarningPropertyPath);
+            SerializedProperty followTracking = DrawPropertyFieldWithChangeHandlers(actionObject, "followTracking", undoRedoWarningPropertyPath);
+
+            if (followTracking.intValue == 4)
+            {
+                RotateAroundAngularVelocity rotationModifier = (RotateAroundAngularVelocity)followAction.FollowRotateAroundAngularVelocityModifier.RotationModifier;
+                DrawPropertyFieldWithChangeHandlers(new SerializedObject(rotationModifier), "applyToAxis", undoRedoWarningPropertyPath);
+            }
+
             SerializedProperty grabOffset = DrawPropertyFieldWithChangeHandlers(actionObject, "grabOffset", undoRedoWarningPropertyPath);
 
             if (grabOffset.intValue == 1)
