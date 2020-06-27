@@ -1,4 +1,4 @@
-﻿namespace Tilia.Interactions.Interactables.Grab.Receiver
+﻿namespace Tilia.Interactions.Interactables.Interactables.Grab.Receiver
 {
     using UnityEngine;
     using Malimbe.MemberChangeMethod;

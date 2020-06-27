@@ -1,13 +1,13 @@
-﻿namespace Tilia.Interactions.Interactables.Grab
+﻿namespace Tilia.Interactions.Interactables.Interactables.Grab
 {
     using Malimbe.MemberChangeMethod;
     using Malimbe.MemberClearanceMethod;
     using Malimbe.PropertySerializationAttribute;
     using Malimbe.XmlDocumentationAttribute;
     using System.Collections.Generic;
-    using Tilia.Interactions.Interactables.Grab.Action;
-    using Tilia.Interactions.Interactables.Grab.Provider;
-    using Tilia.Interactions.Interactables.Grab.Receiver;
+    using Tilia.Interactions.Interactables.Interactables.Grab.Action;
+    using Tilia.Interactions.Interactables.Interactables.Grab.Provider;
+    using Tilia.Interactions.Interactables.Interactables.Grab.Receiver;
     using Tilia.Interactions.Interactables.Interactors;
     using UnityEngine;
     using Zinnia.Data.Attribute;

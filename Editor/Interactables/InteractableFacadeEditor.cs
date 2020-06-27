@@ -1,8 +1,8 @@
-﻿namespace Tilia.Interactions.Interactables
+﻿namespace Tilia.Interactions.Interactables.Interactables
 {
     using Malimbe.FodyRunner.UnityIntegration;
     using System;
-    using Tilia.Interactions.Interactables.Grab.Action;
+    using Tilia.Interactions.Interactables.Interactables.Grab.Action;
     using UnityEditor;
     using UnityEditor.SceneManagement;
     using UnityEngine;
