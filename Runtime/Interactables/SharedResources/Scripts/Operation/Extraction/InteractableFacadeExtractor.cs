@@ -1,4 +1,4 @@
-﻿namespace Tilia.Interactions.Interactables.Operation.Extraction
+﻿namespace Tilia.Interactions.Interactables.Interactables.Operation.Extraction
 {
     using System;
     using UnityEngine.Events;

@@ -1,17 +1,20 @@
-﻿namespace Tilia.Interactions.Interactables
+﻿namespace Tilia.Interactions.Interactables.Interactables
 {
     using Malimbe.MemberChangeMethod;
     using Malimbe.MemberClearanceMethod;
     using Malimbe.PropertySerializationAttribute;
     using Malimbe.XmlDocumentationAttribute;
-    using Tilia.Interactions.Interactables.Grab;
-    using Tilia.Interactions.Interactables.Touch;
+    using Tilia.Interactions.Interactables.Interactables.Grab;
+    using Tilia.Interactions.Interactables.Interactables.Touch;
     using UnityEngine;
     using Zinnia.Data.Attribute;
     using Zinnia.Data.Collection.List;
     using Zinnia.Rule;
     using Zinnia.Tracking.Collision;
 
+    /// <summary>
+    /// Sets up the Interactable Prefab based on the provided user settings.
+    /// </summary>
     public class InteractableConfigurator : MonoBehaviour
     {
         #region Facade Settings

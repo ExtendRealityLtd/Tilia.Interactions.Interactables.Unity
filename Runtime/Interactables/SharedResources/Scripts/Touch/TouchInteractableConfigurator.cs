@@ -1,4 +1,4 @@
-﻿namespace Tilia.Interactions.Interactables.Touch
+﻿namespace Tilia.Interactions.Interactables.Interactables.Touch
 {
     using Malimbe.PropertySerializationAttribute;
     using Malimbe.XmlDocumentationAttribute;

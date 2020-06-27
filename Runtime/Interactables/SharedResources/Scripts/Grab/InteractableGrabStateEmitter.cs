@@ -1,4 +1,4 @@
-﻿namespace Tilia.Interactions.Interactables.Grab
+﻿namespace Tilia.Interactions.Interactables.Interactables.Grab
 {
     using UnityEngine;
     using UnityEngine.Events;

@@ -5,6 +5,7 @@
     using Malimbe.PropertySerializationAttribute;
     using Malimbe.XmlDocumentationAttribute;
     using System.Collections.Generic;
+    using Tilia.Interactions.Interactables.Interactables;
     using UnityEngine;
     using Zinnia.Action;
     using Zinnia.Data.Attribute;
