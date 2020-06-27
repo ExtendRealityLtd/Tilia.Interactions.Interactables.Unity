@@ -1,6 +1,6 @@
-﻿namespace Tilia.Interactions.Interactables.Grab.Action
+﻿namespace Tilia.Interactions.Interactables.Interactables.Grab.Action
 {
-    using Tilia.Interactions.Interactables.Grab.Provider;
+    using Tilia.Interactions.Interactables.Interactables.Grab.Provider;
     using UnityEngine;
 
     /// <summary>

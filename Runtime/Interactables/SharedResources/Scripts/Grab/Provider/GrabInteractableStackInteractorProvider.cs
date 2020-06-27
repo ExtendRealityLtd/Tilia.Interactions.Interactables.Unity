@@ -1,4 +1,4 @@
-﻿namespace Tilia.Interactions.Interactables.Grab.Provider
+﻿namespace Tilia.Interactions.Interactables.Interactables.Grab.Provider
 {
     using UnityEngine;
     using System.Collections.Generic;

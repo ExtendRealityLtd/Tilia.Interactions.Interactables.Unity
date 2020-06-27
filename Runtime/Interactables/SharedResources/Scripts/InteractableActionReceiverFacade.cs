@@ -1,4 +1,4 @@
-﻿namespace Tilia.Interactions.Interactables
+﻿namespace Tilia.Interactions.Interactables.Interactables
 {
     using Malimbe.MemberChangeMethod;
     using Malimbe.MemberClearanceMethod;

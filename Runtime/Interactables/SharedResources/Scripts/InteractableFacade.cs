@@ -1,11 +1,11 @@
-﻿namespace Tilia.Interactions.Interactables
+﻿namespace Tilia.Interactions.Interactables.Interactables
 {
     using Malimbe.MemberChangeMethod;
     using Malimbe.PropertySerializationAttribute;
     using Malimbe.XmlDocumentationAttribute;
     using System;
     using System.Collections.Generic;
-    using Tilia.Interactions.Interactables.Grab.Receiver;
+    using Tilia.Interactions.Interactables.Interactables.Grab.Receiver;
     using Tilia.Interactions.Interactables.Interactors;
     using UnityEngine;
     using UnityEngine.Events;

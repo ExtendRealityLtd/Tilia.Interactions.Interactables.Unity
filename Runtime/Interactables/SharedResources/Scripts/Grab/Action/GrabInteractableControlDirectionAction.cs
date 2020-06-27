@@ -1,4 +1,4 @@
-﻿namespace Tilia.Interactions.Interactables.Grab.Action
+﻿namespace Tilia.Interactions.Interactables.Interactables.Grab.Action
 {
     using Malimbe.PropertySerializationAttribute;
     using Malimbe.XmlDocumentationAttribute;

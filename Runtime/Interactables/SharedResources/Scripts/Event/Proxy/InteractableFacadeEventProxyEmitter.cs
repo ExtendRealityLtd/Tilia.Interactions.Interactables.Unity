@@ -1,4 +1,4 @@
-﻿namespace Tilia.Interactions.Interactables.Event.Proxy
+﻿namespace Tilia.Interactions.Interactables.Interactables.Event.Proxy
 {
     using System;
     using UnityEngine.Events;
