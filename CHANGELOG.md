@@ -1,5 +1,14 @@
 # Changelog
 
+## [1.9.0](https://github.com/ExtendRealityLtd/Tilia.Interactions.Interactables.Unity/compare/v1.8.1...v1.9.0) (2020-06-27)
+
+#### Features
+
+* **Interactables:** apply more specific namespace to interactables ([0f8b8d5](https://github.com/ExtendRealityLtd/Tilia.Interactions.Interactables.Unity/commit/0f8b8d5a229bc2ddd04af164ad535245cd9689d7))
+  > Previously, the Interactables were in a namespace that was at a higher level of the Interactors whereas Interactables should be at the same level.
+  > 
+  > There is already an Interactables namespace used by both interactors and interactables so the best solution is to just have a double Interactables.Interactables namespace. Whilst this looks a bit strange it at least buckets the code at the correct level.
+
 ### [1.8.1](https://github.com/ExtendRealityLtd/Tilia.Interactions.Interactables.Unity/compare/v1.8.0...v1.8.1) (2020-06-08)
 
 #### Miscellaneous Chores
