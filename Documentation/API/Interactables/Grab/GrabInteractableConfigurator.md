@@ -1,0 +1,439 @@
+# Class GrabInteractableConfigurator
+
+Sets up the Interactable Prefab grab settings based on the provided user settings.
+
+## Contents
+
+* [Inheritance]
+* [Namespace]
+* [Syntax]
+* [Properties]
+  * [ActionTypes]
+  * [Facade]
+  * [GrabbingInteractors]
+  * [GrabProvider]
+  * [GrabProviderOptions]
+  * [GrabReceiver]
+  * [IsGrabTypeToggle]
+  * [PrimaryAction]
+  * [SecondaryAction]
+* [Methods]
+  * [ConfigureActionContainer(GrabInteractableAction)]
+  * [ConfigureContainer()]
+  * [Grab(InteractorFacade)]
+  * [LinkReceiverToProvider()]
+  * [LinkToPrimaryAction()]
+  * [LinkToSecondaryAction()]
+  * [NotifyGrab(GameObject)]
+  * [NotifyUngrab(GameObject)]
+  * [OnAfterPrimaryActionChange()]
+  * [OnAfterSecondaryActionChange()]
+  * [OnBeforePrimaryActionChange()]
+  * [OnBeforeSecondaryActionChange()]
+  * [OnDisable()]
+  * [OnEnable()]
+  * [SetGrabProvider(Int32)]
+  * [Ungrab(Int32)]
+  * [Ungrab(InteractorFacade)]
+  * [UnlinkReceiverToProvider()]
+  * [UnlinkToPrimaryAction()]
+  * [UnlinkToSecondaryAction()]
+
+## Details
+
+##### Inheritance
+
+* System.Object
+* GrabInteractableConfigurator
+
+##### Namespace
+
+* [Tilia.Interactions.Interactables.Interactables.Grab]
+
+##### Syntax
+
+```
+public class GrabInteractableConfigurator : MonoBehaviour
+```
+
+### Properties
+
+#### ActionTypes
+
+The GameObjectObservableList that contains the available grab action prefabs.
+
+##### Declaration
+
+```
+public GameObjectObservableList ActionTypes { get; protected set; }
+```
+
+#### Facade
+
+The public interface facade.
+
+##### Declaration
+
+```
+public InteractableFacade Facade { get; protected set; }
+```
+
+#### GrabbingInteractors
+
+A collection of Interactors that are currently grabbing the Interactable.
+
+##### Declaration
+
+```
+public IReadOnlyList<InteractorFacade> GrabbingInteractors { get; }
+```
+
+#### GrabProvider
+
+The Grab Provider setup.
+
+##### Declaration
+
+```
+public GrabInteractableInteractorProvider GrabProvider { get; protected set; }
+```
+
+#### GrabProviderOptions
+
+The potential options for the [GrabProvider].
+
+##### Declaration
+
+```
+public GrabInteractableInteractorProvider[] GrabProviderOptions { get; protected set; }
+```
+
+#### GrabReceiver
+
+The Grab Receiver setup.
+
+##### Declaration
+
+```
+public GrabInteractableReceiver GrabReceiver { get; protected set; }
+```
+
+#### IsGrabTypeToggle
+
+Determines if the grab type is set to toggle.
+
+##### Declaration
+
+```
+public bool IsGrabTypeToggle { get; }
+```
+
+#### PrimaryAction
+
+The action to perform when grabbing the interactable for the first time.
+
+##### Declaration
+
+```
+public GrabInteractableAction PrimaryAction { get; set; }
+```
+
+#### SecondaryAction
+
+The action to perform when grabbing the interactable for the second time.
+
+##### Declaration
+
+```
+public GrabInteractableAction SecondaryAction { get; set; }
+```
+
+### Methods
+
+#### ConfigureActionContainer(GrabInteractableAction)
+
+Configures the action containers.
+
+##### Declaration
+
+```
+protected virtual void ConfigureActionContainer(GrabInteractableAction action)
+```
+
+##### Parameters
+
+| Type | Name | Description |
+| --- | --- | --- |
+| [GrabInteractableAction] | action | The action to configure. |
+
+#### ConfigureContainer()
+
+Sets the consumer containers to the current active container.
+
+##### Declaration
+
+```
+public virtual void ConfigureContainer()
+```
+
+#### Grab(InteractorFacade)
+
+Attempt to grab the Interactable to the given Interactor.
+
+##### Declaration
+
+```
+public virtual void Grab(InteractorFacade interactor)
+```
+
+##### Parameters
+
+| Type | Name | Description |
+| --- | --- | --- |
+| [InteractorFacade] | interactor | The Interactor to attach the Interactable to. |
+
+#### LinkReceiverToProvider()
+
+Links the Grab Receiver to the Grab Provider.
+
+##### Declaration
+
+```
+protected virtual void LinkReceiverToProvider()
+```
+
+#### LinkToPrimaryAction()
+
+Links the Grab Receiver and Grab Provider to the Primary Grab Action.
+
+##### Declaration
+
+```
+protected virtual void LinkToPrimaryAction()
+```
+
+#### LinkToSecondaryAction()
+
+Links the Grab Receiver and Grab Provider to the Secondary Grab Action.
+
+##### Declaration
+
+```
+protected virtual void LinkToSecondaryAction()
+```
+
+#### NotifyGrab(GameObject)
+
+Notifies that the Interactable is being grabbed.
+
+##### Declaration
+
+```
+public virtual void NotifyGrab(GameObject data)
+```
+
+##### Parameters
+
+| Type | Name | Description |
+| --- | --- | --- |
+| GameObject | data | The grabbing object. |
+
+#### NotifyUngrab(GameObject)
+
+Notifies that the Interactable is no longer being grabbed.
+
+##### Declaration
+
+```
+public virtual void NotifyUngrab(GameObject data)
+```
+
+##### Parameters
+
+| Type | Name | Description |
+| --- | --- | --- |
+| GameObject | data | The previous grabbing object. |
+
+#### OnAfterPrimaryActionChange()
+
+Called after [PrimaryAction] has been changed.
+
+##### Declaration
+
+```
+protected virtual void OnAfterPrimaryActionChange()
+```
+
+#### OnAfterSecondaryActionChange()
+
+Called after [SecondaryAction] has been changed.
+
+##### Declaration
+
+```
+protected virtual void OnAfterSecondaryActionChange()
+```
+
+#### OnBeforePrimaryActionChange()
+
+Called after [PrimaryAction] has been changed.
+
+##### Declaration
+
+```
+protected virtual void OnBeforePrimaryActionChange()
+```
+
+#### OnBeforeSecondaryActionChange()
+
+Called after [SecondaryAction] has been changed.
+
+##### Declaration
+
+```
+protected virtual void OnBeforeSecondaryActionChange()
+```
+
+#### OnDisable()
+
+##### Declaration
+
+```
+protected virtual void OnDisable()
+```
+
+#### OnEnable()
+
+##### Declaration
+
+```
+protected virtual void OnEnable()
+```
+
+#### SetGrabProvider(Int32)
+
+Sets the [GrabProvider] to the index of the [GrabProviderOptions] collection.
+
+##### Declaration
+
+```
+public virtual void SetGrabProvider(int providerIndex)
+```
+
+##### Parameters
+
+| Type | Name | Description |
+| --- | --- | --- |
+| System.Int32 | providerIndex | The index of the [GrabProviderOptions] to set the [GrabProvider] to. |
+
+#### Ungrab(Int32)
+
+Attempt to ungrab the Interactable.
+
+##### Declaration
+
+```
+public virtual void Ungrab(int sequenceIndex = 0)
+```
+
+##### Parameters
+
+| Type | Name | Description |
+| --- | --- | --- |
+| System.Int32 | sequenceIndex | The Interactor sequence index to ungrab from. |
+
+#### Ungrab(InteractorFacade)
+
+Attempts to ungrab the Interactable.
+
+##### Declaration
+
+```
+public virtual void Ungrab(InteractorFacade interactor)
+```
+
+##### Parameters
+
+| Type | Name | Description |
+| --- | --- | --- |
+| [InteractorFacade] | interactor | The Interactor to ungrab from. |
+
+#### UnlinkReceiverToProvider()
+
+Unlinks the Grab Receiver to the Grab Provider.
+
+##### Declaration
+
+```
+protected virtual void UnlinkReceiverToProvider()
+```
+
+#### UnlinkToPrimaryAction()
+
+Unlinks the Grab Receiver and Grab Provider to the Primary Grab Action.
+
+##### Declaration
+
+```
+protected virtual void UnlinkToPrimaryAction()
+```
+
+#### UnlinkToSecondaryAction()
+
+Unlinks the Grab Receiver and Grab Provider to the Secondary Grab Action.
+
+##### Declaration
+
+```
+protected virtual void UnlinkToSecondaryAction()
+```
+
+[Tilia.Interactions.Interactables.Interactables.Grab]: README.md
+[InteractableFacade]: ../../Interactables/InteractableFacade.md
+[InteractorFacade]: ../../Interactors/InteractorFacade.md
+[GrabInteractableInteractorProvider]: Provider/GrabInteractableInteractorProvider.md
+[GrabProvider]: GrabInteractableConfigurator.md#GrabProvider
+[GrabInteractableReceiver]: Receiver/GrabInteractableReceiver.md
+[GrabInteractableAction]: Action/GrabInteractableAction.md
+[PrimaryAction]: GrabInteractableConfigurator.md#PrimaryAction
+[SecondaryAction]: GrabInteractableConfigurator.md#SecondaryAction
+[PrimaryAction]: GrabInteractableConfigurator.md#PrimaryAction
+[SecondaryAction]: GrabInteractableConfigurator.md#SecondaryAction
+[GrabProvider]: GrabInteractableConfigurator.md#GrabProvider
+[GrabProviderOptions]: GrabInteractableConfigurator.md#GrabProviderOptions
+[GrabProviderOptions]: GrabInteractableConfigurator.md#GrabProviderOptions
+[GrabProvider]: GrabInteractableConfigurator.md#GrabProvider
+[Inheritance]: #Inheritance
+[Namespace]: #Namespace
+[Syntax]: #Syntax
+[Properties]: #Properties
+[ActionTypes]: #ActionTypes
+[Facade]: #Facade
+[GrabbingInteractors]: #GrabbingInteractors
+[GrabProvider]: #GrabProvider
+[GrabProviderOptions]: #GrabProviderOptions
+[GrabReceiver]: #GrabReceiver
+[IsGrabTypeToggle]: #IsGrabTypeToggle
+[PrimaryAction]: #PrimaryAction
+[SecondaryAction]: #SecondaryAction
+[Methods]: #Methods
+[ConfigureActionContainer(GrabInteractableAction)]: #ConfigureActionContainerGrabInteractableAction
+[ConfigureContainer()]: #ConfigureContainer
+[Grab(InteractorFacade)]: #GrabInteractorFacade
+[LinkReceiverToProvider()]: #LinkReceiverToProvider
+[LinkToPrimaryAction()]: #LinkToPrimaryAction
+[LinkToSecondaryAction()]: #LinkToSecondaryAction
+[NotifyGrab(GameObject)]: #NotifyGrabGameObject
+[NotifyUngrab(GameObject)]: #NotifyUngrabGameObject
+[OnAfterPrimaryActionChange()]: #OnAfterPrimaryActionChange
+[OnAfterSecondaryActionChange()]: #OnAfterSecondaryActionChange
+[OnBeforePrimaryActionChange()]: #OnBeforePrimaryActionChange
+[OnBeforeSecondaryActionChange()]: #OnBeforeSecondaryActionChange
+[OnDisable()]: #OnDisable
+[OnEnable()]: #OnEnable
+[SetGrabProvider(Int32)]: #SetGrabProviderInt32
+[Ungrab(Int32)]: #UngrabInt32
+[Ungrab(InteractorFacade)]: #UngrabInteractorFacade
+[UnlinkReceiverToProvider()]: #UnlinkReceiverToProvider
+[UnlinkToPrimaryAction()]: #UnlinkToPrimaryAction
+[UnlinkToSecondaryAction()]: #UnlinkToSecondaryAction
