@@ -40,11 +40,11 @@
         public UnityEvent Ungrabbed = new UnityEvent();
 
         /// <summary>
-        /// <see cref="Action"/>s that unsubscribe the added grab event listeners.
+        /// Actions that unsubscribe the added grab event listeners.
         /// </summary>
         protected readonly Dictionary<InteractableFacade, System.Action> unsubscribeGrabActions = new Dictionary<InteractableFacade, System.Action>();
         /// <summary>
-        /// <see cref="Action"/>s that unsubscribe the added ungrab event listeners.
+        /// Actions that unsubscribe the added ungrab event listeners.
         /// </summary>
         protected readonly Dictionary<InteractableFacade, System.Action> unsubscribeUngrabActions = new Dictionary<InteractableFacade, System.Action>();
 
