@@ -1,5 +1,17 @@
 # Changelog
 
+## [1.10.0](https://github.com/ExtendRealityLtd/Tilia.Interactions.Interactables.Unity/compare/v1.9.0...v1.10.0) (2020-07-03)
+
+#### Features
+
+* **API:** add auto-generated API documentation ([1358b98](https://github.com/ExtendRealityLtd/Tilia.Interactions.Interactables.Unity/commit/1358b98c976af5f42162fd9e12a590fde7cc9ea1))
+  > The API documentation is auto generated with docfx and converted to markdown via turndown in a custom nodejs script.
+
+#### Bug Fixes
+
+* **package.json:** add docfx.json file ([fdd9e4c](https://github.com/ExtendRealityLtd/Tilia.Interactions.Interactables.Unity/commit/fdd9e4c5104063dfaf7df306eed34c97403e0c63))
+  > The docfx.json file was missing from the package.json causing the build process to fail. It has now been added.
+
 ## [1.9.0](https://github.com/ExtendRealityLtd/Tilia.Interactions.Interactables.Unity/compare/v1.8.1...v1.9.0) (2020-06-27)
 
 #### Features
