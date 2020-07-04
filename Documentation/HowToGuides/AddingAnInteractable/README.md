@@ -2,7 +2,7 @@
 
 > * Level: Beginner
 >
-> * Reading Time: 10 minutes
+> * Reading Time: 5 minutes
 >
 > * Checked with: Unity 2018.3.14f1
 
@@ -25,23 +25,19 @@ This guide will show how to set up an `Interactions.Interactable` prefab that we
 
 Before we begin adding the `Interactions.Interactable` prefab to the scene, let’s create a simple surface that the `Interactions.Interactable` prefab will rest on as Interactable GameObjects have a `Rigidbody` component which means they are affected by the gravity in our virtual world. If an `Interactions.Interactable` prefab was added to a blank scene then when the scene was played it would just fall infinitely as the virtual world gravity would apply to it and pull it down until it collided with a solid surface.
 
-Create a new `Cube` Unity 3D Object by selecting `Main Menu -> GameObject -> 3D Object -> Cube` and change the `Transform` properties to:
+Create a new `Cube` Unity 3D Object by selecting `Main Menu -> GameObject -> 3D Object -> Cube` and rename the new `Cube` to `Table`.
 
-Position: `X = 0`, `Y = 0`, `Z = 0`
-
-Rename the new `Cube` to `Table`.
-
-![Set Table Properties To Zero](assets/images/SetTablePropertiesToZero.png)
+![Create Table Object](assets/images/CreateTableObject.png)
 
 ### Step 2
 
 Expand the `Tilia Interactors Interactables Unity` Package directory in the Unity Project window and select the `Packages -> Tilia Interactors Interactables Unity -> Runtime -> Interactables -> Prefabs` directory then drag and drop the`Interactions.Interactable` prefab into the Unity Hierarchy window.
 
-![Drag And Drop Interactables Prefab Into Hierachy](assets/images/DragAndDropInteractablesPrefabIntoHierachy.png)
+![Drag And Drop Interactables Prefab Into Hierarchy](assets/images/DragAndDropInteractablesPrefabIntoHierarchy.png)
 
 ### Step 3
 
-We’re going to change the scale and position of the `Interactions.Interactable` GameObject as by default it’s just a 1 x 1 x 1 Cube, which will be very big in our virtual world.
+We’re going to change the scale and position of the `Interactions.Interactable` GameObject as by default it’s just a `1 x 1 x 1` Cube, which will be very big in our virtual world.
 
 Select the `Interactions.Interactable` GameObject and set the `Transform` properties to:
 
@@ -52,9 +48,9 @@ Select the `Interactions.Interactable` GameObject and set the `Transform` proper
 
 ### Step 4
 
-Select the `Interactions.Interactable` GameObject in the Unity Hierachy, on the `Interactable Facade` component change the `Primary Action` dropdown to `Interactable.GrabAction.Follow` and change the `Secondary Action` dropdown to `Interactable.GrabAction.Swap`
+Select the `Interactions.Interactable` GameObject in the Unity Hierarchy and change the `Primary Action` property to `Interactable.GrabAction.Follow` and change the `Secondary Action` property to `Interactable.GrabAction.Swap` on the `Interactable Facade` component.
 
-![Change Prefab Activation Settings](assets/images/ChangePrefabActivationSettings.png)
+![Select Prefab Follow Actions](assets/images/SelectPrefabFollowActions.png)
 
 ### Done
 
