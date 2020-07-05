@@ -1,5 +1,12 @@
 # Changelog
 
+### [1.10.1](https://github.com/ExtendRealityLtd/Tilia.Interactions.Interactables.Unity/compare/v1.10.0...v1.10.1) (2020-07-05)
+
+#### Bug Fixes
+
+* **Documentation:** apply style guidelines ([251ec26](https://github.com/ExtendRealityLtd/Tilia.Interactions.Interactables.Unity/commit/251ec263a7ae891a46aeec422c225e092209f982))
+  > The guide has had the style guidelines applied to it to make it more consistent.
+
 ## [1.10.0](https://github.com/ExtendRealityLtd/Tilia.Interactions.Interactables.Unity/compare/v1.9.0...v1.10.0) (2020-07-03)
 
 #### Features
