@@ -5,6 +5,7 @@
     using Malimbe.PropertySerializationAttribute;
     using Malimbe.XmlDocumentationAttribute;
     using System.Collections.Generic;
+    using System.Linq;
     using Tilia.Interactions.Interactables.Interactables.Grab.Action;
     using Tilia.Interactions.Interactables.Interactables.Grab.Provider;
     using Tilia.Interactions.Interactables.Interactables.Grab.Receiver;
@@ -80,12 +81,31 @@
         public bool IsGrabTypeToggle => GrabReceiver.GrabType == GrabInteractableReceiver.ActiveType.Toggle;
 
         /// <summary>
-        /// Attempt to grab the Interactable to the given Interactor.
+        /// Attempt to grab the Interactable to the given Interactor and ungrabs any existing grab.
         /// </summary>
         /// <param name="interactor">The Interactor to attach the Interactable to.</param>
         public virtual void Grab(InteractorFacade interactor)
         {
+            if (interactor == null)
+            {
+                return;
+            }
+
             interactor.Grab(Facade);
+        }
+
+        /// <summary>
+        /// Attempt to grab the Interactable to the given Interactor and does not ungrab any existing grab.
+        /// </summary>
+        /// <param name="interactor">The Interactor to attach the Interactable to.</param>
+        public virtual void GrabIgnoreUngrab(InteractorFacade interactor)
+        {
+            if (interactor == null)
+            {
+                return;
+            }
+
+            interactor.GrabIgnoreUngrab(Facade);
         }
 
         /// <summary>
@@ -108,7 +128,18 @@
         /// <param name="interactor">The Interactor to ungrab from.</param>
         public virtual void Ungrab(InteractorFacade interactor)
         {
+            if (interactor == null)
+            {
+                return;
+            }
+
             interactor.Ungrab();
+
+            //If the ungrab hasn't happened for some reason, then let's check to see if the interactor is still grabbing and force a stop grab.
+            if (GrabbingInteractors.Contains(interactor))
+            {
+                GrabReceiver.UngrabConsumer.Consume(interactor.GrabConfiguration.StopGrabbingPublisher.Payload, null);
+            }
         }
 
         /// <summary>
@@ -118,15 +149,17 @@
         public virtual void NotifyGrab(GameObject data)
         {
             InteractorFacade interactor = data.TryGetComponent<InteractorFacade>(true, true);
-            if (interactor != null)
+            if (interactor == null)
             {
-                if (Facade.GrabbingInteractors.Count == 1)
-                {
-                    Facade.FirstGrabbed?.Invoke(interactor);
-                }
-                Facade.Grabbed?.Invoke(interactor);
-                interactor.NotifyOfGrab(Facade);
+                return;
             }
+
+            if (Facade.GrabbingInteractors.Count == 1)
+            {
+                Facade.FirstGrabbed?.Invoke(interactor);
+            }
+            Facade.Grabbed?.Invoke(interactor);
+            interactor.NotifyOfGrab(Facade);
         }
 
         /// <summary>
@@ -136,14 +169,16 @@
         public virtual void NotifyUngrab(GameObject data)
         {
             InteractorFacade interactor = data.TryGetComponent<InteractorFacade>(true, true);
-            if (interactor != null)
+            if (interactor == null)
             {
-                Facade.Ungrabbed?.Invoke(interactor);
-                interactor.NotifyOfUngrab(Facade);
-                if (Facade.GrabbingInteractors.Count == 0)
-                {
-                    Facade.LastUngrabbed?.Invoke(interactor);
-                }
+                return;
+            }
+
+            Facade.Ungrabbed?.Invoke(interactor);
+            interactor.NotifyOfUngrab(Facade);
+            if (Facade.GrabbingInteractors.Count == 0)
+            {
+                Facade.LastUngrabbed?.Invoke(interactor);
             }
         }
 

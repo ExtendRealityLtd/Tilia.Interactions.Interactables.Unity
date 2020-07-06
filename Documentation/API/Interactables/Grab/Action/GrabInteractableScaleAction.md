@@ -64,6 +64,8 @@ public PinchScaler PinchScaler { get; protected set; }
 
 #### OnAfterGrabSetupChange()
 
+Called after [GrabSetup] has been changed.
+
 ##### Declaration
 
 ```
@@ -84,6 +86,7 @@ protected override void OnAfterGrabSetupChange()
 [GrabInteractableAction.NotifyGrab(GameObject)]: GrabInteractableAction.md#Tilia_Interactions_Interactables_Interactables_Grab_Action_GrabInteractableAction_NotifyGrab_GameObject_
 [GrabInteractableAction.NotifyUngrab(GameObject)]: GrabInteractableAction.md#Tilia_Interactions_Interactables_Interactables_Grab_Action_GrabInteractableAction_NotifyUngrab_GameObject_
 [Tilia.Interactions.Interactables.Interactables.Grab.Action]: README.md
+[GrabSetup]: GrabInteractableAction.md#Tilia_Interactions_Interactables_Interactables_Grab_Action_GrabInteractableAction_GrabSetup
 [GrabInteractableAction.OnAfterGrabSetupChange()]: GrabInteractableAction.md#Tilia_Interactions_Interactables_Interactables_Grab_Action_GrabInteractableAction_OnAfterGrabSetupChange
 [Inheritance]: #Inheritance
 [Namespace]: #Namespace

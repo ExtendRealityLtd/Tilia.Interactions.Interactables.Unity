@@ -111,35 +111,114 @@
         public IReadOnlyList<GameObject> GrabbedObjects => GrabConfiguration.GrabbedObjects;
 
         /// <summary>
-        /// Attempt to attach a <see cref="GameObject"/> that contains an <see cref="InteractableFacade"/> to this <see cref="InteractorFacade"/>.
+        /// Attempt to attach a <see cref="GameObject"/> that contains an <see cref="InteractableFacade"/> to this <see cref="InteractorFacade"/> and ungrabs any existing grab.
         /// </summary>
         /// <param name="interactable">The GameObject that the Interactable is on.</param>
         public virtual void Grab(GameObject interactable)
         {
-            Grab(interactable.TryGetComponent<InteractableFacade>(true, true));
+            Grab(interactable, true);
+        }
+
+        /// <summary>
+        /// Attempt to attach a <see cref="GameObject"/> that contains an <see cref="InteractableFacade"/> to this <see cref="InteractorFacade"/> and does not ungrab any existing grab.
+        /// </summary>
+        /// <param name="interactable">The GameObject that the Interactable is on.</param>
+        public virtual void GrabIgnoreUngrab(GameObject interactable)
+        {
+            Grab(interactable, false);
+        }
+
+        /// <summary>
+        /// Attempt to attach a <see cref="GameObject"/> that contains an <see cref="InteractableFacade"/> to this <see cref="InteractorFacade"/>.
+        /// </summary>
+        /// <param name="interactable">The GameObject that the Interactable is on.</param>
+        /// <param name="ungrabExistingGrab">Whether to ungrab any existing grab.</param>
+        public virtual void Grab(GameObject interactable, bool ungrabExistingGrab)
+        {
+            Grab(interactable.TryGetComponent<InteractableFacade>(true, true), ungrabExistingGrab);
+        }
+
+        /// <summary>
+        /// Attempt to attach an <see cref="InteractableFacade"/> to this <see cref="InteractorFacade"/> and ungrabs any existing grab.
+        /// </summary>
+        /// <param name="interactable">The Interactable to attempt to grab.</param>
+        public virtual void Grab(InteractableFacade interactable)
+        {
+            Grab(interactable, true);
+        }
+
+        /// <summary>
+        /// Attempt to attach an <see cref="InteractableFacade"/> to this <see cref="InteractorFacade"/> and does not ungrab any existing grab.
+        /// </summary>
+        /// <param name="interactable">The Interactable to attempt to grab.</param>
+        public virtual void GrabIgnoreUngrab(InteractableFacade interactable)
+        {
+            Grab(interactable, false);
         }
 
         /// <summary>
         /// Attempt to attach an <see cref="InteractableFacade"/> to this <see cref="InteractorFacade"/>.
         /// </summary>
         /// <param name="interactable">The Interactable to attempt to grab.</param>
-        public virtual void Grab(InteractableFacade interactable)
+        /// <param name="ungrabExistingGrab">Whether to ungrab any existing grab.</param>
+        public virtual void Grab(InteractableFacade interactable, bool ungrabExistingGrab)
         {
-            Grab(interactable, null, null);
+            Grab(interactable, null, null, ungrabExistingGrab);
+        }
+
+        /// <summary>
+        /// Attempt to attach an <see cref="InteractableFacade"/> found in the given <see cref="SurfaceData"/> to this <see cref="InteractorFacade"/> and ungrabs any existing grab.
+        /// </summary>
+        /// <param name="data">The collision data containing a valid Interactable.</param>
+        public virtual void Grab(SurfaceData data)
+        {
+            Grab(data, true);
+        }
+
+        /// <summary>
+        /// Attempt to attach an <see cref="InteractableFacade"/> found in the given <see cref="SurfaceData"/> to this <see cref="InteractorFacade"/> and does not ungrab any existing grab.
+        /// </summary>
+        /// <param name="data">The collision data containing a valid Interactable.</param>
+        public virtual void GrabIgnoreUngrab(SurfaceData data)
+        {
+            Grab(data, false);
         }
 
         /// <summary>
         /// Attempt to attach an <see cref="InteractableFacade"/> found in the given <see cref="SurfaceData"/> to this <see cref="InteractorFacade"/>.
         /// </summary>
         /// <param name="data">The collision data containing a valid Interactable.</param>
-        public virtual void Grab(SurfaceData data)
+        /// <param name="ungrabExistingGrab">Whether to ungrab any existing grab.</param>
+        public virtual void Grab(SurfaceData data, bool ungrabExistingGrab)
         {
             if (data == null || data.CollisionData.transform == null)
             {
                 return;
             }
 
-            Grab(data.CollisionData.transform.gameObject.TryGetComponent<InteractableFacade>(true, true), null, null);
+            Grab(data.CollisionData.transform.gameObject.TryGetComponent<InteractableFacade>(true, true), null, null, ungrabExistingGrab);
+        }
+
+        /// <summary>
+        /// Attempt to attach an <see cref="InteractableFacade"/> to this <see cref="InteractorFacade"/> utilizing custom collision data and ungrabs any existing grab.
+        /// </summary>
+        /// <param name="interactable">The Interactable to attempt to grab.</param>
+        /// <param name="collision">Custom collision data.</param>
+        /// <param name="collider">Custom collider data.</param>
+        public virtual void Grab(InteractableFacade interactable, Collision collision, Collider collider)
+        {
+            GrabConfiguration.Grab(interactable, collision, collider, true);
+        }
+
+        /// <summary>
+        /// Attempt to attach an <see cref="InteractableFacade"/> to this <see cref="InteractorFacade"/> utilizing custom collision data and does not ungrab any existing grab.
+        /// </summary>
+        /// <param name="interactable">The Interactable to attempt to grab.</param>
+        /// <param name="collision">Custom collision data.</param>
+        /// <param name="collider">Custom collider data.</param>
+        public virtual void GrabIgnoreUngrab(InteractableFacade interactable, Collision collision, Collider collider)
+        {
+            GrabConfiguration.Grab(interactable, collision, collider, false);
         }
 
         /// <summary>
@@ -148,9 +227,10 @@
         /// <param name="interactable">The Interactable to attempt to grab.</param>
         /// <param name="collision">Custom collision data.</param>
         /// <param name="collider">Custom collider data.</param>
-        public virtual void Grab(InteractableFacade interactable, Collision collision, Collider collider)
+        /// <param name="ungrabExistingGrab">Whether to ungrab any existing grab.</param>
+        public virtual void Grab(InteractableFacade interactable, Collision collision, Collider collider, bool ungrabExistingGrab)
         {
-            GrabConfiguration.Grab(interactable, collision, collider);
+            GrabConfiguration.Grab(interactable, collision, collider, ungrabExistingGrab);
         }
 
         /// <summary>

@@ -25,9 +25,17 @@ The public interface into the Interactor Prefab.
   * [VelocityTracker]
 * [Methods]
   * [Grab(GameObject)]
+  * [Grab(GameObject, Boolean)]
   * [Grab(SurfaceData)]
+  * [Grab(SurfaceData, Boolean)]
   * [Grab(InteractableFacade)]
   * [Grab(InteractableFacade, Collision, Collider)]
+  * [Grab(InteractableFacade, Collision, Collider, Boolean)]
+  * [Grab(InteractableFacade, Boolean)]
+  * [GrabIgnoreUngrab(GameObject)]
+  * [GrabIgnoreUngrab(SurfaceData)]
+  * [GrabIgnoreUngrab(InteractableFacade)]
+  * [GrabIgnoreUngrab(InteractableFacade, Collision, Collider)]
   * [NotifyOfGrab(InteractableFacade)]
   * [NotifyOfTouch(InteractableFacade)]
   * [NotifyOfUngrab(InteractableFacade)]
@@ -202,7 +210,7 @@ public VelocityTrackerProcessor VelocityTracker { get; set; }
 
 #### Grab(GameObject)
 
-Attempt to attach a GameObject that contains an [InteractableFacade] to this [InteractorFacade].
+Attempt to attach a GameObject that contains an [InteractableFacade] to this [InteractorFacade] and ungrabs any existing grab.
 
 ##### Declaration
 
@@ -216,9 +224,26 @@ public virtual void Grab(GameObject interactable)
 | --- | --- | --- |
 | GameObject | interactable | The GameObject that the Interactable is on. |
 
+#### Grab(GameObject, Boolean)
+
+Attempt to attach a GameObject that contains an [InteractableFacade] to this [InteractorFacade].
+
+##### Declaration
+
+```
+public virtual void Grab(GameObject interactable, bool ungrabExistingGrab)
+```
+
+##### Parameters
+
+| Type | Name | Description |
+| --- | --- | --- |
+| GameObject | interactable | The GameObject that the Interactable is on. |
+| System.Boolean | ungrabExistingGrab | Whether to ungrab any existing grab. |
+
 #### Grab(SurfaceData)
 
-Attempt to attach an [InteractableFacade] found in the given SurfaceData to this [InteractorFacade].
+Attempt to attach an [InteractableFacade] found in the given SurfaceData to this [InteractorFacade] and ungrabs any existing grab.
 
 ##### Declaration
 
@@ -232,9 +257,26 @@ public virtual void Grab(SurfaceData data)
 | --- | --- | --- |
 | SurfaceData | data | The collision data containing a valid Interactable. |
 
+#### Grab(SurfaceData, Boolean)
+
+Attempt to attach an [InteractableFacade] found in the given SurfaceData to this [InteractorFacade].
+
+##### Declaration
+
+```
+public virtual void Grab(SurfaceData data, bool ungrabExistingGrab)
+```
+
+##### Parameters
+
+| Type | Name | Description |
+| --- | --- | --- |
+| SurfaceData | data | The collision data containing a valid Interactable. |
+| System.Boolean | ungrabExistingGrab | Whether to ungrab any existing grab. |
+
 #### Grab(InteractableFacade)
 
-Attempt to attach an [InteractableFacade] to this [InteractorFacade].
+Attempt to attach an [InteractableFacade] to this [InteractorFacade] and ungrabs any existing grab.
 
 ##### Declaration
 
@@ -250,12 +292,114 @@ public virtual void Grab(InteractableFacade interactable)
 
 #### Grab(InteractableFacade, Collision, Collider)
 
-Attempt to attach an [InteractableFacade] to this [InteractorFacade] utilizing custom collision data.
+Attempt to attach an [InteractableFacade] to this [InteractorFacade] utilizing custom collision data and ungrabs any existing grab.
 
 ##### Declaration
 
 ```
 public virtual void Grab(InteractableFacade interactable, Collision collision, Collider collider)
+```
+
+##### Parameters
+
+| Type | Name | Description |
+| --- | --- | --- |
+| [InteractableFacade] | interactable | The Interactable to attempt to grab. |
+| Collision | collision | Custom collision data. |
+| Collider | collider | Custom collider data. |
+
+#### Grab(InteractableFacade, Collision, Collider, Boolean)
+
+Attempt to attach an [InteractableFacade] to this [InteractorFacade] utilizing custom collision data.
+
+##### Declaration
+
+```
+public virtual void Grab(InteractableFacade interactable, Collision collision, Collider collider, bool ungrabExistingGrab)
+```
+
+##### Parameters
+
+| Type | Name | Description |
+| --- | --- | --- |
+| [InteractableFacade] | interactable | The Interactable to attempt to grab. |
+| Collision | collision | Custom collision data. |
+| Collider | collider | Custom collider data. |
+| System.Boolean | ungrabExistingGrab | Whether to ungrab any existing grab. |
+
+#### Grab(InteractableFacade, Boolean)
+
+Attempt to attach an [InteractableFacade] to this [InteractorFacade].
+
+##### Declaration
+
+```
+public virtual void Grab(InteractableFacade interactable, bool ungrabExistingGrab)
+```
+
+##### Parameters
+
+| Type | Name | Description |
+| --- | --- | --- |
+| [InteractableFacade] | interactable | The Interactable to attempt to grab. |
+| System.Boolean | ungrabExistingGrab | Whether to ungrab any existing grab. |
+
+#### GrabIgnoreUngrab(GameObject)
+
+Attempt to attach a GameObject that contains an [InteractableFacade] to this [InteractorFacade] and does not ungrab any existing grab.
+
+##### Declaration
+
+```
+public virtual void GrabIgnoreUngrab(GameObject interactable)
+```
+
+##### Parameters
+
+| Type | Name | Description |
+| --- | --- | --- |
+| GameObject | interactable | The GameObject that the Interactable is on. |
+
+#### GrabIgnoreUngrab(SurfaceData)
+
+Attempt to attach an [InteractableFacade] found in the given SurfaceData to this [InteractorFacade] and does not ungrab any existing grab.
+
+##### Declaration
+
+```
+public virtual void GrabIgnoreUngrab(SurfaceData data)
+```
+
+##### Parameters
+
+| Type | Name | Description |
+| --- | --- | --- |
+| SurfaceData | data | The collision data containing a valid Interactable. |
+
+#### GrabIgnoreUngrab(InteractableFacade)
+
+Attempt to attach an [InteractableFacade] to this [InteractorFacade] and does not ungrab any existing grab.
+
+##### Declaration
+
+```
+public virtual void GrabIgnoreUngrab(InteractableFacade interactable)
+```
+
+##### Parameters
+
+| Type | Name | Description |
+| --- | --- | --- |
+| [InteractableFacade] | interactable | The Interactable to attempt to grab. |
+
+#### GrabIgnoreUngrab(InteractableFacade, Collision, Collider)
+
+Attempt to attach an [InteractableFacade] to this [InteractorFacade] utilizing custom collision data and does not ungrab any existing grab.
+
+##### Declaration
+
+```
+public virtual void GrabIgnoreUngrab(InteractableFacade interactable, Collision collision, Collider collider)
 ```
 
 ##### Parameters
@@ -401,9 +545,17 @@ public virtual void Ungrab()
 [VelocityTracker]: #VelocityTracker
 [Methods]: #Methods
 [Grab(GameObject)]: #GrabGameObject
+[Grab(GameObject, Boolean)]: #GrabGameObject-Boolean
 [Grab(SurfaceData)]: #GrabSurfaceData
+[Grab(SurfaceData, Boolean)]: #GrabSurfaceData-Boolean
 [Grab(InteractableFacade)]: #GrabInteractableFacade
 [Grab(InteractableFacade, Collision, Collider)]: #GrabInteractableFacade-Collision-Collider
+[Grab(InteractableFacade, Collision, Collider, Boolean)]: #GrabInteractableFacade-Collision-Collider-Boolean
+[Grab(InteractableFacade, Boolean)]: #GrabInteractableFacade-Boolean
+[GrabIgnoreUngrab(GameObject)]: #GrabIgnoreUngrabGameObject
+[GrabIgnoreUngrab(SurfaceData)]: #GrabIgnoreUngrabSurfaceData
+[GrabIgnoreUngrab(InteractableFacade)]: #GrabIgnoreUngrabInteractableFacade
+[GrabIgnoreUngrab(InteractableFacade, Collision, Collider)]: #GrabIgnoreUngrabInteractableFacade-Collision-Collider
 [NotifyOfGrab(InteractableFacade)]: #NotifyOfGrabInteractableFacade
 [NotifyOfTouch(InteractableFacade)]: #NotifyOfTouchInteractableFacade
 [NotifyOfUngrab(InteractableFacade)]: #NotifyOfUngrabInteractableFacade
