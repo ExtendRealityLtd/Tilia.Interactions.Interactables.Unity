@@ -1,5 +1,23 @@
 # Changelog
 
+## [1.11.0](https://github.com/ExtendRealityLtd/Tilia.Interactions.Interactables.Unity/compare/v1.10.1...v1.11.0) (2020-07-07)
+
+#### Features
+
+* **Interactions:** provide new methods for auto grabbing interactable ([a333827](https://github.com/ExtendRealityLtd/Tilia.Interactions.Interactables.Unity/commit/a333827b723b940c74f65d748d9ba31a1938cfc6))
+  > The Interactable can now be grabbed automatically with a collection of new methods like:
+  > 
+  > * GrabAtEndOfFrame (delays the grab until the end of frame) * GrabIgnoreUngrab (attempts a grab but doesn't call ungrab on the   interactor)
+  > 
+  > There is also a `UngrabAtEndOfFrame` which delays the ungrab until the end of the frame.
+  > 
+  > These new methods allow for finer control when wanting to perform automatic grabs and ungrabs and allow for more advanced features such as psuedo multi grabbing.
+
+#### Bug Fixes
+
+* **dependabot:** remove bddckr from default reviewer ([a0c27da](https://github.com/ExtendRealityLtd/Tilia.Interactions.Interactables.Unity/commit/a0c27da96d75da722bf2f69082aae972b6feb688))
+  > Only need one reviewer in the dependabot config.
+
 ### [1.10.1](https://github.com/ExtendRealityLtd/Tilia.Interactions.Interactables.Unity/compare/v1.10.0...v1.10.1) (2020-07-05)
 
 #### Bug Fixes
