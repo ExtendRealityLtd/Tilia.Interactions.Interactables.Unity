@@ -329,6 +329,8 @@ protected virtual void OnAfterGrabOffsetChange()
 
 #### OnAfterGrabSetupChange()
 
+Called after [GrabSetup] has been changed.
+
 ##### Declaration
 
 ```
@@ -364,6 +366,7 @@ protected virtual void OnEnable()
 [GrabOffset]: GrabInteractableFollowAction.md#GrabOffset
 [FollowTracking]: GrabInteractableFollowAction.md#FollowTracking
 [GrabOffset]: GrabInteractableFollowAction.md#GrabOffset
+[GrabSetup]: GrabInteractableAction.md#Tilia_Interactions_Interactables_Interactables_Grab_Action_GrabInteractableAction_GrabSetup
 [GrabInteractableAction.OnAfterGrabSetupChange()]: GrabInteractableAction.md#Tilia_Interactions_Interactables_Interactables_Grab_Action_GrabInteractableAction_OnAfterGrabSetupChange
 [Inheritance]: #Inheritance
 [Namespace]: #Namespace

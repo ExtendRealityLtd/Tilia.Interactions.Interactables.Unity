@@ -98,6 +98,8 @@ public virtual void EnableLinkedObjects()
 
 #### OnAfterGrabSetupChange()
 
+Called after [GrabSetup] has been changed.
+
 ##### Declaration
 
 ```
@@ -136,6 +138,7 @@ protected virtual void ToggleLinkedObjectState(bool state)
 [Tilia.Interactions.Interactables.Interactables.Grab.Action]: README.md
 [LinkedObjects]: GrabInteractableControlDirectionAction.md#LinkedObjects
 [LinkedObjects]: GrabInteractableControlDirectionAction.md#LinkedObjects
+[GrabSetup]: GrabInteractableAction.md#Tilia_Interactions_Interactables_Interactables_Grab_Action_GrabInteractableAction_GrabSetup
 [GrabInteractableAction.OnAfterGrabSetupChange()]: GrabInteractableAction.md#Tilia_Interactions_Interactables_Interactables_Grab_Action_GrabInteractableAction_OnAfterGrabSetupChange
 [LinkedObjects]: GrabInteractableControlDirectionAction.md#LinkedObjects
 [Inheritance]: #Inheritance

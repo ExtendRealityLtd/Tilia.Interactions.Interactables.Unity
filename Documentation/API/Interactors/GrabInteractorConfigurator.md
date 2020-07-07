@@ -28,6 +28,8 @@ Sets up the Interactor Prefab grab settings based on the provided user settings.
   * [ConfigureVelocityTrackers()]
   * [CreateActiveCollisionsEventData(GameObject, Collision, Collider)]
   * [Grab(InteractableFacade, Collision, Collider)]
+  * [Grab(InteractableFacade, Collision, Collider, Boolean)]
+  * [GrabIgnoreUngrab(InteractableFacade, Collision, Collider)]
   * [OnAfterVelocityTrackerChange()]
   * [OnEnable()]
   * [ProcessGrabAction(ActiveCollisionPublisher, Boolean)]
@@ -242,12 +244,49 @@ protected virtual ActiveCollisionsContainer.EventData CreateActiveCollisionsEven
 
 #### Grab(InteractableFacade, Collision, Collider)
 
-Attempt to grab an Interactable to the current Interactor utilizing custom collision data.
+Attempt to grab an Interactable to the current Interactor utilizing custom collision data and ungrabs any existing grab.
 
 ##### Declaration
 
 ```
 public virtual void Grab(InteractableFacade interactable, Collision collision, Collider collider)
+```
+
+##### Parameters
+
+| Type | Name | Description |
+| --- | --- | --- |
+| [InteractableFacade] | interactable | The Interactable to attempt to grab. |
+| Collision | collision | Custom collision data. |
+| Collider | collider | Custom collider data. |
+
+#### Grab(InteractableFacade, Collision, Collider, Boolean)
+
+Attempt to grab an Interactable to the current Interactor utilizing custom collision data.
+
+##### Declaration
+
+```
+public virtual void Grab(InteractableFacade interactable, Collision collision, Collider collider, bool ungrabExistingGrab)
+```
+
+##### Parameters
+
+| Type | Name | Description |
+| --- | --- | --- |
+| [InteractableFacade] | interactable | The Interactable to attempt to grab. |
+| Collision | collision | Custom collision data. |
+| Collider | collider | Custom collider data. |
+| System.Boolean | ungrabExistingGrab | Whether to ungrab any existing grab. |
+
+#### GrabIgnoreUngrab(InteractableFacade, Collision, Collider)
+
+Attempt to grab an Interactable to the current Interactor utilizing custom collision data and does not ungrab any existing grab..
+
+##### Declaration
+
+```
+public virtual void GrabIgnoreUngrab(InteractableFacade interactable, Collision collision, Collider collider)
 ```
 
 ##### Parameters
@@ -331,6 +370,8 @@ public virtual void Ungrab()
 [ConfigureVelocityTrackers()]: #ConfigureVelocityTrackers
 [CreateActiveCollisionsEventData(GameObject, Collision, Collider)]: #CreateActiveCollisionsEventDataGameObject-Collision-Collider
 [Grab(InteractableFacade, Collision, Collider)]: #GrabInteractableFacade-Collision-Collider
+[Grab(InteractableFacade, Collision, Collider, Boolean)]: #GrabInteractableFacade-Collision-Collider-Boolean
+[GrabIgnoreUngrab(InteractableFacade, Collision, Collider)]: #GrabIgnoreUngrabInteractableFacade-Collision-Collider
 [OnAfterVelocityTrackerChange()]: #OnAfterVelocityTrackerChange
 [OnEnable()]: #OnEnable
 [ProcessGrabAction(ActiveCollisionPublisher, Boolean)]: #ProcessGrabActionActiveCollisionPublisher-Boolean

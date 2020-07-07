@@ -65,11 +65,19 @@ public GameObjectObservableStack EventStack { get; protected set; }
 
 #### GrabbingInteractors
 
+Gets the available grabbing Interactors from the provider.
+
 ##### Declaration
 
 ```
 public override IReadOnlyList<InteractorFacade> GrabbingInteractors { get; }
 ```
+
+##### Property Value
+
+| Type | Description |
+| --- | --- |
+| System.Collections.Generic.IReadOnlyList<[InteractorFacade]\> | A collection of Interactors that are currently grabbing the Interactable. |
 
 ##### Overrides
 

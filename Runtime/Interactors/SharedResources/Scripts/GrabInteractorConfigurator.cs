@@ -136,19 +136,46 @@
         }
 
         /// <summary>
-        /// Attempt to grab an Interactable to the current Interactor utilizing custom collision data.
+        /// Attempt to grab an Interactable to the current Interactor utilizing custom collision data and ungrabs any existing grab.
         /// </summary>
         /// <param name="interactable">The Interactable to attempt to grab.</param>
         /// <param name="collision">Custom collision data.</param>
         /// <param name="collider">Custom collider data.</param>
         public virtual void Grab(InteractableFacade interactable, Collision collision, Collider collider)
         {
+            Grab(interactable, collision, collider, true);
+        }
+
+        /// <summary>
+        /// Attempt to grab an Interactable to the current Interactor utilizing custom collision data and does not ungrab any existing grab..
+        /// </summary>
+        /// <param name="interactable">The Interactable to attempt to grab.</param>
+        /// <param name="collision">Custom collision data.</param>
+        /// <param name="collider">Custom collider data.</param>
+        public virtual void GrabIgnoreUngrab(InteractableFacade interactable, Collision collision, Collider collider)
+        {
+            Grab(interactable, collision, collider, false);
+        }
+
+        /// <summary>
+        /// Attempt to grab an Interactable to the current Interactor utilizing custom collision data.
+        /// </summary>
+        /// <param name="interactable">The Interactable to attempt to grab.</param>
+        /// <param name="collision">Custom collision data.</param>
+        /// <param name="collider">Custom collider data.</param>
+        /// <param name="ungrabExistingGrab">Whether to ungrab any existing grab.</param>
+        public virtual void Grab(InteractableFacade interactable, Collision collision, Collider collider, bool ungrabExistingGrab)
+        {
             if (interactable == null)
             {
                 return;
             }
 
-            Ungrab();
+            if (ungrabExistingGrab)
+            {
+                Ungrab();
+            }
+
             StartGrabbingPublisher.SetActiveCollisions(CreateActiveCollisionsEventData(interactable.gameObject, collision, collider));
             ProcessGrabAction(StartGrabbingPublisher, true);
             if (interactable.IsGrabTypeToggle)

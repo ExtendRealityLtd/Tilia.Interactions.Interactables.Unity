@@ -21,6 +21,7 @@ Sets up the Interactable Prefab grab settings based on the provided user setting
   * [ConfigureActionContainer(GrabInteractableAction)]
   * [ConfigureContainer()]
   * [Grab(InteractorFacade)]
+  * [GrabIgnoreUngrab(InteractorFacade)]
   * [LinkReceiverToProvider()]
   * [LinkToPrimaryAction()]
   * [LinkToSecondaryAction()]
@@ -178,12 +179,28 @@ public virtual void ConfigureContainer()
 
 #### Grab(InteractorFacade)
 
-Attempt to grab the Interactable to the given Interactor.
+Attempt to grab the Interactable to the given Interactor and ungrabs any existing grab.
 
 ##### Declaration
 
 ```
 public virtual void Grab(InteractorFacade interactor)
+```
+
+##### Parameters
+
+| Type | Name | Description |
+| --- | --- | --- |
+| [InteractorFacade] | interactor | The Interactor to attach the Interactable to. |
+
+#### GrabIgnoreUngrab(InteractorFacade)
+
+Attempt to grab the Interactable to the given Interactor and does not ungrab any existing grab.
+
+##### Declaration
+
+```
+public virtual void GrabIgnoreUngrab(InteractorFacade interactor)
 ```
 
 ##### Parameters
@@ -420,6 +437,7 @@ protected virtual void UnlinkToSecondaryAction()
 [ConfigureActionContainer(GrabInteractableAction)]: #ConfigureActionContainerGrabInteractableAction
 [ConfigureContainer()]: #ConfigureContainer
 [Grab(InteractorFacade)]: #GrabInteractorFacade
+[GrabIgnoreUngrab(InteractorFacade)]: #GrabIgnoreUngrabInteractorFacade
 [LinkReceiverToProvider()]: #LinkReceiverToProvider
 [LinkToPrimaryAction()]: #LinkToPrimaryAction
 [LinkToSecondaryAction()]: #LinkToSecondaryAction
