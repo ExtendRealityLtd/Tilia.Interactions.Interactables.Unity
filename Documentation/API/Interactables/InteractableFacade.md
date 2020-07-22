@@ -20,19 +20,35 @@ The public interface into the Interactable Prefab.
   * [ungrabRoutine]
   * [Untouched]
 * [Properties]
+  * [Colliders]
   * [Configuration]
   * [GrabbingInteractors]
+  * [GrabEnabled]
   * [GrabProviderIndex]
   * [GrabType]
+  * [InteractableRigidbody]
   * [IsGrabbed]
   * [IsGrabTypeToggle]
   * [IsTouched]
+  * [MeshContainer]
+  * [Meshes]
+  * [PrimaryGrabEnabled]
+  * [SecondaryGrabEnabled]
+  * [TouchEnabled]
   * [TouchingInteractors]
 * [Methods]
+  * [DisableGrab()]
+  * [DisablePrimaryGrabAction()]
+  * [DisableSecondaryGrabAction()]
+  * [DisableTouch()]
   * [DoGrabAtEndOfFrame(InteractorFacade)]
   * [DoGrabIgnoreUngrabAtEndOfFrame(InteractorFacade)]
   * [DoUngrabAtEndOfFrame(Int32)]
   * [DoUngrabAtEndOfFrame(InteractorFacade)]
+  * [EnableGrab()]
+  * [EnablePrimaryGrabAction()]
+  * [EnableSecondaryGrabAction()]
+  * [EnableTouch()]
   * [GetInteractorFromGameObject(GameObject)]
   * [Grab(GameObject)]
   * [Grab(InteractorFacade)]
@@ -182,6 +198,16 @@ public InteractableFacade.UnityEvent Untouched
 
 ### Properties
 
+#### Colliders
+
+Returns a Collider collection of all the [MeshContainer] child colliders.
+
+##### Declaration
+
+```
+public Collider[] Colliders { get; }
+```
+
 #### Configuration
 
 The linked [InteractableConfigurator].
@@ -202,6 +228,16 @@ A collection of Interactors that are currently grabbing the Interactable.
 public IReadOnlyList<InteractorFacade> GrabbingInteractors { get; }
 ```
 
+#### GrabEnabled
+
+Whether the grab functionality is enabled.
+
+##### Declaration
+
+```
+public bool GrabEnabled { get; }
+```
+
 #### GrabProviderIndex
 
 The GrabInteractableInteractorProvider to use.
@@ -220,6 +256,16 @@ The linked [GrabInteractableReceiver.ActiveType].
 
 ```
 public GrabInteractableReceiver.ActiveType GrabType { get; set; }
+```
+
+#### InteractableRigidbody
+
+The Rigidbody attached to the Interactable.
+
+##### Declaration
+
+```
+public Rigidbody InteractableRigidbody { get; }
 ```
 
 #### IsGrabbed
@@ -252,6 +298,56 @@ Whether the Interactable is currently being touched by any valid Interactor.
 public bool IsTouched { get; }
 ```
 
+#### MeshContainer
+
+The mesh container.
+
+##### Declaration
+
+```
+public GameObject MeshContainer { get; }
+```
+
+#### Meshes
+
+Returns a MeshRenderer collection of all the [MeshContainer] child meshes.
+
+##### Declaration
+
+```
+public MeshRenderer[] Meshes { get; }
+```
+
+#### PrimaryGrabEnabled
+
+Whether the primary grab action functionality is enabled.
+
+##### Declaration
+
+```
+public bool PrimaryGrabEnabled { get; }
+```
+
+#### SecondaryGrabEnabled
+
+Whether the secondary grab action functionality is enabled.
+
+##### Declaration
+
+```
+public bool SecondaryGrabEnabled { get; }
+```
+
+#### TouchEnabled
+
+Whether the touch functionality is enabled.
+
+##### Declaration
+
+```
+public bool TouchEnabled { get; }
+```
+
 #### TouchingInteractors
 
 A collection of Interactors that are currently touching the Interactable.
@@ -263,6 +359,46 @@ public IReadOnlyList<InteractorFacade> TouchingInteractors { get; }
 ```
 
 ### Methods
+
+#### DisableGrab()
+
+Disables the grab logic.
+
+##### Declaration
+
+```
+public virtual void DisableGrab()
+```
+
+#### DisablePrimaryGrabAction()
+
+Disables the primary grab action logic.
+
+##### Declaration
+
+```
+public virtual void DisablePrimaryGrabAction()
+```
+
+#### DisableSecondaryGrabAction()
+
+Disables the secondary grab action logic.
+
+##### Declaration
+
+```
+public virtual void DisableSecondaryGrabAction()
+```
+
+#### DisableTouch()
+
+Disables the touch logic.
+
+##### Declaration
+
+```
+public virtual void DisableTouch()
+```
 
 #### DoGrabAtEndOfFrame(InteractorFacade)
 
@@ -351,6 +487,46 @@ protected virtual IEnumerator DoUngrabAtEndOfFrame(InteractorFacade interactor)
 | Type | Description |
 | --- | --- |
 | System.Collections.IEnumerator | An Enumerator to manage the running of the Coroutine. |
+
+#### EnableGrab()
+
+Enables the grab logic.
+
+##### Declaration
+
+```
+public virtual void EnableGrab()
+```
+
+#### EnablePrimaryGrabAction()
+
+Enables the primary grab action logic.
+
+##### Declaration
+
+```
+public virtual void EnablePrimaryGrabAction()
+```
+
+#### EnableSecondaryGrabAction()
+
+Enables the secondary grab action logic.
+
+##### Declaration
+
+```
+public virtual void EnableSecondaryGrabAction()
+```
+
+#### EnableTouch()
+
+Enables the touch logic.
+
+##### Declaration
+
+```
+public virtual void EnableTouch()
+```
 
 #### GetInteractorFromGameObject(GameObject)
 
@@ -620,9 +796,11 @@ public virtual void UngrabAtEndOfFrame(InteractorFacade interactor)
 
 [Tilia.Interactions.Interactables.Interactables]: README.md
 [InteractableFacade.UnityEvent]: InteractableFacade.UnityEvent.md
+[MeshContainer]: InteractableFacade.md#MeshContainer
 [InteractableConfigurator]: InteractableConfigurator.md
 [InteractorFacade]: ../Interactors/InteractorFacade.md
 [GrabInteractableReceiver.ActiveType]: Grab/Receiver/GrabInteractableReceiver.ActiveType.md
+[MeshContainer]: InteractableFacade.md#MeshContainer
 [GrabProviderIndex]: InteractableFacade.md#GrabProviderIndex
 [GrabType]: InteractableFacade.md#GrabType
 [Inheritance]: #Inheritance
@@ -641,19 +819,35 @@ public virtual void UngrabAtEndOfFrame(InteractorFacade interactor)
 [ungrabRoutine]: #ungrabRoutine
 [Untouched]: #Untouched
 [Properties]: #Properties
+[Colliders]: #Colliders
 [Configuration]: #Configuration
 [GrabbingInteractors]: #GrabbingInteractors
+[GrabEnabled]: #GrabEnabled
 [GrabProviderIndex]: #GrabProviderIndex
 [GrabType]: #GrabType
+[InteractableRigidbody]: #InteractableRigidbody
 [IsGrabbed]: #IsGrabbed
 [IsGrabTypeToggle]: #IsGrabTypeToggle
 [IsTouched]: #IsTouched
+[MeshContainer]: #MeshContainer
+[Meshes]: #Meshes
+[PrimaryGrabEnabled]: #PrimaryGrabEnabled
+[SecondaryGrabEnabled]: #SecondaryGrabEnabled
+[TouchEnabled]: #TouchEnabled
 [TouchingInteractors]: #TouchingInteractors
 [Methods]: #Methods
+[DisableGrab()]: #DisableGrab
+[DisablePrimaryGrabAction()]: #DisablePrimaryGrabAction
+[DisableSecondaryGrabAction()]: #DisableSecondaryGrabAction
+[DisableTouch()]: #DisableTouch
 [DoGrabAtEndOfFrame(InteractorFacade)]: #DoGrabAtEndOfFrameInteractorFacade
 [DoGrabIgnoreUngrabAtEndOfFrame(InteractorFacade)]: #DoGrabIgnoreUngrabAtEndOfFrameInteractorFacade
 [DoUngrabAtEndOfFrame(Int32)]: #DoUngrabAtEndOfFrameInt32
 [DoUngrabAtEndOfFrame(InteractorFacade)]: #DoUngrabAtEndOfFrameInteractorFacade
+[EnableGrab()]: #EnableGrab
+[EnablePrimaryGrabAction()]: #EnablePrimaryGrabAction
+[EnableSecondaryGrabAction()]: #EnableSecondaryGrabAction
+[EnableTouch()]: #EnableTouch
 [GetInteractorFromGameObject(GameObject)]: #GetInteractorFromGameObjectGameObject
 [Grab(GameObject)]: #GrabGameObject
 [Grab(InteractorFacade)]: #GrabInteractorFacade

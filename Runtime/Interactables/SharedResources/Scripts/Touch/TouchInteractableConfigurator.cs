@@ -6,6 +6,7 @@
     using Tilia.Interactions.Interactables.Interactors;
     using UnityEngine;
     using Zinnia.Data.Attribute;
+    using Zinnia.Data.Collection.Counter;
     using Zinnia.Data.Collection.List;
     using Zinnia.Event.Proxy;
     using Zinnia.Extension;
@@ -47,6 +48,18 @@
         [field: Header("Touch Settings"), DocumentedByXml, Restricted]
         public GameObjectObservableList CurrentTouchingObjects { get; protected set; }
         /// <summary>
+        /// The <see cref="GameObjectObservableList"/> that holds the current untouching objects data.
+        /// </summary>
+        [Serialized]
+        [field: DocumentedByXml, Restricted]
+        public GameObjectObservableList CurrentUntouchingObjects { get; protected set; }
+        /// <summary>
+        /// The <see cref="GameObjectEventProxyEmitter"/> used to determine the untouch actions.
+        /// </summary>
+        [Serialized]
+        [field: DocumentedByXml, Restricted]
+        public GameObjectEventProxyEmitter CurrentUntouchingEventProxy { get; protected set; }
+        /// <summary>
         /// The <see cref="GameObjectEventProxyEmitter"/> used to determine the touch validity.
         /// </summary>
         [Serialized]
@@ -61,6 +74,12 @@
         [Serialized]
         [field: Header("Interactor Settings"), DocumentedByXml, Restricted]
         public ActiveCollisionsContainer PotentialInteractors { get; protected set; }
+        /// <summary>
+        /// The <see cref="GameObjectObservableCounter"/> for counting active interactors.
+        /// </summary>
+        [Serialized]
+        [field: DocumentedByXml, Restricted]
+        public GameObjectObservableCounter ActiveInteractorCounter { get; protected set; }
         /// <summary>
         /// The <see cref="NotifierContainerExtractor"/> for adding active interactors.
         /// </summary>
@@ -86,6 +105,17 @@
         protected readonly List<InteractorFacade> touchingInteractors = new List<InteractorFacade>();
 
         /// <summary>
+        /// Enforces that all the existing touching interactors are no longer actually touching.
+        /// </summary>
+        public virtual void UntouchAllTouchingInteractors()
+        {
+            for (int index = TouchingInteractors.Count - 1; index >= 0; index--)
+            {
+                CurrentUntouchingEventProxy.Receive(TouchingInteractors[index].gameObject);
+            }
+        }
+
+        /// <summary>
         /// Notifies that the Interactable is being touched.
         /// </summary>
         /// <param name="data">The touching object.</param>
@@ -94,7 +124,7 @@
             InteractorFacade interactor = data.TryGetComponent<InteractorFacade>(true, true);
             if (interactor != null)
             {
-                if (Facade.TouchingInteractors.Count == 1)
+                if (TouchingInteractors.Count == 1)
                 {
                     Facade.FirstTouched?.Invoke(interactor);
                 }
@@ -114,7 +144,7 @@
             {
                 Facade.Untouched?.Invoke(interactor);
                 interactor.NotifyOfUntouch(Facade);
-                if (Facade.TouchingInteractors.Count == 0)
+                if (TouchingInteractors.Count == 0)
                 {
                     Facade.LastUntouched?.Invoke(interactor);
                 }

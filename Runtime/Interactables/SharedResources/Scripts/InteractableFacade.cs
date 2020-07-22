@@ -95,6 +95,22 @@
         #endregion
 
         /// <summary>
+        /// The <see cref="Rigidbody"/> attached to the Interactable.
+        /// </summary>
+        public Rigidbody InteractableRigidbody => Configuration.ConsumerRigidbody;
+        /// <summary>
+        /// The mesh container.
+        /// </summary>
+        public GameObject MeshContainer => Configuration.MeshContainer;
+        /// <summary>
+        /// Returns a <see cref="MeshRenderer"/> collection of all the <see cref="MeshContainer"/> child meshes.
+        /// </summary>
+        public MeshRenderer[] Meshes => MeshContainer.GetComponentsInChildren<MeshRenderer>();
+        /// <summary>
+        /// Returns a <see cref="Collider"/> collection of all the <see cref="MeshContainer"/> child colliders.
+        /// </summary>
+        public Collider[] Colliders => MeshContainer.GetComponentsInChildren<Collider>();
+        /// <summary>
         /// A collection of Interactors that are currently touching the Interactable.
         /// </summary>
         public IReadOnlyList<InteractorFacade> TouchingInteractors => Configuration.TouchConfiguration.TouchingInteractors;
@@ -114,6 +130,22 @@
         /// Whether the Interactable is currently being grabbed by any valid Interactor.
         /// </summary>
         public bool IsGrabbed => GrabbingInteractors.Count > 0;
+        /// <summary>
+        /// Whether the touch functionality is enabled.
+        /// </summary>
+        public bool TouchEnabled => Configuration.TouchConfiguration.TouchConsumer.gameObject.activeInHierarchy && Configuration.TouchConfiguration.UntouchConsumer.gameObject.activeInHierarchy;
+        /// <summary>
+        /// Whether the grab functionality is enabled.
+        /// </summary>
+        public bool GrabEnabled => Configuration.GrabConfiguration.gameObject.activeInHierarchy;
+        /// <summary>
+        /// Whether the primary grab action functionality is enabled.
+        /// </summary>
+        public bool PrimaryGrabEnabled => Configuration.GrabConfiguration.PrimaryAction.gameObject.activeInHierarchy;
+        /// <summary>
+        /// Whether the secondary grab action functionality is enabled.
+        /// </summary>
+        public bool SecondaryGrabEnabled => Configuration.GrabConfiguration.PrimaryAction.gameObject.activeInHierarchy;
 
         /// <summary>
         /// The routine for grabbing after a certain instruction.
@@ -272,6 +304,76 @@
             }
 
             ungrabRoutine = StartCoroutine(DoUngrabAtEndOfFrame(sequenceIndex));
+        }
+
+        /// <summary>
+        /// Enables the touch logic.
+        /// </summary>
+        public virtual void EnableTouch()
+        {
+            Configuration.TouchConfiguration.TouchConsumer.gameObject.SetActive(true);
+            Configuration.TouchConfiguration.UntouchConsumer.gameObject.SetActive(true);
+        }
+
+        /// <summary>
+        /// Disables the touch logic.
+        /// </summary>
+        public virtual void DisableTouch()
+        {
+            Configuration.TouchConfiguration.UntouchAllTouchingInteractors();
+            Configuration.TouchConfiguration.TouchConsumer.gameObject.SetActive(false);
+            Configuration.TouchConfiguration.UntouchConsumer.gameObject.SetActive(false);
+        }
+
+        /// <summary>
+        /// Enables the grab logic.
+        /// </summary>
+        public virtual void EnableGrab()
+        {
+            Configuration.GrabConfiguration.gameObject.SetActive(true);
+        }
+
+        /// <summary>
+        /// Disables the grab logic.
+        /// </summary>
+        public virtual void DisableGrab()
+        {
+            Ungrab();
+            Configuration.GrabConfiguration.gameObject.SetActive(false);
+        }
+
+        /// <summary>
+        /// Enables the primary grab action logic.
+        /// </summary>
+        public virtual void EnablePrimaryGrabAction()
+        {
+            Configuration.GrabConfiguration.PrimaryAction.gameObject.SetActive(true);
+        }
+
+        /// <summary>
+        /// Disables the primary grab action logic.
+        /// </summary>
+        public virtual void DisablePrimaryGrabAction()
+        {
+            Configuration.GrabConfiguration.Ungrab(0);
+            Configuration.GrabConfiguration.PrimaryAction.gameObject.SetActive(false);
+        }
+
+        /// <summary>
+        /// Enables the secondary grab action logic.
+        /// </summary>
+        public virtual void EnableSecondaryGrabAction()
+        {
+            Configuration.GrabConfiguration.SecondaryAction.gameObject.SetActive(true);
+        }
+
+        /// <summary>
+        /// Disables the secondary grab action logic.
+        /// </summary>
+        public virtual void DisableSecondaryGrabAction()
+        {
+            Configuration.GrabConfiguration.Ungrab(1);
+            Configuration.GrabConfiguration.SecondaryAction.gameObject.SetActive(false);
         }
 
         /// <summary>

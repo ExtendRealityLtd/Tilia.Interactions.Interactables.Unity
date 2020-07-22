@@ -8,8 +8,11 @@
 * [Fields]
   * [touchingInteractors]
 * [Properties]
+  * [ActiveInteractorCounter]
   * [AddActiveInteractor]
   * [CurrentTouchingObjects]
+  * [CurrentUntouchingEventProxy]
+  * [CurrentUntouchingObjects]
   * [Facade]
   * [PotentialInteractors]
   * [RemoveActiveInteractor]
@@ -27,6 +30,7 @@
   * [OnEnable()]
   * [ProcessPotentialInteractorContentChange(CollisionNotifier.EventData)]
   * [UnlinkActiveInteractorCollisions()]
+  * [UntouchAllTouchingInteractors()]
 
 ## Details
 
@@ -59,6 +63,16 @@ protected readonly List<InteractorFacade> touchingInteractors
 
 ### Properties
 
+#### ActiveInteractorCounter
+
+The GameObjectObservableCounter for counting active interactors.
+
+##### Declaration
+
+```
+public GameObjectObservableCounter ActiveInteractorCounter { get; protected set; }
+```
+
 #### AddActiveInteractor
 
 The NotifierContainerExtractor for adding active interactors.
@@ -77,6 +91,26 @@ The GameObjectObservableList that holds the current touching objects data.
 
 ```
 public GameObjectObservableList CurrentTouchingObjects { get; protected set; }
+```
+
+#### CurrentUntouchingEventProxy
+
+The GameObjectEventProxyEmitter used to determine the untouch actions.
+
+##### Declaration
+
+```
+public GameObjectEventProxyEmitter CurrentUntouchingEventProxy { get; protected set; }
+```
+
+#### CurrentUntouchingObjects
+
+The GameObjectObservableList that holds the current untouching objects data.
+
+##### Declaration
+
+```
+public GameObjectObservableList CurrentUntouchingObjects { get; protected set; }
 ```
 
 #### Facade
@@ -261,6 +295,16 @@ Unlinks the CollisionNotifier to the potential and active interactor logic.
 protected virtual void UnlinkActiveInteractorCollisions()
 ```
 
+#### UntouchAllTouchingInteractors()
+
+Enforces that all the existing touching interactors are no longer actually touching.
+
+##### Declaration
+
+```
+public virtual void UntouchAllTouchingInteractors()
+```
+
 [Tilia.Interactions.Interactables.Interactables.Touch]: README.md
 [InteractorFacade]: ../../Interactors/InteractorFacade.md
 [InteractableFacade]: ../../Interactables/InteractableFacade.md
@@ -270,8 +314,11 @@ protected virtual void UnlinkActiveInteractorCollisions()
 [Fields]: #Fields
 [touchingInteractors]: #touchingInteractors
 [Properties]: #Properties
+[ActiveInteractorCounter]: #ActiveInteractorCounter
 [AddActiveInteractor]: #AddActiveInteractor
 [CurrentTouchingObjects]: #CurrentTouchingObjects
+[CurrentUntouchingEventProxy]: #CurrentUntouchingEventProxy
+[CurrentUntouchingObjects]: #CurrentUntouchingObjects
 [Facade]: #Facade
 [PotentialInteractors]: #PotentialInteractors
 [RemoveActiveInteractor]: #RemoveActiveInteractor
@@ -289,3 +336,4 @@ protected virtual void UnlinkActiveInteractorCollisions()
 [OnEnable()]: #OnEnable
 [ProcessPotentialInteractorContentChange(CollisionNotifier.EventData)]: #ProcessPotentialInteractorContentChangeCollisionNotifier.EventData
 [UnlinkActiveInteractorCollisions()]: #UnlinkActiveInteractorCollisions
+[UntouchAllTouchingInteractors()]: #UntouchAllTouchingInteractors
