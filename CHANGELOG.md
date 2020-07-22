@@ -1,5 +1,16 @@
 # Changelog
 
+## [1.12.0](https://github.com/ExtendRealityLtd/Tilia.Interactions.Interactables.Unity/compare/v1.11.1...v1.12.0) (2020-07-22)
+
+#### Features
+
+* **Interactables:** provide helper methods for common tasks ([755188d](https://github.com/ExtendRealityLtd/Tilia.Interactions.Interactables.Unity/commit/755188d5f82b2371fb2750187b75af998d2d1be9))
+  > The InteractableFacade now has some common helper methods for tasks like enabling/disabling the touch and grab configurations in case of toggling the interactable behaviour.
+  > 
+  > It is also possible to get access to common sub components from the facade such as the Rigidbody, MeshContainer, a collection of MeshRenderers and a collection of Colliders.
+  > 
+  > The Interactable.TouchReceiver prefab has also been updated to contain additional useful references.
+
 ### [1.11.1](https://github.com/ExtendRealityLtd/Tilia.Interactions.Interactables.Unity/compare/v1.11.0...v1.11.1) (2020-07-11)
 
 #### Miscellaneous Chores
