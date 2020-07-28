@@ -1,5 +1,12 @@
 # Changelog
 
+### [1.12.2](https://github.com/ExtendRealityLtd/Tilia.Interactions.Interactables.Unity/compare/v1.12.1...v1.12.2) (2020-07-28)
+
+#### Bug Fixes
+
+* **interactions:** clear divergence states on ungrab ([59d9ecf](https://github.com/ExtendRealityLtd/Tilia.Interactions.Interactables.Unity/commit/59d9ecf7cb1e9e03a4953afd30a1144f8dcbbb1e))
+  > The divergence states found within the divergable property modifiers needs to be cleared when the ungrab occurs otherwise the convergence of the source/target objects cannot occur.
+
 ### [1.12.1](https://github.com/ExtendRealityLtd/Tilia.Interactions.Interactables.Unity/compare/v1.12.0...v1.12.1) (2020-07-28)
 
 #### Miscellaneous Chores
