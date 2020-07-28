@@ -43,7 +43,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b421ec2455cf9c479d63ce5c4fbe83c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  applyOffset: 1
   Premodified:
     m_PersistentCalls:
       m_Calls: []
@@ -54,6 +53,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: Zinnia.Tracking.Follow.ObjectFollower+FollowEvent, Zinnia.Runtime,
       Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+  applyOffset: 1
 --- !u!1 &172059083441672809
 GameObject:
   m_ObjectHideFlags: 0
@@ -487,7 +487,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 82e1be200ae387d4c95c60842582358d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  applyOffset: 1
   Premodified:
     m_PersistentCalls:
       m_Calls: []
@@ -498,6 +497,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: Zinnia.Tracking.Follow.ObjectFollower+FollowEvent, Zinnia.Runtime,
       Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+  applyOffset: 1
 --- !u!1 &931807802819633928
 GameObject:
   m_ObjectHideFlags: 0
@@ -615,7 +615,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fbe23337e6e41bc449243b5624bf47ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  applyOffset: 1
   Premodified:
     m_PersistentCalls:
       m_Calls: []
@@ -626,6 +625,19 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: Zinnia.Tracking.Follow.ObjectFollower+FollowEvent, Zinnia.Runtime,
       Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+  applyOffset: 1
+  Converged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: Zinnia.Tracking.Follow.ObjectFollower+FollowEvent, Zinnia.Runtime,
+      Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+  Diverged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: Zinnia.Tracking.Follow.ObjectFollower+FollowEvent, Zinnia.Runtime,
+      Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+  trackDivergence: 0
+  divergenceThreshold: {x: 0.1, y: 0.1, z: 0.1}
   velocityLimit: Infinity
   maxDistanceDelta: 10
 --- !u!1 &1240182330031746266
@@ -671,7 +683,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 82e1be200ae387d4c95c60842582358d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  applyOffset: 1
   Premodified:
     m_PersistentCalls:
       m_Calls: []
@@ -682,6 +693,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: Zinnia.Tracking.Follow.ObjectFollower+FollowEvent, Zinnia.Runtime,
       Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+  applyOffset: 1
 --- !u!1 &1252738298515468630
 GameObject:
   m_ObjectHideFlags: 0
@@ -725,7 +737,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 211d9aa971593cc43821fa228ec82c80, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  applyOffset: 1
   Premodified:
     m_PersistentCalls:
       m_Calls: []
@@ -736,6 +747,19 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: Zinnia.Tracking.Follow.ObjectFollower+FollowEvent, Zinnia.Runtime,
       Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+  applyOffset: 1
+  Converged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: Zinnia.Tracking.Follow.ObjectFollower+FollowEvent, Zinnia.Runtime,
+      Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+  Diverged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: Zinnia.Tracking.Follow.ObjectFollower+FollowEvent, Zinnia.Runtime,
+      Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+  trackDivergence: 0
+  divergenceThreshold: {x: 0.1, y: 0.1, z: 0.1}
   angularVelocityLimit: Infinity
   maxDistanceDelta: 10
 --- !u!1 &1611629413006276135
@@ -781,7 +805,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 82e1be200ae387d4c95c60842582358d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  applyOffset: 1
   Premodified:
     m_PersistentCalls:
       m_Calls: []
@@ -792,6 +815,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: Zinnia.Tracking.Follow.ObjectFollower+FollowEvent, Zinnia.Runtime,
       Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+  applyOffset: 1
 --- !u!1 &1623520924084736524
 GameObject:
   m_ObjectHideFlags: 0
@@ -1336,7 +1360,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fbe23337e6e41bc449243b5624bf47ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  applyOffset: 1
   Premodified:
     m_PersistentCalls:
       m_Calls: []
@@ -1347,6 +1370,19 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: Zinnia.Tracking.Follow.ObjectFollower+FollowEvent, Zinnia.Runtime,
       Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+  applyOffset: 1
+  Converged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: Zinnia.Tracking.Follow.ObjectFollower+FollowEvent, Zinnia.Runtime,
+      Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+  Diverged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: Zinnia.Tracking.Follow.ObjectFollower+FollowEvent, Zinnia.Runtime,
+      Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+  trackDivergence: 0
+  divergenceThreshold: {x: 0.1, y: 0.1, z: 0.1}
   velocityLimit: Infinity
   maxDistanceDelta: 10
 --- !u!1 &2904863625486589982
@@ -1759,7 +1795,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 82e1be200ae387d4c95c60842582358d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  applyOffset: 1
   Premodified:
     m_PersistentCalls:
       m_Calls: []
@@ -1770,6 +1805,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: Zinnia.Tracking.Follow.ObjectFollower+FollowEvent, Zinnia.Runtime,
       Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+  applyOffset: 1
 --- !u!1 &3724673846510280993
 GameObject:
   m_ObjectHideFlags: 0
@@ -2168,7 +2204,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 82e1be200ae387d4c95c60842582358d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  applyOffset: 1
   Premodified:
     m_PersistentCalls:
       m_Calls: []
@@ -2179,6 +2214,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: Zinnia.Tracking.Follow.ObjectFollower+FollowEvent, Zinnia.Runtime,
       Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+  applyOffset: 1
 --- !u!1 &4534934962641631106
 GameObject:
   m_ObjectHideFlags: 0
@@ -2222,7 +2258,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e2fed5d5fca45c4ab790523ce36160d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  applyOffset: 1
   Premodified:
     m_PersistentCalls:
       m_Calls: []
@@ -2233,6 +2268,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: Zinnia.Tracking.Follow.ObjectFollower+FollowEvent, Zinnia.Runtime,
       Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+  applyOffset: 1
 --- !u!1 &4575258454444623006
 GameObject:
   m_ObjectHideFlags: 0
@@ -2427,7 +2463,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b421ec2455cf9c479d63ce5c4fbe83c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  applyOffset: 1
   Premodified:
     m_PersistentCalls:
       m_Calls: []
@@ -2438,6 +2473,88 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: Zinnia.Tracking.Follow.ObjectFollower+FollowEvent, Zinnia.Runtime,
       Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+  applyOffset: 1
+--- !u!1 &4982035522898372309
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 9060142688758134064}
+  - component: {fileID: 669854472165447781}
+  m_Layer: 0
+  m_Name: ResetDivergence
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &9060142688758134064
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4982035522898372309}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 3435016656086569025}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &669854472165447781
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4982035522898372309}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d30001a196a70c043aa38298ceaade8c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Emitted:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 3289471784814190228}
+        m_MethodName: ClearDiverged
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1973886136102073536}
+        m_MethodName: ClearDiverged
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 6008492217694615949}
+        m_MethodName: ClearDiverged
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
 --- !u!1 &5098870614394569358
 GameObject:
   m_ObjectHideFlags: 0
@@ -2465,7 +2582,8 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 9060142688758134064}
   m_Father: {fileID: 3800176843960314224}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2520,6 +2638,17 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 7813340367162748559}
         m_MethodName: ResetPreviousState
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 669854472165447781}
+        m_MethodName: Receive
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2608,7 +2737,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 629c411f66ff82d4eb65aeecff56dbb6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  applyOffset: 1
   Premodified:
     m_PersistentCalls:
       m_Calls: []
@@ -2619,6 +2747,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: Zinnia.Tracking.Follow.ObjectFollower+FollowEvent, Zinnia.Runtime,
       Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+  applyOffset: 1
   angularVelocitySource: {fileID: 2919631799667094827}
   sourceMultiplier: {x: 0.5, y: 0.5, z: 0.5}
   applyToAxis:
@@ -2888,7 +3017,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ed154ebd688ecb47a6b727f72b24d8e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  applyOffset: 0
   Premodified:
     m_PersistentCalls:
       m_Calls: []
@@ -2899,6 +3027,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: Zinnia.Tracking.Follow.ObjectFollower+FollowEvent, Zinnia.Runtime,
       Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+  applyOffset: 0
   angularDrag: 1
   followOnAxis:
     xState: 1
@@ -3046,7 +3175,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2914d5d44743df44da82c8613cc7d32a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  applyOffset: 1
   Premodified:
     m_PersistentCalls:
       m_Calls: []
@@ -3057,6 +3185,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: Zinnia.Tracking.Follow.ObjectFollower+FollowEvent, Zinnia.Runtime,
       Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+  applyOffset: 1
   attachmentPoint: {fileID: 0}
 --- !u!1 &7007780839671147685
 GameObject:
@@ -3105,6 +3234,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36b5781728bc3ef47af5d7aca57b0e57, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ActiveSourceChanging:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: Zinnia.Process.Component.GameObjectSourceTargetProcessor+GameObjectUnityEvent,
+      Zinnia.Runtime, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
   ceaseAfterFirstSourceProcessed: 1
   sources: {fileID: 6181192862829883364}
   sourceValidity:
@@ -3704,7 +3838,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b421ec2455cf9c479d63ce5c4fbe83c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  applyOffset: 1
   Premodified:
     m_PersistentCalls:
       m_Calls: []
@@ -3715,6 +3848,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: Zinnia.Tracking.Follow.ObjectFollower+FollowEvent, Zinnia.Runtime,
       Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+  applyOffset: 1
 --- !u!1 &8544749795880895708
 GameObject:
   m_ObjectHideFlags: 0
