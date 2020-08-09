@@ -245,6 +245,7 @@
                 return;
             }
 
+            action.GrabSetup = this;
             action.RunWhenActiveAndEnabled(() => action.GrabSetup = this);
         }
 
