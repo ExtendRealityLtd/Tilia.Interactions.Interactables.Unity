@@ -85,6 +85,12 @@
         [Serialized]
         [field: DocumentedByXml, Restricted]
         public GameObjectObservableList GrabbedObjectsCollection { get; protected set; }
+        /// <summary>
+        /// A <see cref="BooleanAction"/> for holding the state of whether the Interactor is grabbing something.
+        /// </summary>
+        [Serialized]
+        [field: DocumentedByXml, Restricted]
+        public BooleanAction IsGrabbingAction { get; protected set; }
         #endregion
 
         /// <summary>
@@ -204,6 +210,18 @@
                 ProcessGrabAction(StartGrabbingPublisher, true);
             }
             ProcessGrabAction(StopGrabbingPublisher, false);
+        }
+
+        /// <summary>
+        /// Attempts to automatically emit precognition grab if there are registered consumers.
+        /// </summary>
+        public virtual void PrecognitionGrabForRegisteredConsumers()
+        {
+            if (StartGrabbingPublisher.RegisteredConsumerContainer != null &&
+                StartGrabbingPublisher.RegisteredConsumerContainer.RegisteredConsumers.Count > 0)
+            {
+                PrecognitionTimer.EmitStatus();
+            }
         }
 
         protected virtual void OnEnable()

@@ -2,6 +2,7 @@
 {
     using Malimbe.PropertySerializationAttribute;
     using Malimbe.XmlDocumentationAttribute;
+    using Tilia.Interactions.Interactables.Interactables;
     using UnityEngine;
     using Zinnia.Action;
     using Zinnia.Action.Collection;
@@ -9,6 +10,7 @@
     using Zinnia.Data.Collection.List;
     using Zinnia.Extension;
     using Zinnia.Tracking.Collision.Active;
+    using Zinnia.Tracking.Collision.Active.Event.Proxy;
 
     /// <summary>
     /// Sets up the Interactor Action Publisher Prefab action settings based on the provided user settings.
@@ -26,7 +28,7 @@
 
         #region Reference Settings
         /// <summary>
-        /// The <see cref="ActionObservableList"/> that containts the <see cref="Action"/> collection that can be linked to the <see cref="InteractorActionFacade.SourceAction"/>.
+        /// The <see cref="ActionObservableList"/> that contains the <see cref="Action"/> collection that can be linked to the <see cref="InteractorActionFacade.SourceAction"/>.
         /// </summary>
         [Serialized]
         [field: Header("Reference Settings"), DocumentedByXml, Restricted]
@@ -55,6 +57,18 @@
         [Serialized]
         [field: DocumentedByXml, Restricted]
         public StringObservableList StopActionStringCollection { get; protected set; }
+        /// <summary>
+        /// The <see cref="ActiveCollisionsContainerEventProxyEmitter"/> setting the active collisions on the <see cref="StartActionPublisher"/> on touch.
+        /// </summary>
+        [Serialized]
+        [field: DocumentedByXml, Restricted]
+        public ActiveCollisionsContainerEventProxyEmitter SetOnTouchEmitter { get; protected set; }
+        /// <summary>
+        /// The <see cref="ActiveCollisionPublisherEventProxyEmitter"/> setting the active collisions on the <see cref="StartActionPublisher"/> on grab.
+        /// </summary>
+        [Serialized]
+        [field: DocumentedByXml, Restricted]
+        public ActiveCollisionPublisherEventProxyEmitter SetOnGrabEmitter { get; protected set; }
         #endregion
 
         /// <summary>
@@ -64,6 +78,8 @@
 
         protected virtual void OnEnable()
         {
+            SetOnGrabEmitter.gameObject.SetActive(false);
+            SetOnTouchEmitter.gameObject.SetActive(true);
             LinkSourceActionToTargetAction();
             LinkSourceContainerToPublishers();
             LinkActiveCollisions();
@@ -111,19 +127,6 @@
         }
 
         /// <summary>
-        /// Unlinks the start publisher from the <see cref="InteractorActionFacade.SourceInteractor"/>.
-        /// </summary>
-        public virtual void UnlinkActiveCollisions()
-        {
-            if (Facade == null || Facade.SourceInteractor == null)
-            {
-                return;
-            }
-
-            Facade.SourceInteractor.TouchConfiguration.ExternalEmitters.Emitted.RemoveListener(StartActionPublisher.SetActiveCollisions);
-        }
-
-        /// <summary>
         /// Links the start publisher to the <see cref="InteractorActionFacade.SourceInteractor"/>.
         /// </summary>
         public virtual void LinkActiveCollisions()
@@ -133,7 +136,28 @@
                 return;
             }
 
-            Facade.SourceInteractor.TouchConfiguration.ExternalEmitters.Emitted.AddListener(StartActionPublisher.SetActiveCollisions);
+            Facade.SourceInteractor.TouchConfiguration.ExternalEmitters.Emitted.AddListener(SetOnTouchEmitter.Receive);
+            Facade.SourceInteractor.GrabConfiguration.StartGrabbingPublisher.Published.AddListener(SetOnGrabEmitter.Receive);
+
+            Facade.SourceInteractor.Grabbed.AddListener(InteractorGrabbed);
+            Facade.SourceInteractor.Ungrabbed.AddListener(InteractorUngrabbed);
+        }
+
+        /// <summary>
+        /// Unlinks the start publisher from the <see cref="InteractorActionFacade.SourceInteractor"/>.
+        /// </summary>
+        public virtual void UnlinkActiveCollisions()
+        {
+            if (Facade == null || Facade.SourceInteractor == null)
+            {
+                return;
+            }
+
+            Facade.SourceInteractor.TouchConfiguration.ExternalEmitters.Emitted.RemoveListener(SetOnTouchEmitter.Receive);
+            Facade.SourceInteractor.GrabConfiguration.StartGrabbingPublisher.Published.RemoveListener(SetOnGrabEmitter.Receive);
+
+            Facade.SourceInteractor.Grabbed.RemoveListener(InteractorGrabbed);
+            Facade.SourceInteractor.Ungrabbed.RemoveListener(InteractorUngrabbed);
         }
 
         /// <summary>
@@ -145,6 +169,26 @@
             StartActionStringCollection.RunWhenActiveAndEnabled(() => StartActionStringCollection.Add("Start" + Facade.PublisherIdentifier));
             StopActionStringCollection.RunWhenActiveAndEnabled(() => StopActionStringCollection.Clear());
             StopActionStringCollection.RunWhenActiveAndEnabled(() => StopActionStringCollection.Add("Stop" + Facade.PublisherIdentifier));
+        }
+
+        /// <summary>
+        /// Determines what to do when the Interactor grabs.
+        /// </summary>
+        /// <param name="interactable">The Interactable being grabbed.</param>
+        protected virtual void InteractorGrabbed(InteractableFacade interactable)
+        {
+            SetOnTouchEmitter.gameObject.SetActive(false);
+            SetOnGrabEmitter.gameObject.SetActive(true);
+        }
+
+        /// <summary>
+        /// Determines what to do when the Interactor ungrabs.
+        /// </summary>
+        /// <param name="interactable">The Interactable being grabbed.</param>
+        protected virtual void InteractorUngrabbed(InteractableFacade interactable)
+        {
+            SetOnGrabEmitter.gameObject.SetActive(false);
+            SetOnTouchEmitter.gameObject.SetActive(true);
         }
     }
 }

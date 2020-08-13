@@ -46,6 +46,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   payload:
     sourceContainer: {fileID: 0}
+  registeredConsumerContainer: {fileID: 0}
   Published:
     m_PersistentCalls:
       m_Calls: []
@@ -106,6 +107,67 @@ MonoBehaviour:
   currentIndex: 0
   elements:
   - StopActionPublisher
+--- !u!1 &1092779429062672420
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8451532843038104512}
+  - component: {fileID: 824909138826602527}
+  m_Layer: 0
+  m_Name: OnGrab
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8451532843038104512
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1092779429062672420}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 128128701909432052}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &824909138826602527
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1092779429062672420}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8412c34d9c8857447b7b5365b051d32b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  payload:
+    sourceContainer: {fileID: 0}
+  Emitted:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 7409689792824993626}
+        m_MethodName: SetActiveCollisions
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: Zinnia.Tracking.Collision.Active.Event.Proxy.ActiveCollisionPublisherEventProxyEmitter+UnityEvent,
+      Zinnia.Runtime, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
 --- !u!1 &3065807967959051108
 GameObject:
   m_ObjectHideFlags: 0
@@ -154,6 +216,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: Zinnia.Action.Action+BooleanUnityEvent, Zinnia.Runtime, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
+  initialValue: {x: 0, y: 0}
   defaultValue: {x: 0, y: 0}
   sources: []
   Activated:
@@ -173,6 +236,11 @@ MonoBehaviour:
     m_TypeName: Zinnia.Action.Vector2Action+UnityEvent, Zinnia.Runtime, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
   ValueChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: Zinnia.Action.Vector2Action+UnityEvent, Zinnia.Runtime, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  ValueUnchanged:
     m_PersistentCalls:
       m_Calls: []
     m_TypeName: Zinnia.Action.Vector2Action+UnityEvent, Zinnia.Runtime, Version=0.0.0.0,
@@ -205,7 +273,7 @@ GameObject:
   - component: {fileID: 358802924983479943}
   - component: {fileID: 5346937568831295670}
   m_Layer: 0
-  m_Name: Interactables.ActionPublisher
+  m_Name: Interactions.ActionPublisher
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -240,6 +308,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sourceAction: {fileID: 0}
   sourceInteractor: {fileID: 0}
+  publisherIdentifier: ActionPublisher
   configuration: {fileID: 2621823731932835577}
 --- !u!1 &4061681306642749531
 GameObject:
@@ -321,6 +390,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: Zinnia.Action.Action+BooleanUnityEvent, Zinnia.Runtime, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
+  initialValue: 0
   defaultValue: 0
   sources: []
   Activated:
@@ -344,6 +414,11 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: Zinnia.Action.FloatAction+UnityEvent, Zinnia.Runtime, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
+  ValueUnchanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: Zinnia.Action.FloatAction+UnityEvent, Zinnia.Runtime, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
   Deactivated:
     m_PersistentCalls:
       m_Calls:
@@ -361,6 +436,99 @@ MonoBehaviour:
     m_TypeName: Zinnia.Action.FloatAction+UnityEvent, Zinnia.Runtime, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
   equalityTolerance: 1e-45
+--- !u!1 &5873553267463434497
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8952332625666041052}
+  - component: {fileID: 6906321049113669736}
+  m_Layer: 0
+  m_Name: OnTouch
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8952332625666041052
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5873553267463434497}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 128128701909432052}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6906321049113669736
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5873553267463434497}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b8c24e283184f2143984e504f9db334d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  payload:
+    activeCollisions: []
+  Emitted:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 7409689792824993626}
+        m_MethodName: SetActiveCollisions
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: Zinnia.Tracking.Collision.Active.Event.Proxy.ActiveCollisionsContainerEventProxyEmitter+UnityEvent,
+      Zinnia.Runtime, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+--- !u!1 &6466241436104537661
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 128128701909432052}
+  m_Layer: 0
+  m_Name: SetActiveCollisions
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &128128701909432052
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6466241436104537661}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 8952332625666041052}
+  - {fileID: 8451532843038104512}
+  m_Father: {fileID: 8967231328800718525}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6697182822275438058
 GameObject:
   m_ObjectHideFlags: 0
@@ -391,6 +559,7 @@ Transform:
   m_Children:
   - {fileID: 5635843519270292087}
   - {fileID: 7351045475690605295}
+  - {fileID: 128128701909432052}
   m_Father: {fileID: 358802924983479943}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -412,6 +581,8 @@ MonoBehaviour:
   startActionStringCollection: {fileID: 2750264998455456018}
   stopActionPublisher: {fileID: 5755447133346676037}
   stopActionStringCollection: {fileID: 2492897485786339942}
+  setOnTouchEmitter: {fileID: 6906321049113669736}
+  setOnGrabEmitter: {fileID: 824909138826602527}
 --- !u!1 &6842760721251008388
 GameObject:
   m_ObjectHideFlags: 0
@@ -460,6 +631,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: Zinnia.Action.Action+BooleanUnityEvent, Zinnia.Runtime, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
+  initialValue: 0
   defaultValue: 0
   sources: []
   Activated:
@@ -479,6 +651,11 @@ MonoBehaviour:
     m_TypeName: Zinnia.Action.BooleanAction+UnityEvent, Zinnia.Runtime, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
   ValueChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: Zinnia.Action.BooleanAction+UnityEvent, Zinnia.Runtime, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  ValueUnchanged:
     m_PersistentCalls:
       m_Calls: []
     m_TypeName: Zinnia.Action.BooleanAction+UnityEvent, Zinnia.Runtime, Version=0.0.0.0,
@@ -636,6 +813,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   payload:
     sourceContainer: {fileID: 0}
+  registeredConsumerContainer: {fileID: 0}
   Published:
     m_PersistentCalls:
       m_Calls:

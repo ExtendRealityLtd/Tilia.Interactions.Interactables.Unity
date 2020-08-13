@@ -15,6 +15,7 @@ Sets up the Interactor Prefab touch settings based on the provided user settings
   * [CurrentActiveCollision]
   * [ExternalEmitters]
   * [Facade]
+  * [IsTouchingAction]
   * [StartTouchingPublisher]
   * [StopTouchingPublisher]
   * [TouchedObjects]
@@ -104,6 +105,16 @@ The public interface facade.
 public InteractorFacade Facade { get; protected set; }
 ```
 
+#### IsTouchingAction
+
+A BooleanAction for holding the state of whether the Interactor is touching something.
+
+##### Declaration
+
+```
+public BooleanAction IsTouchingAction { get; protected set; }
+```
+
 #### StartTouchingPublisher
 
 The ActiveCollisionPublisher for checking valid start touching collisions.
@@ -189,6 +200,7 @@ protected virtual void OnDisable()
 [CurrentActiveCollision]: #CurrentActiveCollision
 [ExternalEmitters]: #ExternalEmitters
 [Facade]: #Facade
+[IsTouchingAction]: #IsTouchingAction
 [StartTouchingPublisher]: #StartTouchingPublisher
 [StopTouchingPublisher]: #StopTouchingPublisher
 [TouchedObjects]: #TouchedObjects
