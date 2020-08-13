@@ -47,6 +47,8 @@ The public interface into the Interactor Prefab.
   * [OnAfterGrabActionChange()]
   * [OnAfterGrabPrecognitionChange()]
   * [OnAfterVelocityTrackerChange()]
+  * [SnapAllGrabbedInteractableOrientations()]
+  * [SnapGrabbedInteractableOrientation(Int32)]
   * [Ungrab()]
 
 ## Details
@@ -566,6 +568,32 @@ Called after [VelocityTracker] has been changed.
 protected virtual void OnAfterVelocityTrackerChange()
 ```
 
+#### SnapAllGrabbedInteractableOrientations()
+
+Snaps the orientation of all grabbed Interactables to this Interactor.
+
+##### Declaration
+
+```
+public virtual void SnapAllGrabbedInteractableOrientations()
+```
+
+#### SnapGrabbedInteractableOrientation(Int32)
+
+Snaps the orientation of the grabbed Interactable at the given index to this Interactor.
+
+##### Declaration
+
+```
+public virtual void SnapGrabbedInteractableOrientation(int index)
+```
+
+##### Parameters
+
+| Type | Name | Description |
+| --- | --- | --- |
+| System.Int32 | index | The index of the grabbed Interactable. |
+
 #### Ungrab()
 
 Attempt to ungrab currently grabbed Interactables to the current Interactor.
@@ -629,4 +657,6 @@ public virtual void Ungrab()
 [OnAfterGrabActionChange()]: #OnAfterGrabActionChange
 [OnAfterGrabPrecognitionChange()]: #OnAfterGrabPrecognitionChange
 [OnAfterVelocityTrackerChange()]: #OnAfterVelocityTrackerChange
+[SnapAllGrabbedInteractableOrientations()]: #SnapAllGrabbedInteractableOrientations
+[SnapGrabbedInteractableOrientation(Int32)]: #SnapGrabbedInteractableOrientationInt32
 [Ungrab()]: #Ungrab

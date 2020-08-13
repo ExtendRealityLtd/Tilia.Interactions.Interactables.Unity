@@ -299,6 +299,35 @@
         }
 
         /// <summary>
+        /// Snaps the orientation of all grabbed Interactables to this Interactor.
+        /// </summary>
+        public virtual void SnapAllGrabbedInteractableOrientations()
+        {
+            for (int index = 0; index < GrabbedObjects.Count; index++)
+            {
+                SnapGrabbedInteractableOrientation(index);
+            }
+        }
+
+        /// <summary>
+        /// Snaps the orientation of the grabbed Interactable at the given index to this Interactor.
+        /// </summary>
+        /// <param name="index">The index of the grabbed Interactable.</param>
+        public virtual void SnapGrabbedInteractableOrientation(int index)
+        {
+            if (index < 0 || index >= GrabbedObjects.Count)
+            {
+                return;
+            }
+
+            InteractableFacade interactable = GrabbedObjects[index].TryGetComponent<InteractableFacade>(true, true);
+            if (interactable != null)
+            {
+                interactable.SnapFollowOrientation();
+            }
+        }
+
+        /// <summary>
         /// Clears the grab state for the given <see cref="InteractableFacade"/>.
         /// </summary>
         /// <param name="interactable">The Interactable to clear grab state on.</param>

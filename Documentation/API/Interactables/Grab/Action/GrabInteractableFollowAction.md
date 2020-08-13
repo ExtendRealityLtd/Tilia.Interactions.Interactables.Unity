@@ -14,6 +14,7 @@ Describes an action that allows the Interactable to follow an Interactor's posit
   * [FollowTracking]
   * [FollowTransformModifier]
   * [FollowTransformRotateOnPositionDifferenceModifier]
+  * [ForceSnapFollower]
   * [GrabOffset]
   * [IsKinematicWhenActive]
   * [IsKinematicWhenInactive]
@@ -32,6 +33,7 @@ Describes an action that allows the Interactable to follow an Interactor's posit
   * [ApplyInactiveKinematicState()]
   * [ConfigureFollowTracking()]
   * [ConfigureGrabOffset()]
+  * [ForceSnapOrientation()]
   * [OnAfterFollowTrackingChange()]
   * [OnAfterGrabOffsetChange()]
   * [OnAfterGrabSetupChange()]
@@ -77,7 +79,7 @@ public class GrabInteractableFollowAction : GrabInteractableAction
 
 #### FollowRigidbodyForceRotateModifier
 
-The FollowModifier to rotate by applying a force to the rigidbody.
+The FollowModifier to rotate by applying a force to the Rigidbody.
 
 ##### Declaration
 
@@ -87,7 +89,7 @@ public FollowModifier FollowRigidbodyForceRotateModifier { get; protected set; }
 
 #### FollowRigidbodyModifier
 
-The FollowModifier to move by applying velocities to the rigidbody.
+The FollowModifier to move by applying velocities to the Rigidbody.
 
 ##### Declaration
 
@@ -97,7 +99,7 @@ public FollowModifier FollowRigidbodyModifier { get; protected set; }
 
 #### FollowRotateAroundAngularVelocityModifier
 
-The FollowModifier to rotate by the angular velocity of the source interactor.
+The FollowModifier to rotate by the angular velocity of the source Interactor.
 
 ##### Declaration
 
@@ -107,7 +109,7 @@ public FollowModifier FollowRotateAroundAngularVelocityModifier { get; protected
 
 #### FollowTracking
 
-Determines how to track the movement of interactable to the interactor.
+Determines how to track the movement of Interactable to the Interactor.
 
 ##### Declaration
 
@@ -135,6 +137,16 @@ The FollowModifier to rotate by the angle difference between the source position
 public FollowModifier FollowTransformRotateOnPositionDifferenceModifier { get; protected set; }
 ```
 
+#### ForceSnapFollower
+
+The [ObjectFollower] to force snap the Interactable to the Interactor.
+
+##### Declaration
+
+```
+public ObjectFollower ForceSnapFollower { get; protected set; }
+```
+
 #### GrabOffset
 
 The offset to apply when grabbing the Interactable.
@@ -147,7 +159,7 @@ public GrabInteractableFollowAction.OffsetType GrabOffset { get; set; }
 
 #### IsKinematicWhenActive
 
-Whether the Rigidbody of the interactable should be in a kinematic state when the follow action is active.
+Whether the Rigidbody of the Interactable should be in a kinematic state when the follow action is active.
 
 ##### Declaration
 
@@ -157,7 +169,7 @@ public bool IsKinematicWhenActive { get; set; }
 
 #### IsKinematicWhenInactive
 
-Whether the Rigidbody of the interactable should be in a kinematic state when the follow action is inactive.
+Whether the Rigidbody of the Interactable should be in a kinematic state when the follow action is inactive.
 
 ##### Declaration
 
@@ -269,7 +281,7 @@ public bool WillInheritIsKinematicWhenInactiveFromConsumerRigidbody { get; set; 
 
 #### ApplyActiveKinematicState()
 
-Applies the active kinematic state to the Rigidbody of the interactable.
+Applies the active kinematic state to the Rigidbody of the Interactable.
 
 ##### Declaration
 
@@ -279,7 +291,7 @@ public virtual void ApplyActiveKinematicState()
 
 #### ApplyInactiveKinematicState()
 
-Applies the inactive kinematic state to the Rigidbody of the interactable.
+Applies the inactive kinematic state to the Rigidbody of the Interactable.
 
 ##### Declaration
 
@@ -305,6 +317,16 @@ Configures the appropriate processes to be used for grab offset based on the [Gr
 
 ```
 protected virtual void ConfigureGrabOffset()
+```
+
+#### ForceSnapOrientation()
+
+Force snaps the Interactable to the following Interactor.
+
+##### Declaration
+
+```
+public virtual void ForceSnapOrientation()
 ```
 
 #### OnAfterFollowTrackingChange()
@@ -360,6 +382,7 @@ protected virtual void OnEnable()
 [GrabInteractableAction.NotifyUngrab(GameObject)]: GrabInteractableAction.md#Tilia_Interactions_Interactables_Interactables_Grab_Action_GrabInteractableAction_NotifyUngrab_GameObject_
 [Tilia.Interactions.Interactables.Interactables.Grab.Action]: README.md
 [GrabInteractableFollowAction.TrackingType]: GrabInteractableFollowAction.TrackingType.md
+[ObjectFollower]: GrabInteractableFollowAction.md#ObjectFollower
 [GrabInteractableFollowAction.OffsetType]: GrabInteractableFollowAction.OffsetType.md
 [IsKinematicWhenInactive]: GrabInteractableFollowAction.md#IsKinematicWhenInactive
 [FollowTracking]: GrabInteractableFollowAction.md#FollowTracking
@@ -378,6 +401,7 @@ protected virtual void OnEnable()
 [FollowTracking]: #FollowTracking
 [FollowTransformModifier]: #FollowTransformModifier
 [FollowTransformRotateOnPositionDifferenceModifier]: #FollowTransformRotateOnPositionDifferenceModifier
+[ForceSnapFollower]: #ForceSnapFollower
 [GrabOffset]: #GrabOffset
 [IsKinematicWhenActive]: #IsKinematicWhenActive
 [IsKinematicWhenInactive]: #IsKinematicWhenInactive
@@ -396,6 +420,7 @@ protected virtual void OnEnable()
 [ApplyInactiveKinematicState()]: #ApplyInactiveKinematicState
 [ConfigureFollowTracking()]: #ConfigureFollowTracking
 [ConfigureGrabOffset()]: #ConfigureGrabOffset
+[ForceSnapOrientation()]: #ForceSnapOrientation
 [OnAfterFollowTrackingChange()]: #OnAfterFollowTrackingChange
 [OnAfterGrabOffsetChange()]: #OnAfterGrabOffsetChange
 [OnAfterGrabSetupChange()]: #OnAfterGrabSetupChange

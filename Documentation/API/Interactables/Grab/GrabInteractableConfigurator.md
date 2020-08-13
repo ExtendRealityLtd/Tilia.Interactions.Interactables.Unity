@@ -34,6 +34,7 @@ Sets up the Interactable Prefab grab settings based on the provided user setting
   * [OnDisable()]
   * [OnEnable()]
   * [SetGrabProvider(Int32)]
+  * [SnapFollowOrientation()]
   * [Ungrab(Int32)]
   * [Ungrab(InteractorFacade)]
   * [UnlinkReceiverToProvider()]
@@ -343,6 +344,16 @@ public virtual void SetGrabProvider(int providerIndex)
 | --- | --- | --- |
 | System.Int32 | providerIndex | The index of the [GrabProviderOptions] to set the [GrabProvider] to. |
 
+#### SnapFollowOrientation()
+
+Snaps the follow on the primary and secondary action if they are [GrabInteractableFollowAction] type.
+
+##### Declaration
+
+```
+public virtual void SnapFollowOrientation()
+```
+
 #### Ungrab(Int32)
 
 Attempt to ungrab the Interactable.
@@ -420,6 +431,7 @@ protected virtual void UnlinkToSecondaryAction()
 [GrabProviderOptions]: GrabInteractableConfigurator.md#GrabProviderOptions
 [GrabProviderOptions]: GrabInteractableConfigurator.md#GrabProviderOptions
 [GrabProvider]: GrabInteractableConfigurator.md#GrabProvider
+[GrabInteractableFollowAction]: Action/GrabInteractableFollowAction.md
 [Inheritance]: #Inheritance
 [Namespace]: #Namespace
 [Syntax]: #Syntax
@@ -450,6 +462,7 @@ protected virtual void UnlinkToSecondaryAction()
 [OnDisable()]: #OnDisable
 [OnEnable()]: #OnEnable
 [SetGrabProvider(Int32)]: #SetGrabProviderInt32
+[SnapFollowOrientation()]: #SnapFollowOrientation
 [Ungrab(Int32)]: #UngrabInt32
 [Ungrab(InteractorFacade)]: #UngrabInteractorFacade
 [UnlinkReceiverToProvider()]: #UnlinkReceiverToProvider
