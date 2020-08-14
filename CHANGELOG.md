@@ -1,5 +1,29 @@
 # Changelog
 
+## [1.13.0](https://github.com/ExtendRealityLtd/Tilia.Interactions.Interactables.Unity/compare/v1.12.2...v1.13.0) (2020-08-14)
+
+#### Features
+
+* **Interactions:** force snap interactable orientation to interactor ([82f4775](https://github.com/ExtendRealityLtd/Tilia.Interactions.Interactables.Unity/commit/82f4775094bbe12c3cad9ea9f8db76e3587430ec))
+  > There is now a mechanism on the Interactable that will force it to snap to the orientation of the grabbing Interactor regardless of the follow type being used. This is useful particularly with the Follow Rigidbody follow mechanic for ensuring if it gets too far away from a natural follow then it can be immediately snapped back to the correct orientation.
+  > 
+  > This mechanism can also be called from the Interactor and applied to any or all grabbed Interactables.
+
+#### Bug Fixes
+
+* **Interactions:** allow toggle grab to work when no longer touching ([26d632e](https://github.com/ExtendRealityLtd/Tilia.Interactions.Interactables.Unity/commit/26d632e106d554f9e75a60e68a3fb554ca69ff2d))
+  > The Toggle Grab mechanism would not work if the first toggle would grab and then the interactor would stop touching the interactable as the second toggle would no longer release the grab.
+  > 
+  > This was due to the grab publishers were always populated based on what was being touched and if the interactor stopped touching the grabbed interactable then the start grab publisher would not have anyway of knowing which interactable to publish to.
+  > 
+  > The latest version of Zinnia (1.22.0) has a mechanism for registering successful consumers of published events and this is now being used to keep a copy of all consumers that have successfully been published to by the interactor and then even if the interactor stops touching the interactable, the interactor still knows which consumers it can publish to (the grabbed consumers) because of this registry.
+  > 
+  > The ActionPublisher has also been updated to utilise this new Zinnia consumer registry to ensure the same concept of a grabbed interactable can still pass through 3rd party button data even if it is not being touched by additionally registering to the interactor start grab publisher.
+* **Interactions:** force action grab setup to occur immediately ([e78969b](https://github.com/ExtendRealityLtd/Tilia.Interactions.Interactables.Unity/commit/e78969bed8223adb559d8bb5693214e93378497c))
+  > There is an issue where instantiating an Interactable prefab and then immediately calling an Interactor.Grab on it will cause a null exception because for some reason Unity hasn't fully set up the instantiated GameObject by the time the event process has run and therefore the `action.GrabSetUp` won't be set until the `action` GameObject is enabled in the scene.
+  > 
+  > The simplest solution to this is to force set the `action.GrabSetUp` immediately and then still do the wait to set it when the GameObject is enabled and then this way it will exist to do the preliminary setup and any additional setup that requires an active action will still occur.
+
 ### [1.12.2](https://github.com/ExtendRealityLtd/Tilia.Interactions.Interactables.Unity/compare/v1.12.1...v1.12.2) (2020-07-28)
 
 #### Bug Fixes
