@@ -397,11 +397,6 @@ PrefabInstance:
       propertyPath: payload.sourceContainer
       value: 
       objectReference: {fileID: 3863422424652264037}
-    - target: {fileID: 1855375965548148993, guid: 2cbd94cbb01df384eb07028e0f09c402,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 7465668924379348647, guid: 2cbd94cbb01df384eb07028e0f09c402,
         type: 3}
       propertyPath: payload.sourceContainer

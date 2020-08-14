@@ -60,6 +60,7 @@ The public interface into the Interactable Prefab.
   * [GrabIgnoreUngrabAtEndOfFrame(InteractorFacade)]
   * [OnAfterGrabProviderIndexChange()]
   * [OnAfterGrabTypeChange()]
+  * [SnapFollowOrientation()]
   * [Ungrab(GameObject)]
   * [Ungrab(Int32)]
   * [Ungrab(InteractorFacade)]
@@ -530,7 +531,7 @@ public virtual void EnableTouch()
 
 #### GetInteractorFromGameObject(GameObject)
 
-Gets the [InteractorFacade] from the given GameObject or if not found searches for one on all desdendants then ancestors.
+Gets the [InteractorFacade] from the given GameObject or if not found searches for one on all descendants then ancestors.
 
 ##### Declaration
 
@@ -698,6 +699,16 @@ Called after [GrabType] has been changed.
 protected virtual void OnAfterGrabTypeChange()
 ```
 
+#### SnapFollowOrientation()
+
+Snaps the follow on the primary and secondary action if they are GrabInteractableFollowAction type.
+
+##### Declaration
+
+```
+public virtual void SnapFollowOrientation()
+```
+
 #### Ungrab(GameObject)
 
 Attempt to ungrab the Interactable to the given GameObject that contains an Interactor.
@@ -859,6 +870,7 @@ public virtual void UngrabAtEndOfFrame(InteractorFacade interactor)
 [GrabIgnoreUngrabAtEndOfFrame(InteractorFacade)]: #GrabIgnoreUngrabAtEndOfFrameInteractorFacade
 [OnAfterGrabProviderIndexChange()]: #OnAfterGrabProviderIndexChange
 [OnAfterGrabTypeChange()]: #OnAfterGrabTypeChange
+[SnapFollowOrientation()]: #SnapFollowOrientation
 [Ungrab(GameObject)]: #UngrabGameObject
 [Ungrab(Int32)]: #UngrabInt32
 [Ungrab(InteractorFacade)]: #UngrabInteractorFacade

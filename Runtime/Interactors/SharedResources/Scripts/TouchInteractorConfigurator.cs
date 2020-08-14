@@ -4,6 +4,7 @@
     using Malimbe.XmlDocumentationAttribute;
     using System.Collections.Generic;
     using UnityEngine;
+    using Zinnia.Action;
     using Zinnia.Data.Attribute;
     using Zinnia.Extension;
     using Zinnia.Tracking.Collision;
@@ -56,6 +57,12 @@
         [Serialized]
         [field: DocumentedByXml, Restricted]
         public ActiveCollisionPublisher StopTouchingPublisher { get; protected set; }
+        /// <summary>
+        /// A <see cref="BooleanAction"/> for holding the state of whether the Interactor is touching something.
+        /// </summary>
+        [Serialized]
+        [field: DocumentedByXml, Restricted]
+        public BooleanAction IsTouchingAction { get; protected set; }
         #endregion
 
         /// <summary>

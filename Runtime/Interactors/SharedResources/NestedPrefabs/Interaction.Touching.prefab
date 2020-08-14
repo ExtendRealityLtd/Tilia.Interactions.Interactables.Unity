@@ -265,6 +265,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8c24e283184f2143984e504f9db334d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  payload:
+    activeCollisions: []
   Emitted:
     m_PersistentCalls:
       m_Calls:
@@ -324,6 +326,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8c24e283184f2143984e504f9db334d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  payload:
+    activeCollisions: []
   Emitted:
     m_PersistentCalls:
       m_Calls:
@@ -385,6 +389,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8c24e283184f2143984e504f9db334d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  payload:
+    activeCollisions: []
   Emitted:
     m_PersistentCalls:
       m_Calls:
@@ -458,6 +464,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   payload:
     sourceContainer: {fileID: 0}
+  registeredConsumerContainer: {fileID: 0}
   Published:
     m_PersistentCalls:
       m_Calls: []
@@ -563,6 +570,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8c24e283184f2143984e504f9db334d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  payload:
+    activeCollisions: []
   Emitted:
     m_PersistentCalls:
       m_Calls:
@@ -718,6 +727,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 3916300417213354959}
+  - {fileID: 7901213025987200266}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -739,6 +749,7 @@ MonoBehaviour:
   externalEmitters: {fileID: 7969100211041010529}
   startTouchingPublisher: {fileID: 3916300416617697655}
   stopTouchingPublisher: {fileID: 3916300415980811496}
+  isTouchingAction: {fileID: 3817620335890710168}
 --- !u!1 &3916300416617697658
 GameObject:
   m_ObjectHideFlags: 0
@@ -785,6 +796,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   payload:
     sourceContainer: {fileID: 0}
+  registeredConsumerContainer: {fileID: 0}
   Published:
     m_PersistentCalls:
       m_Calls: []
@@ -1049,6 +1061,77 @@ Transform:
   m_Father: {fileID: 3916300417213354959}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &6364159251748443642
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7901213025987200266}
+  - component: {fileID: 3817620335890710168}
+  m_Layer: 0
+  m_Name: IsTouching
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7901213025987200266
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6364159251748443642}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 3916300416617427844}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3817620335890710168
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6364159251748443642}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1fd299fedf620074b8e4ce0978a7f425, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ActivationStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: Zinnia.Action.Action+BooleanUnityEvent, Zinnia.Runtime, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  initialValue: 0
+  defaultValue: 0
+  sources: []
+  Activated:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: Zinnia.Action.BooleanAction+UnityEvent, Zinnia.Runtime, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  ValueChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: Zinnia.Action.BooleanAction+UnityEvent, Zinnia.Runtime, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  ValueUnchanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: Zinnia.Action.BooleanAction+UnityEvent, Zinnia.Runtime, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  Deactivated:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: Zinnia.Action.BooleanAction+UnityEvent, Zinnia.Runtime, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
 --- !u!1 &9040060672982921472
 GameObject:
   m_ObjectHideFlags: 0
@@ -1092,6 +1175,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8c24e283184f2143984e504f9db334d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  payload:
+    activeCollisions: []
   Emitted:
     m_PersistentCalls:
       m_Calls: []

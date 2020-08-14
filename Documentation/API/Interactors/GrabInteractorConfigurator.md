@@ -15,6 +15,7 @@ Sets up the Interactor Prefab grab settings based on the provided user settings.
   * [GrabbedObjects]
   * [GrabbedObjectsCollection]
   * [InstantGrabProcessor]
+  * [IsGrabbingAction]
   * [MinPrecognitionTimer]
   * [PrecognitionGrabProcessor]
   * [PrecognitionTimer]
@@ -32,6 +33,7 @@ Sets up the Interactor Prefab grab settings based on the provided user settings.
   * [GrabIgnoreUngrab(InteractableFacade, Collision, Collider)]
   * [OnAfterVelocityTrackerChange()]
   * [OnEnable()]
+  * [PrecognitionGrabForRegisteredConsumers()]
   * [ProcessGrabAction(ActiveCollisionPublisher, Boolean)]
   * [Ungrab()]
 
@@ -114,6 +116,16 @@ The processor for initiating an instant grab.
 
 ```
 public GameObject InstantGrabProcessor { get; protected set; }
+```
+
+#### IsGrabbingAction
+
+A BooleanAction for holding the state of whether the Interactor is grabbing something.
+
+##### Declaration
+
+```
+public BooleanAction IsGrabbingAction { get; protected set; }
 ```
 
 #### MinPrecognitionTimer
@@ -315,6 +327,16 @@ protected virtual void OnAfterVelocityTrackerChange()
 protected virtual void OnEnable()
 ```
 
+#### PrecognitionGrabForRegisteredConsumers()
+
+Attempts to automatically emit precognition grab if there are registered consumers.
+
+##### Declaration
+
+```
+public virtual void PrecognitionGrabForRegisteredConsumers()
+```
+
 #### ProcessGrabAction(ActiveCollisionPublisher, Boolean)
 
 Processes the given collision data into a grab action based on the given state.
@@ -357,6 +379,7 @@ public virtual void Ungrab()
 [GrabbedObjects]: #GrabbedObjects
 [GrabbedObjectsCollection]: #GrabbedObjectsCollection
 [InstantGrabProcessor]: #InstantGrabProcessor
+[IsGrabbingAction]: #IsGrabbingAction
 [MinPrecognitionTimer]: #MinPrecognitionTimer
 [PrecognitionGrabProcessor]: #PrecognitionGrabProcessor
 [PrecognitionTimer]: #PrecognitionTimer
@@ -374,5 +397,6 @@ public virtual void Ungrab()
 [GrabIgnoreUngrab(InteractableFacade, Collision, Collider)]: #GrabIgnoreUngrabInteractableFacade-Collision-Collider
 [OnAfterVelocityTrackerChange()]: #OnAfterVelocityTrackerChange
 [OnEnable()]: #OnEnable
+[PrecognitionGrabForRegisteredConsumers()]: #PrecognitionGrabForRegisteredConsumers
 [ProcessGrabAction(ActiveCollisionPublisher, Boolean)]: #ProcessGrabActionActiveCollisionPublisher-Boolean
 [Ungrab()]: #Ungrab

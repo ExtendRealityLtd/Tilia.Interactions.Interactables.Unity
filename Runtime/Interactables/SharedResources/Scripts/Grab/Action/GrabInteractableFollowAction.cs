@@ -26,11 +26,11 @@
             /// </summary>
             FollowTransform,
             /// <summary>
-            /// Updates the rigidbody using velocity to stay within the bounds of the physics system.
+            /// Updates the <see cref="Rigidbody"/> using velocity to stay within the bounds of the physics system.
             /// </summary>
             FollowRigidbody,
             /// <summary>
-            /// Updates the rigidbody rotation by using a force at position.
+            /// Updates the <see cref="Rigidbody"/> rotation by using a force at position.
             /// </summary>
             FollowRigidbodyForceRotate,
             /// <summary>
@@ -38,7 +38,7 @@
             /// </summary>
             FollowTransformPositionDifferenceRotate,
             /// <summary>
-            /// Updates the transform rotation based on the rotation of the interactor's angular velocity around a given axis.
+            /// Updates the transform rotation based on the rotation of the Interactor's angular velocity around a given axis.
             /// </summary>
             FollowRotateAroundAngularVelocity
         }
@@ -53,7 +53,7 @@
             /// </summary>
             None,
             /// <summary>
-            /// An offset of a specified <see cref="GameObject"/> is applied to orientate the interactable on grab.
+            /// An offset of a specified <see cref="GameObject"/> is applied to orientate the Interactable on grab.
             /// </summary>
             OrientationHandle,
             /// <summary>
@@ -68,7 +68,7 @@
 
         #region Interactable Settings
         /// <summary>
-        /// Determines how to track the movement of interactable to the interactor.
+        /// Determines how to track the movement of Interactable to the Interactor.
         /// </summary>
         [Serialized]
         [field: Header("Follow Settings"), DocumentedByXml]
@@ -80,13 +80,13 @@
         [field: DocumentedByXml]
         public OffsetType GrabOffset { get; set; }
         /// <summary>
-        /// Whether the <see cref="Rigidbody"/> of the interactable should be in a kinematic state when the follow action is active.
+        /// Whether the <see cref="Rigidbody"/> of the Interactable should be in a kinematic state when the follow action is active.
         /// </summary>
         [Serialized]
         [field: DocumentedByXml]
         public bool IsKinematicWhenActive { get; set; } = true;
         /// <summary>
-        /// Whether the <see cref="Rigidbody"/> of the interactable should be in a kinematic state when the follow action is inactive.
+        /// Whether the <see cref="Rigidbody"/> of the Interactable should be in a kinematic state when the follow action is inactive.
         /// </summary>
         [Serialized]
         [field: DocumentedByXml]
@@ -131,13 +131,13 @@
         [field: DocumentedByXml, Restricted]
         public FollowModifier FollowTransformModifier { get; protected set; }
         /// <summary>
-        /// The <see cref="FollowModifier"/> to move by applying velocities to the rigidbody.
+        /// The <see cref="FollowModifier"/> to move by applying velocities to the <see cref="Rigidbody"/>.
         /// </summary>
         [Serialized]
         [field: DocumentedByXml, Restricted]
         public FollowModifier FollowRigidbodyModifier { get; protected set; }
         /// <summary>
-        /// The <see cref="FollowModifier"/> to rotate by applying a force to the rigidbody.
+        /// The <see cref="FollowModifier"/> to rotate by applying a force to the <see cref="Rigidbody"/>.
         /// </summary>
         [Serialized]
         [field: DocumentedByXml, Restricted]
@@ -149,11 +149,17 @@
         [field: DocumentedByXml, Restricted]
         public FollowModifier FollowTransformRotateOnPositionDifferenceModifier { get; protected set; }
         /// <summary>
-        /// The <see cref="FollowModifier"/> to rotate by the angular velocity of the source interactor.
+        /// The <see cref="FollowModifier"/> to rotate by the angular velocity of the source Interactor.
         /// </summary>
         [Serialized]
         [field: DocumentedByXml, Restricted]
         public FollowModifier FollowRotateAroundAngularVelocityModifier { get; protected set; }
+        /// <summary>
+        /// The <see cref="ObjectFollower"/> to force snap the Interactable to the Interactor.
+        /// </summary>
+        [Serialized]
+        [field: DocumentedByXml, Restricted]
+        public ObjectFollower ForceSnapFollower { get; protected set; }
         /// <summary>
         /// The <see cref="Zinnia.Tracking.Velocity.VelocityApplier"/> to apply velocity on ungrab.
         /// </summary>
@@ -190,7 +196,7 @@
         #endregion
 
         /// <summary>
-        /// Applies the active kinematic state to the <see cref="Rigidbody"/> of the interactable.
+        /// Applies the active kinematic state to the <see cref="Rigidbody"/> of the Interactable.
         /// </summary>
         public virtual void ApplyActiveKinematicState()
         {
@@ -198,11 +204,19 @@
         }
 
         /// <summary>
-        /// Applies the inactive kinematic state to the <see cref="Rigidbody"/> of the interactable.
+        /// Applies the inactive kinematic state to the <see cref="Rigidbody"/> of the Interactable.
         /// </summary>
         public virtual void ApplyInactiveKinematicState()
         {
             GrabSetup.Facade.Configuration.ConsumerRigidbody.isKinematic = IsKinematicWhenInactive;
+        }
+
+        /// <summary>
+        /// Force snaps the Interactable to the following Interactor.
+        /// </summary>
+        public virtual void ForceSnapOrientation()
+        {
+            ForceSnapFollower.Process();
         }
 
         protected virtual void OnEnable()

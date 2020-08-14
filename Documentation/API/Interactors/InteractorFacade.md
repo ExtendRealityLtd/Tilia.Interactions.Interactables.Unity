@@ -8,6 +8,8 @@ The public interface into the Interactor Prefab.
 * [Namespace]
 * [Syntax]
 * [Fields]
+  * [ClearGrabStateRoutine]
+  * [delayInstruction]
   * [Grabbed]
   * [Touched]
   * [Ungrabbed]
@@ -24,6 +26,8 @@ The public interface into the Interactor Prefab.
   * [TouchedObjects]
   * [VelocityTracker]
 * [Methods]
+  * [ClearGrabState(InteractableFacade)]
+  * [ClearGrabStateAtEndOfFrame(InteractableFacade)]
   * [Grab(GameObject)]
   * [Grab(GameObject, Boolean)]
   * [Grab(SurfaceData)]
@@ -43,6 +47,8 @@ The public interface into the Interactor Prefab.
   * [OnAfterGrabActionChange()]
   * [OnAfterGrabPrecognitionChange()]
   * [OnAfterVelocityTrackerChange()]
+  * [SnapAllGrabbedInteractableOrientations()]
+  * [SnapGrabbedInteractableOrientation(Int32)]
   * [Ungrab()]
 
 ## Details
@@ -63,6 +69,26 @@ public class InteractorFacade : MonoBehaviour
 ```
 
 ### Fields
+
+#### ClearGrabStateRoutine
+
+The routine for clearing grab state.
+
+##### Declaration
+
+```
+protected Coroutine ClearGrabStateRoutine
+```
+
+#### delayInstruction
+
+A reusable instance of WaitForEndOfFrame.
+
+##### Declaration
+
+```
+protected WaitForEndOfFrame delayInstruction
+```
 
 #### Grabbed
 
@@ -207,6 +233,44 @@ public VelocityTrackerProcessor VelocityTracker { get; set; }
 ```
 
 ### Methods
+
+#### ClearGrabState(InteractableFacade)
+
+Clears the grab state for the given [InteractableFacade].
+
+##### Declaration
+
+```
+protected virtual void ClearGrabState(InteractableFacade interactable)
+```
+
+##### Parameters
+
+| Type | Name | Description |
+| --- | --- | --- |
+| [InteractableFacade] | interactable | The Interactable to clear grab state on. |
+
+#### ClearGrabStateAtEndOfFrame(InteractableFacade)
+
+Clears the grab state at the end of the frame.
+
+##### Declaration
+
+```
+protected virtual IEnumerator ClearGrabStateAtEndOfFrame(InteractableFacade interactable)
+```
+
+##### Parameters
+
+| Type | Name | Description |
+| --- | --- | --- |
+| [InteractableFacade] | interactable | n/a |
+
+##### Returns
+
+| Type | Description |
+| --- | --- |
+| System.Collections.IEnumerator | An Enumerator to manage the running of the Coroutine. |
 
 #### Grab(GameObject)
 
@@ -412,7 +476,7 @@ public virtual void GrabIgnoreUngrab(InteractableFacade interactable, Collision 
 
 #### NotifyOfGrab(InteractableFacade)
 
-Notifies the interactor that it is grabbing an interactable.
+Notifies the Interactor that it is grabbing an Interactable.
 
 ##### Declaration
 
@@ -424,11 +488,11 @@ public virtual void NotifyOfGrab(InteractableFacade interactable)
 
 | Type | Name | Description |
 | --- | --- | --- |
-| [InteractableFacade] | interactable | The interactable being grabbed. |
+| [InteractableFacade] | interactable | The Interactable being grabbed. |
 
 #### NotifyOfTouch(InteractableFacade)
 
-Notifies the interactor that it is touching an interactable.
+Notifies the Interactor that it is touching an Interactable.
 
 ##### Declaration
 
@@ -440,11 +504,11 @@ public virtual void NotifyOfTouch(InteractableFacade interactable)
 
 | Type | Name | Description |
 | --- | --- | --- |
-| [InteractableFacade] | interactable | The interactable being touched. |
+| [InteractableFacade] | interactable | The Interactable being touched. |
 
 #### NotifyOfUngrab(InteractableFacade)
 
-Notifies the interactor that it is no longer grabbing an interactable.
+Notifies the Interactor that it is no longer grabbing an Interactable.
 
 ##### Declaration
 
@@ -456,11 +520,11 @@ public virtual void NotifyOfUngrab(InteractableFacade interactable)
 
 | Type | Name | Description |
 | --- | --- | --- |
-| [InteractableFacade] | interactable | The interactable being ungrabbed. |
+| [InteractableFacade] | interactable | The Interactable being ungrabbed. |
 
 #### NotifyOfUntouch(InteractableFacade)
 
-Notifies the interactor that it is no longer touching an interactable.
+Notifies the Interactor that it is no longer touching an Interactable.
 
 ##### Declaration
 
@@ -472,7 +536,7 @@ public virtual void NotifyOfUntouch(InteractableFacade interactable)
 
 | Type | Name | Description |
 | --- | --- | --- |
-| [InteractableFacade] | interactable | The interactable being untouched. |
+| [InteractableFacade] | interactable | The Interactable being untouched. |
 
 #### OnAfterGrabActionChange()
 
@@ -504,6 +568,32 @@ Called after [VelocityTracker] has been changed.
 protected virtual void OnAfterVelocityTrackerChange()
 ```
 
+#### SnapAllGrabbedInteractableOrientations()
+
+Snaps the orientation of all grabbed Interactables to this Interactor.
+
+##### Declaration
+
+```
+public virtual void SnapAllGrabbedInteractableOrientations()
+```
+
+#### SnapGrabbedInteractableOrientation(Int32)
+
+Snaps the orientation of the grabbed Interactable at the given index to this Interactor.
+
+##### Declaration
+
+```
+public virtual void SnapGrabbedInteractableOrientation(int index)
+```
+
+##### Parameters
+
+| Type | Name | Description |
+| --- | --- | --- |
+| System.Int32 | index | The index of the grabbed Interactable. |
+
 #### Ungrab()
 
 Attempt to ungrab currently grabbed Interactables to the current Interactor.
@@ -528,6 +618,8 @@ public virtual void Ungrab()
 [Namespace]: #Namespace
 [Syntax]: #Syntax
 [Fields]: #Fields
+[ClearGrabStateRoutine]: #ClearGrabStateRoutine
+[delayInstruction]: #delayInstruction
 [Grabbed]: #Grabbed
 [Touched]: #Touched
 [Ungrabbed]: #Ungrabbed
@@ -544,6 +636,8 @@ public virtual void Ungrab()
 [TouchedObjects]: #TouchedObjects
 [VelocityTracker]: #VelocityTracker
 [Methods]: #Methods
+[ClearGrabState(InteractableFacade)]: #ClearGrabStateInteractableFacade
+[ClearGrabStateAtEndOfFrame(InteractableFacade)]: #ClearGrabStateAtEndOfFrameInteractableFacade
 [Grab(GameObject)]: #GrabGameObject
 [Grab(GameObject, Boolean)]: #GrabGameObject-Boolean
 [Grab(SurfaceData)]: #GrabSurfaceData
@@ -563,4 +657,6 @@ public virtual void Ungrab()
 [OnAfterGrabActionChange()]: #OnAfterGrabActionChange
 [OnAfterGrabPrecognitionChange()]: #OnAfterGrabPrecognitionChange
 [OnAfterVelocityTrackerChange()]: #OnAfterVelocityTrackerChange
+[SnapAllGrabbedInteractableOrientations()]: #SnapAllGrabbedInteractableOrientations
+[SnapGrabbedInteractableOrientation(Int32)]: #SnapGrabbedInteractableOrientationInt32
 [Ungrab()]: #Ungrab

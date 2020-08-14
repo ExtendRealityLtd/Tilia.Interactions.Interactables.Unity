@@ -219,6 +219,24 @@
             LinkToSecondaryAction();
         }
 
+        /// <summary>
+        /// Snaps the follow on the primary and secondary action if they are <see cref="GrabInteractableFollowAction"/> type.
+        /// </summary>
+        public virtual void SnapFollowOrientation()
+        {
+            if (PrimaryAction != null && PrimaryAction.GetType() == typeof(GrabInteractableFollowAction))
+            {
+                GrabInteractableFollowAction action = (GrabInteractableFollowAction)PrimaryAction;
+                action.ForceSnapOrientation();
+            }
+
+            if (SecondaryAction != null && SecondaryAction.GetType() == typeof(GrabInteractableFollowAction))
+            {
+                GrabInteractableFollowAction action = (GrabInteractableFollowAction)SecondaryAction;
+                action.ForceSnapOrientation();
+            }
+        }
+
         protected virtual void OnEnable()
         {
             SetGrabProvider(Facade.GrabProviderIndex);
@@ -245,6 +263,7 @@
                 return;
             }
 
+            action.GrabSetup = this;
             action.RunWhenActiveAndEnabled(() => action.GrabSetup = this);
         }
 

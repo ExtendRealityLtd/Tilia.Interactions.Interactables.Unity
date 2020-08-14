@@ -377,7 +377,15 @@
         }
 
         /// <summary>
-        /// Gets the <see cref="InteractorFacade"/> from the given <see cref="GameObject"/> or if not found searches for one on all desdendants then ancestors.
+        /// Snaps the follow on the primary and secondary action if they are <see cref="GrabInteractableFollowAction"/> type.
+        /// </summary>
+        public virtual void SnapFollowOrientation()
+        {
+            Configuration.GrabConfiguration.SnapFollowOrientation();
+        }
+
+        /// <summary>
+        /// Gets the <see cref="InteractorFacade"/> from the given <see cref="GameObject"/> or if not found searches for one on all descendants then ancestors.
         /// </summary>
         /// <param name="source">The source to search on.</param>
         /// <returns>The found component if exists.</returns>

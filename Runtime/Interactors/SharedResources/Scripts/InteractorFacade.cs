@@ -5,6 +5,7 @@
     using Malimbe.PropertySerializationAttribute;
     using Malimbe.XmlDocumentationAttribute;
     using System;
+    using System.Collections;
     using System.Collections.Generic;
     using Tilia.Interactions.Interactables.Interactables;
     using UnityEngine;
@@ -109,6 +110,15 @@
         /// A collection of currently grabbed GameObjects.
         /// </summary>
         public IReadOnlyList<GameObject> GrabbedObjects => GrabConfiguration.GrabbedObjects;
+
+        /// <summary>
+        /// The routine for clearing grab state.
+        /// </summary>
+        protected Coroutine ClearGrabStateRoutine;
+        /// <summary>
+        /// A reusable instance of <see cref="WaitForEndOfFrame"/>.
+        /// </summary>
+        protected WaitForEndOfFrame delayInstruction = new WaitForEndOfFrame();
 
         /// <summary>
         /// Attempt to attach a <see cref="GameObject"/> that contains an <see cref="InteractableFacade"/> to this <see cref="InteractorFacade"/> and ungrabs any existing grab.
@@ -242,42 +252,103 @@
         }
 
         /// <summary>
-        /// Notifies the interactor that it is touching an interactable.
+        /// Notifies the Interactor that it is touching an Interactable.
         /// </summary>
-        /// <param name="interactable">The interactable being touched.</param>
+        /// <param name="interactable">The Interactable being touched.</param>
         public virtual void NotifyOfTouch(InteractableFacade interactable)
         {
+            TouchConfiguration.IsTouchingAction.Receive(true);
             Touched?.Invoke(interactable);
         }
 
         /// <summary>
-        /// Notifies the interactor that it is no longer touching an interactable.
+        /// Notifies the Interactor that it is no longer touching an Interactable.
         /// </summary>
-        /// <param name="interactable">The interactable being untouched.</param>
+        /// <param name="interactable">The Interactable being untouched.</param>
         public virtual void NotifyOfUntouch(InteractableFacade interactable)
         {
+            TouchConfiguration.IsTouchingAction.Receive(false);
             Untouched?.Invoke(interactable);
         }
 
         /// <summary>
-        /// Notifies the interactor that it is grabbing an interactable.
+        /// Notifies the Interactor that it is grabbing an Interactable.
         /// </summary>
-        /// <param name="interactable">The interactable being grabbed.</param>
+        /// <param name="interactable">The Interactable being grabbed.</param>
         public virtual void NotifyOfGrab(InteractableFacade interactable)
         {
-            Grabbed?.Invoke(interactable);
             GrabConfiguration.GrabbedObjectsCollection.AddUnique(interactable.gameObject);
+            if (ClearGrabStateRoutine != null)
+            {
+                StopCoroutine(ClearGrabStateRoutine);
+                ClearGrabStateRoutine = null;
+            }
+            GrabConfiguration.IsGrabbingAction.Receive(true);
+            Grabbed?.Invoke(interactable);
         }
 
         /// <summary>
-        /// Notifies the interactor that it is no longer grabbing an interactable.
+        /// Notifies the Interactor that it is no longer grabbing an Interactable.
         /// </summary>
-        /// <param name="interactable">The interactable being ungrabbed.</param>
+        /// <param name="interactable">The Interactable being ungrabbed.</param>
         public virtual void NotifyOfUngrab(InteractableFacade interactable)
         {
+            ClearGrabState(interactable);
             Ungrabbed?.Invoke(interactable);
-            GrabConfiguration.GrabbedObjectsCollection.Remove(interactable.gameObject);
+            ClearGrabStateRoutine = StartCoroutine(ClearGrabStateAtEndOfFrame(interactable));
+        }
+
+        /// <summary>
+        /// Snaps the orientation of all grabbed Interactables to this Interactor.
+        /// </summary>
+        public virtual void SnapAllGrabbedInteractableOrientations()
+        {
+            for (int index = 0; index < GrabbedObjects.Count; index++)
+            {
+                SnapGrabbedInteractableOrientation(index);
+            }
+        }
+
+        /// <summary>
+        /// Snaps the orientation of the grabbed Interactable at the given index to this Interactor.
+        /// </summary>
+        /// <param name="index">The index of the grabbed Interactable.</param>
+        public virtual void SnapGrabbedInteractableOrientation(int index)
+        {
+            if (index < 0 || index >= GrabbedObjects.Count)
+            {
+                return;
+            }
+
+            InteractableFacade interactable = GrabbedObjects[index].TryGetComponent<InteractableFacade>(true, true);
+            if (interactable != null)
+            {
+                interactable.SnapFollowOrientation();
+            }
+        }
+
+        /// <summary>
+        /// Clears the grab state for the given <see cref="InteractableFacade"/>.
+        /// </summary>
+        /// <param name="interactable">The Interactable to clear grab state on.</param>
+        protected virtual void ClearGrabState(InteractableFacade interactable)
+        {
+            GrabConfiguration.IsGrabbingAction.Receive(false);
+            GrabConfiguration.GrabbedObjectsCollection.Remove(interactable.TryGetGameObject());
             GrabConfiguration.StopGrabbingPublisher.ClearActiveCollisions();
+            GrabConfiguration.StartGrabbingPublisher.RegisteredConsumerContainer.UnregisterConsumersOnContainer(interactable.TryGetGameObject());
+        }
+
+        /// <summary>
+        /// Clears the grab state at the end of the frame.
+        /// </summary>
+        /// <param name="interactable"></param>
+        /// <returns>An Enumerator to manage the running of the Coroutine.</returns>
+        protected virtual IEnumerator ClearGrabStateAtEndOfFrame(InteractableFacade interactable)
+        {
+            yield return delayInstruction;
+            ClearGrabState(interactable);
+            ClearGrabStateRoutine = null;
         }
 
         /// <summary>

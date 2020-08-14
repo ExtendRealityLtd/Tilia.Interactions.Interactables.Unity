@@ -10,12 +10,16 @@ Sets up the Interactor Action Publisher Prefab action settings based on the prov
 * [Properties]
   * [ActiveAction]
   * [Facade]
+  * [SetOnGrabEmitter]
+  * [SetOnTouchEmitter]
   * [StartActionPublisher]
   * [StartActionStringCollection]
   * [StopActionPublisher]
   * [StopActionStringCollection]
   * [TargetActions]
 * [Methods]
+  * [InteractorGrabbed(InteractableFacade)]
+  * [InteractorUngrabbed(InteractableFacade)]
   * [LinkActiveCollisions()]
   * [LinkSourceActionToTargetAction()]
   * [LinkSourceContainerToPublishers()]
@@ -63,6 +67,26 @@ The public interface facade.
 public InteractorActionPublisherFacade Facade { get; protected set; }
 ```
 
+#### SetOnGrabEmitter
+
+The ActiveCollisionPublisherEventProxyEmitter setting the active collisions on the [StartActionPublisher] on grab.
+
+##### Declaration
+
+```
+public ActiveCollisionPublisherEventProxyEmitter SetOnGrabEmitter { get; protected set; }
+```
+
+#### SetOnTouchEmitter
+
+The ActiveCollisionsContainerEventProxyEmitter setting the active collisions on the [StartActionPublisher] on touch.
+
+##### Declaration
+
+```
+public ActiveCollisionsContainerEventProxyEmitter SetOnTouchEmitter { get; protected set; }
+```
+
 #### StartActionPublisher
 
 The ActiveCollisionPublisher for checking valid start action.
@@ -105,7 +129,7 @@ public StringObservableList StopActionStringCollection { get; protected set; }
 
 #### TargetActions
 
-The ActionObservableList that containts the Action collection that can be linked to the InteractorActionFacade.SourceAction.
+The ActionObservableList that contains the Action collection that can be linked to the InteractorActionFacade.SourceAction.
 
 ##### Declaration
 
@@ -114,6 +138,38 @@ public ActionObservableList TargetActions { get; protected set; }
 ```
 
 ### Methods
+
+#### InteractorGrabbed(InteractableFacade)
+
+Determines what to do when the Interactor grabs.
+
+##### Declaration
+
+```
+protected virtual void InteractorGrabbed(InteractableFacade interactable)
+```
+
+##### Parameters
+
+| Type | Name | Description |
+| --- | --- | --- |
+| [InteractableFacade] | interactable | The Interactable being grabbed. |
+
+#### InteractorUngrabbed(InteractableFacade)
+
+Determines what to do when the Interactor ungrabs.
+
+##### Declaration
+
+```
+protected virtual void InteractorUngrabbed(InteractableFacade interactable)
+```
+
+##### Parameters
+
+| Type | Name | Description |
+| --- | --- | --- |
+| [InteractableFacade] | interactable | The Interactable being grabbed. |
 
 #### LinkActiveCollisions()
 
@@ -183,6 +239,9 @@ public virtual void UnlinkActiveCollisions()
 
 [Tilia.Interactions.Interactables.Interactors]: README.md
 [InteractorActionPublisherFacade]: InteractorActionPublisherFacade.md
+[StartActionPublisher]: InteractorActionPublisherConfigurator.md#StartActionPublisher
+[StartActionPublisher]: InteractorActionPublisherConfigurator.md#StartActionPublisher
+[InteractableFacade]: ../Interactables/InteractableFacade.md
 [TargetActions]: InteractorActionPublisherConfigurator.md#TargetActions
 [Inheritance]: #Inheritance
 [Namespace]: #Namespace
@@ -190,12 +249,16 @@ public virtual void UnlinkActiveCollisions()
 [Properties]: #Properties
 [ActiveAction]: #ActiveAction
 [Facade]: #Facade
+[SetOnGrabEmitter]: #SetOnGrabEmitter
+[SetOnTouchEmitter]: #SetOnTouchEmitter
 [StartActionPublisher]: #StartActionPublisher
 [StartActionStringCollection]: #StartActionStringCollection
 [StopActionPublisher]: #StopActionPublisher
 [StopActionStringCollection]: #StopActionStringCollection
 [TargetActions]: #TargetActions
 [Methods]: #Methods
+[InteractorGrabbed(InteractableFacade)]: #InteractorGrabbedInteractableFacade
+[InteractorUngrabbed(InteractableFacade)]: #InteractorUngrabbedInteractableFacade
 [LinkActiveCollisions()]: #LinkActiveCollisions
 [LinkSourceActionToTargetAction()]: #LinkSourceActionToTargetAction
 [LinkSourceContainerToPublishers()]: #LinkSourceContainerToPublishers
