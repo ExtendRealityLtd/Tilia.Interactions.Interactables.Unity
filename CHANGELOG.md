@@ -1,5 +1,12 @@
 # Changelog
 
+### [1.13.2](https://github.com/ExtendRealityLtd/Tilia.Interactions.Interactables.Unity/compare/v1.13.1...v1.13.2) (2020-08-26)
+
+#### Bug Fixes
+
+* **Interactions:** ensure correct consumer container is unregistered ([149bc72](https://github.com/ExtendRealityLtd/Tilia.Interactions.Interactables.Unity/commit/149bc72c71710fb99dbf4ad1e6349091b34c7894))
+  > The Ungrab in the Interactor shouldn't just attempt to unregister the consumers associated with the interactable but instead should attempt to unregister with the interactable's consumer container as that is the actual thing the consumers return as the registered container.
+
 ### [1.13.1](https://github.com/ExtendRealityLtd/Tilia.Interactions.Interactables.Unity/compare/v1.13.0...v1.13.1) (2020-08-15)
 
 #### Miscellaneous Chores
