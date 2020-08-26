@@ -335,8 +335,9 @@
         {
             GrabConfiguration.IsGrabbingAction.Receive(false);
             GrabConfiguration.GrabbedObjectsCollection.Remove(interactable.TryGetGameObject());
+            GrabConfiguration.GrabbedObjectsCollection.Remove(interactable.Configuration.ConsumerContainer);
             GrabConfiguration.StopGrabbingPublisher.ClearActiveCollisions();
-            GrabConfiguration.StartGrabbingPublisher.RegisteredConsumerContainer.UnregisterConsumersOnContainer(interactable.TryGetGameObject());
+            GrabConfiguration.StartGrabbingPublisher.RegisteredConsumerContainer.UnregisterConsumersOnContainer(interactable.Configuration.ConsumerContainer);
         }
 
         /// <summary>
