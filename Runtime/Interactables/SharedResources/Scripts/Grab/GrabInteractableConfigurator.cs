@@ -154,7 +154,7 @@
                 return;
             }
 
-            if (Facade.GrabbingInteractors.Count == 1)
+            if (Facade.GrabbingInteractors.Count == 1 || PrimaryGrabIsNone(1))
             {
                 Facade.FirstGrabbed?.Invoke(interactor);
             }
@@ -176,7 +176,7 @@
 
             Facade.Ungrabbed?.Invoke(interactor);
             interactor.NotifyOfUngrab(Facade);
-            if (Facade.GrabbingInteractors.Count == 0)
+            if (Facade.GrabbingInteractors.Count == 0 || PrimaryGrabIsNone(0))
             {
                 Facade.LastUngrabbed?.Invoke(interactor);
             }
@@ -300,6 +300,9 @@
             GrabReceiver.OutputActiveCollisionConsumer.Emitted.AddListener(PrimaryAction.InputActiveCollisionConsumer.Receive);
             GrabProvider.OutputPrimaryGrabAction.Emitted.AddListener(PrimaryAction.InputGrabReceived.Receive);
             GrabProvider.OutputPrimaryUngrabAction.Emitted.AddListener(PrimaryAction.InputUngrabReceived.Receive);
+
+            GrabProvider.OutputPrimaryGrabAction.Emitted.AddListener(EnableSecondaryInputActiveCollisionConsumer);
+            GrabProvider.OutputPrimaryUngrabAction.Emitted.AddListener(DisableSecondaryInputActiveCollisionConsumer);
         }
 
         /// <summary>
@@ -315,6 +318,9 @@
             GrabReceiver.OutputActiveCollisionConsumer.Emitted.RemoveListener(PrimaryAction.InputActiveCollisionConsumer.Receive);
             GrabProvider.OutputPrimaryGrabAction.Emitted.RemoveListener(PrimaryAction.InputGrabReceived.Receive);
             GrabProvider.OutputPrimaryUngrabAction.Emitted.RemoveListener(PrimaryAction.InputUngrabReceived.Receive);
+
+            GrabProvider.OutputPrimaryGrabAction.Emitted.RemoveListener(EnableSecondaryInputActiveCollisionConsumer);
+            GrabProvider.OutputPrimaryUngrabAction.Emitted.RemoveListener(DisableSecondaryInputActiveCollisionConsumer);
         }
 
         /// <summary>
@@ -332,6 +338,8 @@
             GrabProvider.OutputPrimaryUngrabResetOnSecondaryAction.Emitted.AddListener(SecondaryAction.InputUngrabReset.Receive);
             GrabProvider.OutputSecondaryGrabAction.Emitted.AddListener(SecondaryAction.InputGrabReceived.Receive);
             GrabProvider.OutputSecondaryUngrabAction.Emitted.AddListener(SecondaryAction.InputUngrabReceived.Receive);
+
+            DisableSecondaryInputActiveCollisionConsumer(null);
         }
 
         /// <summary>
@@ -349,6 +357,34 @@
             GrabProvider.OutputPrimaryUngrabResetOnSecondaryAction.Emitted.RemoveListener(SecondaryAction.InputUngrabReset.Receive);
             GrabProvider.OutputSecondaryGrabAction.Emitted.RemoveListener(SecondaryAction.InputGrabReceived.Receive);
             GrabProvider.OutputSecondaryUngrabAction.Emitted.RemoveListener(SecondaryAction.InputUngrabReceived.Receive);
+        }
+
+        /// <summary>
+        /// Determines whether the primary grab action is of type <see cref="GrabInteractableNullAction"/>.
+        /// </summary>
+        /// <param name="interactorCount">The amount of grabbing Interactors.</param>
+        /// <returns>Whether the primary grab is of type <see cref="GrabInteractableNullAction"/>.</returns>
+        protected virtual bool PrimaryGrabIsNone(int interactorCount)
+        {
+            return Facade.GrabbingInteractors.Count > interactorCount && PrimaryAction.GetType() == typeof(GrabInteractableNullAction);
+        }
+
+        /// <summary>
+        /// Enables the Secondary Input Active Collision Consumer component.
+        /// </summary>
+        /// <param name="_">unused</param>
+        protected virtual void EnableSecondaryInputActiveCollisionConsumer(GameObject _)
+        {
+            SecondaryAction.InputActiveCollisionConsumer.enabled = true;
+        }
+
+        /// <summary>
+        /// Disables the Secondary Input Active Collision Consumer component.
+        /// </summary>
+        /// <param name="_">unused</param>
+        protected virtual void DisableSecondaryInputActiveCollisionConsumer(GameObject _)
+        {
+            SecondaryAction.InputActiveCollisionConsumer.enabled = false;
         }
 
         /// <summary>

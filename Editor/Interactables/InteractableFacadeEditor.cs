@@ -17,7 +17,7 @@
     public class InteractableFacadeEditor : InspectorEditor
     {
         private static readonly int[] primaryActionsIndexes = new int[] { 0, 1 };
-        private static readonly int[] secondaryActionsIndexes = new int[] { 0, 2, 3, 4 };
+        private static readonly int[] secondaryActionsIndexes = new int[] { 0, 1, 2, 3, 4 };
 
         private string[] primaryActions = new string[0];
         private string[] secondaryActions = new string[0];
@@ -63,6 +63,8 @@
                 grabConfigurationIsDirty = true;
             }
             currentSecondaryActionIndex = selectedSecondaryActionIndex;
+
+            DrawFollowActionSettings(facade, facade.Configuration.GrabConfiguration.SecondaryAction, undoRedoWarningPropertyPath);
 
             EditorGUILayout.Space();
             EditorGUILayout.LabelField("Disallowed Touch Interactor Settings", EditorStyles.boldLabel);
