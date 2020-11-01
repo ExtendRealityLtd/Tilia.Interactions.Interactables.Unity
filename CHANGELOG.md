@@ -1,5 +1,14 @@
 # Changelog
 
+## [1.14.0](https://github.com/ExtendRealityLtd/Tilia.Interactions.Interactables.Unity/compare/v1.13.4...v1.14.0) (2020-11-01)
+
+#### Features
+
+* **Interactions:** allow follow as standard secondary action ([d7d2b7e](https://github.com/ExtendRealityLtd/Tilia.Interactions.Interactables.Unity/commit/d7d2b7e1aa48dd6b67900bd2524425bd8189c005))
+  > The secondary action can now also be set to follow, which allows the primary action to be set to none so the primary action does nothing whereas the secondary action will then grab the item to mimic two hand grabbing.
+  > 
+  > The None action now has its own null action rather than just using the base action so it can be easily identified as a nothing action.
+
 ### [1.13.4](https://github.com/ExtendRealityLtd/Tilia.Interactions.Interactables.Unity/compare/v1.13.3...v1.13.4) (2020-10-02)
 
 #### Miscellaneous Chores
