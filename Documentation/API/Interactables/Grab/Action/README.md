@@ -14,6 +14,10 @@ Describes an action that allows the Interactable to point in the direction of a 
 
 Describes an action that allows the Interactable to follow an Interactor's position, rotation and scale.
 
+#### [GrabInteractableNullAction]
+
+Describes an action that performs no action.
+
 #### [GrabInteractableScaleAction]
 
 Describes an action that allows the Interactable to be scaled in size between the points of two specified Interactors.
@@ -35,6 +39,7 @@ The way in which the object is moved.
 [GrabInteractableAction]: GrabInteractableAction.md
 [GrabInteractableControlDirectionAction]: GrabInteractableControlDirectionAction.md
 [GrabInteractableFollowAction]: GrabInteractableFollowAction.md
+[GrabInteractableNullAction]: GrabInteractableNullAction.md
 [GrabInteractableScaleAction]: GrabInteractableScaleAction.md
 [GrabInteractableSwapAction]: GrabInteractableSwapAction.md
 [GrabInteractableFollowAction.OffsetType]: GrabInteractableFollowAction.OffsetType.md
