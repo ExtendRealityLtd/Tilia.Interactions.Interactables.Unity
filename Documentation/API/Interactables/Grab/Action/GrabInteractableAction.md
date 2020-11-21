@@ -27,6 +27,7 @@ Describes an action to perform when a Grab Process is executed.
 * GrabInteractableAction
 * [GrabInteractableControlDirectionAction]
 * [GrabInteractableFollowAction]
+* [GrabInteractableNullAction]
 * [GrabInteractableScaleAction]
 * [GrabInteractableSwapAction]
 
@@ -148,6 +149,7 @@ protected virtual void OnAfterGrabSetupChange()
 
 [GrabInteractableControlDirectionAction]: GrabInteractableControlDirectionAction.md
 [GrabInteractableFollowAction]: GrabInteractableFollowAction.md
+[GrabInteractableNullAction]: GrabInteractableNullAction.md
 [GrabInteractableScaleAction]: GrabInteractableScaleAction.md
 [GrabInteractableSwapAction]: GrabInteractableSwapAction.md
 [Tilia.Interactions.Interactables.Interactables.Grab.Action]: README.md

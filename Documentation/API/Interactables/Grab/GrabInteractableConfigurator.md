@@ -20,6 +20,8 @@ Sets up the Interactable Prefab grab settings based on the provided user setting
 * [Methods]
   * [ConfigureActionContainer(GrabInteractableAction)]
   * [ConfigureContainer()]
+  * [DisableSecondaryInputActiveCollisionConsumer(GameObject)]
+  * [EnableSecondaryInputActiveCollisionConsumer(GameObject)]
   * [Grab(InteractorFacade)]
   * [GrabIgnoreUngrab(InteractorFacade)]
   * [LinkReceiverToProvider()]
@@ -33,6 +35,7 @@ Sets up the Interactable Prefab grab settings based on the provided user setting
   * [OnBeforeSecondaryActionChange()]
   * [OnDisable()]
   * [OnEnable()]
+  * [PrimaryGrabIsNone(Int32)]
   * [SetGrabProvider(Int32)]
   * [SnapFollowOrientation()]
   * [Ungrab(Int32)]
@@ -177,6 +180,38 @@ Sets the consumer containers to the current active container.
 ```
 public virtual void ConfigureContainer()
 ```
+
+#### DisableSecondaryInputActiveCollisionConsumer(GameObject)
+
+Disables the Secondary Input Active Collision Consumer component.
+
+##### Declaration
+
+```
+protected virtual void DisableSecondaryInputActiveCollisionConsumer(GameObject _)
+```
+
+##### Parameters
+
+| Type | Name | Description |
+| --- | --- | --- |
+| GameObject | \_ | unused |
+
+#### EnableSecondaryInputActiveCollisionConsumer(GameObject)
+
+Enables the Secondary Input Active Collision Consumer component.
+
+##### Declaration
+
+```
+protected virtual void EnableSecondaryInputActiveCollisionConsumer(GameObject _)
+```
+
+##### Parameters
+
+| Type | Name | Description |
+| --- | --- | --- |
+| GameObject | \_ | unused |
 
 #### Grab(InteractorFacade)
 
@@ -328,6 +363,28 @@ protected virtual void OnDisable()
 protected virtual void OnEnable()
 ```
 
+#### PrimaryGrabIsNone(Int32)
+
+Determines whether the primary grab action is of type [GrabInteractableNullAction].
+
+##### Declaration
+
+```
+protected virtual bool PrimaryGrabIsNone(int interactorCount)
+```
+
+##### Parameters
+
+| Type | Name | Description |
+| --- | --- | --- |
+| System.Int32 | interactorCount | The amount of grabbing Interactors. |
+
+##### Returns
+
+| Type | Description |
+| --- | --- |
+| System.Boolean | Whether the primary grab is of type [GrabInteractableNullAction]. |
+
 #### SetGrabProvider(Int32)
 
 Sets the [GrabProvider] to the index of the [GrabProviderOptions] collection.
@@ -427,6 +484,7 @@ protected virtual void UnlinkToSecondaryAction()
 [SecondaryAction]: GrabInteractableConfigurator.md#SecondaryAction
 [PrimaryAction]: GrabInteractableConfigurator.md#PrimaryAction
 [SecondaryAction]: GrabInteractableConfigurator.md#SecondaryAction
+[GrabInteractableNullAction]: Action/GrabInteractableNullAction.md
 [GrabProvider]: GrabInteractableConfigurator.md#GrabProvider
 [GrabProviderOptions]: GrabInteractableConfigurator.md#GrabProviderOptions
 [GrabProviderOptions]: GrabInteractableConfigurator.md#GrabProviderOptions
@@ -448,6 +506,8 @@ protected virtual void UnlinkToSecondaryAction()
 [Methods]: #Methods
 [ConfigureActionContainer(GrabInteractableAction)]: #ConfigureActionContainerGrabInteractableAction
 [ConfigureContainer()]: #ConfigureContainer
+[DisableSecondaryInputActiveCollisionConsumer(GameObject)]: #DisableSecondaryInputActiveCollisionConsumerGameObject
+[EnableSecondaryInputActiveCollisionConsumer(GameObject)]: #EnableSecondaryInputActiveCollisionConsumerGameObject
 [Grab(InteractorFacade)]: #GrabInteractorFacade
 [GrabIgnoreUngrab(InteractorFacade)]: #GrabIgnoreUngrabInteractorFacade
 [LinkReceiverToProvider()]: #LinkReceiverToProvider
@@ -461,6 +521,7 @@ protected virtual void UnlinkToSecondaryAction()
 [OnBeforeSecondaryActionChange()]: #OnBeforeSecondaryActionChange
 [OnDisable()]: #OnDisable
 [OnEnable()]: #OnEnable
+[PrimaryGrabIsNone(Int32)]: #PrimaryGrabIsNoneInt32
 [SetGrabProvider(Int32)]: #SetGrabProviderInt32
 [SnapFollowOrientation()]: #SnapFollowOrientation
 [Ungrab(Int32)]: #UngrabInt32
