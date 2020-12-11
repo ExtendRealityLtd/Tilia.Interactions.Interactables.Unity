@@ -16,7 +16,7 @@ This guide will show how to set up an `Interactions.Interactable` prefab that we
 
 ## Prerequisites
 
-* [Add the Tilia.Interactions.Interactor.Unity] prefab to the scene Hierarchy.
+* [Add the Tilia.Interactions.Interactor.Unity -> Interactions.Interactor] prefab to the scene hierarchy.
 * [Install the Tilia.Interactions.Interactables.Unity] package dependency in to your [Unity] project.
 
 ## Let's Start
@@ -31,7 +31,7 @@ Create a new `Cube` Unity 3D Object by selecting `Main Menu -> GameObject -> 3D 
 
 ### Step 2
 
-Expand the `Tilia Interactors Interactables Unity` Package directory in the Unity Project window and select the `Packages -> Tilia Interactors Interactables Unity -> Runtime -> Interactables -> Prefabs` directory then drag and drop the`Interactions.Interactable` prefab into the Unity Hierarchy window.
+Expand the `Tilia Interactors Interactables Unity` package directory in the Unity Project window and select the `Packages -> Tilia Interactors Interactables Unity -> Runtime -> Interactables -> Prefabs` directory then drag and drop the`Interactions.Interactable` prefab into the Unity Hierarchy window.
 
 ![Drag And Drop Interactables Prefab Into Hierarchy](assets/images/DragAndDropInteractablesPrefabIntoHierarchy.png)
 
@@ -48,7 +48,7 @@ Select the `Interactions.Interactable` GameObject and set the `Transform` proper
 
 ### Step 4
 
-Select the `Interactions.Interactable` GameObject in the Unity Hierarchy and change the `Primary Action` property to `Interactable.GrabAction.Follow` and change the `Secondary Action` property to `Interactable.GrabAction.Swap` on the `Interactable Facade` component.
+Select the `Interactions.Interactable` GameObject in the Unity Hierarchy window and change the `Primary Action` property to `Interactable.GrabAction.Follow` and change the `Secondary Action` property to `Interactable.GrabAction.Swap` on the `Interactable Facade` component.
 
 ![Select Prefab Follow Actions](assets/images/SelectPrefabFollowActions.png)
 
@@ -60,6 +60,6 @@ You can grab the `Interactions.Interactable` GameObject with the other Controlle
 
 ![Throwing The Interactable Into The Air](assets/images/ThrowingTheInteractableIntoTheAir.png)
 
-[Add the Tilia.Interactions.Interactor.Unity]: https://github.com/ExtendRealityLtd/Tilia.Interactions.Interactables.Unity/tree/master/Documentation/HowToGuides/AddingAnInteractor
+[Add the Tilia.Interactions.Interactor.Unity -> Interactions.Interactor]: ../AddingAnInteractor/README.md
 [Install the Tilia.Interactions.Interactables.Unity]: ../Installation/README.md
 [Unity]: https://unity3d.com/
