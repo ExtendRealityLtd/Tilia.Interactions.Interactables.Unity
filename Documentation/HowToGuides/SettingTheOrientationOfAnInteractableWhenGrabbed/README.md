@@ -14,7 +14,7 @@ A good example of this is when you grab a sword, you would want the sword Intera
 
 ## Prerequisites
 
-* [Add the Tilia.Interactions.Interactables.Unity] prefab to the scene Hierarchy.
+* [Add the Tilia.Interactions.Interactor.Unity -> Interactions.Interactable] prefab to the scene hierarchy.
 
 ## Let's Start
 
@@ -50,7 +50,7 @@ With the `Interactions.Interactable -> Mesh Container -> Cube(2)` GameObject sel
 
 ### Step 2
 
-Select the `Interactions.Interactable` GameObject from the [Unity] Hierarchy and change the `Grab Offset` property value to `Orientation Handle` on the `Interactable Facade` component.
+Select the `Interactions.Interactable` GameObject from the [Unity] Hierarchy window and change the `Grab Offset` property value to `Orientation Handle` on the `Interactable Facade` component.
 
 ![Change Property Value To Orientation Handle](assets/images/ChangePropertyValueToOrientationHandle.png)
 
@@ -67,7 +67,7 @@ Expand the `OrientationHandles -> OrientationHandleCollection` GameObject and se
 
 ![Set Generic Orientation Handle Transform Properties](assets/images/SetGenericOrientationHandleTransformProperties.png)
 
-Play the Unity Scene and grab the sword with either controller. You will notice it orientates so that the sword is pointing upwards in the hand of the controller, however the sword guard always points to the left.
+Play the Unity scene and grab the sword with either controller. You will notice it orientates so that the sword is pointing upwards in the hand of the controller, however the sword guard always points to the left.
 
 ### Step 4
 
@@ -83,7 +83,7 @@ Select the `OrientationHandles -> OrientationHandleCollection -> GenericOrientat
 
 We need to now tell the Orientation Handle logic to use one `OrientationHandle` GameObject when we grab with the left controller and use a different `OrientationHandle` GameObject when we grab with the right controller.
 
-Select the `OrientationHandles` GameObject from the Unity Hierarchy then increase the `Relations -> Elements -> Size` property value by `1` on the `GameObject Relations` component.
+Select the `OrientationHandles` GameObject from the Unity Hierarchy window then increase the `Relations -> Elements -> Size` property value by `1` on the `GameObject Relations` component.
 
 > The size property will be `1` by default, so change it to `2`.
 
@@ -119,5 +119,5 @@ Then Grab with the left controller and notice the orientation is rotated so that
 
 ![Left Done](assets/images/LeftDone.png)
 
-[Add the Tilia.Interactions.Interactables.Unity]: ../AddingAnInteractable/README.md
+[Add the Tilia.Interactions.Interactor.Unity -> Interactions.Interactable]: ../AddingAnInteractable/README.md
 [Unity]: https://unity3d.com/

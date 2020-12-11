@@ -14,7 +14,7 @@ The `Interactions.Interactor` prefab can be added to any GameObject that we want
 
 ## Prerequisites
 
-* [Add the Tilia.CameraRigs.TrackedAlias.Unity] prefab to the scene Hierarchy.
+* [Add the Tilia.CameraRigs.TrackedAlias.Unity -> CameraRigs.TrackedAlias] prefab to the scene hierarchy.
 * [Install the Tilia.Interactions.Interactables.Unity] package dependency in to your [Unity] project.
 
 ## Let's Start
@@ -25,7 +25,7 @@ The `Interactions.Interactor` prefab comes with an `ExampleAvatar` GameObject, w
 
 > If you followed the [Add the Tilia.CameraRigs.TrackedAlias.Unity] guide and added in custom GameObjects for controller avatars, you can delete them now as the `ExampleAvatar` GameObject will provide us with a basic controller avatar instead.
 
-Expand the `Tilia Interactors Interactables Unity` Package directory in the Unity Project window and select the `Packages -> Tilia Interactors Interactables Unity -> Runtime -> Interactors -> Prefabs` directory. For this example, we’re going to add the `Interactions.Interactor` prefab to our controller aliases within our `CameraRigs.TrackedAlias` prefab so expand the `CameraRigs.TrackedAlias` prefab in the Unity Hierarchy window until the `LeftControllerAlias` and `RightControllerAlias` GameObjects are visible.
+Expand the `Tilia Interactors Interactables Unity` package directory in the Unity Project window and select the `Packages -> Tilia Interactors Interactables Unity -> Runtime -> Interactors -> Prefabs` directory. For this example, we’re going to add the `Interactions.Interactor` prefab to our controller aliases within our `CameraRigs.TrackedAlias` prefab so expand the `CameraRigs.TrackedAlias` prefab in the Unity Hierarchy window until the `LeftControllerAlias` and `RightControllerAlias` GameObjects are visible.
 
 Drag and drop the `Interactions.Interactor` prefab to be a child of the `LeftControllerAlias` then drag and drop another `Interactions.Interactor` prefab to be a child of the `RightControllerAlias`.
 
@@ -35,7 +35,7 @@ Drag and drop the `Interactions.Interactor` prefab to be a child of the `LeftCon
 
 ### Step 2
 
-Select the `Interactions.Interactor` prefab in the Unity Hierarchy under the `LeftControllerAlias` GameObject and change the `Interactor Facade` component to configure the base functionality of the Interactor.
+Select the `Interactions.Interactor` prefab in the Unity Hierarchy window under the `LeftControllerAlias` GameObject and change the `Interactor Facade` component to configure the base functionality of the Interactor.
 
 We need to specify an action that initiates the Interactor’s Grab notification. The `Grab Action` property on the `Interactor Facade` component allows us to provide a `Boolean Action` to initiate the Grab function of the Interactor.
 
@@ -63,8 +63,8 @@ Drag and drop the `CameraRigs.TrackedAlias -> Aliases -> LeftControllerAlias` Ga
 
 ### Done
 
-We now have an `Interactions.Interactor` prefab attached to our `CameraRigs.TrackedAlias -> Aliases -> LeftControllerAlias` and our `CameraRigs.TrackedAlias -> Aliases -> RightControllerAlias` and Interactors will follow the Alias GameObjects as if they are children of the GameObjects in the Unity Hierarchy. At the moment, these Interactors won’t do anything special in our scene because there is nothing to interact with.
+We now have an `Interactions.Interactor` prefab attached to our `CameraRigs.TrackedAlias -> Aliases -> LeftControllerAlias` and our `CameraRigs.TrackedAlias -> Aliases -> RightControllerAlias` and Interactors will follow the Alias GameObjects as if they are children of the GameObjects in the Unity Hierarchy window. At the moment, these Interactors won’t do anything special in our scene because there is nothing to interact with.
 
-[Add the Tilia.CameraRigs.TrackedAlias.Unity]: https://github.com/ExtendRealityLtd/Tilia.CameraRigs.TrackedAlias.Unity/tree/master/Documentation/HowToGuides/AddingATrackedAlias
+[Add the Tilia.CameraRigs.TrackedAlias.Unity -> CameraRigs.TrackedAlias]: https://github.com/ExtendRealityLtd/Tilia.CameraRigs.TrackedAlias.Unity/tree/master/Documentation/HowToGuides/AddingATrackedAlias/README.md
 [Install the Tilia.Interactions.Interactables.Unity]: ../Installation/README.md
 [Unity]: https://unity3d.com/

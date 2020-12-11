@@ -14,7 +14,7 @@ We can use the `Interactions.ActionPublisher` and `Interactions.ActionReceiver` 
 
 ## Prerequisites
 
-* [Add the Tilia.Interactions.Interactable.Unity] prefab to the scene Hierarchy.
+* [Add the Tilia.Interactions.Interactor.Unity -> Interactions.Interactable] prefab to the scene hierarchy.
 
 ## Let's Start
 
@@ -34,9 +34,9 @@ Then we'll enable the `CameraRigs.UnityXR` prefab, which will serve as our gener
 
 ### Step 2
 
-Expand the `Tilia Input UnityInputManager` Package directory in the Unity Project window and select the `Packages -> Runtime -> Prefabs -> ControllerMappings` directory. For this example we are going to add the `Input.UnityInputManager.Oculus.TouchLeftController` prefab and the `Input.UnityInputManager.Oculus.TouchRightController`prefab.
+Expand the `Tilia Input UnityInputManager` package directory in the Unity Project window and select the `Packages -> Runtime -> Prefabs -> ControllerMappings` directory. For this example we are going to add the `Input.UnityInputManager.Oculus.TouchLeftController` prefab and the `Input.UnityInputManager.Oculus.TouchRightController`prefab.
 
-Drag and Drop the `Input.UnityInputManager.Oculus.TouchLeftController` prefab and the `Input.UnityInputManager.Oculus.TouchRightController` prefab into the Unity hierarchy window.
+Drag and Drop the `Input.UnityInputManager.Oculus.TouchLeftController` prefab and the `Input.UnityInputManager.Oculus.TouchRightController` prefab into the Unity Hierarchy window.
 
 ![Drag And Drop Oculus Input](assets/images/DragAndDropOculusInput.png)
 
@@ -54,7 +54,7 @@ Expand the `Input.UnityInputManager.Oculus.TouchLeftController -> Input Actions 
 
 ### Step 4
 
-Expand the `Tilia Interactions Interactables Unity` Package directory in the Unity project window and select the `Packages -> Tilia Interactions Interactables Unity -> Runtime -> Interactors -> Prefabs` directory then drag and drop the `Interactions.ActionPublisher` prefab into the `CameraRigs.TrackedAlias -> Aliases -> LeftControllerAlias` GameObject in the Unity hierarchy window.
+Expand the `Tilia Interactions Interactables Unity` package directory in the Unity Project window and select the `Packages -> Tilia Interactions Interactables Unity -> Runtime -> Interactors -> Prefabs` directory then drag and drop the `Interactions.ActionPublisher` prefab into the `CameraRigs.TrackedAlias -> Aliases -> LeftControllerAlias` GameObject in the Unity Hierarchy window.
 
 ![Drag And Drop Action Publisher Into Left Controller Alias](assets/images/DragAndDropActionPublisherIntoLeftControllerAlias.png)
 
@@ -102,7 +102,7 @@ Then drag and drop the `Interactions.Interactable` GameObject to be a child of t
 
 ### Step 8
 
-Expand the `Tilia Interactions Interactables Unity` Package directory in the Unity project window and select the `Packages -> Tilia Interactions Interactables Unity -> Runtime -> Interactables -> Prefabs` directory then drag and drop the `Interactions.ActionReceiver` prefab into the Unity hierarchy window as a child of the `OpacityChangingInteractable` GameObject
+Expand the `Tilia Interactions Interactables Unity` package directory in the Unity project window and select the `Packages -> Tilia Interactions Interactables Unity -> Runtime -> Interactables -> Prefabs` directory then drag and drop the `Interactions.ActionReceiver` prefab into the Unity Hierarchy window as a child of the `OpacityChangingInteractable` GameObject
 
 ![Drag And Drop Action Receiver](assets/images/DragAndDropActionReceiver.png)
 
@@ -114,7 +114,7 @@ Drag and drop the `OpacityChangingInteractable -> Interactions.Interactable` Gam
 
 ### Step 10
 
-Select the `OpacityChangingInteractable -> Interactions.ActionReceiver` GameObject in the Unity hierachy window then increase the `Source Publishers -> Elements -> Size` property by `2` on the `Interactable Action Receiver Facade`.
+Select the `OpacityChangingInteractable -> Interactions.ActionReceiver` GameObject in the Unity Hierarchy window then increase the `Source Publishers -> Elements -> Size` property by `2` on the `Interactable Action Receiver Facade`.
 
 > The property will be 0 by default so change it to 2
 
@@ -173,7 +173,7 @@ public class OpacityChanger : MonoBehaviour
 
 This simple script has a single method called `ChangeOpacity` which will take a `float` value that sets the opacity of the material that is used on the GameObject.
 
-Create a new `Empty` GameObject by right clicking on the `OpacityChangingInteractable` GameObject in the Unity hierarchy and selecting `Create Empty` then rename the new `Empty` GameObject to `OpacityChanger`.
+Create a new `Empty` GameObject by right clicking on the `OpacityChangingInteractable` GameObject in the Unity Hierarchy window and selecting `Create Empty` then rename the new `Empty` GameObject to `OpacityChanger`.
 
 Add the new `OpacityChanger` component to the `OpacityChangingInteractable -> OpacityChanger` GameObject.
 
@@ -199,7 +199,7 @@ Then change the `Albedo` property on the `ChangingMaterial` material to another 
 
 ### Step 16
 
-Drag and drop the `ChangingMaterial` material from the Unity project assets onto the Interactable cube in the Unity scene and this will update the material being used by the Interactable.
+Drag and drop the `Assets -> ChangingMaterial` material from the Unity Project window onto the Interactable cube in the Unity scene and this will update the material being used by the Interactable.
 
 ![Drag And Drop Changing Material](assets/images/DragAndDropChangingMaterial.png)
 
@@ -223,6 +223,6 @@ Play the Unity scene, you can grab the cube with the grip button on the VR contr
 
 ![Pressing The Trigger Makes The Cube Transparent](assets/images/PressingTheTriggerMakesTheCubeTransparent.png)
 
-[Add the Tilia.Interactions.Interactable.Unity]: ../AddingAnInteractable/README.md
-[Enabling Unity VR Support]: https://github.com/ExtendRealityLtd/Tilia.CameraRigs.UnityXR/tree/master/Documentation/HowToGuides/Installation#step-2-configuring-the-unity-project
+[Add the Tilia.Interactions.Interactor.Unity -> Interactions.Interactable]: ../AddingAnInteractable/README.md
 [Unity]: https://unity3d.com/
+[Enabling Unity VR Support]: https://github.com/ExtendRealityLtd/Tilia.CameraRigs.UnityXR/tree/master/Documentation/HowToGuides/Installation#step-2-configuring-the-unity-project
