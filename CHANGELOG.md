@@ -1,5 +1,18 @@
 # Changelog
 
+## [1.15.0](https://github.com/ExtendRealityLtd/Tilia.Interactions.Interactables.Unity/compare/v1.14.4...v1.15.0) (2020-12-13)
+
+#### Features
+
+* **Interactions:** add ability to choose valid interaction types ([941fa68](https://github.com/ExtendRealityLtd/Tilia.Interactions.Interactables.Unity/commit/941fa68c311966ecec57f14271ab6747bf37208c))
+  > The new ValidInteractionTypes enum property makes it possible to pre-determine what interaction types the Interactable will respond to.
+  > 
+  > Note: A grab can still occur if the Interactable does not respond to a touch because the touch on the Interactor side is still valid. This is useful for disabling touch events but still wanting to grab.
+  > 
+  > An UngrabAll method has been added too that is just a shortcut to `Ungrab(0)` for easier understanding in the facade.
+* **Interactions:** deprecate end of frame methods ([ac2c59f](https://github.com/ExtendRealityLtd/Tilia.Interactions.Interactables.Unity/commit/ac2c59f0dd0b33b6dfada5c312fee5e756c954e8))
+  > The InteractableFacade EndOfFrame methods have now all been deprecated as the WaitForEndOfFrameYieldEmitter component should be used if a method needs calling at the end of a frame.
+
 ### [1.14.4](https://github.com/ExtendRealityLtd/Tilia.Interactions.Interactables.Unity/compare/v1.14.3...v1.14.4) (2020-12-12)
 
 #### Miscellaneous Chores
