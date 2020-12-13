@@ -24,6 +24,26 @@
         [Serializable]
         public class UnityEvent : UnityEvent<InteractorFacade> { }
 
+        /// <summary>
+        /// The allowed interaction states.
+        /// </summary>
+        [Flags]
+        public enum InteractionTypes
+        {
+            /// <summary>
+            /// Whether the Interactable can be touched.
+            /// </summary>
+            Touch = 1 << 0,
+            /// <summary>
+            /// Whether the Interactable can be primarily grabbed.
+            /// </summary>
+            PrimaryGrab = 1 << 1,
+            /// <summary>
+            /// Whether the Interactable can be secondarily grabbed.
+            /// </summary>
+            SecondaryGrab = 1 << 2,
+        }
+
         #region Reference Settings
         /// <summary>
         /// The linked <see cref="InteractableConfigurator"/>.
@@ -31,6 +51,12 @@
         [Serialized]
         [field: Header("Reference Settings"), DocumentedByXml, Restricted]
         public InteractableConfigurator Configuration { get; protected set; }
+        /// <summary>
+        /// The types of interaction that are valid on the Interactable.
+        /// </summary>
+        [Serialized]
+        [field: DocumentedByXml, UnityFlags]
+        public InteractionTypes ValidInteractionTypes { get; set; } = (InteractionTypes)(-1);
         #endregion
 
         #region Touch Events
@@ -158,6 +184,7 @@
         /// <summary>
         /// A reusable instance of <see cref="WaitForEndOfFrame"/>.
         /// </summary>
+        [Obsolete("EndOfFrame methods are now obsolete.")]
         protected WaitForEndOfFrame delayInstruction = new WaitForEndOfFrame();
 
         /// <summary>
@@ -173,8 +200,11 @@
         /// Attempt to grab the Interactable to the given <see cref="GameObject"/> that contains an Interactor and ungrabs any existing grabbed Interactable at the end of the current frame.
         /// </summary>
         /// <param name="interactor">The GameObject that the Interactor is on.</param>
+        [Obsolete("Use `WaitForEndOfFrameYieldEmitter.Yielded() -> InteractableFacade.Grab()` instead.")]
         public virtual void GrabAtEndOfFrame(GameObject interactor)
         {
+            Debug.LogWarning("`InteractableFacade.GrabAtEndOfFrame()` has been deprecated. Use `WaitForEndOfFrameYieldEmitter.Yielded() -> InteractableFacade.Grab()` instead.", gameObject);
+
             GrabAtEndOfFrame(GetInteractorFromGameObject(interactor));
         }
 
@@ -191,8 +221,11 @@
         /// Attempt to grab the Interactable to the given <see cref="GameObject"/> that contains an Interactor and does not ungrab any existing grabbed Interactable at the end of the current frame.
         /// </summary>
         /// <param name="interactor">The GameObject that the Interactor is on.</param>
+        [Obsolete("Use `WaitForEndOfFrameYieldEmitter.Yielded() -> InteractableFacade.GrabIgnoreUngrab()` instead.")]
         public virtual void GrabIgnoreUngrabAtEndOfFrame(GameObject interactor)
         {
+            Debug.LogWarning("`InteractableFacade.GrabIgnoreUngrabAtEndOfFrame()` has been deprecated. Use `WaitForEndOfFrameYieldEmitter.Yielded() -> InteractableFacade.GrabIgnoreUngrab()` instead.", gameObject);
+
             GrabIgnoreUngrabAtEndOfFrame(GetInteractorFromGameObject(interactor));
         }
 
@@ -209,8 +242,11 @@
         /// Attempt to grab the Interactable to the given Interactor and ungrabs any existing grabbed Interactable at the end of the current frame.
         /// </summary>
         /// <param name="interactor">The Interactor to attach the Interactable to.</param>
+        [Obsolete("Use `WaitForEndOfFrameYieldEmitter.Yielded() -> InteractableFacade.Grab()` instead.")]
         public virtual void GrabAtEndOfFrame(InteractorFacade interactor)
         {
+            Debug.LogWarning("`InteractableFacade.GrabAtEndOfFrame()` has been deprecated. Use `WaitForEndOfFrameYieldEmitter.Yielded() -> InteractableFacade.Grab()` instead.", gameObject);
+
             if (grabRoutine != null)
             {
                 StopCoroutine(grabRoutine);
@@ -232,8 +268,11 @@
         /// Attempt to grab the Interactable to the given Interactor and does not ungrab any existing grabbed Interactable at the end of the current frame.
         /// </summary>
         /// <param name="interactor">The Interactor to attach the Interactable to.</param>
+        [Obsolete("Use `WaitForEndOfFrameYieldEmitter.Yielded() -> InteractableFacade.GrabIgnoreUngrab()` instead.")]
         public virtual void GrabIgnoreUngrabAtEndOfFrame(InteractorFacade interactor)
         {
+            Debug.LogWarning("`InteractableFacade.GrabIgnoreUngrabAtEndOfFrame()` has been deprecated. Use `WaitForEndOfFrameYieldEmitter.Yielded() -> InteractableFacade.GrabIgnoreUngrab()` instead.", gameObject);
+
             if (grabRoutine != null)
             {
                 StopCoroutine(grabRoutine);
@@ -255,8 +294,11 @@
         /// Attempt to ungrab the Interactable to the given <see cref="GameObject"/> that contains an Interactor at the end of the current frame.
         /// </summary>
         /// <param name="interactor">The GameObject that the Interactor is on.</param>
+        [Obsolete("Use `WaitForEndOfFrameYieldEmitter.Yielded() -> InteractableFacade.Ungrab()` instead.")]
         public virtual void UngrabAtEndOfFrame(GameObject interactor)
         {
+            Debug.LogWarning("`InteractableFacade.UngrabAtEndOfFrame()` has been deprecated. Use `WaitForEndOfFrameYieldEmitter.Yielded() -> InteractableFacade.Ungrab()` instead.", gameObject);
+
             UngrabAtEndOfFrame(GetInteractorFromGameObject(interactor));
         }
 
@@ -273,8 +315,11 @@
         /// Attempt to ungrab the Interactable at the end of the current frame.
         /// </summary>
         /// <param name="interactor">The Interactor to ungrab from.</param>
+        [Obsolete("Use `WaitForEndOfFrameYieldEmitter.Yielded() -> InteractableFacade.Ungrab()` instead.")]
         public virtual void UngrabAtEndOfFrame(InteractorFacade interactor)
         {
+            Debug.LogWarning("`InteractableFacade.UngrabAtEndOfFrame()` has been deprecated. Use `WaitForEndOfFrameYieldEmitter.Yielded() -> InteractableFacade.Ungrab()` instead.", gameObject);
+
             if (ungrabRoutine != null)
             {
                 StopCoroutine(ungrabRoutine);
@@ -296,14 +341,36 @@
         /// Attempt to ungrab the Interactable at a specific grabbing index at the end of the current frame.
         /// </summary>
         /// <param name="sequenceIndex">The Interactor sequence index to ungrab from.</param>
+        [Obsolete("Use `WaitForEndOfFrameYieldEmitter.Yielded() -> InteractableFacade.Ungrab()` instead.")]
         public virtual void UngrabAtEndOfFrame(int sequenceIndex = 0)
         {
+            Debug.LogWarning("`InteractableFacade.UngrabAtEndOfFrame()` has been deprecated. Use `WaitForEndOfFrameYieldEmitter.Yielded() -> InteractableFacade.Ungrab()` instead.", gameObject);
+
             if (ungrabRoutine != null)
             {
                 StopCoroutine(ungrabRoutine);
             }
 
             ungrabRoutine = StartCoroutine(DoUngrabAtEndOfFrame(sequenceIndex));
+        }
+
+        /// <summary>
+        /// Attempts to ungrab the Interactable from all Interactors.
+        /// </summary>
+        public virtual void UngrabAll()
+        {
+            Ungrab(0);
+        }
+
+        /// <summary>
+        /// Attempts to ungrab the Interactable from all Interactors at the end of the current frame.
+        /// </summary>
+        [Obsolete("Use `WaitForEndOfFrameYieldEmitter.Yielded() -> InteractableFacade.UngrabAll()` instead.")]
+        public virtual void UngrabAllAtEndOfFrame()
+        {
+            Debug.LogWarning("`InteractableFacade.UngrabAllAtEndOfFrame()` has been deprecated. Use `WaitForEndOfFrameYieldEmitter.Yielded() -> InteractableFacade.UngrabAll()` instead.", gameObject);
+
+            UngrabAtEndOfFrame(0);
         }
 
         /// <summary>
@@ -384,6 +451,11 @@
             Configuration.GrabConfiguration.SnapFollowOrientation();
         }
 
+        protected virtual void OnEnable()
+        {
+            SetValidInteractionTypes();
+        }
+
         /// <summary>
         /// Gets the <see cref="InteractorFacade"/> from the given <see cref="GameObject"/> or if not found searches for one on all descendants then ancestors.
         /// </summary>
@@ -399,6 +471,7 @@
         /// </summary>
         /// <param name="interactor">The Interactor to attach the Interactable to.</param>
         /// <returns>An Enumerator to manage the running of the Coroutine.</returns>
+        [Obsolete("Use `WaitForEndOfFrameYieldEmitter.Yielded() -> InteractableFacade.Grab()` instead.")]
         protected virtual IEnumerator DoGrabAtEndOfFrame(InteractorFacade interactor)
         {
             yield return delayInstruction;
@@ -411,6 +484,7 @@
         /// </summary>
         /// <param name="interactor">The Interactor to attach the Interactable to.</param>
         /// <returns>An Enumerator to manage the running of the Coroutine.</returns>
+        [Obsolete("Use `WaitForEndOfFrameYieldEmitter.Yielded() -> InteractableFacade.GrabIgnoreUngrab()` instead.")]
         protected virtual IEnumerator DoGrabIgnoreUngrabAtEndOfFrame(InteractorFacade interactor)
         {
             yield return delayInstruction;
@@ -423,6 +497,7 @@
         /// </summary>
         /// <param name="interactor">The Interactor to ungrab from.</param>
         /// <returns>An Enumerator to manage the running of the Coroutine.</returns>
+        [Obsolete("Use `WaitForEndOfFrameYieldEmitter.Yielded() -> InteractableFacade.Ungrab()` instead.")]
         protected virtual IEnumerator DoUngrabAtEndOfFrame(InteractorFacade interactor)
         {
             yield return delayInstruction;
@@ -435,11 +510,54 @@
         /// </summary>
         /// <param name="sequenceIndex">The Interactor sequence index to ungrab from.</param>
         /// <returns>An Enumerator to manage the running of the Coroutine.</returns>
+        [Obsolete("Use `WaitForEndOfFrameYieldEmitter.Yielded() -> InteractableFacade.Ungrab()` instead.")]
         protected virtual IEnumerator DoUngrabAtEndOfFrame(int sequenceIndex = 0)
         {
             yield return delayInstruction;
             Configuration.GrabConfiguration.Ungrab(sequenceIndex);
             ungrabRoutine = null;
+        }
+
+        /// <summary>
+        /// Activates or Deactivates the interaction types based on the selected <see cref="ValidInteractionTypes"/>.
+        /// </summary>
+        protected virtual void SetValidInteractionTypes()
+        {
+            if ((ValidInteractionTypes & InteractionTypes.Touch) == 0)
+            {
+                DisableTouch();
+            }
+            else
+            {
+                EnableTouch();
+            }
+
+            if ((ValidInteractionTypes & InteractionTypes.PrimaryGrab) == 0)
+            {
+                DisablePrimaryGrabAction();
+            }
+            else
+            {
+                EnablePrimaryGrabAction();
+            }
+
+            if ((ValidInteractionTypes & InteractionTypes.SecondaryGrab) == 0)
+            {
+                DisableSecondaryGrabAction();
+            }
+            else
+            {
+                EnableSecondaryGrabAction();
+            }
+        }
+
+        /// <summary>
+        /// Called after <see cref="ValidInteractionTypes"/> has been changed.
+        /// </summary>
+        [CalledAfterChangeOf(nameof(ValidInteractionTypes))]
+        protected virtual void OnAfterValidInteractionTypesChange()
+        {
+            SetValidInteractionTypes();
         }
 
         /// <summary>
