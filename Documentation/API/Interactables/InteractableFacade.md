@@ -100,6 +100,7 @@ A reusable instance of WaitForEndOfFrame.
 ##### Declaration
 
 ```
+[Obsolete("EndOfFrame methods are now obsolete.")]
 protected WaitForEndOfFrame delayInstruction
 ```
 
@@ -424,6 +425,7 @@ Attempt to grab the Interactable to the given Interactor and ungrabs any existin
 ##### Declaration
 
 ```
+[Obsolete("Use `WaitForEndOfFrameYieldEmitter.Yielded() -> InteractableFacade.Grab()` instead.")]
 protected virtual IEnumerator DoGrabAtEndOfFrame(InteractorFacade interactor)
 ```
 
@@ -446,6 +448,7 @@ Attempt to grab the Interactable to the given Interactor and does not ungrab any
 ##### Declaration
 
 ```
+[Obsolete("Use `WaitForEndOfFrameYieldEmitter.Yielded() -> InteractableFacade.GrabIgnoreUngrab()` instead.")]
 protected virtual IEnumerator DoGrabIgnoreUngrabAtEndOfFrame(InteractorFacade interactor)
 ```
 
@@ -468,6 +471,7 @@ Attempt to ungrab the Interactable at a specific grabbing index at the end of th
 ##### Declaration
 
 ```
+[Obsolete("Use `WaitForEndOfFrameYieldEmitter.Yielded() -> InteractableFacade.Ungrab()` instead.")]
 protected virtual IEnumerator DoUngrabAtEndOfFrame(int sequenceIndex = 0)
 ```
 
@@ -490,6 +494,7 @@ Attempt to ungrab the Interactable at the end of the current frame.
 ##### Declaration
 
 ```
+[Obsolete("Use `WaitForEndOfFrameYieldEmitter.Yielded() -> InteractableFacade.Ungrab()` instead.")]
 protected virtual IEnumerator DoUngrabAtEndOfFrame(InteractorFacade interactor)
 ```
 
@@ -606,6 +611,7 @@ Attempt to grab the Interactable to the given GameObject that contains an Intera
 ##### Declaration
 
 ```
+[Obsolete("Use `WaitForEndOfFrameYieldEmitter.Yielded() -> InteractableFacade.Grab()` instead.")]
 public virtual void GrabAtEndOfFrame(GameObject interactor)
 ```
 
@@ -622,6 +628,7 @@ Attempt to grab the Interactable to the given Interactor and ungrabs any existin
 ##### Declaration
 
 ```
+[Obsolete("Use `WaitForEndOfFrameYieldEmitter.Yielded() -> InteractableFacade.Grab()` instead.")]
 public virtual void GrabAtEndOfFrame(InteractorFacade interactor)
 ```
 
@@ -670,6 +677,7 @@ Attempt to grab the Interactable to the given GameObject that contains an Intera
 ##### Declaration
 
 ```
+[Obsolete("Use `WaitForEndOfFrameYieldEmitter.Yielded() -> InteractableFacade.GrabIgnoreUngrab()` instead.")]
 public virtual void GrabIgnoreUngrabAtEndOfFrame(GameObject interactor)
 ```
 
@@ -686,6 +694,7 @@ Attempt to grab the Interactable to the given Interactor and does not ungrab any
 ##### Declaration
 
 ```
+[Obsolete("Use `WaitForEndOfFrameYieldEmitter.Yielded() -> InteractableFacade.GrabIgnoreUngrab()` instead.")]
 public virtual void GrabIgnoreUngrabAtEndOfFrame(InteractorFacade interactor)
 ```
 
@@ -818,6 +827,7 @@ Attempts to ungrab the Interactable from all Interactors at the end of the curre
 ##### Declaration
 
 ```
+[Obsolete("Use `WaitForEndOfFrameYieldEmitter.Yielded() -> InteractableFacade.UngrabAll()` instead.")]
 public virtual void UngrabAllAtEndOfFrame()
 ```
 
@@ -828,6 +838,7 @@ Attempt to ungrab the Interactable to the given GameObject that contains an Inte
 ##### Declaration
 
 ```
+[Obsolete("Use `WaitForEndOfFrameYieldEmitter.Yielded() -> InteractableFacade.Ungrab()` instead.")]
 public virtual void UngrabAtEndOfFrame(GameObject interactor)
 ```
 
@@ -844,6 +855,7 @@ Attempt to ungrab the Interactable at a specific grabbing index at the end of th
 ##### Declaration
 
 ```
+[Obsolete("Use `WaitForEndOfFrameYieldEmitter.Yielded() -> InteractableFacade.Ungrab()` instead.")]
 public virtual void UngrabAtEndOfFrame(int sequenceIndex = 0)
 ```
 
@@ -860,6 +872,7 @@ Attempt to ungrab the Interactable at the end of the current frame.
 ##### Declaration
 
 ```
+[Obsolete("Use `WaitForEndOfFrameYieldEmitter.Yielded() -> InteractableFacade.Ungrab()` instead.")]
 public virtual void UngrabAtEndOfFrame(InteractorFacade interactor)
 ```
 
