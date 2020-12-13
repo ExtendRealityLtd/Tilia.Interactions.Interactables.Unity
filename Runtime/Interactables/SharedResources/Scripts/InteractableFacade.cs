@@ -24,6 +24,26 @@
         [Serializable]
         public class UnityEvent : UnityEvent<InteractorFacade> { }
 
+        /// <summary>
+        /// The allowed interaction states.
+        /// </summary>
+        [Flags]
+        public enum InteractionTypes
+        {
+            /// <summary>
+            /// Whether the Interactable can be touched.
+            /// </summary>
+            Touch = 1 << 0,
+            /// <summary>
+            /// Whether the Interactable can be primarily grabbed.
+            /// </summary>
+            PrimaryGrab = 1 << 1,
+            /// <summary>
+            /// Whether the Interactable can be secondarily grabbed.
+            /// </summary>
+            SecondaryGrab = 1 << 2,
+        }
+
         #region Reference Settings
         /// <summary>
         /// The linked <see cref="InteractableConfigurator"/>.
@@ -31,6 +51,12 @@
         [Serialized]
         [field: Header("Reference Settings"), DocumentedByXml, Restricted]
         public InteractableConfigurator Configuration { get; protected set; }
+        /// <summary>
+        /// The types of interaction that are valid on the Interactable.
+        /// </summary>
+        [Serialized]
+        [field: DocumentedByXml, UnityFlags]
+        public InteractionTypes ValidInteractionTypes { get; set; } = (InteractionTypes)(-1);
         #endregion
 
         #region Touch Events
@@ -307,6 +333,22 @@
         }
 
         /// <summary>
+        /// Attempts to ungrab the Interactable from all Interactors.
+        /// </summary>
+        public virtual void UngrabAll()
+        {
+            Ungrab(0);
+        }
+
+        /// <summary>
+        /// Attempts to ungrab the Interactable from all Interactors at the end of the current frame.
+        /// </summary>
+        public virtual void UngrabAllAtEndOfFrame()
+        {
+            UngrabAtEndOfFrame(0);
+        }
+
+        /// <summary>
         /// Enables the touch logic.
         /// </summary>
         public virtual void EnableTouch()
@@ -384,6 +426,11 @@
             Configuration.GrabConfiguration.SnapFollowOrientation();
         }
 
+        protected virtual void OnEnable()
+        {
+            SetValidInteractionTypes();
+        }
+
         /// <summary>
         /// Gets the <see cref="InteractorFacade"/> from the given <see cref="GameObject"/> or if not found searches for one on all descendants then ancestors.
         /// </summary>
@@ -440,6 +487,48 @@
             yield return delayInstruction;
             Configuration.GrabConfiguration.Ungrab(sequenceIndex);
             ungrabRoutine = null;
+        }
+
+        /// <summary>
+        /// Activates or Deactivates the interaction types based on the selected <see cref="ValidInteractionTypes"/>.
+        /// </summary>
+        protected virtual void SetValidInteractionTypes()
+        {
+            if ((ValidInteractionTypes & InteractionTypes.Touch) == 0)
+            {
+                DisableTouch();
+            }
+            else
+            {
+                EnableTouch();
+            }
+
+            if ((ValidInteractionTypes & InteractionTypes.PrimaryGrab) == 0)
+            {
+                DisablePrimaryGrabAction();
+            }
+            else
+            {
+                EnablePrimaryGrabAction();
+            }
+
+            if ((ValidInteractionTypes & InteractionTypes.SecondaryGrab) == 0)
+            {
+                DisableSecondaryGrabAction();
+            }
+            else
+            {
+                EnableSecondaryGrabAction();
+            }
+        }
+
+        /// <summary>
+        /// Called after <see cref="ValidInteractionTypes"/> has been changed.
+        /// </summary>
+        [CalledAfterChangeOf(nameof(ValidInteractionTypes))]
+        protected virtual void OnAfterValidInteractionTypesChange()
+        {
+            SetValidInteractionTypes();
         }
 
         /// <summary>

@@ -32,6 +32,10 @@ Caches common properties for an [InteractableFacade] to be restored at a later p
 
 The states of interaction.
 
+#### [InteractableFacade.InteractionTypes]
+
+The allowed interaction states.
+
 [InteractableActionReceiverConfigurator]: InteractableActionReceiverConfigurator.md
 [InteractableActionReceiverFacade]: InteractableActionReceiverFacade.md
 [InteractableConfigurator]: InteractableConfigurator.md
@@ -40,3 +44,4 @@ The states of interaction.
 [InteractablePropertyCache]: InteractablePropertyCache.md
 [InteractableFacade]: InteractableFacade.md
 [InteractableActionReceiverFacade.InteractionState]: InteractableActionReceiverFacade.InteractionState.md
+[InteractableFacade.InteractionTypes]: InteractableFacade.InteractionTypes.md
