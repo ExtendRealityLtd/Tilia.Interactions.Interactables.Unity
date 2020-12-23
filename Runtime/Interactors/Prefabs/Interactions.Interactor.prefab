@@ -73,7 +73,7 @@ GameObject:
   - component: {fileID: 7201182144820029174}
   - component: {fileID: 6176110990875811003}
   - component: {fileID: 6201570065956748988}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: ExampleAvatar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
