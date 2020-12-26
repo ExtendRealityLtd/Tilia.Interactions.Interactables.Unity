@@ -79,6 +79,12 @@
         [field: Header("Reference Settings"), DocumentedByXml]
         public GameObject GrabAttachPoint { get; set; }
         /// <summary>
+        /// The point at which the grabbed Interactable will be attached to the Interactor via precision grabbing.
+        /// </summary>
+        [Serialized]
+        [field: DocumentedByXml, Restricted]
+        public GameObject PrecisionAttachPoint { get; protected set; }
+        /// <summary>
         /// The container of the Interactor avatar components.
         /// </summary>
         [Serialized]

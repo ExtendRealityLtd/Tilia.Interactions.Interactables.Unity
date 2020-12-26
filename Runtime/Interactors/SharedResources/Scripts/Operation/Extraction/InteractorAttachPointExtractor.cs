@@ -4,7 +4,7 @@
     using Zinnia.Data.Operation.Extraction;
 
     /// <summary>
-    /// Extracts the attach point <see cref="GameObject"/> from an <see cref="InteractorFacade"/>.
+    /// Extracts the grab attach point <see cref="GameObject"/> from an <see cref="InteractorFacade"/>.
     /// </summary>
     public class InteractorAttachPointExtractor : ComponentGameObjectExtractor
     {
@@ -37,8 +37,18 @@
 
             InteractorFacade interactorSource = (InteractorFacade)Source;
             return interactorSource != null && interactorSource.GrabConfiguration != null
-                ? interactorSource.GrabAttachPoint
+                ? GetValue(interactorSource)
                 : null;
+        }
+
+        /// <summary>
+        /// Gets the source to extract.
+        /// </summary>
+        /// <param name="interactorSource">The Interactor to extract from.</param>
+        /// <returns>The grab attach point to return.</returns>
+        protected virtual GameObject GetValue(InteractorFacade interactorSource)
+        {
+            return interactorSource.GrabAttachPoint;
         }
     }
 }

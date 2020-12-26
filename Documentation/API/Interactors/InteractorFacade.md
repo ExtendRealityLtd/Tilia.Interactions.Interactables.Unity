@@ -22,6 +22,7 @@ The public interface into the Interactor Prefab.
   * [GrabbedObjects]
   * [GrabConfiguration]
   * [GrabPrecognition]
+  * [PrecisionAttachPoint]
   * [TouchConfiguration]
   * [TouchedObjects]
   * [VelocityTracker]
@@ -200,6 +201,16 @@ The time between initiating the [GrabAction] and touching an Interactable to be 
 
 ```
 public float GrabPrecognition { get; set; }
+```
+
+#### PrecisionAttachPoint
+
+The point at which the grabbed Interactable will be attached to the Interactor via precision grabbing.
+
+##### Declaration
+
+```
+public GameObject PrecisionAttachPoint { get; protected set; }
 ```
 
 #### TouchConfiguration
@@ -632,6 +643,7 @@ public virtual void Ungrab()
 [GrabbedObjects]: #GrabbedObjects
 [GrabConfiguration]: #GrabConfiguration
 [GrabPrecognition]: #GrabPrecognition
+[PrecisionAttachPoint]: #PrecisionAttachPoint
 [TouchConfiguration]: #TouchConfiguration
 [TouchedObjects]: #TouchedObjects
 [VelocityTracker]: #VelocityTracker

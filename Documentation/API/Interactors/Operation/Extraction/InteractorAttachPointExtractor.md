@@ -1,6 +1,6 @@
 # Class InteractorAttachPointExtractor
 
-Extracts the attach point GameObject from an [InteractorFacade].
+Extracts the grab attach point GameObject from an [InteractorFacade].
 
 ## Contents
 
@@ -11,6 +11,7 @@ Extracts the attach point GameObject from an [InteractorFacade].
   * [DoExtract(GameObject)]
   * [Extract(GameObject)]
   * [ExtractValue()]
+  * [GetValue(InteractorFacade)]
 
 ## Details
 
@@ -18,6 +19,7 @@ Extracts the attach point GameObject from an [InteractorFacade].
 
 * System.Object
 * InteractorAttachPointExtractor
+* [InteractorPrecisionPointExtractor]
 
 ##### Namespace
 
@@ -83,7 +85,30 @@ protected override GameObject ExtractValue()
 | --- | --- |
 | GameObject | n/a |
 
+#### GetValue(InteractorFacade)
+
+Gets the source to extract.
+
+##### Declaration
+
+```
+protected virtual GameObject GetValue(InteractorFacade interactorSource)
+```
+
+##### Parameters
+
+| Type | Name | Description |
+| --- | --- | --- |
+| [InteractorFacade] | interactorSource | The Interactor to extract from. |
+
+##### Returns
+
+| Type | Description |
+| --- | --- |
+| GameObject | The grab attach point to return. |
+
 [InteractorFacade]: ../../../Interactors/InteractorFacade.md
+[InteractorPrecisionPointExtractor]: InteractorPrecisionPointExtractor.md
 [Tilia.Interactions.Interactables.Interactors.Operation.Extraction]: README.md
 [Inheritance]: #Inheritance
 [Namespace]: #Namespace
@@ -92,3 +117,4 @@ protected override GameObject ExtractValue()
 [DoExtract(GameObject)]: #DoExtractGameObject
 [Extract(GameObject)]: #ExtractGameObject
 [ExtractValue()]: #ExtractValue
+[GetValue(InteractorFacade)]: #GetValueInteractorFacade
