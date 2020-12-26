@@ -1,5 +1,18 @@
 # Changelog
 
+### [1.15.3](https://github.com/ExtendRealityLtd/Tilia.Interactions.Interactables.Unity/compare/v1.15.2...v1.15.3) (2020-12-26)
+
+#### Bug Fixes
+
+* **Interactions:** add interactor example avatar to IgnoreRaycast layer ([1ec9766](https://github.com/ExtendRealityLtd/Tilia.Interactions.Interactables.Unity/commit/1ec9766327f549de22f7f7ca330d3ddf49a6ccca))
+  > The ExampleAvatar included in the Interactor is now on the IgnoreRaycast layer to prevent any pointers following the interactor from clipping with the avatar and terminating the pointer RayCast too early.
+* **Interactions:** prevent attach point with precision grab ([12c991a](https://github.com/ExtendRealityLtd/Tilia.Interactions.Interactables.Unity/commit/12c991acb330e815ba79c8e4112bf69308d51b3e))
+  > The Grab Attach Point on the Interactor is no longer used when an Interactable is set to precision grab because if the Grab Attach Point has a Transform offset then it means the precision grab is offset too.
+  > 
+  > Instead, a new Precision Attach Point has been added to the Interactor that has a Vector3.zero position so this is used as the follow Source for precision grab so the offset is always zero.
+  > 
+  > It is still possible to offset this new Precision Attach Point if required, but the effects will be the precision grab is also offset.
+
 ### [1.15.2](https://github.com/ExtendRealityLtd/Tilia.Interactions.Interactables.Unity/compare/v1.15.1...v1.15.2) (2020-12-21)
 
 #### Miscellaneous Chores
