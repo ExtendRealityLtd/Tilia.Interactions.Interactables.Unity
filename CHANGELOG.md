@@ -1,5 +1,12 @@
 # Changelog
 
+### [1.15.4](https://github.com/ExtendRealityLtd/Tilia.Interactions.Interactables.Unity/compare/v1.15.3...v1.15.4) (2021-01-04)
+
+#### Bug Fixes
+
+* **Interactions:** use VelocityTracker on Interactor ([c73e8d5](https://github.com/ExtendRealityLtd/Tilia.Interactions.Interactables.Unity/commit/c73e8d5fe8eec7a2cbff9304834378c62a7d119a))
+  > The Interactor would require a VelocityTrackerProcessor but this limited the usage and as it just extends the VelocityTracker then it makes sense for the Interactor to just take a VelocityTracker and this shouldn't break any prefab links either.
+
 ### [1.15.3](https://github.com/ExtendRealityLtd/Tilia.Interactions.Interactables.Unity/compare/v1.15.2...v1.15.3) (2020-12-26)
 
 #### Bug Fixes
