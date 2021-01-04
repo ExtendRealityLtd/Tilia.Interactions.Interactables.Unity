@@ -32,11 +32,11 @@
             [field: DocumentedByXml]
             public BooleanAction TargetGrabAction { get; set; }
             /// <summary>
-            /// The <see cref="VelocityTrackerProcessor"/> to update the <see cref="InteractorFacade.VelocityTracker"/> to.
+            /// The <see cref="VelocityTracker"/> to update the <see cref="InteractorFacade.VelocityTracker"/> to.
             /// </summary>
             [Serialized, Cleared]
             [field: DocumentedByXml]
-            public VelocityTrackerProcessor TargetVelocityTracker { get; set; }
+            public VelocityTracker TargetVelocityTracker { get; set; }
             /// <summary>
             /// The updated value to set the <see cref="InteractorFacade.GrabPrecognition"/> to.
             /// </summary>
@@ -49,9 +49,9 @@
             /// </summary>
             protected BooleanAction cachedGrabAction;
             /// <summary>
-            /// The original <see cref="VelocityTrackerProcessor"/> on the <see cref="TargetFacade"/> to revert back to.
+            /// The original <see cref="VelocityTracker"/> on the <see cref="TargetFacade"/> to revert back to.
             /// </summary>
-            protected VelocityTrackerProcessor cachedVelocityTracker;
+            protected VelocityTracker cachedVelocityTracker;
             /// <summary>
             /// The original <see cref="GrabPrecognition"/> on the <see cref="TargetFacade"/> to revert back to.
             /// </summary>

@@ -235,12 +235,12 @@ public IReadOnlyList<GameObject> TouchedObjects { get; }
 
 #### VelocityTracker
 
-The VelocityTrackerProcessor to measure the interactors current velocity.
+The [VelocityTracker] to measure the interactors current velocity.
 
 ##### Declaration
 
 ```
-public VelocityTrackerProcessor VelocityTracker { get; set; }
+public VelocityTracker VelocityTracker { get; set; }
 ```
 
 ### Methods
@@ -620,6 +620,7 @@ public virtual void Ungrab()
 [GrabInteractorConfigurator]: GrabInteractorConfigurator.md
 [GrabAction]: InteractorFacade.md#GrabAction
 [TouchInteractorConfigurator]: TouchInteractorConfigurator.md
+[VelocityTracker]: InteractorFacade.md#VelocityTracker
 [InteractableFacade]: ../Interactables/InteractableFacade.md
 [InteractorFacade]: InteractorFacade.md
 [GrabAction]: InteractorFacade.md#GrabAction

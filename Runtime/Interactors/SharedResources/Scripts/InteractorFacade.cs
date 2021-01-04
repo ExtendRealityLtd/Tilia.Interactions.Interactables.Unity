@@ -35,11 +35,11 @@
         [field: Header("Interactor Settings"), DocumentedByXml]
         public BooleanAction GrabAction { get; set; }
         /// <summary>
-        /// The <see cref="VelocityTrackerProcessor"/> to measure the interactors current velocity.
+        /// The <see cref="VelocityTracker"/> to measure the interactors current velocity.
         /// </summary>
         [Serialized, Cleared]
         [field: DocumentedByXml]
-        public VelocityTrackerProcessor VelocityTracker { get; set; }
+        public VelocityTracker VelocityTracker { get; set; }
         /// <summary>
         /// The time between initiating the <see cref="GrabAction"/> and touching an Interactable to be considered a valid grab.
         /// </summary>

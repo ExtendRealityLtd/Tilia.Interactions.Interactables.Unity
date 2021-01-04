@@ -81,12 +81,12 @@ protected float cachedGrabPrecognition
 
 #### cachedVelocityTracker
 
-The original VelocityTrackerProcessor on the [TargetFacade] to revert back to.
+The original VelocityTracker on the [TargetFacade] to revert back to.
 
 ##### Declaration
 
 ```
-protected VelocityTrackerProcessor cachedVelocityTracker
+protected VelocityTracker cachedVelocityTracker
 ```
 
 ### Properties
@@ -123,12 +123,12 @@ public float TargetGrabPrecognition { get; set; }
 
 #### TargetVelocityTracker
 
-The VelocityTrackerProcessor to update the [VelocityTracker] to.
+The VelocityTracker to update the [VelocityTracker] to.
 
 ##### Declaration
 
 ```
-public VelocityTrackerProcessor TargetVelocityTracker { get; set; }
+public VelocityTracker TargetVelocityTracker { get; set; }
 ```
 
 ### Methods
