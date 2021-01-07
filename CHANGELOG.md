@@ -1,5 +1,12 @@
 # Changelog
 
+### [1.15.6](https://github.com/ExtendRealityLtd/Tilia.Interactions.Interactables.Unity/compare/v1.15.5...v1.15.6) (2021-01-07)
+
+#### Bug Fixes
+
+* **Interactions:** remove erroneous xml doc from editor ([837efd7](https://github.com/ExtendRealityLtd/Tilia.Interactions.Interactables.Unity/commit/837efd7d49a42c0f59d30c2adca3198fcdb19471))
+  > The InteractableFacadeEditor had an empty XML doc at the top of the class which isn't needed.
+
 ### [1.15.5](https://github.com/ExtendRealityLtd/Tilia.Interactions.Interactables.Unity/compare/v1.15.4...v1.15.5) (2021-01-07)
 
 #### Miscellaneous Chores
