@@ -10,9 +10,6 @@
     using Zinnia.Rule;
     using Zinnia.Tracking.Follow.Modifier.Property.Rotation;
 
-    /// <summary>
-    /// 
-    /// </summary>
     [CustomEditor(typeof(InteractableFacade), true)]
     public class InteractableFacadeEditor : InspectorEditor
     {
