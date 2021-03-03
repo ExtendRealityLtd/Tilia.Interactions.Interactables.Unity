@@ -29,8 +29,8 @@ Describes an action that allows the Interactable to follow an Interactor's posit
   * [VelocityApplier]
   * [WillInheritIsKinematicWhenInactiveFromConsumerRigidbody]
 * [Methods]
-  * [ApplyActiveKinematicState()]
-  * [ApplyInactiveKinematicState()]
+  * [ApplyActiveKinematicState(GameObject)]
+  * [ApplyInactiveKinematicState(GameObject)]
   * [ConfigureFollowTracking()]
   * [ConfigureGrabOffset()]
   * [ForceSnapOrientation()]
@@ -38,6 +38,7 @@ Describes an action that allows the Interactable to follow an Interactor's posit
   * [OnAfterGrabOffsetChange()]
   * [OnAfterGrabSetupChange()]
   * [OnEnable()]
+  * [PrepareColliderForKinematicChange(GameObject)]
 
 ## Details
 
@@ -279,25 +280,37 @@ public bool WillInheritIsKinematicWhenInactiveFromConsumerRigidbody { get; set; 
 
 ### Methods
 
-#### ApplyActiveKinematicState()
+#### ApplyActiveKinematicState(GameObject)
 
 Applies the active kinematic state to the Rigidbody of the Interactable.
 
 ##### Declaration
 
 ```
-public virtual void ApplyActiveKinematicState()
+public virtual void ApplyActiveKinematicState(GameObject initiator)
 ```
 
-#### ApplyInactiveKinematicState()
+##### Parameters
+
+| Type | Name | Description |
+| --- | --- | --- |
+| GameObject | initiator | The initiator that is causing this state change. |
+
+#### ApplyInactiveKinematicState(GameObject)
 
 Applies the inactive kinematic state to the Rigidbody of the Interactable.
 
 ##### Declaration
 
 ```
-public virtual void ApplyInactiveKinematicState()
+public virtual void ApplyInactiveKinematicState(GameObject initiator)
 ```
+
+##### Parameters
+
+| Type | Name | Description |
+| --- | --- | --- |
+| GameObject | initiator | The initiator that is causing this state change. |
 
 #### ConfigureFollowTracking()
 
@@ -371,6 +384,22 @@ protected override void OnAfterGrabSetupChange()
 protected virtual void OnEnable()
 ```
 
+#### PrepareColliderForKinematicChange(GameObject)
+
+Prepares the initiator for a kinematic change if the initiator is an Interactor.
+
+##### Declaration
+
+```
+protected virtual void PrepareColliderForKinematicChange(GameObject initiator)
+```
+
+##### Parameters
+
+| Type | Name | Description |
+| --- | --- | --- |
+| GameObject | initiator | The potential Interactor causing this state change. |
+
 [GrabInteractableAction]: GrabInteractableAction.md
 [GrabInteractableAction.InputActiveCollisionConsumer]: GrabInteractableAction.md#Tilia_Interactions_Interactables_Interactables_Grab_Action_GrabInteractableAction_InputActiveCollisionConsumer
 [GrabInteractableAction.InputGrabReceived]: GrabInteractableAction.md#Tilia_Interactions_Interactables_Interactables_Grab_Action_GrabInteractableAction_InputGrabReceived
@@ -416,8 +445,8 @@ protected virtual void OnEnable()
 [VelocityApplier]: #VelocityApplier
 [WillInheritIsKinematicWhenInactiveFromConsumerRigidbody]: #WillInheritIsKinematicWhenInactiveFromConsumerRigidbody
 [Methods]: #Methods
-[ApplyActiveKinematicState()]: #ApplyActiveKinematicState
-[ApplyInactiveKinematicState()]: #ApplyInactiveKinematicState
+[ApplyActiveKinematicState(GameObject)]: #ApplyActiveKinematicStateGameObject
+[ApplyInactiveKinematicState(GameObject)]: #ApplyInactiveKinematicStateGameObject
 [ConfigureFollowTracking()]: #ConfigureFollowTracking
 [ConfigureGrabOffset()]: #ConfigureGrabOffset
 [ForceSnapOrientation()]: #ForceSnapOrientation
@@ -425,3 +454,4 @@ protected virtual void OnEnable()
 [OnAfterGrabOffsetChange()]: #OnAfterGrabOffsetChange
 [OnAfterGrabSetupChange()]: #OnAfterGrabSetupChange
 [OnEnable()]: #OnEnable
+[PrepareColliderForKinematicChange(GameObject)]: #PrepareColliderForKinematicChangeGameObject

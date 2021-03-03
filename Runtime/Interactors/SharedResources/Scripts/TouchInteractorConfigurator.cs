@@ -63,6 +63,12 @@
         [Serialized]
         [field: DocumentedByXml, Restricted]
         public BooleanAction IsTouchingAction { get; protected set; }
+        /// <summary>
+        /// A <see cref="CollisionTracker"/> for tracking collisions/touches on this Interactor.
+        /// </summary>
+        [Serialized]
+        [field: DocumentedByXml, Restricted]
+        public CollisionTracker TouchTracker { get; protected set; }
         #endregion
 
         /// <summary>

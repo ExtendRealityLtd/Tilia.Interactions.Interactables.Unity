@@ -46,13 +46,9 @@ MonoBehaviour:
   Premodified:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: Zinnia.Tracking.Follow.ObjectFollower+FollowEvent, Zinnia.Runtime,
-      Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
   Modified:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: Zinnia.Tracking.Follow.ObjectFollower+FollowEvent, Zinnia.Runtime,
-      Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
   applyOffset: 1
   applyModificationOnAxis:
     xState: 1
@@ -111,13 +107,9 @@ MonoBehaviour:
   Premodified:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: Zinnia.Tracking.Follow.ObjectFollower+FollowEvent, Zinnia.Runtime,
-      Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
   Modified:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: Zinnia.Tracking.Follow.ObjectFollower+FollowEvent, Zinnia.Runtime,
-      Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
 --- !u!114 &8432516453448636151
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -190,8 +182,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-    m_TypeName: Zinnia.Event.Proxy.GameObjectEventProxyEmitter+UnityEvent, Zinnia.Runtime,
-      Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
   receiveValidity:
     field: {fileID: 0}
 --- !u!1 &413653169666152473
@@ -295,8 +285,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
 --- !u!1 &517120883928539912
 GameObject:
   m_ObjectHideFlags: 0
@@ -306,7 +294,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3482046192453362723}
-  - component: {fileID: 6240288194601417652}
+  - component: {fileID: 9089023917725030337}
   m_Layer: 0
   m_Name: ApplyInactiveKinematicState
   m_TagString: Untagged
@@ -328,7 +316,7 @@ Transform:
   m_Father: {fileID: 3800176843960314224}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &6240288194601417652
+--- !u!114 &9089023917725030337
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -337,15 +325,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 517120883928539912}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d30001a196a70c043aa38298ceaade8c, type: 3}
+  m_Script: {fileID: 11500000, guid: 83b0262053634c7419fe6bb7a304c7b3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  payload: {fileID: 0}
   Emitted:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 3607323991379943426}
         m_MethodName: ApplyInactiveKinematicState
-        m_Mode: 1
+        m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -354,8 +343,8 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
+  receiveValidity:
+    field: {fileID: 0}
 --- !u!1 &616540117915271292
 GameObject:
   m_ObjectHideFlags: 0
@@ -472,13 +461,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-    m_TypeName: Zinnia.Data.Operation.Extraction.ComponentGameObjectExtractor+UnityEvent,
-      Zinnia.Runtime, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
   Failed:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
   source: {fileID: 0}
 --- !u!1 &796462201790724881
 GameObject:
@@ -559,13 +544,9 @@ MonoBehaviour:
   Premodified:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: Zinnia.Tracking.Follow.ObjectFollower+FollowEvent, Zinnia.Runtime,
-      Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
   Modified:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: Zinnia.Tracking.Follow.ObjectFollower+FollowEvent, Zinnia.Runtime,
-      Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
   applyOffset: 1
   applyModificationOnAxis:
     xState: 1
@@ -624,13 +605,9 @@ MonoBehaviour:
   Premodified:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: Zinnia.Tracking.Follow.ObjectFollower+FollowEvent, Zinnia.Runtime,
-      Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
   Modified:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: Zinnia.Tracking.Follow.ObjectFollower+FollowEvent, Zinnia.Runtime,
-      Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
 --- !u!114 &3393304086735995364
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -691,24 +668,16 @@ MonoBehaviour:
   Premodified:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: Zinnia.Tracking.Follow.ObjectFollower+FollowEvent, Zinnia.Runtime,
-      Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
   Modified:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: Zinnia.Tracking.Follow.ObjectFollower+FollowEvent, Zinnia.Runtime,
-      Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
   applyOffset: 1
   Converged:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: Zinnia.Tracking.Follow.ObjectFollower+FollowEvent, Zinnia.Runtime,
-      Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
   Diverged:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: Zinnia.Tracking.Follow.ObjectFollower+FollowEvent, Zinnia.Runtime,
-      Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
   trackDivergence: 0
   divergenceThreshold: {x: 0.1, y: 0.1, z: 0.1}
   velocityLimit: Infinity
@@ -759,13 +728,9 @@ MonoBehaviour:
   Premodified:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: Zinnia.Tracking.Follow.ObjectFollower+FollowEvent, Zinnia.Runtime,
-      Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
   Modified:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: Zinnia.Tracking.Follow.ObjectFollower+FollowEvent, Zinnia.Runtime,
-      Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
   applyOffset: 1
   applyModificationOnAxis:
     xState: 1
@@ -817,24 +782,16 @@ MonoBehaviour:
   Premodified:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: Zinnia.Tracking.Follow.ObjectFollower+FollowEvent, Zinnia.Runtime,
-      Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
   Modified:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: Zinnia.Tracking.Follow.ObjectFollower+FollowEvent, Zinnia.Runtime,
-      Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
   applyOffset: 1
   Converged:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: Zinnia.Tracking.Follow.ObjectFollower+FollowEvent, Zinnia.Runtime,
-      Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
   Diverged:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: Zinnia.Tracking.Follow.ObjectFollower+FollowEvent, Zinnia.Runtime,
-      Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
   trackDivergence: 0
   divergenceThreshold: {x: 0.1, y: 0.1, z: 0.1}
   angularVelocityLimit: Infinity
@@ -919,13 +876,9 @@ MonoBehaviour:
   Premodified:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: Zinnia.Tracking.Follow.ObjectFollower+FollowEvent, Zinnia.Runtime,
-      Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
   Modified:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: Zinnia.Tracking.Follow.ObjectFollower+FollowEvent, Zinnia.Runtime,
-      Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
   applyOffset: 1
   applyModificationOnAxis:
     xState: 1
@@ -975,46 +928,33 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 904395c76e12c3446a04dcec0366de7f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Obtained:
+    m_PersistentCalls:
+      m_Calls: []
   Found:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: Zinnia.Data.Collection.List.GameObjectRelationObservableList+UnityEvent,
-      Zinnia.Runtime, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
   NotFound:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: Zinnia.Data.Collection.List.GameObjectRelationObservableList+UnityEvent,
-      Zinnia.Runtime, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
   IsEmpty:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
   IsPopulated:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
   Populated:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: Zinnia.Data.Collection.List.GameObjectRelationObservableList+UnityEvent,
-      Zinnia.Runtime, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
   Added:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: Zinnia.Data.Collection.List.GameObjectRelationObservableList+UnityEvent,
-      Zinnia.Runtime, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
   Removed:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: Zinnia.Data.Collection.List.GameObjectRelationObservableList+UnityEvent,
-      Zinnia.Runtime, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
   Emptied:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: Zinnia.Data.Collection.List.GameObjectRelationObservableList+UnityEvent,
-      Zinnia.Runtime, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
   currentIndex: 0
   elements:
   - key: {fileID: 0}
@@ -1094,46 +1034,33 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7102cedb00f74625a1cdaa822e5661f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Obtained:
+    m_PersistentCalls:
+      m_Calls: []
   Found:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: Zinnia.Data.Collection.List.GameObjectObservableList+UnityEvent, Zinnia.Runtime,
-      Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
   NotFound:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: Zinnia.Data.Collection.List.GameObjectObservableList+UnityEvent, Zinnia.Runtime,
-      Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
   IsEmpty:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
   IsPopulated:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
   Populated:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: Zinnia.Data.Collection.List.GameObjectObservableList+UnityEvent, Zinnia.Runtime,
-      Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
   Added:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: Zinnia.Data.Collection.List.GameObjectObservableList+UnityEvent, Zinnia.Runtime,
-      Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
   Removed:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: Zinnia.Data.Collection.List.GameObjectObservableList+UnityEvent, Zinnia.Runtime,
-      Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
   Emptied:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: Zinnia.Data.Collection.List.GameObjectObservableList+UnityEvent, Zinnia.Runtime,
-      Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
   currentIndex: 0
   elements:
   - {fileID: 0}
@@ -1212,46 +1139,33 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7102cedb00f74625a1cdaa822e5661f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Obtained:
+    m_PersistentCalls:
+      m_Calls: []
   Found:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: Zinnia.Data.Collection.List.GameObjectObservableList+UnityEvent, Zinnia.Runtime,
-      Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
   NotFound:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: Zinnia.Data.Collection.List.GameObjectObservableList+UnityEvent, Zinnia.Runtime,
-      Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
   IsEmpty:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
   IsPopulated:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
   Populated:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: Zinnia.Data.Collection.List.GameObjectObservableList+UnityEvent, Zinnia.Runtime,
-      Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
   Added:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: Zinnia.Data.Collection.List.GameObjectObservableList+UnityEvent, Zinnia.Runtime,
-      Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
   Removed:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: Zinnia.Data.Collection.List.GameObjectObservableList+UnityEvent, Zinnia.Runtime,
-      Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
   Emptied:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: Zinnia.Data.Collection.List.GameObjectObservableList+UnityEvent, Zinnia.Runtime,
-      Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
   currentIndex: 0
   elements:
   - {fileID: 4534647758027394604}
@@ -1312,13 +1226,9 @@ MonoBehaviour:
   Premodified:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: Zinnia.Tracking.Follow.ObjectFollower+FollowEvent, Zinnia.Runtime,
-      Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
   Modified:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: Zinnia.Tracking.Follow.ObjectFollower+FollowEvent, Zinnia.Runtime,
-      Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
 --- !u!114 &7844480214140473484
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1405,8 +1315,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-    m_TypeName: Zinnia.Event.Proxy.GameObjectEventProxyEmitter+UnityEvent, Zinnia.Runtime,
-      Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
   receiveValidity:
     field: {fileID: 0}
 --- !u!1 &2649009910850353392
@@ -1455,24 +1363,16 @@ MonoBehaviour:
   Premodified:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: Zinnia.Tracking.Follow.ObjectFollower+FollowEvent, Zinnia.Runtime,
-      Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
   Modified:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: Zinnia.Tracking.Follow.ObjectFollower+FollowEvent, Zinnia.Runtime,
-      Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
   applyOffset: 1
   Converged:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: Zinnia.Tracking.Follow.ObjectFollower+FollowEvent, Zinnia.Runtime,
-      Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
   Diverged:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: Zinnia.Tracking.Follow.ObjectFollower+FollowEvent, Zinnia.Runtime,
-      Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
   trackDivergence: 0
   divergenceThreshold: {x: 0.1, y: 0.1, z: 0.1}
   velocityLimit: Infinity
@@ -1529,13 +1429,9 @@ MonoBehaviour:
   Premodified:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: Zinnia.Tracking.Follow.ObjectFollower+FollowEvent, Zinnia.Runtime,
-      Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
   Modified:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: Zinnia.Tracking.Follow.ObjectFollower+FollowEvent, Zinnia.Runtime,
-      Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
 --- !u!1 &2904863625486589982
 GameObject:
   m_ObjectHideFlags: 0
@@ -1617,8 +1513,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-    m_TypeName: Zinnia.Event.Proxy.GameObjectEventProxyEmitter+UnityEvent, Zinnia.Runtime,
-      Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
   receiveValidity:
     field: {fileID: 0}
 --- !u!1 &2986210633965416465
@@ -1697,46 +1591,33 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7102cedb00f74625a1cdaa822e5661f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Obtained:
+    m_PersistentCalls:
+      m_Calls: []
   Found:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: Zinnia.Data.Collection.List.GameObjectObservableList+UnityEvent, Zinnia.Runtime,
-      Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
   NotFound:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: Zinnia.Data.Collection.List.GameObjectObservableList+UnityEvent, Zinnia.Runtime,
-      Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
   IsEmpty:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
   IsPopulated:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
   Populated:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: Zinnia.Data.Collection.List.GameObjectObservableList+UnityEvent, Zinnia.Runtime,
-      Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
   Added:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: Zinnia.Data.Collection.List.GameObjectObservableList+UnityEvent, Zinnia.Runtime,
-      Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
   Removed:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: Zinnia.Data.Collection.List.GameObjectObservableList+UnityEvent, Zinnia.Runtime,
-      Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
   Emptied:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: Zinnia.Data.Collection.List.GameObjectObservableList+UnityEvent, Zinnia.Runtime,
-      Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
   currentIndex: 0
   elements:
   - {fileID: 0}
@@ -1783,46 +1664,33 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7102cedb00f74625a1cdaa822e5661f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Obtained:
+    m_PersistentCalls:
+      m_Calls: []
   Found:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: Zinnia.Data.Collection.List.GameObjectObservableList+UnityEvent, Zinnia.Runtime,
-      Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
   NotFound:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: Zinnia.Data.Collection.List.GameObjectObservableList+UnityEvent, Zinnia.Runtime,
-      Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
   IsEmpty:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
   IsPopulated:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
   Populated:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: Zinnia.Data.Collection.List.GameObjectObservableList+UnityEvent, Zinnia.Runtime,
-      Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
   Added:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: Zinnia.Data.Collection.List.GameObjectObservableList+UnityEvent, Zinnia.Runtime,
-      Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
   Removed:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: Zinnia.Data.Collection.List.GameObjectObservableList+UnityEvent, Zinnia.Runtime,
-      Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
   Emptied:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: Zinnia.Data.Collection.List.GameObjectObservableList+UnityEvent, Zinnia.Runtime,
-      Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
   currentIndex: 0
   elements:
   - {fileID: 4534934962641631106}
@@ -1883,13 +1751,9 @@ MonoBehaviour:
   Premodified:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: Zinnia.Tracking.Follow.ObjectFollower+FollowEvent, Zinnia.Runtime,
-      Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
   Modified:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: Zinnia.Tracking.Follow.ObjectFollower+FollowEvent, Zinnia.Runtime,
-      Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
 --- !u!114 &5432371504749380793
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1950,13 +1814,9 @@ MonoBehaviour:
   Premodified:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: Zinnia.Tracking.Follow.ObjectFollower+FollowEvent, Zinnia.Runtime,
-      Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
   Modified:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: Zinnia.Tracking.Follow.ObjectFollower+FollowEvent, Zinnia.Runtime,
-      Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
   applyOffset: 1
   applyModificationOnAxis:
     xState: 1
@@ -2048,10 +1908,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-    m_TypeName: Zinnia.Tracking.Collision.Active.Event.Proxy.ActiveCollisionConsumerEventProxyEmitter+UnityEvent,
-      Zinnia.Runtime, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
   receiveValidity:
     field: {fileID: 0}
+  ruleSource: 0
 --- !u!1 &3977007870918657801
 GameObject:
   m_ObjectHideFlags: 0
@@ -2105,13 +1964,9 @@ MonoBehaviour:
   Premodified:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: Zinnia.Tracking.Follow.ObjectFollower+FollowEvent, Zinnia.Runtime,
-      Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
   Modified:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: Zinnia.Tracking.Follow.ObjectFollower+FollowEvent, Zinnia.Runtime,
-      Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
 --- !u!114 &6180699135771327390
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2187,9 +2042,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1659144888459829164}
+      - m_Target: {fileID: 8502705903227620506}
         m_MethodName: Receive
-        m_Mode: 1
+        m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -2209,8 +2064,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-    m_TypeName: Zinnia.Event.Proxy.GameObjectEventProxyEmitter+UnityEvent, Zinnia.Runtime,
-      Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
   receiveValidity:
     field: {fileID: 0}
 --- !u!1 &4494120298891318849
@@ -2290,10 +2143,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-    m_TypeName: Zinnia.Tracking.Collision.Active.Event.Proxy.ActiveCollisionConsumerEventProxyEmitter+UnityEvent,
-      Zinnia.Runtime, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
   receiveValidity:
     field: {fileID: 0}
+  ruleSource: 0
 --- !u!1 &4512883921676128300
 GameObject:
   m_ObjectHideFlags: 0
@@ -2374,13 +2226,9 @@ MonoBehaviour:
   Premodified:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: Zinnia.Tracking.Follow.ObjectFollower+FollowEvent, Zinnia.Runtime,
-      Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
   Modified:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: Zinnia.Tracking.Follow.ObjectFollower+FollowEvent, Zinnia.Runtime,
-      Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
   applyOffset: 1
   applyModificationOnAxis:
     xState: 1
@@ -2432,13 +2280,9 @@ MonoBehaviour:
   Premodified:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: Zinnia.Tracking.Follow.ObjectFollower+FollowEvent, Zinnia.Runtime,
-      Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
   Modified:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: Zinnia.Tracking.Follow.ObjectFollower+FollowEvent, Zinnia.Runtime,
-      Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
   applyOffset: 1
   applyModificationOnAxis:
     xState: 1
@@ -2502,8 +2346,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-    m_TypeName: Zinnia.Event.Proxy.GameObjectEventProxyEmitter+UnityEvent, Zinnia.Runtime,
-      Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
   receiveValidity:
     field: {fileID: 0}
 --- !u!1 &4721798909282505285
@@ -2549,46 +2391,33 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7102cedb00f74625a1cdaa822e5661f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Obtained:
+    m_PersistentCalls:
+      m_Calls: []
   Found:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: Zinnia.Data.Collection.List.GameObjectObservableList+UnityEvent, Zinnia.Runtime,
-      Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
   NotFound:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: Zinnia.Data.Collection.List.GameObjectObservableList+UnityEvent, Zinnia.Runtime,
-      Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
   IsEmpty:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
   IsPopulated:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
   Populated:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: Zinnia.Data.Collection.List.GameObjectObservableList+UnityEvent, Zinnia.Runtime,
-      Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
   Added:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: Zinnia.Data.Collection.List.GameObjectObservableList+UnityEvent, Zinnia.Runtime,
-      Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
   Removed:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: Zinnia.Data.Collection.List.GameObjectObservableList+UnityEvent, Zinnia.Runtime,
-      Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
   Emptied:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: Zinnia.Data.Collection.List.GameObjectObservableList+UnityEvent, Zinnia.Runtime,
-      Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
   currentIndex: 0
   elements:
   - {fileID: 135250714997195272}
@@ -2642,13 +2471,9 @@ MonoBehaviour:
   Premodified:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: Zinnia.Tracking.Follow.ObjectFollower+FollowEvent, Zinnia.Runtime,
-      Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
   Modified:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: Zinnia.Tracking.Follow.ObjectFollower+FollowEvent, Zinnia.Runtime,
-      Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
   applyOffset: 1
   applyModificationOnAxis:
     xState: 1
@@ -2733,8 +2558,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
 --- !u!1 &5098870614394569358
 GameObject:
   m_ObjectHideFlags: 0
@@ -2838,8 +2661,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-    m_TypeName: Zinnia.Event.Proxy.GameObjectEventProxyEmitter+UnityEvent, Zinnia.Runtime,
-      Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
   receiveValidity:
     field: {fileID: 0}
 --- !u!1 &5369477105439186357
@@ -2923,8 +2744,6 @@ MonoBehaviour:
   ActiveSourceChanging:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: Zinnia.Process.Component.GameObjectSourceTargetProcessor+GameObjectUnityEvent,
-      Zinnia.Runtime, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
   ceaseAfterFirstSourceProcessed: 1
   sources: {fileID: 6181192862829883364}
   sourceValidity:
@@ -2948,8 +2767,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
   Processed:
     m_PersistentCalls:
       m_Calls:
@@ -2964,8 +2781,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
 --- !u!1 &5608074412122377646
 GameObject:
   m_ObjectHideFlags: 0
@@ -3012,13 +2827,9 @@ MonoBehaviour:
   Premodified:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: Zinnia.Tracking.Follow.ObjectFollower+FollowEvent, Zinnia.Runtime,
-      Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
   Modified:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: Zinnia.Tracking.Follow.ObjectFollower+FollowEvent, Zinnia.Runtime,
-      Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
   applyOffset: 1
   angularVelocitySource: {fileID: 2919631799667094827}
   sourceMultiplier: {x: 0.5, y: 0.5, z: 0.5}
@@ -3155,13 +2966,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
   Cancelled:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
 --- !u!1 &5901610279563605414
 GameObject:
   m_ObjectHideFlags: 0
@@ -3237,10 +3044,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-    m_TypeName: Zinnia.Tracking.Collision.Active.Event.Proxy.ActiveCollisionConsumerEventProxyEmitter+UnityEvent,
-      Zinnia.Runtime, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
   receiveValidity:
     field: {fileID: 0}
+  ruleSource: 0
 --- !u!1 &5967679938758173567
 GameObject:
   m_ObjectHideFlags: 0
@@ -3288,8 +3094,6 @@ MonoBehaviour:
   Emitted:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: Zinnia.Event.Proxy.GameObjectEventProxyEmitter+UnityEvent, Zinnia.Runtime,
-      Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
   receiveValidity:
     field: {fileID: 0}
 --- !u!1 &6056333363797953553
@@ -3368,13 +3172,9 @@ MonoBehaviour:
   Premodified:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: Zinnia.Tracking.Follow.ObjectFollower+FollowEvent, Zinnia.Runtime,
-      Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
   Modified:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: Zinnia.Tracking.Follow.ObjectFollower+FollowEvent, Zinnia.Runtime,
-      Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
   applyOffset: 0
   angularDrag: 1
   followOnAxis:
@@ -3450,8 +3250,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
 --- !u!1 &6356031491017706456
 GameObject:
   m_ObjectHideFlags: 0
@@ -3532,8 +3330,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-    m_TypeName: Zinnia.Tracking.Collision.Active.CollisionPointContainer+UnityEvent,
-      Zinnia.Runtime, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
   PointUnset:
     m_PersistentCalls:
       m_Calls:
@@ -3570,8 +3366,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-    m_TypeName: Zinnia.Tracking.Collision.Active.CollisionPointContainer+UnityEvent,
-      Zinnia.Runtime, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
 --- !u!1 &6422471713060431774
 GameObject:
   m_ObjectHideFlags: 0
@@ -3629,13 +3423,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-    m_TypeName: Zinnia.Data.Operation.Extraction.ComponentGameObjectExtractor+UnityEvent,
-      Zinnia.Runtime, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
   Failed:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
   source: {fileID: 0}
 --- !u!1 &6453161300202616542
 GameObject:
@@ -3683,13 +3473,9 @@ MonoBehaviour:
   Premodified:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: Zinnia.Tracking.Follow.ObjectFollower+FollowEvent, Zinnia.Runtime,
-      Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
   Modified:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: Zinnia.Tracking.Follow.ObjectFollower+FollowEvent, Zinnia.Runtime,
-      Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
   applyOffset: 1
   attachmentPoint: {fileID: 0}
 --- !u!1 &6465056046907040414
@@ -3738,13 +3524,9 @@ MonoBehaviour:
   Premodified:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: Zinnia.Tracking.Follow.ObjectFollower+FollowEvent, Zinnia.Runtime,
-      Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
   Modified:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: Zinnia.Tracking.Follow.ObjectFollower+FollowEvent, Zinnia.Runtime,
-      Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
   applyOffset: 1
   applyModificationOnAxis:
     xState: 1
@@ -3818,8 +3600,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
 --- !u!1 &7007780839671147685
 GameObject:
   m_ObjectHideFlags: 0
@@ -3870,8 +3650,6 @@ MonoBehaviour:
   ActiveSourceChanging:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: Zinnia.Process.Component.GameObjectSourceTargetProcessor+GameObjectUnityEvent,
-      Zinnia.Runtime, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
   ceaseAfterFirstSourceProcessed: 1
   sources: {fileID: 6181192862829883364}
   sourceValidity:
@@ -3884,13 +3662,9 @@ MonoBehaviour:
   Preprocessed:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
   Processed:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
 --- !u!114 &6326138546683961839
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3919,46 +3693,33 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15a9c53f0e146454cb669c38817bd5b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Obtained:
+    m_PersistentCalls:
+      m_Calls: []
   Found:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: Zinnia.Process.Moment.Collection.MomentProcessObservableList+UnityEvent,
-      Zinnia.Runtime, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
   NotFound:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: Zinnia.Process.Moment.Collection.MomentProcessObservableList+UnityEvent,
-      Zinnia.Runtime, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
   IsEmpty:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
   IsPopulated:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
   Populated:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: Zinnia.Process.Moment.Collection.MomentProcessObservableList+UnityEvent,
-      Zinnia.Runtime, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
   Added:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: Zinnia.Process.Moment.Collection.MomentProcessObservableList+UnityEvent,
-      Zinnia.Runtime, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
   Removed:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: Zinnia.Process.Moment.Collection.MomentProcessObservableList+UnityEvent,
-      Zinnia.Runtime, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
   Emptied:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: Zinnia.Process.Moment.Collection.MomentProcessObservableList+UnityEvent,
-      Zinnia.Runtime, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
   currentIndex: 0
   elements:
   - {fileID: 6326138546683961839}
@@ -4024,9 +3785,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 6240288194601417652}
+      - m_Target: {fileID: 9089023917725030337}
         m_MethodName: Receive
-        m_Mode: 1
+        m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -4057,8 +3818,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-    m_TypeName: Zinnia.Event.Proxy.GameObjectEventProxyEmitter+UnityEvent, Zinnia.Runtime,
-      Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
   receiveValidity:
     field: {fileID: 0}
 --- !u!1 &7046448932869235788
@@ -4162,8 +3921,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
 --- !u!1 &7131332960759724238
 GameObject:
   m_ObjectHideFlags: 0
@@ -4221,8 +3978,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
 --- !u!1 &7367998399754039868
 GameObject:
   m_ObjectHideFlags: 0
@@ -4292,8 +4047,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-    m_TypeName: Zinnia.Event.Proxy.GameObjectEventProxyEmitter+UnityEvent, Zinnia.Runtime,
-      Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
   receiveValidity:
     field: {fileID: 0}
 --- !u!1 &7506235099704887181
@@ -4365,8 +4118,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-    m_TypeName: Zinnia.Event.Proxy.GameObjectEventProxyEmitter+UnityEvent, Zinnia.Runtime,
-      Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
   receiveValidity:
     field: {fileID: 0}
 --- !u!1 &7812205964303222173
@@ -4378,7 +4129,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 798308224245418113}
-  - component: {fileID: 1659144888459829164}
+  - component: {fileID: 8502705903227620506}
   m_Layer: 0
   m_Name: ApplyActiveKinematicState
   m_TagString: Untagged
@@ -4400,7 +4151,7 @@ Transform:
   m_Father: {fileID: 3665363827740273054}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1659144888459829164
+--- !u!114 &8502705903227620506
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -4409,25 +4160,26 @@ MonoBehaviour:
   m_GameObject: {fileID: 7812205964303222173}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d30001a196a70c043aa38298ceaade8c, type: 3}
+  m_Script: {fileID: 11500000, guid: 83b0262053634c7419fe6bb7a304c7b3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  payload: {fileID: 0}
   Emitted:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 3607323991379943426}
         m_MethodName: ApplyActiveKinematicState
-        m_Mode: 1
+        m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
-          m_BoolArgument: 1
+          m_BoolArgument: 0
         m_CallState: 2
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
+  receiveValidity:
+    field: {fileID: 0}
 --- !u!1 &8383897299125396091
 GameObject:
   m_ObjectHideFlags: 0
@@ -4474,13 +4226,9 @@ MonoBehaviour:
   Premodified:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: Zinnia.Tracking.Follow.ObjectFollower+FollowEvent, Zinnia.Runtime,
-      Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
   Modified:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: Zinnia.Tracking.Follow.ObjectFollower+FollowEvent, Zinnia.Runtime,
-      Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
   applyOffset: 1
   applyModificationOnAxis:
     xState: 1
@@ -4532,13 +4280,9 @@ MonoBehaviour:
   Premodified:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: Zinnia.Tracking.Follow.ObjectFollower+FollowEvent, Zinnia.Runtime,
-      Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
   Modified:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: Zinnia.Tracking.Follow.ObjectFollower+FollowEvent, Zinnia.Runtime,
-      Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
   applyOffset: 1
   applyModificationOnAxis:
     xState: 1
@@ -4625,13 +4369,9 @@ MonoBehaviour:
   Premodified:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: Zinnia.Tracking.Follow.ObjectFollower+FollowEvent, Zinnia.Runtime,
-      Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
   Modified:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: Zinnia.Tracking.Follow.ObjectFollower+FollowEvent, Zinnia.Runtime,
-      Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
   applyOffset: 1
   applyModificationOnAxis:
     xState: 1
@@ -4684,8 +4424,6 @@ MonoBehaviour:
   Emitted:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: Zinnia.Event.Proxy.GameObjectEventProxyEmitter+UnityEvent, Zinnia.Runtime,
-      Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
   receiveValidity:
     field: {fileID: 0}
 --- !u!1 &8904609851980032163
@@ -4782,8 +4520,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-    m_TypeName: Zinnia.Data.Collection.GameObjectRelations+GameObjectUnityEvent, Zinnia.Runtime,
-      Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
   KeyNotFound:
     m_PersistentCalls:
       m_Calls:
@@ -4798,8 +4534,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
 --- !u!1 &8975768877303537063
 GameObject:
   m_ObjectHideFlags: 0
@@ -4843,45 +4577,32 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7102cedb00f74625a1cdaa822e5661f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Obtained:
+    m_PersistentCalls:
+      m_Calls: []
   Found:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: Zinnia.Data.Collection.List.GameObjectObservableList+UnityEvent, Zinnia.Runtime,
-      Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
   NotFound:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: Zinnia.Data.Collection.List.GameObjectObservableList+UnityEvent, Zinnia.Runtime,
-      Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
   IsEmpty:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
   IsPopulated:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
   Populated:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: Zinnia.Data.Collection.List.GameObjectObservableList+UnityEvent, Zinnia.Runtime,
-      Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
   Added:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: Zinnia.Data.Collection.List.GameObjectObservableList+UnityEvent, Zinnia.Runtime,
-      Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
   Removed:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: Zinnia.Data.Collection.List.GameObjectObservableList+UnityEvent, Zinnia.Runtime,
-      Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
   Emptied:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: Zinnia.Data.Collection.List.GameObjectObservableList+UnityEvent, Zinnia.Runtime,
-      Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
   currentIndex: 0
   elements: []
