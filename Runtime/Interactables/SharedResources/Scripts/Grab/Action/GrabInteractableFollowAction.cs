@@ -3,6 +3,7 @@
     using Malimbe.MemberChangeMethod;
     using Malimbe.PropertySerializationAttribute;
     using Malimbe.XmlDocumentationAttribute;
+    using Tilia.Interactions.Interactables.Interactors;
     using UnityEngine;
     using Zinnia.Data.Attribute;
     using Zinnia.Data.Collection.List;
@@ -198,16 +199,20 @@
         /// <summary>
         /// Applies the active kinematic state to the <see cref="Rigidbody"/> of the Interactable.
         /// </summary>
-        public virtual void ApplyActiveKinematicState()
+        /// <param name="initiator">The initiator that is causing this state change.</param>
+        public virtual void ApplyActiveKinematicState(GameObject initiator)
         {
+            PrepareColliderForKinematicChange(initiator);
             GrabSetup.Facade.Configuration.ConsumerRigidbody.isKinematic = IsKinematicWhenActive;
         }
 
         /// <summary>
         /// Applies the inactive kinematic state to the <see cref="Rigidbody"/> of the Interactable.
         /// </summary>
-        public virtual void ApplyInactiveKinematicState()
+        /// <param name="initiator">The initiator that is causing this state change.</param>
+        public virtual void ApplyInactiveKinematicState(GameObject initiator)
         {
+            PrepareColliderForKinematicChange(initiator);
             GrabSetup.Facade.Configuration.ConsumerRigidbody.isKinematic = IsKinematicWhenInactive;
         }
 
@@ -223,6 +228,21 @@
         {
             ConfigureFollowTracking();
             ConfigureGrabOffset();
+        }
+
+        /// <summary>
+        /// Prepares the initiator for a kinematic change if the initiator is an Interactor.
+        /// </summary>
+        /// <param name="initiator">The potential Interactor causing this state change.</param>
+        protected virtual void PrepareColliderForKinematicChange(GameObject initiator)
+        {
+            InteractorFacade interactor = initiator.GetComponent<InteractorFacade>();
+            if (interactor == null)
+            {
+                return;
+            }
+
+            interactor.TouchConfiguration.TouchTracker.PrepareKinematicStateChange(GrabSetup.Facade.Configuration.ConsumerRigidbody);
         }
 
         /// <summary>

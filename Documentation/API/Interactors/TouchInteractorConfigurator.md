@@ -19,6 +19,7 @@ Sets up the Interactor Prefab touch settings based on the provided user settings
   * [StartTouchingPublisher]
   * [StopTouchingPublisher]
   * [TouchedObjects]
+  * [TouchTracker]
 * [Methods]
   * [GetActiveTouchedObject()]
   * [GetTouchedObjects()]
@@ -145,6 +146,16 @@ A collection of currently touched GameObjects.
 public IReadOnlyList<GameObject> TouchedObjects { get; }
 ```
 
+#### TouchTracker
+
+A CollisionTracker for tracking collisions/touches on this Interactor.
+
+##### Declaration
+
+```
+public CollisionTracker TouchTracker { get; protected set; }
+```
+
 ### Methods
 
 #### GetActiveTouchedObject()
@@ -204,6 +215,7 @@ protected virtual void OnDisable()
 [StartTouchingPublisher]: #StartTouchingPublisher
 [StopTouchingPublisher]: #StopTouchingPublisher
 [TouchedObjects]: #TouchedObjects
+[TouchTracker]: #TouchTracker
 [Methods]: #Methods
 [GetActiveTouchedObject()]: #GetActiveTouchedObject
 [GetTouchedObjects()]: #GetTouchedObjects
