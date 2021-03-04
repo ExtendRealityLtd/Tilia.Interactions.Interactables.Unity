@@ -2,7 +2,7 @@
     "name": "io.extendreality.tilia.interactions.interactables.unity",
     "displayName": "Tilia Interactions Interactables Unity",
     "description": "A variety of mechanisms for interacting between interactors and interactables in a spatial scene for the Unity software.",
-    "version": "1.15.9",
+    "version": "1.15.10",
     "unity": "2018.3",
     "unityRelease": "10f1",
     "keywords": [

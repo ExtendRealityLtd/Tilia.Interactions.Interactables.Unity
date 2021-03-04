@@ -1,5 +1,14 @@
 # Changelog
 
+### [1.15.10](https://github.com/ExtendRealityLtd/Tilia.Interactions.Interactables.Unity/compare/v1.15.9...v1.15.10) (2021-03-04)
+
+#### Bug Fixes
+
+* **Interactions:** prepare kinematic state changes on collision tracker ([fb69869](https://github.com/ExtendRealityLtd/Tilia.Interactions.Interactables.Unity/commit/fb698694d096aa5971d626955268d7eb1b5ec992))
+  > The CollisionTracker on the Interactor is now pre-warned of kinematic state changes of any trigger collider that the Interactor is touching and this then works inline with the new CollisionTracker changes that allow the TriggerExit/Enter to be ignored in Unity 2019.3 and above when kinematic changes are made to a rigidbody.
+  > 
+  > This is to ensure the changes introduced by Unity 2019.3 do not break the events on the Interactable because now changing the kinematic state on a Rigidbody will now cause a collsiion exit and collision enter to occur, even though the colliding objects have not stopped colliding. This is due to a change in the PhysX 4.11 system and Unity did not counter this change and introduced a non-documented breaking change.
+
 ### [1.15.9](https://github.com/ExtendRealityLtd/Tilia.Interactions.Interactables.Unity/compare/v1.15.8...v1.15.9) (2021-03-03)
 
 #### Miscellaneous Chores
