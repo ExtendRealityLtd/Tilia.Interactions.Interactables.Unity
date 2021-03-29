@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.16.0](https://github.com/ExtendRealityLtd/Tilia.Interactions.Interactables.Unity/compare/v1.15.11...v1.16.0) (2021-03-29)
+
+#### Features
+
+* **prefabs:** update ControlDirection to implement follow TargetOffset ([95ed5dd](https://github.com/ExtendRealityLtd/Tilia.Interactions.Interactables.Unity/commit/95ed5ddc56787e8b3fbfbf0fdb9813c1bc725bf9))
+  > The latest version of the DirectionModifier now allows for a TargetOffset to be provided, which can be provided from any Follow action as they also consider a TargetOffset. The first found TargetOffset of a complimentary follow action on an interactable will be used as the TargetOffset on the ControlDirection Directionmodifier.
+
 ### [1.15.11](https://github.com/ExtendRealityLtd/Tilia.Interactions.Interactables.Unity/compare/v1.15.10...v1.15.11) (2021-03-29)
 
 #### Miscellaneous Chores
