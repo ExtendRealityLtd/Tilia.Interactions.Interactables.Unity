@@ -44,6 +44,47 @@
         }
 
         /// <summary>
+        /// Sets up the <see cref="DirectionModifier.TargetOffset"/> based on the target offsets from any follow action.
+        /// </summary>
+        public virtual void SetupTargetOffset()
+        {
+            if (GrabSetup == null)
+            {
+                return;
+            }
+
+            if (GrabSetup.SecondaryAction == this)
+            {
+                LinkTargetOffsets(GrabSetup.PrimaryAction);
+            }
+            else if (GrabSetup.PrimaryAction == this)
+            {
+                LinkTargetOffsets(GrabSetup.SecondaryAction);
+            }
+        }
+
+        /// <summary>
+        /// Links the given action's target offset to the <see cref="DirectionModifier.TargetOffset"/> if the action is a Follow Action.
+        /// </summary>
+        /// <param name="action">The action to try and link from.</param>
+        protected virtual void LinkTargetOffsets(GrabInteractableAction action)
+        {
+            if (!typeof(GrabInteractableFollowAction).IsAssignableFrom(action.GetType()))
+            {
+                return;
+            }
+
+            GrabInteractableFollowAction followAction = (GrabInteractableFollowAction)action;
+
+            if (followAction == null || followAction.ObjectFollower == null || followAction.ObjectFollower.TargetOffsets == null)
+            {
+                return;
+            }
+
+            DirectionModifier.TargetOffset = followAction.ObjectFollower.TargetOffsets.NonSubscribableElements.Count > 0 ? followAction.ObjectFollower.TargetOffsets.NonSubscribableElements[0] : null;
+        }
+
+        /// <summary>
         /// Toggles the <see cref="GameObject"/> state of each of the items in the <see cref="LinkedObjects"/> collection.
         /// </summary>
         /// <param name="state">The state to set the <see cref="GameObject"/> active state to.</param>
