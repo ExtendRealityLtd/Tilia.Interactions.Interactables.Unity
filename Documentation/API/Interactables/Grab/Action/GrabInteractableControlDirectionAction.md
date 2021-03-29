@@ -13,7 +13,9 @@ Describes an action that allows the Interactable to point in the direction of a 
 * [Methods]
   * [DisableLinkedObjects()]
   * [EnableLinkedObjects()]
+  * [LinkTargetOffsets(GrabInteractableAction)]
   * [OnAfterGrabSetupChange()]
+  * [SetupTargetOffset()]
   * [ToggleLinkedObjectState(Boolean)]
 
 ## Details
@@ -96,6 +98,22 @@ Enables the GameObject state of each of the items in the [LinkedObjects] collect
 public virtual void EnableLinkedObjects()
 ```
 
+#### LinkTargetOffsets(GrabInteractableAction)
+
+Links the given action's target offset to the DirectionModifier.TargetOffset if the action is a Follow Action.
+
+##### Declaration
+
+```
+protected virtual void LinkTargetOffsets(GrabInteractableAction action)
+```
+
+##### Parameters
+
+| Type | Name | Description |
+| --- | --- | --- |
+| [GrabInteractableAction] | action | The action to try and link from. |
+
 #### OnAfterGrabSetupChange()
 
 Called after [GrabSetup] has been changed.
@@ -109,6 +127,16 @@ protected override void OnAfterGrabSetupChange()
 ##### Overrides
 
 [GrabInteractableAction.OnAfterGrabSetupChange()]
+
+#### SetupTargetOffset()
+
+Sets up the DirectionModifier.TargetOffset based on the target offsets from any follow action.
+
+##### Declaration
+
+```
+public virtual void SetupTargetOffset()
+```
 
 #### ToggleLinkedObjectState(Boolean)
 
@@ -126,7 +154,6 @@ protected virtual void ToggleLinkedObjectState(bool state)
 | --- | --- | --- |
 | System.Boolean | state | The state to set the GameObject active state to. |
 
-[GrabInteractableAction]: GrabInteractableAction.md
 [GrabInteractableAction.InputActiveCollisionConsumer]: GrabInteractableAction.md#Tilia_Interactions_Interactables_Interactables_Grab_Action_GrabInteractableAction_InputActiveCollisionConsumer
 [GrabInteractableAction.InputGrabReceived]: GrabInteractableAction.md#Tilia_Interactions_Interactables_Interactables_Grab_Action_GrabInteractableAction_InputGrabReceived
 [GrabInteractableAction.InputUngrabReceived]: GrabInteractableAction.md#Tilia_Interactions_Interactables_Interactables_Grab_Action_GrabInteractableAction_InputUngrabReceived
@@ -138,6 +165,7 @@ protected virtual void ToggleLinkedObjectState(bool state)
 [Tilia.Interactions.Interactables.Interactables.Grab.Action]: README.md
 [LinkedObjects]: GrabInteractableControlDirectionAction.md#LinkedObjects
 [LinkedObjects]: GrabInteractableControlDirectionAction.md#LinkedObjects
+[GrabInteractableAction]: GrabInteractableAction.md
 [GrabSetup]: GrabInteractableAction.md#Tilia_Interactions_Interactables_Interactables_Grab_Action_GrabInteractableAction_GrabSetup
 [GrabInteractableAction.OnAfterGrabSetupChange()]: GrabInteractableAction.md#Tilia_Interactions_Interactables_Interactables_Grab_Action_GrabInteractableAction_OnAfterGrabSetupChange
 [LinkedObjects]: GrabInteractableControlDirectionAction.md#LinkedObjects
@@ -150,5 +178,7 @@ protected virtual void ToggleLinkedObjectState(bool state)
 [Methods]: #Methods
 [DisableLinkedObjects()]: #DisableLinkedObjects
 [EnableLinkedObjects()]: #EnableLinkedObjects
+[LinkTargetOffsets(GrabInteractableAction)]: #LinkTargetOffsetsGrabInteractableAction
 [OnAfterGrabSetupChange()]: #OnAfterGrabSetupChange
+[SetupTargetOffset()]: #SetupTargetOffset
 [ToggleLinkedObjectState(Boolean)]: #ToggleLinkedObjectStateBoolean
