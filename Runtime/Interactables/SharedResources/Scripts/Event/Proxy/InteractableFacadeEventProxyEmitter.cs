@@ -20,7 +20,7 @@
         /// <inheritdoc />
         protected override object GetTargetToCheck()
         {
-            return Payload.gameObject;
+            return Payload != null ? Payload.gameObject : null;
         }
     }
 }
