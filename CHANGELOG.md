@@ -1,5 +1,12 @@
 # Changelog
 
+### [1.16.2](https://github.com/ExtendRealityLtd/Tilia.Interactions.Interactables.Unity/compare/v1.16.1...v1.16.2) (2021-04-01)
+
+#### Bug Fixes
+
+* **Proxy:** prevent null exception in event proxies ([6577a60](https://github.com/ExtendRealityLtd/Tilia.Interactions.Interactables.Unity/commit/6577a60a3b8deb3bc3e6c34e2f068a1c11fefef8))
+  > There was an issue where an event proxy could be called but the Payload was null causing a null exception to occur. This has now been guarded against.
+
 ### [1.16.1](https://github.com/ExtendRealityLtd/Tilia.Interactions.Interactables.Unity/compare/v1.16.0...v1.16.1) (2021-03-29)
 
 #### Bug Fixes
