@@ -31,9 +31,7 @@ Create a new `Cube` Unity 3D Object by selecting `Main Menu -> GameObject -> 3D 
 
 ### Step 2
 
-Expand the `Tilia Interactors Interactables Unity` package directory in the Unity Project window and select the `Packages -> Tilia Interactors Interactables Unity -> Runtime -> Interactables -> Prefabs` directory then drag and drop the`Interactions.Interactable` prefab into the Unity Hierarchy window.
-
-![Drag And Drop Interactables Prefab Into Hierarchy](assets/images/DragAndDropInteractablesPrefabIntoHierarchy.png)
+Add a `Interactions.Interactable` prefab to the Unity project hierarchy by selecting `GameObject -> Tilia -> Prefabs -> Interactions -> Interactables -> Interactions.Interactable` from the Unity main top menu.
 
 ### Step 3
 

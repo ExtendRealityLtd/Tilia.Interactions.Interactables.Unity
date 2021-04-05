@@ -2,7 +2,8 @@
     "name": "Tilia.Interactions.Interactables.Unity.Editor",
     "references": [
         "Tilia.Interactions.Interactables.Unity.Runtime",
-        "Zinnia.Runtime"
+        "Zinnia.Runtime",
+        "Zinnia.Editor"
     ],
     "optionalUnityReferences": [],
     "includePlatforms": [
