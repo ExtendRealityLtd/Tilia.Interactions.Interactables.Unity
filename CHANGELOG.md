@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.17.0](https://github.com/ExtendRealityLtd/Tilia.Interactions.Interactables.Unity/compare/v1.16.2...v1.17.0) (2021-04-07)
+
+#### Features
+
+* **Utility:** add prefab creator ([15bee59](https://github.com/ExtendRealityLtd/Tilia.Interactions.Interactables.Unity/commit/15bee59e6908025b1d874e5eb87b33bdb7c4e774))
+  > The latest version of Zinnia has the basis of a prefab creator that can be used to enable easy adding of prefabs to a scene without needing to drag and drop from directories. Instead a new menu item is added for quickly adding prefabs. The guide has been updated to accommodate this and the FodyWeavers.xml is now located in the root to serve both the Runtime and Editor scripts.
+
 ### [1.16.2](https://github.com/ExtendRealityLtd/Tilia.Interactions.Interactables.Unity/compare/v1.16.1...v1.16.2) (2021-04-01)
 
 #### Bug Fixes
