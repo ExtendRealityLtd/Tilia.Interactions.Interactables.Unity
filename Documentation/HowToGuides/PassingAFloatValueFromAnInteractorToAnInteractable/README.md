@@ -34,11 +34,9 @@ Then we'll enable the `CameraRigs.UnityXR` prefab, which will serve as our gener
 
 ### Step 2
 
-Expand the `Tilia Input UnityInputManager` package directory in the Unity Project window and select the `Packages -> Runtime -> Prefabs -> ControllerMappings` directory. For this example we are going to add the `Input.UnityInputManager.Oculus.TouchLeftController` prefab and the `Input.UnityInputManager.Oculus.TouchRightController`prefab.
+Add a `Input.UnityInputManager.Oculus.TouchLeftController` prefab to the Unity project hierarchy by selecting `GameObject -> Tilia -> Prefabs -> Input -> UnityInputManager -> ControllerMappings -> Input.UnityInputManager.Oculus.TouchLeftController` from the Unity main top menu.
 
-Drag and Drop the `Input.UnityInputManager.Oculus.TouchLeftController` prefab and the `Input.UnityInputManager.Oculus.TouchRightController` prefab into the Unity Hierarchy window.
-
-![Drag And Drop Oculus Input](assets/images/DragAndDropOculusInput.png)
+> Do the same to add the `Input.UnityInputManager.Oculus.TouchRightController` prefab to the Unity project hierarchy.
 
 ### Step 3
 
@@ -54,9 +52,7 @@ Expand the `Input.UnityInputManager.Oculus.TouchLeftController -> Input Actions 
 
 ### Step 4
 
-Expand the `Tilia Interactions Interactables Unity` package directory in the Unity Project window and select the `Packages -> Tilia Interactions Interactables Unity -> Runtime -> Interactors -> Prefabs` directory then drag and drop the `Interactions.ActionPublisher` prefab into the `CameraRigs.TrackedAlias -> Aliases -> LeftControllerAlias` GameObject in the Unity Hierarchy window.
-
-![Drag And Drop Action Publisher Into Left Controller Alias](assets/images/DragAndDropActionPublisherIntoLeftControllerAlias.png)
+Add a `Interactions.ActionPublisher` prefab to the Unity project hierarchy by selecting `GameObject -> Tilia -> Prefabs -> Interactions -> Interactors -> Interactions.ActionPublisher` from the Unity main top menu and drag it into being a child of the `CameraRigs.TrackedAlias -> Aliases -> LeftControllerAlias` GameObject.
 
 Expand the `Input.UnityInputManager.Oculus.TouchLeftController -> Input Actions -> LeftTrigger` GameObject until you can see the `LeftTrigger_Axis[9]` GameObject, select the `CameraRigs.TrackedAlias -> Aliases -> LeftControllerAlias -> Interactions.ActionPublisher` GameObject and drag and drop the `Input.UnityInputManager.Oculus.TouchLeftController -> Input Actions -> LeftTrigger -> LeftTrigger_Axis[9]` GameObject into the `Source Action` property on the `Interactor Action Publisher Facade` component.
 
@@ -102,9 +98,7 @@ Then drag and drop the `Interactions.Interactable` GameObject to be a child of t
 
 ### Step 8
 
-Expand the `Tilia Interactions Interactables Unity` package directory in the Unity project window and select the `Packages -> Tilia Interactions Interactables Unity -> Runtime -> Interactables -> Prefabs` directory then drag and drop the `Interactions.ActionReceiver` prefab into the Unity Hierarchy window as a child of the `OpacityChangingInteractable` GameObject
-
-![Drag And Drop Action Receiver](assets/images/DragAndDropActionReceiver.png)
+Add a `Interactions.ActionReceiver` prefab to the Unity project hierarchy by selecting `GameObject -> Tilia -> Prefabs -> Interactions -> Interactables -> Interactions.ActionReceiver` from the Unity main top menu and drag it into being a child of the `OpacityChangingInteractable` GameObject.
 
 ### Step 9
 

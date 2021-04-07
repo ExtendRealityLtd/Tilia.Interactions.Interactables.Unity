@@ -25,11 +25,9 @@ The `Interactions.Interactor` prefab comes with an `ExampleAvatar` GameObject, w
 
 > If you followed the [Add the Tilia.CameraRigs.TrackedAlias.Unity] guide and added in custom GameObjects for controller avatars, you can delete them now as the `ExampleAvatar` GameObject will provide us with a basic controller avatar instead.
 
-Expand the `Tilia Interactors Interactables Unity` package directory in the Unity Project window and select the `Packages -> Tilia Interactors Interactables Unity -> Runtime -> Interactors -> Prefabs` directory. For this example, we’re going to add the `Interactions.Interactor` prefab to our controller aliases within our `CameraRigs.TrackedAlias` prefab so expand the `CameraRigs.TrackedAlias` prefab in the Unity Hierarchy window until the `LeftControllerAlias` and `RightControllerAlias` GameObjects are visible.
+Add a `Interactions.Interactor` prefab to the Unity project hierarchy by selecting `GameObject -> Tilia -> Prefabs -> Interactions -> Interators -> Interactions.Interactor` from the Unity main top menu. For this example, we're going to add the `Interactions.Interactor` prefab to our controller aliases within our `CameraRigs.TrackedAlias` prefab so expand the `CameraRigs.TrackedAlias` prefab in the Unity Hierarchy window until the `LeftControllerAlias` and `RightControllerAlias` GameObjects are visible.
 
-Drag and drop the `Interactions.Interactor` prefab to be a child of the `LeftControllerAlias` then drag and drop another `Interactions.Interactor` prefab to be a child of the `RightControllerAlias`.
-
-![Making Interactor Prefab AChild Of Left And Right Alias](assets/images/MakingInteractorPrefabAChildOfLeftAndRightAlias.png)
+Drag and drop the `Interactions.Interactor` prefab to be a child of the `LeftControllerAlias` then add another `Interactions.Interactor` prefab to be a child of the `RightControllerAlias`.
 
 > Note: The following steps will be carried out on both the `LeftControllerAlias` and the `RightControllerAlias` but the instructions will only outline the steps once, so be sure to carry them out for both controller aliases.
 
