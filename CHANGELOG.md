@@ -1,5 +1,14 @@
 # Changelog
 
+## [1.18.0](https://github.com/ExtendRealityLtd/Tilia.Interactions.Interactables.Unity/compare/v1.17.2...v1.18.0) (2021-05-10)
+
+#### Features
+
+* **Interactors:** add ability to ignore colliders based on tag ([3f4938e](https://github.com/ExtendRealityLtd/Tilia.Interactions.Interactables.Unity/commit/3f4938e9b2e4de60bd1260d735320213b95609cf))
+  > A recent update to the Collision Tracker means it is now possible to ignore specific colliders based on a rule. This is now being used in the Interactor to ignore any collider with the IgnoreInteractorOnColliderTag component on it. This can now be added to any collider on an interactable to make the interactor ignore the collider on the interactable.
+  > 
+  > This can be useful for example to ignore the blade of a sword so it can only be grabbed by the handle.
+
 ### [1.17.2](https://github.com/ExtendRealityLtd/Tilia.Interactions.Interactables.Unity/compare/v1.17.1...v1.17.2) (2021-05-09)
 
 #### Miscellaneous Chores
