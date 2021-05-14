@@ -1,5 +1,17 @@
 # Changelog
 
+## [1.19.0](https://github.com/ExtendRealityLtd/Tilia.Interactions.Interactables.Unity/compare/v1.18.0...v1.19.0) (2021-05-14)
+
+#### Features
+
+* **Rule:** add rules for interactor touch and grab state ([26700d9](https://github.com/ExtendRealityLtd/Tilia.Interactions.Interactables.Unity/commit/26700d9b1f26e968a2c6bb4b81ecede804eec6db))
+  > The new rules will be able to determine if a given GameObject has an InteractorFacade on it and if it does then whether the given Interactor is either currently touching or grabbing something.
+
+#### Miscellaneous Chores
+
+* **README.md:** update title logo to related-media repo ([f3556b4](https://github.com/ExtendRealityLtd/Tilia.Interactions.Interactables.Unity/commit/f3556b439b19549b960eb2415c12eca8071ab193))
+  > The title logo is now located on the related-media repo.
+
 ## [1.18.0](https://github.com/ExtendRealityLtd/Tilia.Interactions.Interactables.Unity/compare/v1.17.2...v1.18.0) (2021-05-10)
 
 #### Features
