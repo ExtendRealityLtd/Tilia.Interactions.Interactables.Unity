@@ -1,5 +1,12 @@
 # Changelog
 
+### [1.19.1](https://github.com/ExtendRealityLtd/Tilia.Interactions.Interactables.Unity/compare/v1.19.0...v1.19.1) (2021-05-31)
+
+#### Bug Fixes
+
+* **Documentation:** add missing auto generated API docs ([c524efd](https://github.com/ExtendRealityLtd/Tilia.Interactions.Interactables.Unity/commit/c524efdc3f942231eb369fd749b093691556a559))
+  > The API docs had not been updated to the latest to match the code, this has been fixed by auto generating the new docs.
+
 ## [1.19.0](https://github.com/ExtendRealityLtd/Tilia.Interactions.Interactables.Unity/compare/v1.18.0...v1.19.0) (2021-05-14)
 
 #### Features
