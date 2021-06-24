@@ -91,6 +91,12 @@
         [Serialized]
         [field: DocumentedByXml, Restricted]
         public BooleanAction IsGrabbingAction { get; protected set; }
+        /// <summary>
+        /// Whether to simulate a touch before force grabbing.
+        /// </summary>
+        [Serialized]
+        [field: DocumentedByXml, Restricted]
+        public bool TouchBeforeForceGrab { get; set; } = true;
         #endregion
 
         /// <summary>
@@ -182,7 +188,11 @@
                 Ungrab();
             }
 
-            Facade.SimulateTouch(interactable);
+            if (TouchBeforeForceGrab)
+            {
+                Facade.SimulateTouch(interactable);
+            }
+
             StartGrabbingPublisher.SetActiveCollisions(CreateActiveCollisionsEventData(interactable.gameObject, collision, collider));
             ProcessGrabAction(StartGrabbingPublisher, true);
             if (interactable.IsGrabTypeToggle)
