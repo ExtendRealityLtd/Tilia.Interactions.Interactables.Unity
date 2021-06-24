@@ -103,6 +103,10 @@
         /// A reusable collection to hold the returned touching interactors.
         /// </summary>
         protected readonly List<InteractorFacade> touchingInteractors = new List<InteractorFacade>();
+        /// <summary>
+        /// Whether this is being first touched.
+        /// </summary>
+        protected bool isFirstTouched;
 
         /// <summary>
         /// Enforces that all the existing touching interactors are no longer actually touching.
@@ -124,8 +128,9 @@
             InteractorFacade interactor = data.TryGetComponent<InteractorFacade>(true, true);
             if (interactor != null)
             {
-                if (TouchingInteractors.Count == 1)
+                if (TouchingInteractors.Count <= 1 && !isFirstTouched)
                 {
+                    isFirstTouched = true;
                     Facade.FirstTouched?.Invoke(interactor);
                 }
                 Facade.Touched?.Invoke(interactor);
@@ -146,6 +151,7 @@
                 interactor.NotifyOfUntouch(Facade);
                 if (TouchingInteractors.Count == 0)
                 {
+                    isFirstTouched = false;
                     Facade.LastUntouched?.Invoke(interactor);
                 }
             }
