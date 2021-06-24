@@ -1,5 +1,14 @@
 # Changelog
 
+## [1.20.0](https://github.com/ExtendRealityLtd/Tilia.Interactions.Interactables.Unity/compare/v1.19.4...v1.20.0) (2021-06-24)
+
+#### Features
+
+* **Interactor:** add ability to simulate a touch with no collision ([ee83176](https://github.com/ExtendRealityLtd/Tilia.Interactions.Interactables.Unity/commit/ee83176cd5134b94f569dcd39e7987442e941ffd))
+  > The new SimulateTouch and SimulateUntouch method on the InteractorFacade allow for the Interactor to effectively touch an Interactable without needing to physically collide with it in the spatial world.
+  > 
+  > The Grab() method has also been updated so it uses this SimulateTouch before grabbing so all of the correct events are triggered.
+
 ### [1.19.4](https://github.com/ExtendRealityLtd/Tilia.Interactions.Interactables.Unity/compare/v1.19.3...v1.19.4) (2021-06-24)
 
 #### Miscellaneous Chores
