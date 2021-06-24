@@ -29,6 +29,7 @@ The public interface into the Interactor Prefab.
 * [Methods]
   * [ClearGrabState(InteractableFacade)]
   * [ClearGrabStateAtEndOfFrame(InteractableFacade)]
+  * [CreateCollisionPayload(GameObject)]
   * [Grab(GameObject)]
   * [Grab(GameObject, Boolean)]
   * [Grab(SurfaceData)]
@@ -48,6 +49,10 @@ The public interface into the Interactor Prefab.
   * [OnAfterGrabActionChange()]
   * [OnAfterGrabPrecognitionChange()]
   * [OnAfterVelocityTrackerChange()]
+  * [SimulateTouch(GameObject)]
+  * [SimulateTouch(InteractableFacade)]
+  * [SimulateUntouch(GameObject)]
+  * [SimulateUntouch(InteractableFacade)]
   * [SnapAllGrabbedInteractableOrientations()]
   * [SnapGrabbedInteractableOrientation(Int32)]
   * [Ungrab()]
@@ -282,6 +287,28 @@ protected virtual IEnumerator ClearGrabStateAtEndOfFrame(InteractableFacade inte
 | Type | Description |
 | --- | --- |
 | System.Collections.IEnumerator | An Enumerator to manage the running of the Coroutine. |
+
+#### CreateCollisionPayload(GameObject)
+
+Creates a collision payload for a given Interactable GameObject
+
+##### Declaration
+
+```
+protected virtual CollisionNotifier.EventData CreateCollisionPayload(GameObject interactable)
+```
+
+##### Parameters
+
+| Type | Name | Description |
+| --- | --- | --- |
+| GameObject | interactable | The GameObject that the Interactable is on. |
+
+##### Returns
+
+| Type | Description |
+| --- | --- |
+| CollisionNotifier.EventData | A collision payload. |
 
 #### Grab(GameObject)
 
@@ -579,6 +606,70 @@ Called after [VelocityTracker] has been changed.
 protected virtual void OnAfterVelocityTrackerChange()
 ```
 
+#### SimulateTouch(GameObject)
+
+Simulates this Interactor touching a given Interactable.
+
+##### Declaration
+
+```
+public virtual void SimulateTouch(GameObject interactable)
+```
+
+##### Parameters
+
+| Type | Name | Description |
+| --- | --- | --- |
+| GameObject | interactable | The GameObject containing the Interactable. |
+
+#### SimulateTouch(InteractableFacade)
+
+Simulates this Interactor touching a given Interactable.
+
+##### Declaration
+
+```
+public virtual void SimulateTouch(InteractableFacade interactable)
+```
+
+##### Parameters
+
+| Type | Name | Description |
+| --- | --- | --- |
+| [InteractableFacade] | interactable | The Interactable. |
+
+#### SimulateUntouch(GameObject)
+
+Simulates this Interactor untouching a given Interactable.
+
+##### Declaration
+
+```
+public virtual void SimulateUntouch(GameObject interactable)
+```
+
+##### Parameters
+
+| Type | Name | Description |
+| --- | --- | --- |
+| GameObject | interactable | The GameObject containing the Interactable. |
+
+#### SimulateUntouch(InteractableFacade)
+
+Simulates this Interactor untouching a given Interactable.
+
+##### Declaration
+
+```
+public virtual void SimulateUntouch(InteractableFacade interactable)
+```
+
+##### Parameters
+
+| Type | Name | Description |
+| --- | --- | --- |
+| [InteractableFacade] | interactable | The Interactable. |
+
 #### SnapAllGrabbedInteractableOrientations()
 
 Snaps the orientation of all grabbed Interactables to this Interactor.
@@ -651,6 +742,7 @@ public virtual void Ungrab()
 [Methods]: #Methods
 [ClearGrabState(InteractableFacade)]: #ClearGrabStateInteractableFacade
 [ClearGrabStateAtEndOfFrame(InteractableFacade)]: #ClearGrabStateAtEndOfFrameInteractableFacade
+[CreateCollisionPayload(GameObject)]: #CreateCollisionPayloadGameObject
 [Grab(GameObject)]: #GrabGameObject
 [Grab(GameObject, Boolean)]: #GrabGameObject-Boolean
 [Grab(SurfaceData)]: #GrabSurfaceData
@@ -670,6 +762,10 @@ public virtual void Ungrab()
 [OnAfterGrabActionChange()]: #OnAfterGrabActionChange
 [OnAfterGrabPrecognitionChange()]: #OnAfterGrabPrecognitionChange
 [OnAfterVelocityTrackerChange()]: #OnAfterVelocityTrackerChange
+[SimulateTouch(GameObject)]: #SimulateTouchGameObject
+[SimulateTouch(InteractableFacade)]: #SimulateTouchInteractableFacade
+[SimulateUntouch(GameObject)]: #SimulateUntouchGameObject
+[SimulateUntouch(InteractableFacade)]: #SimulateUntouchInteractableFacade
 [SnapAllGrabbedInteractableOrientations()]: #SnapAllGrabbedInteractableOrientations
 [SnapGrabbedInteractableOrientation(Int32)]: #SnapGrabbedInteractableOrientationInt32
 [Ungrab()]: #Ungrab

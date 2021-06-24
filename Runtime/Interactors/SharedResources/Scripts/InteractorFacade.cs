@@ -14,6 +14,7 @@
     using Zinnia.Data.Attribute;
     using Zinnia.Data.Type;
     using Zinnia.Extension;
+    using Zinnia.Tracking.Collision;
     using Zinnia.Tracking.Velocity;
 
     /// <summary>
@@ -125,6 +126,62 @@
         /// A reusable instance of <see cref="WaitForEndOfFrame"/>.
         /// </summary>
         protected WaitForEndOfFrame delayInstruction = new WaitForEndOfFrame();
+
+        /// <summary>
+        /// Simulates this Interactor touching a given Interactable.
+        /// </summary>
+        /// <param name="interactable">The GameObject containing the Interactable.</param>
+        public virtual void SimulateTouch(GameObject interactable)
+        {
+            if (interactable == null)
+            {
+                return;
+            }
+
+            GetComponent<CollisionTracker>().OnCollisionStarted(CreateCollisionPayload(interactable));
+        }
+
+        /// <summary>
+        /// Simulates this Interactor touching a given Interactable.
+        /// </summary>
+        /// <param name="interactable">The Interactable.</param>
+        public virtual void SimulateTouch(InteractableFacade interactable)
+        {
+            if (interactable == null)
+            {
+                return;
+            }
+
+            SimulateTouch(interactable.gameObject);
+        }
+
+        /// <summary>
+        /// Simulates this Interactor untouching a given Interactable.
+        /// </summary>
+        /// <param name="interactable">The GameObject containing the Interactable.</param>
+        public virtual void SimulateUntouch(GameObject interactable)
+        {
+            if (interactable == null)
+            {
+                return;
+            }
+
+            GetComponent<CollisionTracker>().OnCollisionStopped(CreateCollisionPayload(interactable));
+        }
+
+        /// <summary>
+        /// Simulates this Interactor untouching a given Interactable.
+        /// </summary>
+        /// <param name="interactable">The Interactable.</param>
+        public virtual void SimulateUntouch(InteractableFacade interactable)
+        {
+            if (interactable == null)
+            {
+                return;
+            }
+
+            SimulateUntouch(interactable.gameObject);
+        }
 
         /// <summary>
         /// Attempt to attach a <see cref="GameObject"/> that contains an <see cref="InteractableFacade"/> to this <see cref="InteractorFacade"/> and ungrabs any existing grab.
@@ -331,6 +388,22 @@
             {
                 interactable.SnapFollowOrientation();
             }
+        }
+
+        /// <summary>
+        /// Creates a collision payload for a given Interactable <see cref="GameObject"/>
+        /// </summary>
+        /// <param name="interactable">The GameObject that the Interactable is on.</param>
+        /// <returns>A collision payload.</returns>
+        protected virtual CollisionNotifier.EventData CreateCollisionPayload(GameObject interactable)
+        {
+            return new CollisionNotifier.EventData()
+            {
+                ForwardSource = GetComponent<CollisionTracker>(),
+                IsTrigger = true,
+                CollisionData = null,
+                ColliderData = interactable.GetComponentInChildren<Collider>()
+            };
         }
 
         /// <summary>

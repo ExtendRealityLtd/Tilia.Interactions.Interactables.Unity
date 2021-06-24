@@ -182,6 +182,7 @@
                 Ungrab();
             }
 
+            Facade.SimulateTouch(interactable);
             StartGrabbingPublisher.SetActiveCollisions(CreateActiveCollisionsEventData(interactable.gameObject, collision, collider));
             ProcessGrabAction(StartGrabbingPublisher, true);
             if (interactable.IsGrabTypeToggle)

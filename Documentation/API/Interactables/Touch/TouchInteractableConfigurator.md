@@ -6,6 +6,7 @@
 * [Namespace]
 * [Syntax]
 * [Fields]
+  * [isFirstTouched]
   * [touchingInteractors]
 * [Properties]
   * [ActiveInteractorCounter]
@@ -50,6 +51,16 @@ public class TouchInteractableConfigurator : MonoBehaviour
 ```
 
 ### Fields
+
+#### isFirstTouched
+
+Whether this is being first touched.
+
+##### Declaration
+
+```
+protected bool isFirstTouched
+```
 
 #### touchingInteractors
 
@@ -312,6 +323,7 @@ public virtual void UntouchAllTouchingInteractors()
 [Namespace]: #Namespace
 [Syntax]: #Syntax
 [Fields]: #Fields
+[isFirstTouched]: #isFirstTouched
 [touchingInteractors]: #touchingInteractors
 [Properties]: #Properties
 [ActiveInteractorCounter]: #ActiveInteractorCounter
