@@ -1,5 +1,12 @@
 # Changelog
 
+### [1.20.1](https://github.com/ExtendRealityLtd/Tilia.Interactions.Interactables.Unity/compare/v1.20.0...v1.20.1) (2021-06-24)
+
+#### Bug Fixes
+
+* **Interactor:** make touch before force grab optional ([243bdf1](https://github.com/ExtendRealityLtd/Tilia.Interactions.Interactables.Unity/commit/243bdf19ee55e2f24750992214215acee8663ec6))
+  > There is an issue with the newly added touch before force grab where it may not always be desirable to have that functionality and as the functionality has changed then it should be an option so it can be disabled and provide the original functionality if need be.
+
 ## [1.20.0](https://github.com/ExtendRealityLtd/Tilia.Interactions.Interactables.Unity/compare/v1.19.4...v1.20.0) (2021-06-24)
 
 #### Features
