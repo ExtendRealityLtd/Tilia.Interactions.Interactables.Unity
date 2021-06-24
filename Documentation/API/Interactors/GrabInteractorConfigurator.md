@@ -21,6 +21,7 @@ Sets up the Interactor Prefab grab settings based on the provided user settings.
   * [PrecognitionTimer]
   * [StartGrabbingPublisher]
   * [StopGrabbingPublisher]
+  * [TouchBeforeForceGrab]
   * [VelocityTracker]
 * [Methods]
   * [ChooseGrabProcessor()]
@@ -176,6 +177,16 @@ The ActiveCollisionPublisher for checking valid stop grabbing action.
 
 ```
 public ActiveCollisionPublisher StopGrabbingPublisher { get; protected set; }
+```
+
+#### TouchBeforeForceGrab
+
+Whether to simulate a touch before force grabbing.
+
+##### Declaration
+
+```
+public bool TouchBeforeForceGrab { get; set; }
 ```
 
 #### VelocityTracker
@@ -385,6 +396,7 @@ public virtual void Ungrab()
 [PrecognitionTimer]: #PrecognitionTimer
 [StartGrabbingPublisher]: #StartGrabbingPublisher
 [StopGrabbingPublisher]: #StopGrabbingPublisher
+[TouchBeforeForceGrab]: #TouchBeforeForceGrab
 [VelocityTracker]: #VelocityTracker
 [Methods]: #Methods
 [ChooseGrabProcessor()]: #ChooseGrabProcessor
