@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.21.0](https://github.com/ExtendRealityLtd/Tilia.Interactions.Interactables.Unity/compare/v1.20.2...v1.21.0) (2021-07-19)
+
+#### Features
+
+* **Action:** provide pivot offset from target offset first found child ([eefc409](https://github.com/ExtendRealityLtd/Tilia.Interactions.Interactables.Unity/commit/eefc4090afbb7cd3d25edd48d4acbac8ceae5b6d))
+  > The DirectionModifier now supports a PivotOffset which is now set by the first child GameObject found within the TargetOffset GameObject.
+
 ### [1.20.2](https://github.com/ExtendRealityLtd/Tilia.Interactions.Interactables.Unity/compare/v1.20.1...v1.20.2) (2021-07-19)
 
 #### Miscellaneous Chores
