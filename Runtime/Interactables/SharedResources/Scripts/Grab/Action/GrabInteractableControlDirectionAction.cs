@@ -82,6 +82,7 @@
             }
 
             DirectionModifier.TargetOffset = followAction.ObjectFollower.TargetOffsets.NonSubscribableElements.Count > 0 ? followAction.ObjectFollower.TargetOffsets.NonSubscribableElements[0] : null;
+            DirectionModifier.PivotOffset = DirectionModifier.TargetOffset != null && DirectionModifier.TargetOffset.transform.childCount > 0 ? DirectionModifier.TargetOffset.transform.GetChild(0).gameObject : null;
         }
 
         /// <summary>
