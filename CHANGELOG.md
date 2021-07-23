@@ -1,5 +1,14 @@
 # Changelog
 
+## [1.22.0](https://github.com/ExtendRealityLtd/Tilia.Interactions.Interactables.Unity/compare/v1.21.1...v1.22.0) (2021-07-23)
+
+#### Features
+
+* **Extraction:** add interactor facade extractor ([06e9701](https://github.com/ExtendRealityLtd/Tilia.Interactions.Interactables.Unity/commit/06e97010d7c0ea95acb2b39e639b8a4b240c71df))
+  > The InteractorFacadeExtractor component will extract an InteractorFacade component from the given GameObject and can also search for the InteractorFacade component on ancestor or descendant GameObejcts.
+* **Interactables:** implement interactable grabber ([c9fb3c8](https://github.com/ExtendRealityLtd/Tilia.Interactions.Interactables.Unity/commit/c9fb3c8f0f89482d5f0a10b29d19c05cd847d967))
+  > The InteractableGrabber component actually existed in the PointerInteractors package but it is far more general purpose than just being used for pointer interactions. So the component has been included in this repo where it can serve a wider use and it can then be used to supersede the one in the PointerInteractors package.
+
 ### [1.21.1](https://github.com/ExtendRealityLtd/Tilia.Interactions.Interactables.Unity/compare/v1.21.0...v1.21.1) (2021-07-21)
 
 #### Miscellaneous Chores
