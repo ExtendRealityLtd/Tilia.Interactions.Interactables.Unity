@@ -1,5 +1,14 @@
 # Changelog
 
+### [1.22.9](https://github.com/ExtendRealityLtd/Tilia.Interactions.Interactables.Unity/compare/v1.22.8...v1.22.9) (2022-02-14)
+
+#### Bug Fixes
+
+* **Touching:** only call touch consumers if touch has changed ([e4b5666](https://github.com/ExtendRealityLtd/Tilia.Interactions.Interactables.Unity/commit/e4b5666c682fbb6dad952930369f15abfc6e76e6))
+  > The Slicer component now provides a mechanism to determine if the sliced list contents have changed so this makes it more efficient when needing to call the interactable collision consumers.
+  > 
+  > Previously, they were being called every OnStay even if the current touched object hadn't changed and this was very inefficeint and could lead to a drop in framerate if touching many objects.
+
 ### [1.22.8](https://github.com/ExtendRealityLtd/Tilia.Interactions.Interactables.Unity/compare/v1.22.7...v1.22.8) (2022-02-14)
 
 #### Miscellaneous Chores
