@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.23.0](https://github.com/ExtendRealityLtd/Tilia.Interactions.Interactables.Unity/compare/v1.22.9...v1.23.0) (2022-03-02)
+
+#### Features
+
+* **package.json:** add information urls to package ([c3d2b6c](https://github.com/ExtendRealityLtd/Tilia.Interactions.Interactables.Unity/commit/c3d2b6c9e1879f151920cae360e5794285e352a2))
+  > The changelog, documentation and license url has been added to the package.json as these are used within the Unity package manager.
+
 ### [1.22.9](https://github.com/ExtendRealityLtd/Tilia.Interactions.Interactables.Unity/compare/v1.22.8...v1.22.9) (2022-02-14)
 
 #### Bug Fixes
