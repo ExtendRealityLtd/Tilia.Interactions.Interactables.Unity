@@ -410,6 +410,22 @@
         }
 
         /// <summary>
+        /// Enables the grab receiver logic.
+        /// </summary>
+        public virtual void EnableGrabReceiver()
+        {
+            Configuration.GrabConfiguration.GrabReceiver.gameObject.SetActive(true);
+        }
+
+        /// <summary>
+        /// Disables the grab receiver logic.
+        /// </summary>
+        public virtual void DisableGrabReceiver()
+        {
+            Configuration.GrabConfiguration.GrabReceiver.gameObject.SetActive(false);
+        }
+
+        /// <summary>
         /// Enables the primary grab action logic.
         /// </summary>
         public virtual void EnablePrimaryGrabAction()

@@ -39,6 +39,7 @@ The public interface into the Interactable Prefab.
   * [ValidInteractionTypes]
 * [Methods]
   * [DisableGrab()]
+  * [DisableGrabReceiver()]
   * [DisablePrimaryGrabAction()]
   * [DisableSecondaryGrabAction()]
   * [DisableTouch()]
@@ -47,6 +48,7 @@ The public interface into the Interactable Prefab.
   * [DoUngrabAtEndOfFrame(Int32)]
   * [DoUngrabAtEndOfFrame(InteractorFacade)]
   * [EnableGrab()]
+  * [EnableGrabReceiver()]
   * [EnablePrimaryGrabAction()]
   * [EnableSecondaryGrabAction()]
   * [EnableTouch()]
@@ -388,6 +390,16 @@ Disables the grab logic.
 public virtual void DisableGrab()
 ```
 
+#### DisableGrabReceiver()
+
+Disables the grab receiver logic.
+
+##### Declaration
+
+```
+public virtual void DisableGrabReceiver()
+```
+
 #### DisablePrimaryGrabAction()
 
 Disables the primary grab action logic.
@@ -518,6 +530,16 @@ Enables the grab logic.
 
 ```
 public virtual void EnableGrab()
+```
+
+#### EnableGrabReceiver()
+
+Enables the grab receiver logic.
+
+##### Declaration
+
+```
+public virtual void EnableGrabReceiver()
 ```
 
 #### EnablePrimaryGrabAction()
@@ -929,6 +951,7 @@ public virtual void UngrabAtEndOfFrame(InteractorFacade interactor)
 [ValidInteractionTypes]: #ValidInteractionTypes
 [Methods]: #Methods
 [DisableGrab()]: #DisableGrab
+[DisableGrabReceiver()]: #DisableGrabReceiver
 [DisablePrimaryGrabAction()]: #DisablePrimaryGrabAction
 [DisableSecondaryGrabAction()]: #DisableSecondaryGrabAction
 [DisableTouch()]: #DisableTouch
@@ -937,6 +960,7 @@ public virtual void UngrabAtEndOfFrame(InteractorFacade interactor)
 [DoUngrabAtEndOfFrame(Int32)]: #DoUngrabAtEndOfFrameInt32
 [DoUngrabAtEndOfFrame(InteractorFacade)]: #DoUngrabAtEndOfFrameInteractorFacade
 [EnableGrab()]: #EnableGrab
+[EnableGrabReceiver()]: #EnableGrabReceiver
 [EnablePrimaryGrabAction()]: #EnablePrimaryGrabAction
 [EnableSecondaryGrabAction()]: #EnableSecondaryGrabAction
 [EnableTouch()]: #EnableTouch

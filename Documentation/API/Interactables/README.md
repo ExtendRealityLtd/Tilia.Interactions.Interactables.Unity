@@ -22,6 +22,14 @@ The public interface into the Interactable Prefab.
 
 Defines the event with the [InteractorFacade].
 
+#### [InteractableGrabber]
+
+Attempts to grab the given Interactable to the given Interactor.
+
+#### [InteractableGrabber.UnityEvent]
+
+Defines the event with the [InteractableFacade].
+
 #### [InteractablePropertyCache]
 
 Caches common properties for an [InteractableFacade] to be restored at a later point in time.
@@ -41,6 +49,8 @@ The allowed interaction states.
 [InteractableConfigurator]: InteractableConfigurator.md
 [InteractableFacade.UnityEvent]: InteractableFacade.UnityEvent.md
 [InteractorFacade]: ../Interactors/InteractorFacade.md
+[InteractableGrabber]: InteractableGrabber.md
+[InteractableGrabber.UnityEvent]: InteractableGrabber.UnityEvent.md
 [InteractablePropertyCache]: InteractablePropertyCache.md
 [InteractableFacade]: InteractableFacade.md
 [InteractableActionReceiverFacade.InteractionState]: InteractableActionReceiverFacade.InteractionState.md
