@@ -6,6 +6,10 @@
 
 Sets up the Interactable Prefab grab settings based on the provided user settings.
 
+#### [InteractableGrabDropRestrictor]
+
+Restricts the ability to drop a grabbed [InteractableFacade].
+
 #### [InteractableGrabStateEmitter]
 
 Emits an appropriate event based on the state of whether an [InteractableFacade] is currently being grabbed or not.
@@ -23,8 +27,9 @@ Registers listeners to the initial grab and final ungrab states of an [Interacta
 Defines the event with the specified [InteractableFacade].
 
 [GrabInteractableConfigurator]: GrabInteractableConfigurator.md
-[InteractableGrabStateEmitter]: InteractableGrabStateEmitter.md
+[InteractableGrabDropRestrictor]: InteractableGrabDropRestrictor.md
 [InteractableFacade]: ../../Interactables/InteractableFacade.md
+[InteractableGrabStateEmitter]: InteractableGrabStateEmitter.md
 [InteractableGrabStateEmitter.UnityEvent]: InteractableGrabStateEmitter.UnityEvent.md
 [InteractableGrabStateRegistrar]: InteractableGrabStateRegistrar.md
 [InteractableGrabStateRegistrar.UnityEvent]: InteractableGrabStateRegistrar.UnityEvent.md
