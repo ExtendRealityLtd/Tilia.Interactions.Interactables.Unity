@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.24.0](https://github.com/ExtendRealityLtd/Tilia.Interactions.Interactables.Unity/compare/v1.23.0...v1.24.0) (2022-03-03)
+
+#### Features
+
+* **Grab:** add interactable drop restrictor ([1eeef73](https://github.com/ExtendRealityLtd/Tilia.Interactions.Interactables.Unity/commit/1eeef73264065c4f4a31e1cf7b92aa2d2c66a893))
+  > The InteractableGrabDropRestrictor component makes it possible to disable dropping an interactable once it is grabbed.
+
 ## [1.23.0](https://github.com/ExtendRealityLtd/Tilia.Interactions.Interactables.Unity/compare/v1.22.9...v1.23.0) (2022-03-02)
 
 #### Features
