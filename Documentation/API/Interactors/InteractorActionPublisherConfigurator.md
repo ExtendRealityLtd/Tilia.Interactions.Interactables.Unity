@@ -54,7 +54,7 @@ The current active Action.
 ##### Declaration
 
 ```
-public Action ActiveAction { get; protected set; }
+public virtual Action ActiveAction { get; protected set; }
 ```
 
 #### Facade

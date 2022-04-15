@@ -25,6 +25,7 @@ Sets up the Interactor Prefab grab settings based on the provided user settings.
   * [VelocityTracker]
 * [Methods]
   * [ChooseGrabProcessor()]
+  * [ClearVelocityTracker()]
   * [ConfigureGrabAction()]
   * [ConfigureGrabPrecognition()]
   * [ConfigureVelocityTrackers()]
@@ -96,7 +97,7 @@ A collection of currently grabbed GameObjects.
 ##### Declaration
 
 ```
-public IReadOnlyList<GameObject> GrabbedObjects { get; }
+public virtual IReadOnlyList<GameObject> GrabbedObjects { get; }
 ```
 
 #### GrabbedObjectsCollection
@@ -209,6 +210,16 @@ Chooses which grab processing to perform on the grab action.
 
 ```
 protected virtual void ChooseGrabProcessor()
+```
+
+#### ClearVelocityTracker()
+
+Clears [VelocityTracker].
+
+##### Declaration
+
+```
+public virtual void ClearVelocityTracker()
 ```
 
 #### ConfigureGrabAction()
@@ -377,6 +388,7 @@ public virtual void Ungrab()
 
 [Tilia.Interactions.Interactables.Interactors]: README.md
 [InteractorFacade]: InteractorFacade.md
+[VelocityTracker]: GrabInteractorConfigurator.md#VelocityTracker
 [InteractableFacade]: ../Interactables/InteractableFacade.md
 [VelocityTracker]: GrabInteractorConfigurator.md#VelocityTracker
 [Inheritance]: #Inheritance
@@ -400,6 +412,7 @@ public virtual void Ungrab()
 [VelocityTracker]: #VelocityTracker
 [Methods]: #Methods
 [ChooseGrabProcessor()]: #ChooseGrabProcessor
+[ClearVelocityTracker()]: #ClearVelocityTracker
 [ConfigureGrabAction()]: #ConfigureGrabAction
 [ConfigureGrabPrecognition()]: #ConfigureGrabPrecognition
 [ConfigureVelocityTrackers()]: #ConfigureVelocityTrackers

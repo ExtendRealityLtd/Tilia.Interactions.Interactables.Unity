@@ -171,7 +171,7 @@ A collection of Interactors that are currently touching the Interactable.
 ##### Declaration
 
 ```
-public IReadOnlyList<InteractorFacade> TouchingInteractors { get; }
+public virtual IReadOnlyList<InteractorFacade> TouchingInteractors { get; }
 ```
 
 #### TouchValidity

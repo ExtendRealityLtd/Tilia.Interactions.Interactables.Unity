@@ -18,6 +18,9 @@ Sets up the Interactable Prefab grab settings based on the provided user setting
   * [PrimaryAction]
   * [SecondaryAction]
 * [Methods]
+  * [ClearActionTypes()]
+  * [ClearPrimaryAction()]
+  * [ClearSecondaryAction()]
   * [ConfigureActionContainer(GrabInteractableAction)]
   * [ConfigureContainer()]
   * [DisableSecondaryInputActiveCollisionConsumer(GameObject)]
@@ -90,7 +93,7 @@ A collection of Interactors that are currently grabbing the Interactable.
 ##### Declaration
 
 ```
-public IReadOnlyList<InteractorFacade> GrabbingInteractors { get; }
+public virtual IReadOnlyList<InteractorFacade> GrabbingInteractors { get; }
 ```
 
 #### GrabProvider
@@ -130,7 +133,7 @@ Determines if the grab type is set to toggle.
 ##### Declaration
 
 ```
-public bool IsGrabTypeToggle { get; }
+public virtual bool IsGrabTypeToggle { get; }
 ```
 
 #### PrimaryAction
@@ -154,6 +157,36 @@ public GrabInteractableAction SecondaryAction { get; set; }
 ```
 
 ### Methods
+
+#### ClearActionTypes()
+
+Clears [ActionTypes].
+
+##### Declaration
+
+```
+public virtual void ClearActionTypes()
+```
+
+#### ClearPrimaryAction()
+
+Clears [PrimaryAction].
+
+##### Declaration
+
+```
+public virtual void ClearPrimaryAction()
+```
+
+#### ClearSecondaryAction()
+
+Clears [SecondaryAction].
+
+##### Declaration
+
+```
+public virtual void ClearSecondaryAction()
+```
 
 #### ConfigureActionContainer(GrabInteractableAction)
 
@@ -480,6 +513,9 @@ protected virtual void UnlinkToSecondaryAction()
 [GrabProvider]: GrabInteractableConfigurator.md#GrabProvider
 [GrabInteractableReceiver]: Receiver/GrabInteractableReceiver.md
 [GrabInteractableAction]: Action/GrabInteractableAction.md
+[ActionTypes]: GrabInteractableConfigurator.md#ActionTypes
+[PrimaryAction]: GrabInteractableConfigurator.md#PrimaryAction
+[SecondaryAction]: GrabInteractableConfigurator.md#SecondaryAction
 [PrimaryAction]: GrabInteractableConfigurator.md#PrimaryAction
 [SecondaryAction]: GrabInteractableConfigurator.md#SecondaryAction
 [PrimaryAction]: GrabInteractableConfigurator.md#PrimaryAction
@@ -504,6 +540,9 @@ protected virtual void UnlinkToSecondaryAction()
 [PrimaryAction]: #PrimaryAction
 [SecondaryAction]: #SecondaryAction
 [Methods]: #Methods
+[ClearActionTypes()]: #ClearActionTypes
+[ClearPrimaryAction()]: #ClearPrimaryAction
+[ClearSecondaryAction()]: #ClearSecondaryAction
 [ConfigureActionContainer(GrabInteractableAction)]: #ConfigureActionContainerGrabInteractableAction
 [ConfigureContainer()]: #ConfigureContainer
 [DisableSecondaryInputActiveCollisionConsumer(GameObject)]: #DisableSecondaryInputActiveCollisionConsumerGameObject

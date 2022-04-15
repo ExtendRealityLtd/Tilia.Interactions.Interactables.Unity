@@ -1,8 +1,5 @@
 ﻿namespace Tilia.Interactions.Interactables.Interactables
 {
-    using Malimbe.MemberChangeMethod;
-    using Malimbe.PropertySerializationAttribute;
-    using Malimbe.XmlDocumentationAttribute;
     using System;
     using System.Collections;
     using System.Collections.Generic;
@@ -45,40 +42,66 @@
         }
 
         #region Reference Settings
+        [Header("Reference Settings")]
+        [Tooltip("The linked InteractableConfigurator.")]
+        [SerializeField]
+        [Restricted]
+        private InteractableConfigurator configuration;
         /// <summary>
         /// The linked <see cref="InteractableConfigurator"/>.
         /// </summary>
-        [Serialized]
-        [field: Header("Reference Settings"), DocumentedByXml, Restricted]
-        public InteractableConfigurator Configuration { get; protected set; }
+        public InteractableConfigurator Configuration
+        {
+            get
+            {
+                return configuration;
+            }
+            protected set
+            {
+                configuration = value;
+            }
+        }
+        [Tooltip("The types of interaction that are valid on the Interactable.")]
+        [SerializeField]
+        [UnityFlags]
+        private InteractionTypes validInteractionTypes = (InteractionTypes)(-1);
         /// <summary>
         /// The types of interaction that are valid on the Interactable.
         /// </summary>
-        [Serialized]
-        [field: DocumentedByXml, UnityFlags]
-        public InteractionTypes ValidInteractionTypes { get; set; } = (InteractionTypes)(-1);
+        public InteractionTypes ValidInteractionTypes
+        {
+            get
+            {
+                return validInteractionTypes;
+            }
+            set
+            {
+                validInteractionTypes = value;
+                if (this.IsMemberChangeAllowed())
+                {
+                    OnAfterValidInteractionTypesChange();
+                }
+            }
+        }
         #endregion
 
         #region Touch Events
         /// <summary>
         /// Emitted when the Interactable is touched for the first time by an Interactor.
         /// </summary>
-        [Header("Touch Events"), DocumentedByXml]
+        [Header("Touch Events")]
         public UnityEvent FirstTouched = new UnityEvent();
         /// <summary>
         /// Emitted when an Interactor touches the Interactable.
         /// </summary>
-        [DocumentedByXml]
         public UnityEvent Touched = new UnityEvent();
         /// <summary>
         /// Emitted when an Interactor stops touching the Interactable.
         /// </summary>
-        [DocumentedByXml]
         public UnityEvent Untouched = new UnityEvent();
         /// <summary>
         /// Emitted when the Interactable is untouched for the last time by an Interactor.
         /// </summary>
-        [DocumentedByXml]
         public UnityEvent LastUntouched = new UnityEvent();
         #endregion
 
@@ -86,92 +109,120 @@
         /// <summary>
         /// Emitted when the Interactable is grabbed for the first time by an Interactor.
         /// </summary>
-        [Header("Grab Events"), DocumentedByXml]
+        [Header("Grab Events")]
         public UnityEvent FirstGrabbed = new UnityEvent();
         /// <summary>
         /// Emitted when an Interactor grabs the Interactable.
         /// </summary>
-        [DocumentedByXml]
         public UnityEvent Grabbed = new UnityEvent();
         /// <summary>
         /// Emitted when an Interactor ungrabs the Interactable.
         /// </summary>
-        [DocumentedByXml]
         public UnityEvent Ungrabbed = new UnityEvent();
         /// <summary>
         /// Emitted when the Interactable is ungrabbed for the last time by an Interactor.
         /// </summary>
-        [DocumentedByXml]
         public UnityEvent LastUngrabbed = new UnityEvent();
         #endregion
 
         #region Grab Action Settings
+        [Header("Grab Action Settings")]
+        [Tooltip("The linked GrabInteractableReceiver.ActiveType.")]
+        [SerializeField]
+        private GrabInteractableReceiver.ActiveType grabType;
         /// <summary>
         /// The linked <see cref="GrabInteractableReceiver.ActiveType"/>.
         /// </summary>
-        [Serialized]
-        [field: Header("Grab Action Settings"), DocumentedByXml]
-        public GrabInteractableReceiver.ActiveType GrabType { get; set; }
+        public GrabInteractableReceiver.ActiveType GrabType
+        {
+            get
+            {
+                return grabType;
+            }
+            set
+            {
+                grabType = value;
+                if (this.IsMemberChangeAllowed())
+                {
+                    OnAfterGrabTypeChange();
+                }
+            }
+        }
+        [Tooltip("The GrabInteractableInteractorProvider to use.")]
+        [SerializeField]
+        private int grabProviderIndex;
         /// <summary>
         /// The <see cref="GrabInteractableInteractorProvider"/> to use.
         /// </summary>
-        [Serialized]
-        [field: DocumentedByXml]
-        public int GrabProviderIndex { get; set; }
+        public int GrabProviderIndex
+        {
+            get
+            {
+                return grabProviderIndex;
+            }
+            set
+            {
+                grabProviderIndex = value;
+                if (this.IsMemberChangeAllowed())
+                {
+                    OnAfterGrabProviderIndexChange();
+                }
+            }
+        }
         #endregion
 
         /// <summary>
         /// The <see cref="Rigidbody"/> attached to the Interactable.
         /// </summary>
-        public Rigidbody InteractableRigidbody => Configuration.ConsumerRigidbody;
+        public virtual Rigidbody InteractableRigidbody => Configuration.ConsumerRigidbody;
         /// <summary>
         /// The mesh container.
         /// </summary>
-        public GameObject MeshContainer => Configuration.MeshContainer;
+        public virtual GameObject MeshContainer => Configuration.MeshContainer;
         /// <summary>
         /// Returns a <see cref="MeshRenderer"/> collection of all the <see cref="MeshContainer"/> child meshes.
         /// </summary>
-        public MeshRenderer[] Meshes => MeshContainer.GetComponentsInChildren<MeshRenderer>();
+        public virtual MeshRenderer[] Meshes => MeshContainer.GetComponentsInChildren<MeshRenderer>();
         /// <summary>
         /// Returns a <see cref="Collider"/> collection of all the <see cref="MeshContainer"/> child colliders.
         /// </summary>
-        public Collider[] Colliders => MeshContainer.GetComponentsInChildren<Collider>();
+        public virtual Collider[] Colliders => MeshContainer.GetComponentsInChildren<Collider>();
         /// <summary>
         /// A collection of Interactors that are currently touching the Interactable.
         /// </summary>
-        public IReadOnlyList<InteractorFacade> TouchingInteractors => Configuration.TouchConfiguration.TouchingInteractors;
+        public virtual IReadOnlyList<InteractorFacade> TouchingInteractors => Configuration.TouchConfiguration.TouchingInteractors;
         /// <summary>
         /// A collection of Interactors that are currently grabbing the Interactable.
         /// </summary>
-        public IReadOnlyList<InteractorFacade> GrabbingInteractors => Configuration.GrabConfiguration.GrabbingInteractors;
+        public virtual IReadOnlyList<InteractorFacade> GrabbingInteractors => Configuration.GrabConfiguration.GrabbingInteractors;
         /// <summary>
         /// Determines if the grab type is set to toggle.
         /// </summary>
-        public bool IsGrabTypeToggle => Configuration.GrabConfiguration.IsGrabTypeToggle;
+        public virtual bool IsGrabTypeToggle => Configuration.GrabConfiguration.IsGrabTypeToggle;
         /// <summary>
         /// Whether the Interactable is currently being touched by any valid Interactor.
         /// </summary>
-        public bool IsTouched => TouchingInteractors.Count > 0;
+        public virtual bool IsTouched => TouchingInteractors.Count > 0;
         /// <summary>
         /// Whether the Interactable is currently being grabbed by any valid Interactor.
         /// </summary>
-        public bool IsGrabbed => GrabbingInteractors.Count > 0;
+        public virtual bool IsGrabbed => GrabbingInteractors.Count > 0;
         /// <summary>
         /// Whether the touch functionality is enabled.
         /// </summary>
-        public bool TouchEnabled => Configuration.TouchConfiguration.TouchConsumer.gameObject.activeInHierarchy && Configuration.TouchConfiguration.UntouchConsumer.gameObject.activeInHierarchy;
+        public virtual bool TouchEnabled => Configuration.TouchConfiguration.TouchConsumer.gameObject.activeInHierarchy && Configuration.TouchConfiguration.UntouchConsumer.gameObject.activeInHierarchy;
         /// <summary>
         /// Whether the grab functionality is enabled.
         /// </summary>
-        public bool GrabEnabled => Configuration.GrabConfiguration.gameObject.activeInHierarchy;
+        public virtual bool GrabEnabled => Configuration.GrabConfiguration.gameObject.activeInHierarchy;
         /// <summary>
         /// Whether the primary grab action functionality is enabled.
         /// </summary>
-        public bool PrimaryGrabEnabled => Configuration.GrabConfiguration.PrimaryAction.gameObject.activeInHierarchy;
+        public virtual bool PrimaryGrabEnabled => Configuration.GrabConfiguration.PrimaryAction.gameObject.activeInHierarchy;
         /// <summary>
         /// Whether the secondary grab action functionality is enabled.
         /// </summary>
-        public bool SecondaryGrabEnabled => Configuration.GrabConfiguration.PrimaryAction.gameObject.activeInHierarchy;
+        public virtual bool SecondaryGrabEnabled => Configuration.GrabConfiguration.PrimaryAction.gameObject.activeInHierarchy;
 
         /// <summary>
         /// The routine for grabbing after a certain instruction.
@@ -570,7 +621,6 @@
         /// <summary>
         /// Called after <see cref="ValidInteractionTypes"/> has been changed.
         /// </summary>
-        [CalledAfterChangeOf(nameof(ValidInteractionTypes))]
         protected virtual void OnAfterValidInteractionTypesChange()
         {
             SetValidInteractionTypes();
@@ -579,7 +629,6 @@
         /// <summary>
         /// Called after <see cref="GrabType"/> has been changed.
         /// </summary>
-        [CalledAfterChangeOf(nameof(GrabType))]
         protected virtual void OnAfterGrabTypeChange()
         {
             Configuration.GrabConfiguration.GrabReceiver.GrabType = GrabType;
@@ -588,7 +637,6 @@
         /// <summary>
         /// Called after <see cref="GrabProviderIndex"/> has been changed.
         /// </summary>
-        [CalledAfterChangeOf(nameof(GrabProviderIndex))]
         protected virtual void OnAfterGrabProviderIndexChange()
         {
             Configuration.GrabConfiguration.SetGrabProvider(GrabProviderIndex);

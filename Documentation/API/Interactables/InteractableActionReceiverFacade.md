@@ -13,6 +13,8 @@ The public interface into the Interactor Action Receiver Prefab.
   * [SourcePublishers]
   * [TargetInteractable]
 * [Methods]
+  * [ClearSourcePublishers()]
+  * [ClearTargetInteractable()]
   * [DisableActionRegistrar(GameObject)]
   * [DisableActionRegistrar(InteractorFacade)]
   * [EnableActionRegistrar(GameObject)]
@@ -82,6 +84,26 @@ public InteractableFacade TargetInteractable { get; set; }
 ```
 
 ### Methods
+
+#### ClearSourcePublishers()
+
+Clears [SourcePublishers].
+
+##### Declaration
+
+```
+public virtual void ClearSourcePublishers()
+```
+
+#### ClearTargetInteractable()
+
+Clears [TargetInteractable].
+
+##### Declaration
+
+```
+public virtual void ClearTargetInteractable()
+```
 
 #### DisableActionRegistrar(GameObject)
 
@@ -193,6 +215,8 @@ protected virtual void OnBeforeTargetInteractableChange()
 [InteractorActionPublisherFacade]: ../Interactors/InteractorActionPublisherFacade.md
 [InteractorActionPublisherFacadeObservableList]: ../Interactors/Collection/InteractorActionPublisherFacadeObservableList.md
 [InteractableFacade]: InteractableFacade.md
+[SourcePublishers]: InteractableActionReceiverFacade.md#SourcePublishers
+[TargetInteractable]: InteractableActionReceiverFacade.md#TargetInteractable
 [InteractorFacade]: ../Interactors/InteractorFacade.md
 [ActivationState]: InteractableActionReceiverFacade.md#ActivationState
 [TargetInteractable]: InteractableActionReceiverFacade.md#TargetInteractable
@@ -207,6 +231,8 @@ protected virtual void OnBeforeTargetInteractableChange()
 [SourcePublishers]: #SourcePublishers
 [TargetInteractable]: #TargetInteractable
 [Methods]: #Methods
+[ClearSourcePublishers()]: #ClearSourcePublishers
+[ClearTargetInteractable()]: #ClearTargetInteractable
 [DisableActionRegistrar(GameObject)]: #DisableActionRegistrarGameObject
 [DisableActionRegistrar(InteractorFacade)]: #DisableActionRegistrarInteractorFacade
 [EnableActionRegistrar(GameObject)]: #EnableActionRegistrarGameObject

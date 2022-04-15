@@ -1,14 +1,11 @@
 ﻿namespace Tilia.Interactions.Interactables.Interactables
 {
-    using Malimbe.MemberChangeMethod;
-    using Malimbe.MemberClearanceMethod;
-    using Malimbe.PropertySerializationAttribute;
-    using Malimbe.XmlDocumentationAttribute;
     using Tilia.Interactions.Interactables.Interactors;
     using Tilia.Interactions.Interactables.Interactors.Collection;
     using UnityEngine;
     using Zinnia.Action;
     using Zinnia.Data.Attribute;
+    using Zinnia.Extension;
 
     /// <summary>
     /// The public interface into the Interactor Action Receiver Prefab.
@@ -43,34 +40,123 @@
         }
 
         #region Action Settings
+        [Header("Receiver Settings")]
+        [Tooltip("The InteractableFacade that the action receiver will target.")]
+        [SerializeField]
+        private InteractableFacade targetInteractable;
         /// <summary>
         /// The <see cref="InteractableFacade"/> that the action receiver will target.
         /// </summary>
-        [Serialized, Cleared]
-        [field: Header("Receiver Settings"), DocumentedByXml]
-        public InteractableFacade TargetInteractable { get; set; }
+        public InteractableFacade TargetInteractable
+        {
+            get
+            {
+                return targetInteractable;
+            }
+            set
+            {
+                if (this.IsMemberChangeAllowed())
+                {
+                    OnBeforeTargetInteractableChange();
+                }
+                targetInteractable = value;
+                if (this.IsMemberChangeAllowed())
+                {
+                    OnAfterTargetInteractableChange();
+                }
+            }
+        }
+        [Tooltip("The InteractionState that determies when to activate the action receiver.")]
+        [SerializeField]
+        private InteractionState activationState = InteractionState.Grab;
         /// <summary>
         /// The <see cref="InteractionState"/> that determies when to activate the action receiver.
         /// </summary>
-        [Serialized]
-        [field: DocumentedByXml]
-        public InteractionState ActivationState { get; set; } = InteractionState.Grab;
+        public InteractionState ActivationState
+        {
+            get
+            {
+                return activationState;
+            }
+            set
+            {
+                if (this.IsMemberChangeAllowed())
+                {
+                    OnBeforeActivationStateChange();
+                }
+                activationState = value;
+                if (this.IsMemberChangeAllowed())
+                {
+                    OnAfterActivationStateChange();
+                }
+            }
+        }
+        [Tooltip("The InteractorActionPublisherFacade collection of the publishers to receive data from.")]
+        [SerializeField]
+        private InteractorActionPublisherFacadeObservableList sourcePublishers;
         /// <summary>
         /// The <see cref="InteractorActionPublisherFacade"/> collection of the publishers to receive data from.
         /// </summary>
-        [Serialized, Cleared]
-        [field: DocumentedByXml]
-        public InteractorActionPublisherFacadeObservableList SourcePublishers { get; set; }
+        public InteractorActionPublisherFacadeObservableList SourcePublishers
+        {
+            get
+            {
+                return sourcePublishers;
+            }
+            set
+            {
+                sourcePublishers = value;
+            }
+        }
         #endregion
 
         #region Reference Settings
+        [Header("Reference Settings")]
+        [Tooltip("The Action that will be linked to the SourceAction.")]
+        [SerializeField]
+        [Restricted]
+        private InteractableActionReceiverConfigurator configuration;
         /// <summary>
         /// The <see cref="Action"/> that will be linked to the <see cref="SourceAction"/>.
         /// </summary>
-        [Serialized]
-        [field: Header("Reference Settings"), DocumentedByXml, Restricted]
-        public InteractableActionReceiverConfigurator Configuration { get; protected set; }
+        public InteractableActionReceiverConfigurator Configuration
+        {
+            get
+            {
+                return configuration;
+            }
+            protected set
+            {
+                configuration = value;
+            }
+        }
         #endregion
+
+        /// <summary>
+        /// Clears <see cref="TargetInteractable"/>.
+        /// </summary>
+        public virtual void ClearTargetInteractable()
+        {
+            if (!this.IsValidState())
+            {
+                return;
+            }
+
+            TargetInteractable = default;
+        }
+
+        /// <summary>
+        /// Clears <see cref="SourcePublishers"/>.
+        /// </summary>
+        public virtual void ClearSourcePublishers()
+        {
+            if (!this.IsValidState())
+            {
+                return;
+            }
+
+            SourcePublishers = default;
+        }
 
         /// <summary>
         /// Enables the given source <see cref="InteractorFacade"/> on the <see cref="ActionRegistrar"/>.
@@ -141,7 +227,6 @@
         /// <summary>
         /// Called before <see cref="TargetInteractable"/> has been changed.
         /// </summary>
-        [CalledBeforeChangeOf(nameof(TargetInteractable))]
         protected virtual void OnBeforeTargetInteractableChange()
         {
             Configuration.UnregisterInteractableEvents(TargetInteractable, ActivationState);
@@ -150,7 +235,6 @@
         /// <summary>
         /// Called after <see cref="TargetInteractable"/> has been changed.
         /// </summary>
-        [CalledAfterChangeOf(nameof(TargetInteractable))]
         protected virtual void OnAfterTargetInteractableChange()
         {
             Configuration.LinkInteractableToConsumers();
@@ -160,7 +244,6 @@
         /// <summary>
         /// Called before <see cref="ActivationState"/> has been changed.
         /// </summary>
-        [CalledBeforeChangeOf(nameof(ActivationState))]
         protected virtual void OnBeforeActivationStateChange()
         {
             Configuration.UnregisterInteractableEvents(TargetInteractable, ActivationState);
@@ -169,7 +252,6 @@
         /// <summary>
         /// Called after <see cref="ActivationState"/> has been changed.
         /// </summary>
-        [CalledAfterChangeOf(nameof(ActivationState))]
         protected virtual void OnAfterActivationStateChange()
         {
             Configuration.RegisterInteractableEvents(TargetInteractable, ActivationState);

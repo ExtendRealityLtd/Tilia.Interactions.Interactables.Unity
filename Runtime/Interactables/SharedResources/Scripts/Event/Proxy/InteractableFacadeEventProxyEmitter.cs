@@ -13,9 +13,7 @@
         /// Defines the event with the specified state.
         /// </summary>
         [Serializable]
-        public class UnityEvent : UnityEvent<InteractableFacade>
-        {
-        }
+        public class UnityEvent : UnityEvent<InteractableFacade> { }
 
         /// <inheritdoc />
         protected override object GetTargetToCheck()

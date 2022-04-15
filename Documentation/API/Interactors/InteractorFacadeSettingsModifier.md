@@ -11,6 +11,7 @@ Allows the modification of the settings on a specified [InteractorFacade] found 
   * [CacheElementSettings]
   * [Elements]
 * [Methods]
+  * [ClearElements()]
   * [RestoreCachedGrabAction(InteractorFacade)]
   * [RestoreCachedGrabPrecognition(InteractorFacade)]
   * [RestoreCachedVelocityTracker(InteractorFacade)]
@@ -58,6 +59,16 @@ public List<InteractorFacadeSettingsModifier.InteractorElement> Elements { get; 
 ```
 
 ### Methods
+
+#### ClearElements()
+
+Clears [Elements].
+
+##### Declaration
+
+```
+public virtual void ClearElements()
+```
 
 #### RestoreCachedGrabAction(InteractorFacade)
 
@@ -158,6 +169,7 @@ public virtual void SetTargetVelocityTracker(InteractorFacade interactorFacade)
 [Tilia.Interactions.Interactables.Interactors]: README.md
 [InteractorFacadeSettingsModifier.InteractorElement]: InteractorFacadeSettingsModifier.InteractorElement.md
 [Elements]: InteractorFacadeSettingsModifier.md#Elements
+[Elements]: InteractorFacadeSettingsModifier.md#Elements
 [GrabAction]: InteractorFacade.md#Tilia_Interactions_Interactables_Interactors_InteractorFacade_GrabAction
 [Elements]: InteractorFacadeSettingsModifier.md#Elements
 [GrabPrecognition]: InteractorFacade.md#Tilia_Interactions_Interactables_Interactors_InteractorFacade_GrabPrecognition
@@ -180,6 +192,7 @@ public virtual void SetTargetVelocityTracker(InteractorFacade interactorFacade)
 [CacheElementSettings]: #CacheElementSettings
 [Elements]: #Elements
 [Methods]: #Methods
+[ClearElements()]: #ClearElements
 [RestoreCachedGrabAction(InteractorFacade)]: #RestoreCachedGrabActionInteractorFacade
 [RestoreCachedGrabPrecognition(InteractorFacade)]: #RestoreCachedGrabPrecognitionInteractorFacade
 [RestoreCachedVelocityTracker(InteractorFacade)]: #RestoreCachedVelocityTrackerInteractorFacade

@@ -14,9 +14,7 @@
         /// Defines the event with the specified <see cref="InteractableFacade"/>.
         /// </summary>
         [Serializable]
-        public class UnityEvent : UnityEvent<InteractableFacade>
-        {
-        }
+        public class UnityEvent : UnityEvent<InteractableFacade> { }
 
         /// <inheritdoc />
         protected override InteractableFacade ExtractValue()

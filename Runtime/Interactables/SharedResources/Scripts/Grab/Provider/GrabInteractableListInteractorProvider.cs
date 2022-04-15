@@ -1,12 +1,10 @@
 ﻿namespace Tilia.Interactions.Interactables.Interactables.Grab.Provider
 {
-    using UnityEngine;
     using System.Collections.Generic;
-    using Malimbe.XmlDocumentationAttribute;
-    using Malimbe.PropertySerializationAttribute;
+    using Tilia.Interactions.Interactables.Interactors;
+    using UnityEngine;
     using Zinnia.Data.Attribute;
     using Zinnia.Data.Collection.List;
-    using Tilia.Interactions.Interactables.Interactors;
 
     /// <summary>
     /// Processes a received grab event into an Observable Set to handle a simplified grab process.
@@ -14,12 +12,25 @@
     public class GrabInteractableListInteractorProvider : GrabInteractableInteractorProvider
     {
         #region List Settings
+        [Header("List Settings")]
+        [Tooltip("The set to get the current interactors from.")]
+        [SerializeField]
+        [Restricted]
+        private GameObjectObservableList eventList;
         /// <summary>
         /// The set to get the current interactors from.
         /// </summary>
-        [Serialized]
-        [field: Header("List Settings"), DocumentedByXml, Restricted]
-        public GameObjectObservableList EventList { get; protected set; }
+        public GameObjectObservableList EventList
+        {
+            get
+            {
+                return eventList;
+            }
+            protected set
+            {
+                eventList = value;
+            }
+        }
         #endregion
 
         /// <inheritdoc />

@@ -15,7 +15,11 @@
   * [TargetGrabPrecognition]
   * [TargetVelocityTracker]
 * [Methods]
+  * [ClearTargetFacade()]
+  * [ClearTargetGrabAction()]
+  * [ClearTargetVelocityTracker()]
   * [OnAfterFacadeChange()]
+  * [OnAfterTargetFacadeChange()]
   * [RestoreCachedGrabAction()]
   * [RestoreCachedGrabPrecognition()]
   * [RestoreCachedVelocityTracker()]
@@ -133,14 +137,53 @@ public VelocityTracker TargetVelocityTracker { get; set; }
 
 ### Methods
 
+#### ClearTargetFacade()
+
+Clears [TargetFacade].
+
+##### Declaration
+
+```
+public virtual void ClearTargetFacade()
+```
+
+#### ClearTargetGrabAction()
+
+Clears [TargetGrabAction].
+
+##### Declaration
+
+```
+public virtual void ClearTargetGrabAction()
+```
+
+#### ClearTargetVelocityTracker()
+
+Clears [TargetVelocityTracker].
+
+##### Declaration
+
+```
+public virtual void ClearTargetVelocityTracker()
+```
+
 #### OnAfterFacadeChange()
+
+##### Declaration
+
+```
+[Obsolete("Use `OnAfterTargetFacadeChange` instead.")]
+protected virtual void OnAfterFacadeChange()
+```
+
+#### OnAfterTargetFacadeChange()
 
 Called after [TargetFacade] has been changed.
 
 ##### Declaration
 
 ```
-protected virtual void OnAfterFacadeChange()
+protected virtual void OnAfterTargetFacadeChange()
 ```
 
 #### RestoreCachedGrabAction()
@@ -230,6 +273,9 @@ public virtual void SetTargetVelocityTracker(bool cacheCurrentVelocityTracker)
 [GrabPrecognition]: InteractorFacade.md#Tilia_Interactions_Interactables_Interactors_InteractorFacade_GrabPrecognition
 [VelocityTracker]: InteractorFacade.md#Tilia_Interactions_Interactables_Interactors_InteractorFacade_VelocityTracker
 [TargetFacade]: InteractorFacadeSettingsModifier.InteractorElement.md#TargetFacade
+[TargetGrabAction]: InteractorFacadeSettingsModifier.InteractorElement.md#TargetGrabAction
+[TargetVelocityTracker]: InteractorFacadeSettingsModifier.InteractorElement.md#TargetVelocityTracker
+[TargetFacade]: InteractorFacadeSettingsModifier.InteractorElement.md#TargetFacade
 [GrabAction]: InteractorFacade.md#Tilia_Interactions_Interactables_Interactors_InteractorFacade_GrabAction
 [GrabPrecognition]: InteractorFacade.md#Tilia_Interactions_Interactables_Interactors_InteractorFacade_GrabPrecognition
 [VelocityTracker]: InteractorFacade.md#Tilia_Interactions_Interactables_Interactors_InteractorFacade_VelocityTracker
@@ -255,7 +301,11 @@ public virtual void SetTargetVelocityTracker(bool cacheCurrentVelocityTracker)
 [TargetGrabPrecognition]: #TargetGrabPrecognition
 [TargetVelocityTracker]: #TargetVelocityTracker
 [Methods]: #Methods
+[ClearTargetFacade()]: #ClearTargetFacade
+[ClearTargetGrabAction()]: #ClearTargetGrabAction
+[ClearTargetVelocityTracker()]: #ClearTargetVelocityTracker
 [OnAfterFacadeChange()]: #OnAfterFacadeChange
+[OnAfterTargetFacadeChange()]: #OnAfterTargetFacadeChange
 [RestoreCachedGrabAction()]: #RestoreCachedGrabAction
 [RestoreCachedGrabPrecognition()]: #RestoreCachedGrabPrecognition
 [RestoreCachedVelocityTracker()]: #RestoreCachedVelocityTracker

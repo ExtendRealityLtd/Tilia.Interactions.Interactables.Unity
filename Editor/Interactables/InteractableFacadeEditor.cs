@@ -1,6 +1,5 @@
 ﻿namespace Tilia.Interactions.Interactables.Interactables
 {
-    using Malimbe.FodyRunner.UnityIntegration;
     using System;
     using Tilia.Interactions.Interactables.Interactables.Grab.Action;
     using UnityEditor;
@@ -9,9 +8,10 @@
     using UnityEngine.SceneManagement;
     using Zinnia.Rule;
     using Zinnia.Tracking.Follow.Modifier.Property.Rotation;
+    using Zinnia.Utility;
 
     [CustomEditor(typeof(InteractableFacade), true)]
-    public class InteractableFacadeEditor : InspectorEditor
+    public class InteractableFacadeEditor : ZinniaInspector
     {
         private static readonly int[] primaryActionsIndexes = new int[] { 0, 1 };
         private static readonly int[] secondaryActionsIndexes = new int[] { 0, 1, 2, 3, 4 };

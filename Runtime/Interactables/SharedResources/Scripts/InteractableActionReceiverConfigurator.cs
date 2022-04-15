@@ -1,7 +1,5 @@
 ﻿namespace Tilia.Interactions.Interactables.Interactables
 {
-    using Malimbe.PropertySerializationAttribute;
-    using Malimbe.XmlDocumentationAttribute;
     using System;
     using Tilia.Interactions.Interactables.Interactors;
     using UnityEngine;
@@ -19,51 +17,137 @@
     public class InteractableActionReceiverConfigurator : MonoBehaviour
     {
         #region Facade Settings
+        [Header("Facade Settings")]
+        [Tooltip("The public interface facade.")]
+        [SerializeField]
+        [Restricted]
+        private InteractableActionReceiverFacade facade;
         /// <summary>
         /// The public interface facade.
         /// </summary>
-        [Serialized]
-        [field: Header("Facade Settings"), DocumentedByXml, Restricted]
-        public InteractableActionReceiverFacade Facade { get; protected set; }
+        public InteractableActionReceiverFacade Facade
+        {
+            get
+            {
+                return facade;
+            }
+            protected set
+            {
+                facade = value;
+            }
+        }
         #endregion
 
         #region Reference Settings
+        [Header("Reference Settings")]
+        [Tooltip("The ActionObservableList that containts the Action collection that can be linked to the InteractorActionFacade.SourceAction.")]
+        [SerializeField]
+        [Restricted]
+        private ActionObservableList targetActions;
         /// <summary>
         /// The <see cref="ActionObservableList"/> that containts the <see cref="Action"/> collection that can be linked to the <see cref="InteractorActionFacade.SourceAction"/>.
         /// </summary>
-        [Serialized]
-        [field: Header("Reference Settings"), DocumentedByXml, Restricted]
-        public ActionObservableList TargetActions { get; protected set; }
+        public ActionObservableList TargetActions
+        {
+            get
+            {
+                return targetActions;
+            }
+            protected set
+            {
+                targetActions = value;
+            }
+        }
+        [Tooltip("The ActionRegistrar to create the appropriate action links.")]
+        [SerializeField]
+        [Restricted]
+        private ActionRegistrar actionRegistrar;
         /// <summary>
         /// The <see cref="ActionRegistrar"/> to create the appropriate action links.
         /// </summary>
-        [Serialized]
-        [field: DocumentedByXml, Restricted]
-        public ActionRegistrar ActionRegistrar { get; protected set; }
+        public ActionRegistrar ActionRegistrar
+        {
+            get
+            {
+                return actionRegistrar;
+            }
+            protected set
+            {
+                actionRegistrar = value;
+            }
+        }
+        [Tooltip("The ActiveCollisionConsumer for checking valid start action.")]
+        [SerializeField]
+        [Restricted]
+        private ActiveCollisionConsumer startActionConsumer;
         /// <summary>
         /// The <see cref="ActiveCollisionConsumer"/> for checking valid start action.
         /// </summary>
-        [Serialized]
-        [field: DocumentedByXml, Restricted]
-        public ActiveCollisionConsumer StartActionConsumer { get; protected set; }
+        public ActiveCollisionConsumer StartActionConsumer
+        {
+            get
+            {
+                return startActionConsumer;
+            }
+            protected set
+            {
+                startActionConsumer = value;
+            }
+        }
+        [Tooltip("The StringInListRule for the start action.")]
+        [SerializeField]
+        [Restricted]
+        private StringInListRule receiveStartActionStringRule;
         /// <summary>
         /// The <see cref="StringInListRule"/> for the start action.
         /// </summary>
-        [Serialized]
-        [field: DocumentedByXml, Restricted]
-        public StringInListRule ReceiveStartActionStringRule { get; protected set; }
+        public StringInListRule ReceiveStartActionStringRule
+        {
+            get
+            {
+                return receiveStartActionStringRule;
+            }
+            protected set
+            {
+                receiveStartActionStringRule = value;
+            }
+        }
+        [Tooltip("The ActiveCollisionConsumer for checking valid stop action.")]
+        [SerializeField]
+        [Restricted]
+        private ActiveCollisionConsumer stopActionConsumer;
         /// <summary>
         /// The <see cref="ActiveCollisionConsumer"/> for checking valid stop action.
         /// </summary>
-        [Serialized]
-        [field: DocumentedByXml, Restricted]
-        public ActiveCollisionConsumer StopActionConsumer { get; protected set; }
+        public ActiveCollisionConsumer StopActionConsumer
+        {
+            get
+            {
+                return stopActionConsumer;
+            }
+            protected set
+            {
+                stopActionConsumer = value;
+            }
+        }
+        [Tooltip("The StringInListRule for the stop action.")]
+        [SerializeField]
+        [Restricted]
+        private StringInListRule receiveStopActionStringRule;
         /// <summary>
         /// The <see cref="StringInListRule"/> for the stop action.
         /// </summary>
-        [Serialized]
-        [field: DocumentedByXml, Restricted]
-        public StringInListRule ReceiveStopActionStringRule { get; protected set; }
+        public StringInListRule ReceiveStopActionStringRule
+        {
+            get
+            {
+                return receiveStopActionStringRule;
+            }
+            protected set
+            {
+                receiveStopActionStringRule = value;
+            }
+        }
         #endregion
 
         /// <summary>

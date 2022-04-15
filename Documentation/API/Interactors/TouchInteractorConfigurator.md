@@ -73,7 +73,7 @@ The currently active touched GameObject.
 ##### Declaration
 
 ```
-public GameObject ActiveTouchedObject { get; }
+public virtual GameObject ActiveTouchedObject { get; }
 ```
 
 #### CurrentActiveCollision
@@ -143,7 +143,7 @@ A collection of currently touched GameObjects.
 ##### Declaration
 
 ```
-public IReadOnlyList<GameObject> TouchedObjects { get; }
+public virtual IReadOnlyList<GameObject> TouchedObjects { get; }
 ```
 
 #### TouchTracker

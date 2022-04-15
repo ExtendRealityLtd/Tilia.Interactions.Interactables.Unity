@@ -1,9 +1,5 @@
 ﻿namespace Tilia.Interactions.Interactables.Interactables.Grab
 {
-    using Malimbe.MemberChangeMethod;
-    using Malimbe.MemberClearanceMethod;
-    using Malimbe.PropertySerializationAttribute;
-    using Malimbe.XmlDocumentationAttribute;
     using System.Collections.Generic;
     using System.Linq;
     using Tilia.Interactions.Interactables.Interactables.Grab.Action;
@@ -21,64 +17,204 @@
     public class GrabInteractableConfigurator : MonoBehaviour
     {
         #region Facade Settings
+        [Header("Facade Settings")]
+        [Tooltip("The public interface facade.")]
+        [SerializeField]
+        [Restricted]
+        private InteractableFacade facade;
         /// <summary>
         /// The public interface facade.
         /// </summary>
-        [Serialized]
-        [field: Header("Facade Settings"), DocumentedByXml, Restricted]
-        public InteractableFacade Facade { get; protected set; }
+        public InteractableFacade Facade
+        {
+            get
+            {
+                return facade;
+            }
+            protected set
+            {
+                facade = value;
+            }
+        }
         #endregion
 
         #region Action Settings
+        [Header("Action Settings")]
+        [Tooltip("The action to perform when grabbing the interactable for the first time.")]
+        [SerializeField]
+        private GrabInteractableAction primaryAction;
         /// <summary>
         /// The action to perform when grabbing the interactable for the first time.
         /// </summary>
-        [Serialized, Cleared]
-        [field: Header("Action Settings"), DocumentedByXml]
-        public GrabInteractableAction PrimaryAction { get; set; }
+        public GrabInteractableAction PrimaryAction
+        {
+            get
+            {
+                return primaryAction;
+            }
+            set
+            {
+                if (this.IsMemberChangeAllowed())
+                {
+                    OnBeforePrimaryActionChange();
+                }
+                primaryAction = value;
+                if (this.IsMemberChangeAllowed())
+                {
+                    OnAfterPrimaryActionChange();
+                }
+            }
+        }
+        [Tooltip("The action to perform when grabbing the interactable for the second time.")]
+        [SerializeField]
+        private GrabInteractableAction secondaryAction;
         /// <summary>
         /// The action to perform when grabbing the interactable for the second time.
         /// </summary>
-        [Serialized, Cleared]
-        [field: DocumentedByXml]
-        public GrabInteractableAction SecondaryAction { get; set; }
+        public GrabInteractableAction SecondaryAction
+        {
+            get
+            {
+                return secondaryAction;
+            }
+            set
+            {
+                if (this.IsMemberChangeAllowed())
+                {
+                    OnBeforeSecondaryActionChange();
+                }
+                secondaryAction = value;
+                if (this.IsMemberChangeAllowed())
+                {
+                    OnAfterSecondaryActionChange();
+                }
+            }
+        }
         #endregion
 
         #region Reference Settings
+        [Header("Reference Settings")]
+        [Tooltip("The Grab Receiver setup.")]
+        [SerializeField]
+        [Restricted]
+        private GrabInteractableReceiver grabReceiver;
         /// <summary>
         /// The Grab Receiver setup.
         /// </summary>
-        [Serialized]
-        [field: Header("Reference Settings"), DocumentedByXml, Restricted]
-        public GrabInteractableReceiver GrabReceiver { get; protected set; }
+        public GrabInteractableReceiver GrabReceiver
+        {
+            get
+            {
+                return grabReceiver;
+            }
+            protected set
+            {
+                grabReceiver = value;
+            }
+        }
+        [Tooltip("The Grab Provider setup.")]
+        [SerializeField]
+        [Restricted]
+        private GrabInteractableInteractorProvider grabProvider;
         /// <summary>
         /// The Grab Provider setup.
         /// </summary>
-        [Serialized]
-        [field: DocumentedByXml, Restricted]
-        public GrabInteractableInteractorProvider GrabProvider { get; protected set; }
+        public GrabInteractableInteractorProvider GrabProvider
+        {
+            get
+            {
+                return grabProvider;
+            }
+            protected set
+            {
+                grabProvider = value;
+            }
+        }
+        [Tooltip("The potential options for the GrabProvider.")]
+        [SerializeField]
+        [Restricted]
+        private GrabInteractableInteractorProvider[] grabProviderOptions = new GrabInteractableInteractorProvider[0];
         /// <summary>
         /// The potential options for the <see cref="GrabProvider"/>.
         /// </summary>
-        [Serialized]
-        [field: DocumentedByXml, Restricted]
-        public GrabInteractableInteractorProvider[] GrabProviderOptions { get; protected set; } = new GrabInteractableInteractorProvider[0];
+        public GrabInteractableInteractorProvider[] GrabProviderOptions
+        {
+            get
+            {
+                return grabProviderOptions;
+            }
+            protected set
+            {
+                grabProviderOptions = value;
+            }
+        }
+        [Tooltip("The GameObjectObservableList that contains the available grab action prefabs.")]
+        [SerializeField]
+        [Restricted]
+        private GameObjectObservableList actionTypes;
         /// <summary>
         /// The <see cref="GameObjectObservableList"/> that contains the available grab action prefabs.
         /// </summary>
-        [Serialized, Cleared]
-        [field: DocumentedByXml, Restricted]
-        public GameObjectObservableList ActionTypes { get; protected set; }
+        public GameObjectObservableList ActionTypes
+        {
+            get
+            {
+                return actionTypes;
+            }
+            protected set
+            {
+                actionTypes = value;
+            }
+        }
         #endregion
 
         /// <summary>
         /// A collection of Interactors that are currently grabbing the Interactable.
         /// </summary>
-        public IReadOnlyList<InteractorFacade> GrabbingInteractors => GrabProvider.GrabbingInteractors;
+        public virtual IReadOnlyList<InteractorFacade> GrabbingInteractors => GrabProvider.GrabbingInteractors;
         /// <summary>
         /// Determines if the grab type is set to toggle.
         /// </summary>
-        public bool IsGrabTypeToggle => GrabReceiver.GrabType == GrabInteractableReceiver.ActiveType.Toggle;
+        public virtual bool IsGrabTypeToggle => GrabReceiver.GrabType == GrabInteractableReceiver.ActiveType.Toggle;
+
+        /// <summary>
+        /// Clears <see cref="PrimaryAction"/>.
+        /// </summary>
+        public virtual void ClearPrimaryAction()
+        {
+            if (!this.IsValidState())
+            {
+                return;
+            }
+
+            PrimaryAction = default;
+        }
+
+        /// <summary>
+        /// Clears <see cref="SecondaryAction"/>.
+        /// </summary>
+        public virtual void ClearSecondaryAction()
+        {
+            if (!this.IsValidState())
+            {
+                return;
+            }
+
+            SecondaryAction = default;
+        }
+
+        /// <summary>
+        /// Clears <see cref="ActionTypes"/>.
+        /// </summary>
+        public virtual void ClearActionTypes()
+        {
+            if (!this.IsValidState())
+            {
+                return;
+            }
+
+            ActionTypes = default;
+        }
 
         /// <summary>
         /// Attempt to grab the Interactable to the given Interactor and ungrabs any existing grab.
@@ -390,7 +526,6 @@
         /// <summary>
         /// Called after <see cref="PrimaryAction"/> has been changed.
         /// </summary>
-        [CalledBeforeChangeOf(nameof(PrimaryAction))]
         protected virtual void OnBeforePrimaryActionChange()
         {
             UnlinkToPrimaryAction();
@@ -399,7 +534,6 @@
         /// <summary>
         /// Called after <see cref="PrimaryAction"/> has been changed.
         /// </summary>
-        [CalledAfterChangeOf(nameof(PrimaryAction))]
         protected virtual void OnAfterPrimaryActionChange()
         {
             LinkToPrimaryAction();
@@ -409,7 +543,6 @@
         /// <summary>
         /// Called after <see cref="SecondaryAction"/> has been changed.
         /// </summary>
-        [CalledBeforeChangeOf(nameof(SecondaryAction))]
         protected virtual void OnBeforeSecondaryActionChange()
         {
             UnlinkToSecondaryAction();
@@ -418,7 +551,6 @@
         /// <summary>
         /// Called after <see cref="SecondaryAction"/> has been changed.
         /// </summary>
-        [CalledAfterChangeOf(nameof(SecondaryAction))]
         protected virtual void OnAfterSecondaryActionChange()
         {
             LinkToSecondaryAction();

@@ -1,13 +1,11 @@
 ﻿namespace Tilia.Interactions.Interactables.Interactables.Grab.Provider
 {
-    using UnityEngine;
     using System.Collections.Generic;
-    using Malimbe.XmlDocumentationAttribute;
-    using Malimbe.PropertySerializationAttribute;
+    using Tilia.Interactions.Interactables.Interactors;
+    using UnityEngine;
+    using Zinnia.Data.Attribute;
     using Zinnia.Event.Proxy;
     using Zinnia.Extension;
-    using Zinnia.Data.Attribute;
-    using Tilia.Interactions.Interactables.Interactors;
 
     /// <summary>
     /// Processes a received grab event and passes it over to the appropriate grab actions.
@@ -15,61 +13,159 @@
     public abstract class GrabInteractableInteractorProvider : MonoBehaviour
     {
         #region Input Settings
+        [Header("Input Settings")]
+        [Tooltip("The input GameObjectEventProxyEmitter for the grab action.")]
+        [SerializeField]
+        [Restricted]
+        private GameObjectEventProxyEmitter inputGrabReceived;
         /// <summary>
         /// The input <see cref="GameObjectEventProxyEmitter"/> for the grab action.
         /// </summary>
-        [Serialized]
-        [field: Header("Input Settings"), DocumentedByXml, Restricted]
-        public GameObjectEventProxyEmitter InputGrabReceived { get; protected set; }
-
+        public GameObjectEventProxyEmitter InputGrabReceived
+        {
+            get
+            {
+                return inputGrabReceived;
+            }
+            protected set
+            {
+                inputGrabReceived = value;
+            }
+        }
+        [Tooltip("The input GameObjectEventProxyEmitter for the ungrab action.")]
+        [SerializeField]
+        [Restricted]
+        private GameObjectEventProxyEmitter inputUngrabReceived;
         /// <summary>
         /// The input <see cref="GameObjectEventProxyEmitter"/> for the ungrab action.
         /// </summary>
-        [Serialized]
-        [field: DocumentedByXml, Restricted]
-        public GameObjectEventProxyEmitter InputUngrabReceived { get; protected set; }
+        public GameObjectEventProxyEmitter InputUngrabReceived
+        {
+            get
+            {
+                return inputUngrabReceived;
+            }
+            protected set
+            {
+                inputUngrabReceived = value;
+            }
+        }
         #endregion
 
         #region Primary Output Settings
+        [Header("Primary Output Settings")]
+        [Tooltip("The output GameObjectEventProxyEmitter for the primary grab action.")]
+        [SerializeField]
+        [Restricted]
+        private GameObjectEventProxyEmitter outputPrimaryGrabAction;
         /// <summary>
         /// The output <see cref="GameObjectEventProxyEmitter"/> for the primary grab action.
         /// </summary>
-        [Serialized]
-        [field: Header("Primary Output Settings"), DocumentedByXml, Restricted]
-        public GameObjectEventProxyEmitter OutputPrimaryGrabAction { get; protected set; }
+        public GameObjectEventProxyEmitter OutputPrimaryGrabAction
+        {
+            get
+            {
+                return outputPrimaryGrabAction;
+            }
+            protected set
+            {
+                outputPrimaryGrabAction = value;
+            }
+        }
+        [Tooltip("The output GameObjectEventProxyEmitter for the primary grab setup on secondary action.")]
+        [SerializeField]
+        [Restricted]
+        private GameObjectEventProxyEmitter outputPrimaryGrabSetupOnSecondaryAction;
         /// <summary>
         /// The output <see cref="GameObjectEventProxyEmitter"/> for the primary grab setup on secondary action.
         /// </summary>
-        [Serialized]
-        [field: DocumentedByXml, Restricted]
-        public GameObjectEventProxyEmitter OutputPrimaryGrabSetupOnSecondaryAction { get; protected set; }
+        public GameObjectEventProxyEmitter OutputPrimaryGrabSetupOnSecondaryAction
+        {
+            get
+            {
+                return outputPrimaryGrabSetupOnSecondaryAction;
+            }
+            protected set
+            {
+                outputPrimaryGrabSetupOnSecondaryAction = value;
+            }
+        }
+        [Tooltip("The output GameObjectEventProxyEmitter for the primary ungrab action.")]
+        [SerializeField]
+        [Restricted]
+        private GameObjectEventProxyEmitter outputPrimaryUngrabAction;
         /// <summary>
         /// The output <see cref="GameObjectEventProxyEmitter"/> for the primary ungrab action.
         /// </summary>
-        [Serialized]
-        [field: DocumentedByXml, Restricted]
-        public GameObjectEventProxyEmitter OutputPrimaryUngrabAction { get; protected set; }
+        public GameObjectEventProxyEmitter OutputPrimaryUngrabAction
+        {
+            get
+            {
+                return outputPrimaryUngrabAction;
+            }
+            protected set
+            {
+                outputPrimaryUngrabAction = value;
+            }
+        }
+        [Tooltip("The output GameObjectEventProxyEmitter for the primary ungrab reset on secondary action.")]
+        [SerializeField]
+        [Restricted]
+        private GameObjectEventProxyEmitter outputPrimaryUngrabResetOnSecondaryAction;
         /// <summary>
         /// The output <see cref="GameObjectEventProxyEmitter"/> for the primary ungrab reset on secondary action.
         /// </summary>
-        [Serialized]
-        [field: DocumentedByXml, Restricted]
-        public GameObjectEventProxyEmitter OutputPrimaryUngrabResetOnSecondaryAction { get; protected set; }
+        public GameObjectEventProxyEmitter OutputPrimaryUngrabResetOnSecondaryAction
+        {
+            get
+            {
+                return outputPrimaryUngrabResetOnSecondaryAction;
+            }
+            protected set
+            {
+                outputPrimaryUngrabResetOnSecondaryAction = value;
+            }
+        }
         #endregion
 
         #region Secondary Output Settings
+        [Header("Secondary Output Settings")]
+        [Tooltip("The output GameObjectEventProxyEmitter for the secondary grab action.")]
+        [SerializeField]
+        [Restricted]
+        private GameObjectEventProxyEmitter outputSecondaryGrabAction;
         /// <summary>
         /// The output <see cref="GameObjectEventProxyEmitter"/> for the secondary grab action.
         /// </summary>
-        [Serialized]
-        [field: Header("Secondary Output Settings"), DocumentedByXml, Restricted]
-        public GameObjectEventProxyEmitter OutputSecondaryGrabAction { get; protected set; }
+        public GameObjectEventProxyEmitter OutputSecondaryGrabAction
+        {
+            get
+            {
+                return outputSecondaryGrabAction;
+            }
+            protected set
+            {
+                outputSecondaryGrabAction = value;
+            }
+        }
+        [Tooltip("The output GameObjectEventProxyEmitter for the Secondary ungrab action.")]
+        [SerializeField]
+        [Restricted]
+        private GameObjectEventProxyEmitter outputSecondaryUngrabAction;
         /// <summary>
         /// The output <see cref="GameObjectEventProxyEmitter"/> for the Secondary ungrab action.
         /// </summary>
-        [Serialized]
-        [field: DocumentedByXml, Restricted]
-        public GameObjectEventProxyEmitter OutputSecondaryUngrabAction { get; protected set; }
+        public GameObjectEventProxyEmitter OutputSecondaryUngrabAction
+        {
+            get
+            {
+                return outputSecondaryUngrabAction;
+            }
+            protected set
+            {
+                outputSecondaryUngrabAction = value;
+            }
+        }
         #endregion
 
         /// <summary>

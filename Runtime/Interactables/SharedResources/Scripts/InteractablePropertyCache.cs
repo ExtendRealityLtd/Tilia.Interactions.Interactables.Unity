@@ -1,22 +1,30 @@
 ﻿namespace Tilia.Interactions.Interactables.Interactables
 {
-    using Malimbe.BehaviourStateRequirementMethod;
-    using Malimbe.MemberClearanceMethod;
-    using Malimbe.PropertySerializationAttribute;
-    using Malimbe.XmlDocumentationAttribute;
     using UnityEngine;
+    using Zinnia.Extension;
 
     /// <summary>
     /// Caches common properties for an <see cref="InteractableFacade"/> to be restored at a later point in time.
     /// </summary>
     public class InteractablePropertyCache : MonoBehaviour
     {
+        [Tooltip("The source to cache properties for.")]
+        [SerializeField]
+        private InteractableFacade source;
         /// <summary>
         /// The source to cache properties for.
         /// </summary>
-        [Serialized, Cleared]
-        [field: DocumentedByXml]
-        public InteractableFacade Source { get; set; }
+        public InteractableFacade Source
+        {
+            get
+            {
+                return source;
+            }
+            set
+            {
+                source = value;
+            }
+        }
 
         /// <summary>
         /// The cached local position of the <see cref="Source"/>
@@ -36,13 +44,25 @@
         protected bool cachedRigidbodyKinematicState;
 
         /// <summary>
+        /// Clears <see cref="Source"/>.
+        /// </summary>
+        public virtual void ClearSource()
+        {
+            if (!this.IsValidState())
+            {
+                return;
+            }
+
+            Source = default;
+        }
+
+        /// <summary>
         /// Sets the <see cref="Source"/> property from a given <see cref="GameObject"/>.
         /// </summary>
         /// <param name="source">The source to set to.</param>
-        [RequiresBehaviourState]
         public virtual void SetSource(GameObject source)
         {
-            if (source == null)
+            if (!this.IsValidState() || source == null)
             {
                 return;
             }
@@ -53,10 +73,9 @@
         /// <summary>
         /// Caches the position.
         /// </summary>
-        [RequiresBehaviourState]
         public virtual void CachePosition()
         {
-            if (Source == null)
+            if (!this.IsValidState() || Source == null)
             {
                 return;
             }
@@ -67,10 +86,9 @@
         /// <summary>
         /// Caches the rotation.
         /// </summary>
-        [RequiresBehaviourState]
         public virtual void CacheRotation()
         {
-            if (Source == null)
+            if (!this.IsValidState() || Source == null)
             {
                 return;
             }
@@ -81,10 +99,9 @@
         /// <summary>
         /// Caches the scale.
         /// </summary>
-        [RequiresBehaviourState]
         public virtual void CacheScale()
         {
-            if (Source == null)
+            if (!this.IsValidState() || Source == null)
             {
                 return;
             }
@@ -95,10 +112,9 @@
         /// <summary>
         /// Caches the rigidbody kinematic state..
         /// </summary>
-        [RequiresBehaviourState]
         public virtual void CacheRigidbodyKinematicState()
         {
-            if (Source == null)
+            if (!this.IsValidState() || Source == null)
             {
                 return;
             }
@@ -109,9 +125,13 @@
         /// <summary>
         /// Caches all of the properties.
         /// </summary>
-        [RequiresBehaviourState]
         public virtual void CacheAll()
         {
+            if (!this.IsValidState())
+            {
+                return;
+            }
+
             CachePosition();
             CacheRotation();
             CacheScale();
@@ -121,10 +141,9 @@
         /// <summary>
         /// Restores the cached position.
         /// </summary>
-        [RequiresBehaviourState]
         public virtual void RestorePosition()
         {
-            if (Source == null)
+            if (!this.IsValidState() || Source == null)
             {
                 return;
             }
@@ -135,10 +154,9 @@
         /// <summary>
         /// Restores the cached rotation.
         /// </summary>
-        [RequiresBehaviourState]
         public virtual void RestoreRotation()
         {
-            if (Source == null)
+            if (!this.IsValidState() || Source == null)
             {
                 return;
             }
@@ -149,10 +167,9 @@
         /// <summary>
         /// Restores the cached scale.
         /// </summary>
-        [RequiresBehaviourState]
         public virtual void RestoreScale()
         {
-            if (Source == null)
+            if (!this.IsValidState() || Source == null)
             {
                 return;
             }
@@ -163,10 +180,9 @@
         /// <summary>
         /// Restores the cached rigidbody kinematic state.
         /// </summary>
-        [RequiresBehaviourState]
         public virtual void RestoreRigidbodyKinematicState()
         {
-            if (Source == null)
+            if (!this.IsValidState() || Source == null)
             {
                 return;
             }
@@ -177,9 +193,13 @@
         /// <summary>
         /// Restores the all of cached properties.
         /// </summary>
-        [RequiresBehaviourState]
         public virtual void RestoreAll()
         {
+            if (!this.IsValidState())
+            {
+                return;
+            }
+
             RestorePosition();
             RestoreRotation();
             RestoreScale();
