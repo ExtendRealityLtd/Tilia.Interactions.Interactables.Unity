@@ -1,8 +1,5 @@
 ﻿namespace Tilia.Interactions.Interactables.Interactables.Grab.Action
 {
-    using Malimbe.MemberChangeMethod;
-    using Malimbe.PropertySerializationAttribute;
-    using Malimbe.XmlDocumentationAttribute;
     using Tilia.Interactions.Interactables.Interactors;
     using UnityEngine;
     using Zinnia.Data.Attribute;
@@ -68,132 +65,378 @@
         }
 
         #region Interactable Settings
+        [Header("Follow Settings")]
+        [Tooltip("Determines how to track the movement of Interactable to the Interactor.")]
+        [SerializeField]
+        private TrackingType followTracking;
         /// <summary>
         /// Determines how to track the movement of Interactable to the Interactor.
         /// </summary>
-        [Serialized]
-        [field: Header("Follow Settings"), DocumentedByXml]
-        public TrackingType FollowTracking { get; set; }
+        public TrackingType FollowTracking
+        {
+            get
+            {
+                return followTracking;
+            }
+            set
+            {
+                followTracking = value;
+                if (this.IsMemberChangeAllowed())
+                {
+                    OnAfterFollowTrackingChange();
+                }
+            }
+        }
+        [Tooltip("The offset to apply when grabbing the Interactable.")]
+        [SerializeField]
+        private OffsetType grabOffset;
         /// <summary>
         /// The offset to apply when grabbing the Interactable.
         /// </summary>
-        [Serialized]
-        [field: DocumentedByXml]
-        public OffsetType GrabOffset { get; set; }
+        public OffsetType GrabOffset
+        {
+            get
+            {
+                return grabOffset;
+            }
+            set
+            {
+                grabOffset = value;
+                if (this.IsMemberChangeAllowed())
+                {
+                    OnAfterGrabOffsetChange();
+                }
+            }
+        }
+        [Tooltip("Whether the Rigidbody of the Interactable should be in a kinematic state when the follow action is active.")]
+        [SerializeField]
+        private bool isKinematicWhenActive = true;
         /// <summary>
         /// Whether the <see cref="Rigidbody"/> of the Interactable should be in a kinematic state when the follow action is active.
         /// </summary>
-        [Serialized]
-        [field: DocumentedByXml]
-        public bool IsKinematicWhenActive { get; set; } = true;
+        public bool IsKinematicWhenActive
+        {
+            get
+            {
+                return isKinematicWhenActive;
+            }
+            set
+            {
+                isKinematicWhenActive = value;
+            }
+        }
+        [Tooltip("Whether the Rigidbody of the Interactable should be in a kinematic state when the follow action is inactive.")]
+        [SerializeField]
+        private bool isKinematicWhenInactive;
         /// <summary>
         /// Whether the <see cref="Rigidbody"/> of the Interactable should be in a kinematic state when the follow action is inactive.
         /// </summary>
-        [Serialized]
-        [field: DocumentedByXml]
-        public bool IsKinematicWhenInactive { get; set; }
+        public bool IsKinematicWhenInactive
+        {
+            get
+            {
+                return isKinematicWhenInactive;
+            }
+            set
+            {
+                isKinematicWhenInactive = value;
+            }
+        }
+        [Tooltip("Whether the IsKinematicWhenInactive property inherits the kinematic state from GrabSetup.Facade.ConsumerRigidbody.isKinematic.")]
+        [SerializeField]
+        private bool willInheritIsKinematicWhenInactiveFromConsumerRigidbody = true;
         /// <summary>
         /// Whether the <see cref="IsKinematicWhenInactive"/> property inherits the kinematic state from <see cref="GrabSetup.Facade.ConsumerRigidbody.isKinematic"/>.
         /// </summary>
-        [Serialized]
-        [field: DocumentedByXml]
-        public bool WillInheritIsKinematicWhenInactiveFromConsumerRigidbody { get; set; } = true;
+        public bool WillInheritIsKinematicWhenInactiveFromConsumerRigidbody
+        {
+            get
+            {
+                return willInheritIsKinematicWhenInactiveFromConsumerRigidbody;
+            }
+            set
+            {
+                willInheritIsKinematicWhenInactiveFromConsumerRigidbody = value;
+            }
+        }
         #endregion
 
         #region Tracking Settings
+        [Header("Interactable Settings")]
+        [Tooltip("The Zinnia.Tracking.Follow.ObjectFollower for tracking movement.")]
+        [SerializeField]
+        [Restricted]
+        private ObjectFollower objectFollower;
         /// <summary>
         /// The <see cref="Zinnia.Tracking.Follow.ObjectFollower"/> for tracking movement.
         /// </summary>
-        [Serialized]
-        [field: Header("Interactable Settings"), DocumentedByXml, Restricted]
-        public ObjectFollower ObjectFollower { get; protected set; }
+        public ObjectFollower ObjectFollower
+        {
+            get
+            {
+                return objectFollower;
+            }
+            protected set
+            {
+                objectFollower = value;
+            }
+        }
+        [Tooltip("A GameObjectObservableList collection of all position modifiers used within the follow modifiers.")]
+        [SerializeField]
+        [Restricted]
+        private GameObjectObservableList positionModifiers;
         /// <summary>
         /// A <see cref="GameObjectObservableList"/> collection of all position modifiers used within the follow modifiers.
         /// </summary>
-        [Serialized]
-        [field: DocumentedByXml, Restricted]
-        public GameObjectObservableList PositionModifiers { get; protected set; }
+        public GameObjectObservableList PositionModifiers
+        {
+            get
+            {
+                return positionModifiers;
+            }
+            protected set
+            {
+                positionModifiers = value;
+            }
+        }
+        [Tooltip("A GameObjectObservableList collection of all rotation modifiers used within the follow modifiers.")]
+        [SerializeField]
+        [Restricted]
+        private GameObjectObservableList rotationModifiers;
         /// <summary>
         /// A <see cref="GameObjectObservableList"/> collection of all rotation modifiers used within the follow modifiers.
         /// </summary>
-        [Serialized]
-        [field: DocumentedByXml, Restricted]
-        public GameObjectObservableList RotationModifiers { get; protected set; }
+        public GameObjectObservableList RotationModifiers
+        {
+            get
+            {
+                return rotationModifiers;
+            }
+            protected set
+            {
+                rotationModifiers = value;
+            }
+        }
+        [Tooltip("A GameObjectObservableList collection of all scale modifiers used within the follow modifiers.")]
+        [SerializeField]
+        [Restricted]
+        private GameObjectObservableList scaleModifiers;
         /// <summary>
         /// A <see cref="GameObjectObservableList"/> collection of all scale modifiers used within the follow modifiers.
         /// </summary>
-        [Serialized]
-        [field: DocumentedByXml, Restricted]
-        public GameObjectObservableList ScaleModifiers { get; protected set; }
+        public GameObjectObservableList ScaleModifiers
+        {
+            get
+            {
+                return scaleModifiers;
+            }
+            protected set
+            {
+                scaleModifiers = value;
+            }
+        }
+        [Tooltip("The FollowModifier to move by following the transform.")]
+        [SerializeField]
+        [Restricted]
+        private FollowModifier followTransformModifier;
         /// <summary>
         /// The <see cref="FollowModifier"/> to move by following the transform.
         /// </summary>
-        [Serialized]
-        [field: DocumentedByXml, Restricted]
-        public FollowModifier FollowTransformModifier { get; protected set; }
+        public FollowModifier FollowTransformModifier
+        {
+            get
+            {
+                return followTransformModifier;
+            }
+            protected set
+            {
+                followTransformModifier = value;
+            }
+        }
+        [Tooltip("The FollowModifier to move by applying velocities to the Rigidbody.")]
+        [SerializeField]
+        [Restricted]
+        private FollowModifier followRigidbodyModifier;
         /// <summary>
         /// The <see cref="FollowModifier"/> to move by applying velocities to the <see cref="Rigidbody"/>.
         /// </summary>
-        [Serialized]
-        [field: DocumentedByXml, Restricted]
-        public FollowModifier FollowRigidbodyModifier { get; protected set; }
+        public FollowModifier FollowRigidbodyModifier
+        {
+            get
+            {
+                return followRigidbodyModifier;
+            }
+            protected set
+            {
+                followRigidbodyModifier = value;
+            }
+        }
+        [Tooltip("The FollowModifier to rotate by applying a force to the Rigidbody.")]
+        [SerializeField]
+        [Restricted]
+        private FollowModifier followRigidbodyForceRotateModifier;
         /// <summary>
         /// The <see cref="FollowModifier"/> to rotate by applying a force to the <see cref="Rigidbody"/>.
         /// </summary>
-        [Serialized]
-        [field: DocumentedByXml, Restricted]
-        public FollowModifier FollowRigidbodyForceRotateModifier { get; protected set; }
+        public FollowModifier FollowRigidbodyForceRotateModifier
+        {
+            get
+            {
+                return followRigidbodyForceRotateModifier;
+            }
+            protected set
+            {
+                followRigidbodyForceRotateModifier = value;
+            }
+        }
+        [Tooltip("The FollowModifier to rotate by the angle difference between the source positions.")]
+        [SerializeField]
+        [Restricted]
+        private FollowModifier followTransformRotateOnPositionDifferenceModifier;
         /// <summary>
         /// The <see cref="FollowModifier"/> to rotate by the angle difference between the source positions.
         /// </summary>
-        [Serialized]
-        [field: DocumentedByXml, Restricted]
-        public FollowModifier FollowTransformRotateOnPositionDifferenceModifier { get; protected set; }
+        public FollowModifier FollowTransformRotateOnPositionDifferenceModifier
+        {
+            get
+            {
+                return followTransformRotateOnPositionDifferenceModifier;
+            }
+            protected set
+            {
+                followTransformRotateOnPositionDifferenceModifier = value;
+            }
+        }
+        [Tooltip("The FollowModifier to rotate by the angular velocity of the source Interactor.")]
+        [SerializeField]
+        [Restricted]
+        private FollowModifier followRotateAroundAngularVelocityModifier;
         /// <summary>
         /// The <see cref="FollowModifier"/> to rotate by the angular velocity of the source Interactor.
         /// </summary>
-        [Serialized]
-        [field: DocumentedByXml, Restricted]
-        public FollowModifier FollowRotateAroundAngularVelocityModifier { get; protected set; }
+        public FollowModifier FollowRotateAroundAngularVelocityModifier
+        {
+            get
+            {
+                return followRotateAroundAngularVelocityModifier;
+            }
+            protected set
+            {
+                followRotateAroundAngularVelocityModifier = value;
+            }
+        }
+        [Tooltip("The ObjectFollower to force snap the Interactable to the Interactor.")]
+        [SerializeField]
+        [Restricted]
+        private ObjectFollower forceSnapFollower;
         /// <summary>
         /// The <see cref="ObjectFollower"/> to force snap the Interactable to the Interactor.
         /// </summary>
-        [Serialized]
-        [field: DocumentedByXml, Restricted]
-        public ObjectFollower ForceSnapFollower { get; protected set; }
+        public ObjectFollower ForceSnapFollower
+        {
+            get
+            {
+                return forceSnapFollower;
+            }
+            protected set
+            {
+                forceSnapFollower = value;
+            }
+        }
+        [Tooltip("The Zinnia.Tracking.Velocity.VelocityApplier to apply velocity on ungrab.")]
+        [SerializeField]
+        [Restricted]
+        private VelocityApplier velocityApplier;
         /// <summary>
         /// The <see cref="Zinnia.Tracking.Velocity.VelocityApplier"/> to apply velocity on ungrab.
         /// </summary>
-        [Serialized]
-        [field: DocumentedByXml, Restricted]
-        public VelocityApplier VelocityApplier { get; protected set; }
+        public VelocityApplier VelocityApplier
+        {
+            get
+            {
+                return velocityApplier;
+            }
+            protected set
+            {
+                velocityApplier = value;
+            }
+        }
         #endregion
 
         #region Grab Offset Settings
+        [Header("Grab Offset Settings")]
+        [Tooltip("The container for the precision point logic.")]
+        [SerializeField]
+        [Restricted]
+        private GameObject precisionLogicContainer;
         /// <summary>
         /// The container for the precision point logic.
         /// </summary>
-        [Serialized]
-        [field: Header("Grab Offset Settings"), DocumentedByXml, Restricted]
-        public GameObject PrecisionLogicContainer { get; protected set; }
+        public GameObject PrecisionLogicContainer
+        {
+            get
+            {
+                return precisionLogicContainer;
+            }
+            protected set
+            {
+                precisionLogicContainer = value;
+            }
+        }
+        [Tooltip("The container for the precision point creation logic.")]
+        [SerializeField]
+        [Restricted]
+        private GameObject precisionCreateContainer;
         /// <summary>
         /// The container for the precision point creation logic.
         /// </summary>
-        [Serialized]
-        [field: DocumentedByXml, Restricted]
-        public GameObject PrecisionCreateContainer { get; protected set; }
+        public GameObject PrecisionCreateContainer
+        {
+            get
+            {
+                return precisionCreateContainer;
+            }
+            protected set
+            {
+                precisionCreateContainer = value;
+            }
+        }
+        [Tooltip("The container for the precision point force creation logic.")]
+        [SerializeField]
+        [Restricted]
+        private GameObject precisionForceCreateContainer;
         /// <summary>
         /// The container for the precision point force creation logic.
         /// </summary>
-        [Serialized]
-        [field: DocumentedByXml, Restricted]
-        public GameObject PrecisionForceCreateContainer { get; protected set; }
+        public GameObject PrecisionForceCreateContainer
+        {
+            get
+            {
+                return precisionForceCreateContainer;
+            }
+            protected set
+            {
+                precisionForceCreateContainer = value;
+            }
+        }
+        [Tooltip("The container for the orientation handle logic.")]
+        [SerializeField]
+        [Restricted]
+        private GameObject orientationLogicContainer;
         /// <summary>
-        /// The container for the orientation handle  logic.
+        /// The container for the orientation handle logic.
         /// </summary>
-        [Serialized]
-        [field: DocumentedByXml, Restricted]
-        public GameObject OrientationLogicContainer { get; protected set; }
+        public GameObject OrientationLogicContainer
+        {
+            get
+            {
+                return orientationLogicContainer;
+            }
+            protected set
+            {
+                orientationLogicContainer = value;
+            }
+        }
         #endregion
 
         /// <summary>
@@ -346,7 +589,6 @@
         /// <summary>
         /// Called after <see cref="FollowTracking"/> has been changed.
         /// </summary>
-        [CalledAfterChangeOf(nameof(FollowTracking))]
         protected virtual void OnAfterFollowTrackingChange()
         {
             ConfigureFollowTracking();
@@ -355,7 +597,6 @@
         /// <summary>
         /// Called after <see cref="GrabOffset"/> has been changed.
         /// </summary>
-        [CalledAfterChangeOf(nameof(GrabOffset))]
         protected virtual void OnAfterGrabOffsetChange()
         {
             ConfigureGrabOffset();

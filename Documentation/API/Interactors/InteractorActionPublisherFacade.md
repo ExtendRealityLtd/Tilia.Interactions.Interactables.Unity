@@ -14,6 +14,9 @@ The public interface into the Interactor Action Publisher Prefab.
   * [SourceAction]
   * [SourceInteractor]
 * [Methods]
+  * [ClearPublisherIdentifier()]
+  * [ClearSourceAction()]
+  * [ClearSourceInteractor()]
   * [OnAfterPublisherIdentifierChange()]
   * [OnAfterSourceActionChange()]
   * [OnAfterSourceInteractorChange()]
@@ -45,7 +48,7 @@ The current active Action.
 ##### Declaration
 
 ```
-public Action ActiveAction { get; }
+public virtual Action ActiveAction { get; }
 ```
 
 #### Configuration
@@ -89,6 +92,36 @@ public InteractorFacade SourceInteractor { get; set; }
 ```
 
 ### Methods
+
+#### ClearPublisherIdentifier()
+
+Clears [PublisherIdentifier].
+
+##### Declaration
+
+```
+public virtual void ClearPublisherIdentifier()
+```
+
+#### ClearSourceAction()
+
+Clears [SourceAction].
+
+##### Declaration
+
+```
+public virtual void ClearSourceAction()
+```
+
+#### ClearSourceInteractor()
+
+Clears [SourceInteractor].
+
+##### Declaration
+
+```
+public virtual void ClearSourceInteractor()
+```
 
 #### OnAfterPublisherIdentifierChange()
 
@@ -137,6 +170,9 @@ protected virtual void OnBeforeSourceInteractorChange()
 [PublisherIdentifier]: InteractorActionPublisherFacade.md#PublisherIdentifier
 [SourceAction]: InteractorActionPublisherFacade.md#SourceAction
 [SourceInteractor]: InteractorActionPublisherFacade.md#SourceInteractor
+[PublisherIdentifier]: InteractorActionPublisherFacade.md#PublisherIdentifier
+[SourceAction]: InteractorActionPublisherFacade.md#SourceAction
+[SourceInteractor]: InteractorActionPublisherFacade.md#SourceInteractor
 [SourceInteractor]: InteractorActionPublisherFacade.md#SourceInteractor
 [Inheritance]: #Inheritance
 [Namespace]: #Namespace
@@ -148,6 +184,9 @@ protected virtual void OnBeforeSourceInteractorChange()
 [SourceAction]: #SourceAction
 [SourceInteractor]: #SourceInteractor
 [Methods]: #Methods
+[ClearPublisherIdentifier()]: #ClearPublisherIdentifier
+[ClearSourceAction()]: #ClearSourceAction
+[ClearSourceInteractor()]: #ClearSourceInteractor
 [OnAfterPublisherIdentifierChange()]: #OnAfterPublisherIdentifierChange
 [OnAfterSourceActionChange()]: #OnAfterSourceActionChange
 [OnAfterSourceInteractorChange()]: #OnAfterSourceInteractorChange

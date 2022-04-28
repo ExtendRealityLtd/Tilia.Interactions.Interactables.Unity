@@ -20,6 +20,7 @@ Caches common properties for an [InteractableFacade] to be restored at a later p
   * [CacheRigidbodyKinematicState()]
   * [CacheRotation()]
   * [CacheScale()]
+  * [ClearSource()]
   * [RestoreAll()]
   * [RestorePosition()]
   * [RestoreRigidbodyKinematicState()]
@@ -150,6 +151,16 @@ Caches the scale.
 public virtual void CacheScale()
 ```
 
+#### ClearSource()
+
+Clears [Source].
+
+##### Declaration
+
+```
+public virtual void ClearSource()
+```
+
 #### RestoreAll()
 
 Restores the all of cached properties.
@@ -223,6 +234,7 @@ public virtual void SetSource(GameObject source)
 [Source]: InteractablePropertyCache.md#Source
 [InteractableFacade]: InteractableFacade.md
 [Source]: InteractablePropertyCache.md#Source
+[Source]: InteractablePropertyCache.md#Source
 [Inheritance]: #Inheritance
 [Namespace]: #Namespace
 [Syntax]: #Syntax
@@ -239,6 +251,7 @@ public virtual void SetSource(GameObject source)
 [CacheRigidbodyKinematicState()]: #CacheRigidbodyKinematicState
 [CacheRotation()]: #CacheRotation
 [CacheScale()]: #CacheScale
+[ClearSource()]: #ClearSource
 [RestoreAll()]: #RestoreAll
 [RestorePosition()]: #RestorePosition
 [RestoreRigidbodyKinematicState()]: #RestoreRigidbodyKinematicState

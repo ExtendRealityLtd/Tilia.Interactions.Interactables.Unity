@@ -16,6 +16,8 @@ Attempts to grab the given Interactable to the given Interactor.
   * [Interactor]
 * [Methods]
   * [CancelGrabRoutine()]
+  * [ClearInteractable()]
+  * [ClearInteractor()]
   * [DoGrab()]
   * [GrabAtEndOfFrame()]
   * [OnDisable()]
@@ -105,6 +107,26 @@ Cancels the existing running grab coroutine.
 protected virtual void CancelGrabRoutine()
 ```
 
+#### ClearInteractable()
+
+Clears [Interactable].
+
+##### Declaration
+
+```
+public virtual void ClearInteractable()
+```
+
+#### ClearInteractor()
+
+Clears [Interactor].
+
+##### Declaration
+
+```
+public virtual void ClearInteractor()
+```
+
 #### DoGrab()
 
 Attempts to grab the [Interactable] to the [Interactor].
@@ -176,6 +198,8 @@ public virtual void SetInteractorFromGameObject(GameObject interactor)
 [InteractorFacade]: ../Interactors/InteractorFacade.md
 [Interactable]: InteractableGrabber.md#Interactable
 [Interactor]: InteractableGrabber.md#Interactor
+[Interactable]: InteractableGrabber.md#Interactable
+[Interactor]: InteractableGrabber.md#Interactor
 [InteractableFacade]: InteractableFacade.md
 [Inheritance]: #Inheritance
 [Namespace]: #Namespace
@@ -189,6 +213,8 @@ public virtual void SetInteractorFromGameObject(GameObject interactor)
 [Interactor]: #Interactor
 [Methods]: #Methods
 [CancelGrabRoutine()]: #CancelGrabRoutine
+[ClearInteractable()]: #ClearInteractable
+[ClearInteractor()]: #ClearInteractor
 [DoGrab()]: #DoGrab
 [GrabAtEndOfFrame()]: #GrabAtEndOfFrame
 [OnDisable()]: #OnDisable

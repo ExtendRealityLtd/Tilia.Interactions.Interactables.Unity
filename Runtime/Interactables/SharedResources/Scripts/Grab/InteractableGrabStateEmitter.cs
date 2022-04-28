@@ -1,9 +1,9 @@
 ﻿namespace Tilia.Interactions.Interactables.Interactables.Grab
 {
+    using System;
     using UnityEngine;
     using UnityEngine.Events;
-    using System;
-    using Malimbe.BehaviourStateRequirementMethod;
+    using Zinnia.Extension;
 
     /// <summary>
     /// Emits an appropriate event based on the state of whether an <see cref="InteractableFacade"/> is currently being grabbed or not.
@@ -14,9 +14,7 @@
         /// Defines the event with the specified <see cref="InteractableFacade"/>.
         /// </summary>
         [Serializable]
-        public class UnityEvent : UnityEvent<InteractableFacade>
-        {
-        }
+        public class UnityEvent : UnityEvent<InteractableFacade> { }
 
         /// <summary>
         /// Emitted if the <see cref="InteractableFacade"/> is grabbed.
@@ -32,10 +30,9 @@
         /// </summary>
         /// <param name="interactable">The Interactable to check.</param>
         /// <returns>Whether the Interactable is being grabbed.</returns>
-        [RequiresBehaviourState]
         public virtual bool IsGrabbed(InteractableFacade interactable)
         {
-            if (interactable == null)
+            if (!this.IsValidState() || interactable == null)
             {
                 return false;
             }

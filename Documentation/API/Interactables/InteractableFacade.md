@@ -215,7 +215,7 @@ Returns a Collider collection of all the [MeshContainer] child colliders.
 ##### Declaration
 
 ```
-public Collider[] Colliders { get; }
+public virtual Collider[] Colliders { get; }
 ```
 
 #### Configuration
@@ -235,7 +235,7 @@ A collection of Interactors that are currently grabbing the Interactable.
 ##### Declaration
 
 ```
-public IReadOnlyList<InteractorFacade> GrabbingInteractors { get; }
+public virtual IReadOnlyList<InteractorFacade> GrabbingInteractors { get; }
 ```
 
 #### GrabEnabled
@@ -245,7 +245,7 @@ Whether the grab functionality is enabled.
 ##### Declaration
 
 ```
-public bool GrabEnabled { get; }
+public virtual bool GrabEnabled { get; }
 ```
 
 #### GrabProviderIndex
@@ -275,7 +275,7 @@ The Rigidbody attached to the Interactable.
 ##### Declaration
 
 ```
-public Rigidbody InteractableRigidbody { get; }
+public virtual Rigidbody InteractableRigidbody { get; }
 ```
 
 #### IsGrabbed
@@ -285,7 +285,7 @@ Whether the Interactable is currently being grabbed by any valid Interactor.
 ##### Declaration
 
 ```
-public bool IsGrabbed { get; }
+public virtual bool IsGrabbed { get; }
 ```
 
 #### IsGrabTypeToggle
@@ -295,7 +295,7 @@ Determines if the grab type is set to toggle.
 ##### Declaration
 
 ```
-public bool IsGrabTypeToggle { get; }
+public virtual bool IsGrabTypeToggle { get; }
 ```
 
 #### IsTouched
@@ -305,7 +305,7 @@ Whether the Interactable is currently being touched by any valid Interactor.
 ##### Declaration
 
 ```
-public bool IsTouched { get; }
+public virtual bool IsTouched { get; }
 ```
 
 #### MeshContainer
@@ -315,7 +315,7 @@ The mesh container.
 ##### Declaration
 
 ```
-public GameObject MeshContainer { get; }
+public virtual GameObject MeshContainer { get; }
 ```
 
 #### Meshes
@@ -325,7 +325,7 @@ Returns a MeshRenderer collection of all the [MeshContainer] child meshes.
 ##### Declaration
 
 ```
-public MeshRenderer[] Meshes { get; }
+public virtual MeshRenderer[] Meshes { get; }
 ```
 
 #### PrimaryGrabEnabled
@@ -335,7 +335,7 @@ Whether the primary grab action functionality is enabled.
 ##### Declaration
 
 ```
-public bool PrimaryGrabEnabled { get; }
+public virtual bool PrimaryGrabEnabled { get; }
 ```
 
 #### SecondaryGrabEnabled
@@ -345,7 +345,7 @@ Whether the secondary grab action functionality is enabled.
 ##### Declaration
 
 ```
-public bool SecondaryGrabEnabled { get; }
+public virtual bool SecondaryGrabEnabled { get; }
 ```
 
 #### TouchEnabled
@@ -355,7 +355,7 @@ Whether the touch functionality is enabled.
 ##### Declaration
 
 ```
-public bool TouchEnabled { get; }
+public virtual bool TouchEnabled { get; }
 ```
 
 #### TouchingInteractors
@@ -365,7 +365,7 @@ A collection of Interactors that are currently touching the Interactable.
 ##### Declaration
 
 ```
-public IReadOnlyList<InteractorFacade> TouchingInteractors { get; }
+public virtual IReadOnlyList<InteractorFacade> TouchingInteractors { get; }
 ```
 
 #### ValidInteractionTypes

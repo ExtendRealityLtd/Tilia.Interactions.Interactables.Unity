@@ -1,9 +1,5 @@
 ﻿namespace Tilia.Interactions.Interactables.Interactors
 {
-    using Malimbe.MemberChangeMethod;
-    using Malimbe.MemberClearanceMethod;
-    using Malimbe.PropertySerializationAttribute;
-    using Malimbe.XmlDocumentationAttribute;
     using System.Collections.Generic;
     using Tilia.Interactions.Interactables.Interactables;
     using UnityEngine;
@@ -22,92 +18,255 @@
     public class GrabInteractorConfigurator : MonoBehaviour
     {
         #region Facade Settings
+        [Header("Facade Settings")]
+        [Tooltip("The public interface facade.")]
+        [SerializeField]
+        [Restricted]
+        private InteractorFacade facade;
         /// <summary>
         /// The public interface facade.
         /// </summary>
-        [Serialized]
-        [field: Header("Facade Settings"), DocumentedByXml, Restricted]
-        public InteractorFacade Facade { get; protected set; }
+        public InteractorFacade Facade
+        {
+            get
+            {
+                return facade;
+            }
+            protected set
+            {
+                facade = value;
+            }
+        }
         #endregion
 
         #region Grab Settings
+        [Header("Grab Settings")]
+        [Tooltip("The BooleanAction that will initiate the Interactor grab mechanism.")]
+        [SerializeField]
+        [Restricted]
+        private BooleanAction grabAction;
         /// <summary>
         /// The <see cref="BooleanAction"/> that will initiate the Interactor grab mechanism.
         /// </summary>
-        [Serialized]
-        [field: Header("Grab Settings"), DocumentedByXml, Restricted]
-        public BooleanAction GrabAction { get; protected set; }
+        public BooleanAction GrabAction
+        {
+            get
+            {
+                return grabAction;
+            }
+            protected set
+            {
+                grabAction = value;
+            }
+        }
+        [Tooltip("The VelocityTrackerProcessor to measure the interactors current velocity for throwing on release.")]
+        [SerializeField]
+        [Restricted]
+        private VelocityTrackerProcessor velocityTracker;
         /// <summary>
         /// The <see cref="VelocityTrackerProcessor"/> to measure the interactors current velocity for throwing on release.
         /// </summary>
-        [Serialized, Cleared]
-        [field: DocumentedByXml, Restricted]
-        public VelocityTrackerProcessor VelocityTracker { get; protected set; }
+        public VelocityTrackerProcessor VelocityTracker
+        {
+            get
+            {
+                return velocityTracker;
+            }
+            protected set
+            {
+                velocityTracker = value;
+                if (this.IsMemberChangeAllowed())
+                {
+                    OnAfterVelocityTrackerChange();
+                }
+            }
+        }
+        [Tooltip("The ActiveCollisionPublisher for checking valid start grabbing action.")]
+        [SerializeField]
+        [Restricted]
+        private ActiveCollisionPublisher startGrabbingPublisher;
         /// <summary>
         /// The <see cref="ActiveCollisionPublisher"/> for checking valid start grabbing action.
         /// </summary>
-        [Serialized]
-        [field: DocumentedByXml, Restricted]
-        public ActiveCollisionPublisher StartGrabbingPublisher { get; protected set; }
+        public ActiveCollisionPublisher StartGrabbingPublisher
+        {
+            get
+            {
+                return startGrabbingPublisher;
+            }
+            protected set
+            {
+                startGrabbingPublisher = value;
+            }
+        }
+        [Tooltip("The ActiveCollisionPublisher for checking valid stop grabbing action.")]
+        [SerializeField]
+        [Restricted]
+        private ActiveCollisionPublisher stopGrabbingPublisher;
         /// <summary>
         /// The <see cref="ActiveCollisionPublisher"/> for checking valid stop grabbing action.
         /// </summary>
-        [Serialized]
-        [field: DocumentedByXml, Restricted]
-        public ActiveCollisionPublisher StopGrabbingPublisher { get; protected set; }
+        public ActiveCollisionPublisher StopGrabbingPublisher
+        {
+            get
+            {
+                return stopGrabbingPublisher;
+            }
+            protected set
+            {
+                stopGrabbingPublisher = value;
+            }
+        }
+        [Tooltip("The processor for initiating an instant grab.")]
+        [SerializeField]
+        [Restricted]
+        private GameObject instantGrabProcessor;
         /// <summary>
         /// The processor for initiating an instant grab.
         /// </summary>
-        [Serialized]
-        [field: DocumentedByXml, Restricted]
-        public GameObject InstantGrabProcessor { get; protected set; }
+        public GameObject InstantGrabProcessor
+        {
+            get
+            {
+                return instantGrabProcessor;
+            }
+            protected set
+            {
+                instantGrabProcessor = value;
+            }
+        }
+        [Tooltip("The processor for initiating a precognitive grab.")]
+        [SerializeField]
+        [Restricted]
+        private GameObject precognitionGrabProcessor;
         /// <summary>
         /// The processor for initiating a precognitive grab.
         /// </summary>
-        [Serialized]
-        [field: DocumentedByXml, Restricted]
-        public GameObject PrecognitionGrabProcessor { get; protected set; }
+        public GameObject PrecognitionGrabProcessor
+        {
+            get
+            {
+                return precognitionGrabProcessor;
+            }
+            protected set
+            {
+                precognitionGrabProcessor = value;
+            }
+        }
+        [Tooltip("The CountdownTimer to determine grab precognition.")]
+        [SerializeField]
+        [Restricted]
+        private CountdownTimer precognitionTimer;
         /// <summary>
         /// The <see cref="CountdownTimer"/> to determine grab precognition.
         /// </summary>
-        [Serialized]
-        [field: DocumentedByXml, Restricted]
-        public CountdownTimer PrecognitionTimer { get; protected set; }
+        public CountdownTimer PrecognitionTimer
+        {
+            get
+            {
+                return precognitionTimer;
+            }
+            protected set
+            {
+                precognitionTimer = value;
+            }
+        }
+        [Tooltip("The minimum timer value for the grab precognition CountdownTimer.")]
+        [SerializeField]
+        [Restricted]
+        private float minPrecognitionTimer = 0.01f;
         /// <summary>
         /// The minimum timer value for the grab precognition <see cref="CountdownTimer"/>.
         /// </summary>
-        [Serialized]
-        [field: DocumentedByXml, Restricted]
-        public float MinPrecognitionTimer { get; protected set; } = 0.01f;
+        public float MinPrecognitionTimer
+        {
+            get
+            {
+                return minPrecognitionTimer;
+            }
+            protected set
+            {
+                minPrecognitionTimer = value;
+            }
+        }
+        [Tooltip("The GameObjectObservableSet containing the currently grabbed objects.")]
+        [SerializeField]
+        [Restricted]
+        private GameObjectObservableList grabbedObjectsCollection;
         /// <summary>
         /// The <see cref="GameObjectObservableSet"/> containing the currently grabbed objects.
         /// </summary>
-        [Serialized]
-        [field: DocumentedByXml, Restricted]
-        public GameObjectObservableList GrabbedObjectsCollection { get; protected set; }
+        public GameObjectObservableList GrabbedObjectsCollection
+        {
+            get
+            {
+                return grabbedObjectsCollection;
+            }
+            protected set
+            {
+                grabbedObjectsCollection = value;
+            }
+        }
+        [Tooltip("A BooleanAction for holding the state of whether the Interactor is grabbing something.")]
+        [SerializeField]
+        [Restricted]
+        private BooleanAction isGrabbingAction;
         /// <summary>
         /// A <see cref="BooleanAction"/> for holding the state of whether the Interactor is grabbing something.
         /// </summary>
-        [Serialized]
-        [field: DocumentedByXml, Restricted]
-        public BooleanAction IsGrabbingAction { get; protected set; }
+        public BooleanAction IsGrabbingAction
+        {
+            get
+            {
+                return isGrabbingAction;
+            }
+            protected set
+            {
+                isGrabbingAction = value;
+            }
+        }
+        [Tooltip("Whether to simulate a touch before force grabbing.")]
+        [SerializeField]
+        [Restricted]
+        private bool touchBeforeForceGrab = true;
         /// <summary>
         /// Whether to simulate a touch before force grabbing.
         /// </summary>
-        [Serialized]
-        [field: DocumentedByXml, Restricted]
-        public bool TouchBeforeForceGrab { get; set; } = true;
+        public bool TouchBeforeForceGrab
+        {
+            get
+            {
+                return touchBeforeForceGrab;
+            }
+            set
+            {
+                touchBeforeForceGrab = value;
+            }
+        }
         #endregion
 
         /// <summary>
         /// A collection of currently grabbed GameObjects.
         /// </summary>
-        public IReadOnlyList<GameObject> GrabbedObjects => GrabbedObjectsCollection.NonSubscribableElements;
+        public virtual IReadOnlyList<GameObject> GrabbedObjects => GrabbedObjectsCollection.NonSubscribableElements;
 
         /// <summary>
         /// A reusable instance of event data.
         /// </summary>
         protected readonly ActiveCollisionsContainer.EventData activeCollisionsEventData = new ActiveCollisionsContainer.EventData();
+
+        /// <summary>
+        /// Clears <see cref="VelocityTracker"/>.
+        /// </summary>
+        public virtual void ClearVelocityTracker()
+        {
+            if (!this.IsValidState())
+            {
+                return;
+            }
+
+            VelocityTracker = default;
+        }
 
         /// <summary>
         /// Configures the action used to control grabbing.
@@ -293,7 +452,6 @@
         /// <summary>
         /// Called after <see cref="VelocityTracker"/> has been changed.
         /// </summary>
-        [CalledAfterChangeOf(nameof(VelocityTracker))]
         protected virtual void OnAfterVelocityTrackerChange()
         {
             ConfigureVelocityTrackers();

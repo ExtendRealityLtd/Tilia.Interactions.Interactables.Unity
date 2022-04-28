@@ -1,14 +1,12 @@
 ﻿namespace Tilia.Interactions.Interactables.Interactables.Grab
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using Tilia.Interactions.Interactables.Interactors;
     using UnityEngine;
     using UnityEngine.Events;
-    using System;
-    using System.Linq;
-    using System.Collections.Generic;
-    using Malimbe.XmlDocumentationAttribute;
-    using Malimbe.PropertySerializationAttribute;
-    using Malimbe.BehaviourStateRequirementMethod;
-    using Tilia.Interactions.Interactables.Interactors;
+    using Zinnia.Extension;
 
     /// <summary>
     /// Registers listeners to the initial grab and final ungrab states of an <see cref="InteractableFacade"/> and emits the <see cref="InteractableFacade"/> as the event payload.
@@ -19,16 +17,25 @@
         /// Defines the event with the specified <see cref="InteractableFacade"/>.
         /// </summary>
         [Serializable]
-        public class UnityEvent : UnityEvent<InteractableFacade>
-        {
-        }
+        public class UnityEvent : UnityEvent<InteractableFacade> { }
 
+        [Tooltip("Determines whether to unsubscribe all registered listeners when the component is disabled.")]
+        [SerializeField]
+        private bool unsubscribeOnDisable = true;
         /// <summary>
         /// Determines whether to unsubscribe all registered listeners when the component is disabled.
         /// </summary>
-        [Serialized]
-        [field: DocumentedByXml]
-        public bool UnsubscribeOnDisable { get; set; } = true;
+        public bool UnsubscribeOnDisable
+        {
+            get
+            {
+                return unsubscribeOnDisable;
+            }
+            set
+            {
+                unsubscribeOnDisable = value;
+            }
+        }
 
         /// <summary>
         /// Emitted when the <see cref="InteractableFacade"/> is grabbed.
@@ -52,10 +59,9 @@
         /// Registers a listener on the given <see cref="InteractableFacade"/> Ungrabbed event.
         /// </summary>
         /// <param name="ungrabbable">The interactable to register the ungrab event on.</param>
-        [RequiresBehaviourState]
         public virtual void RegisterUngrabbed(InteractableFacade ungrabbable)
         {
-            if (ungrabbable == null || unsubscribeUngrabActions.ContainsKey(ungrabbable))
+            if (!this.IsValidState() || ungrabbable == null || unsubscribeUngrabActions.ContainsKey(ungrabbable))
             {
                 return;
             }
@@ -69,10 +75,9 @@
         /// Registers a listener on the given <see cref="GameObject"/>'s <see cref="InteractableFacade"/> Ungrabbed event.
         /// </summary>
         /// <param name="ungrabbable">The <see cref="GameObject"/> to get the <see cref="InteractableFacade"/> from to register the ungrab event on.</param>
-        [RequiresBehaviourState]
         public virtual void RegisterUngrabbed(GameObject ungrabbable)
         {
-            if (ungrabbable == null)
+            if (!this.IsValidState() || ungrabbable == null)
             {
                 return;
             }
@@ -84,10 +89,9 @@
         /// Registers a listener on the given <see cref="InteractableFacade"/> Grabbed event.
         /// </summary>
         /// <param name="grabbable">The interactable to register the grab event on.</param>
-        [RequiresBehaviourState]
         public virtual void RegisterGrabbed(InteractableFacade grabbable)
         {
-            if (grabbable == null || unsubscribeGrabActions.ContainsKey(grabbable))
+            if (!this.IsValidState() || grabbable == null || unsubscribeGrabActions.ContainsKey(grabbable))
             {
                 return;
             }
@@ -101,10 +105,9 @@
         /// Registers a listener on the given <see cref="GameObject"/>'s <see cref="InteractableFacade"/> Grabbed event.
         /// </summary>
         /// <param name="grabbable">The <see cref="GameObject"/> to get the <see cref="InteractableFacade"/> from to register the grab event on.</param>
-        [RequiresBehaviourState]
         public virtual void RegisterGrabbed(GameObject grabbable)
         {
-            if (grabbable == null)
+            if (!this.IsValidState() || grabbable == null)
             {
                 return;
             }

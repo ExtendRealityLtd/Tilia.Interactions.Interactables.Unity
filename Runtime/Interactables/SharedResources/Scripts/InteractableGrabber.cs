@@ -1,9 +1,5 @@
 ﻿namespace Tilia.Interactions.Interactables.Interactables
 {
-    using Malimbe.BehaviourStateRequirementMethod;
-    using Malimbe.MemberClearanceMethod;
-    using Malimbe.PropertySerializationAttribute;
-    using Malimbe.XmlDocumentationAttribute;
     using System;
     using System.Collections;
     using Tilia.Interactions.Interactables.Interactors;
@@ -22,23 +18,44 @@
         [Serializable]
         public class UnityEvent : UnityEvent<InteractableFacade> { }
 
+        [Tooltip("The Interactor to grab to.")]
+        [SerializeField]
+        private InteractorFacade interactor;
         /// <summary>
         /// The Interactor to grab to.
         /// </summary>
-        [Serialized, Cleared]
-        [field: DocumentedByXml]
-        public InteractorFacade Interactor { get; set; }
+        public InteractorFacade Interactor
+        {
+            get
+            {
+                return interactor;
+            }
+            set
+            {
+                interactor = value;
+            }
+        }
+        [Tooltip("The Interactable to grab.")]
+        [SerializeField]
+        private InteractableFacade interactable;
         /// <summary>
         /// The Interactable to grab.
         /// </summary>
-        [Serialized, Cleared]
-        [field: DocumentedByXml]
-        public InteractableFacade Interactable { get; set; }
+        public InteractableFacade Interactable
+        {
+            get
+            {
+                return interactable;
+            }
+            set
+            {
+                interactable = value;
+            }
+        }
 
         /// <summary>
         /// Emitted when the Grab has occurred.
         /// </summary>
-        [DocumentedByXml]
         public UnityEvent Grabbed = new UnityEvent();
 
         /// <summary>
@@ -49,6 +66,32 @@
         /// The routine for managing the grab.
         /// </summary>
         protected Coroutine grabRoutine;
+
+        /// <summary>
+        /// Clears <see cref="Interactor"/>.
+        /// </summary>
+        public virtual void ClearInteractor()
+        {
+            if (!this.IsValidState())
+            {
+                return;
+            }
+
+            Interactor = default;
+        }
+
+        /// <summary>
+        /// Clears <see cref="Interactable"/>.
+        /// </summary>
+        public virtual void ClearInteractable()
+        {
+            if (!this.IsValidState())
+            {
+                return;
+            }
+
+            Interactable = default;
+        }
 
         /// <summary>
         /// Sets the <see cref="InteractorFacade"/> from the given <see cref="GameObject"/>.
@@ -71,10 +114,9 @@
         /// <summary>
         /// Attempts to grab the <see cref="Interactable"/> to the <see cref="Interactor"/>.
         /// </summary>
-        [RequiresBehaviourState]
         public virtual void DoGrab()
         {
-            if (Interactor == null || Interactable == null)
+            if (!this.IsValidState() || Interactor == null || Interactable == null)
             {
                 return;
             }

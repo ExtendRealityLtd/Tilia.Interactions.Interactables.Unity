@@ -1,7 +1,5 @@
 ﻿namespace Tilia.Interactions.Interactables.Interactables.Touch
 {
-    using Malimbe.PropertySerializationAttribute;
-    using Malimbe.XmlDocumentationAttribute;
     using System.Collections.Generic;
     using Tilia.Interactions.Interactables.Interactors;
     using UnityEngine;
@@ -17,87 +15,223 @@
     public class TouchInteractableConfigurator : MonoBehaviour
     {
         #region Facade Settings
+        [Header("Facade Settings")]
+        [Tooltip("The public interface facade.")]
+        [SerializeField]
+        [Restricted]
+        private InteractableFacade facade;
         /// <summary>
         /// The public interface facade.
         /// </summary>
-        [Serialized]
-        [field: Header("Facade Settings"), DocumentedByXml, Restricted]
-        public InteractableFacade Facade { get; protected set; }
+        public InteractableFacade Facade
+        {
+            get
+            {
+                return facade;
+            }
+            protected set
+            {
+                facade = value;
+            }
+        }
         #endregion
 
         #region Touch Consumer Settings
+        [Header("Touch Consumer Settings")]
+        [Tooltip("The ActiveCollisionConsumer that listens for the touch payload.")]
+        [SerializeField]
+        [Restricted]
+        private ActiveCollisionConsumer touchConsumer;
         /// <summary>
         /// The <see cref="ActiveCollisionConsumer"/> that listens for the touch payload.
         /// </summary>
-        [Serialized]
-        [field: Header("Touch Consumer Settings"), DocumentedByXml, Restricted]
-        public ActiveCollisionConsumer TouchConsumer { get; protected set; }
+        public ActiveCollisionConsumer TouchConsumer
+        {
+            get
+            {
+                return touchConsumer;
+            }
+            protected set
+            {
+                touchConsumer = value;
+            }
+        }
+        [Tooltip("The ActiveCollisionConsumer that listens for the untouch payload.")]
+        [SerializeField]
+        [Restricted]
+        private ActiveCollisionConsumer untouchConsumer;
         /// <summary>
         /// The <see cref="ActiveCollisionConsumer"/> that listens for the untouch payload.
         /// </summary>
-        [Serialized]
-        [field: DocumentedByXml, Restricted]
-        public ActiveCollisionConsumer UntouchConsumer { get; protected set; }
+        public ActiveCollisionConsumer UntouchConsumer
+        {
+            get
+            {
+                return untouchConsumer;
+            }
+            protected set
+            {
+                untouchConsumer = value;
+            }
+        }
         #endregion
 
         #region Touch Settings
+        [Header("Touch Settings")]
+        [Tooltip("The GameObjectObservableList that holds the current touching objects data.")]
+        [SerializeField]
+        [Restricted]
+        private GameObjectObservableList currentTouchingObjects;
         /// <summary>
         /// The <see cref="GameObjectObservableList"/> that holds the current touching objects data.
         /// </summary>
-        [Serialized]
-        [field: Header("Touch Settings"), DocumentedByXml, Restricted]
-        public GameObjectObservableList CurrentTouchingObjects { get; protected set; }
+        public GameObjectObservableList CurrentTouchingObjects
+        {
+            get
+            {
+                return currentTouchingObjects;
+            }
+            protected set
+            {
+                currentTouchingObjects = value;
+            }
+        }
+        [Tooltip("The GameObjectObservableList that holds the current untouching objects data.")]
+        [SerializeField]
+        [Restricted]
+        private GameObjectObservableList currentUntouchingObjects;
         /// <summary>
         /// The <see cref="GameObjectObservableList"/> that holds the current untouching objects data.
         /// </summary>
-        [Serialized]
-        [field: DocumentedByXml, Restricted]
-        public GameObjectObservableList CurrentUntouchingObjects { get; protected set; }
+        public GameObjectObservableList CurrentUntouchingObjects
+        {
+            get
+            {
+                return currentUntouchingObjects;
+            }
+            protected set
+            {
+                currentUntouchingObjects = value;
+            }
+        }
+        [Tooltip("The GameObjectEventProxyEmitter used to determine the untouch actions.")]
+        [SerializeField]
+        [Restricted]
+        private GameObjectEventProxyEmitter currentUntouchingEventProxy;
         /// <summary>
         /// The <see cref="GameObjectEventProxyEmitter"/> used to determine the untouch actions.
         /// </summary>
-        [Serialized]
-        [field: DocumentedByXml, Restricted]
-        public GameObjectEventProxyEmitter CurrentUntouchingEventProxy { get; protected set; }
+        public GameObjectEventProxyEmitter CurrentUntouchingEventProxy
+        {
+            get
+            {
+                return currentUntouchingEventProxy;
+            }
+            protected set
+            {
+                currentUntouchingEventProxy = value;
+            }
+        }
+        [Tooltip("The GameObjectEventProxyEmitter used to determine the touch validity.")]
+        [SerializeField]
+        [Restricted]
+        private GameObjectEventProxyEmitter touchValidity;
         /// <summary>
         /// The <see cref="GameObjectEventProxyEmitter"/> used to determine the touch validity.
         /// </summary>
-        [Serialized]
-        [field: DocumentedByXml, Restricted]
-        public GameObjectEventProxyEmitter TouchValidity { get; protected set; }
+        public GameObjectEventProxyEmitter TouchValidity
+        {
+            get
+            {
+                return touchValidity;
+            }
+            protected set
+            {
+                touchValidity = value;
+            }
+        }
         #endregion
 
         #region Interactor Settings
+        [Header("Interactor Settings")]
+        [Tooltip("The ActiveCollisionsContainer for potential interactors.")]
+        [SerializeField]
+        [Restricted]
+        private ActiveCollisionsContainer potentialInteractors;
         /// <summary>
         /// The <see cref="ActiveCollisionsContainer"/> for potential interactors.
         /// </summary>
-        [Serialized]
-        [field: Header("Interactor Settings"), DocumentedByXml, Restricted]
-        public ActiveCollisionsContainer PotentialInteractors { get; protected set; }
+        public ActiveCollisionsContainer PotentialInteractors
+        {
+            get
+            {
+                return potentialInteractors;
+            }
+            protected set
+            {
+                potentialInteractors = value;
+            }
+        }
+        [Tooltip("The GameObjectObservableCounter for counting active interactors.")]
+        [SerializeField]
+        [Restricted]
+        private GameObjectObservableCounter activeInteractorCounter;
         /// <summary>
         /// The <see cref="GameObjectObservableCounter"/> for counting active interactors.
         /// </summary>
-        [Serialized]
-        [field: DocumentedByXml, Restricted]
-        public GameObjectObservableCounter ActiveInteractorCounter { get; protected set; }
+        public GameObjectObservableCounter ActiveInteractorCounter
+        {
+            get
+            {
+                return activeInteractorCounter;
+            }
+            protected set
+            {
+                activeInteractorCounter = value;
+            }
+        }
+        [Tooltip("The NotifierContainerExtractor for adding active interactors.")]
+        [SerializeField]
+        [Restricted]
+        private NotifierContainerExtractor addActiveInteractor;
         /// <summary>
         /// The <see cref="NotifierContainerExtractor"/> for adding active interactors.
         /// </summary>
-        [Serialized]
-        [field: DocumentedByXml, Restricted]
-        public NotifierContainerExtractor AddActiveInteractor { get; protected set; }
+        public NotifierContainerExtractor AddActiveInteractor
+        {
+            get
+            {
+                return addActiveInteractor;
+            }
+            protected set
+            {
+                addActiveInteractor = value;
+            }
+        }
+        [Tooltip("The NotifierContainerExtractor for removing active interactors.")]
+        [SerializeField]
+        [Restricted]
+        private NotifierContainerExtractor removeActiveInteractor;
         /// <summary>
         /// The <see cref="NotifierContainerExtractor"/> for removing active interactors.
         /// </summary>
-        [Serialized]
-        [field: DocumentedByXml, Restricted]
-        public NotifierContainerExtractor RemoveActiveInteractor { get; protected set; }
+        public NotifierContainerExtractor RemoveActiveInteractor
+        {
+            get
+            {
+                return removeActiveInteractor;
+            }
+            protected set
+            {
+                removeActiveInteractor = value;
+            }
+        }
         #endregion
 
         /// <summary>
         /// A collection of Interactors that are currently touching the Interactable.
         /// </summary>
-        public IReadOnlyList<InteractorFacade> TouchingInteractors => GetTouchingInteractors();
+        public virtual IReadOnlyList<InteractorFacade> TouchingInteractors => GetTouchingInteractors();
 
         /// <summary>
         /// A reusable collection to hold the returned touching interactors.

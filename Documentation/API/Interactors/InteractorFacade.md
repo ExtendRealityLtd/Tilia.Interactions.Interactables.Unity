@@ -27,8 +27,11 @@ The public interface into the Interactor Prefab.
   * [TouchedObjects]
   * [VelocityTracker]
 * [Methods]
+  * [ClearGrabAction()]
+  * [ClearGrabAttachPoint()]
   * [ClearGrabState(InteractableFacade)]
   * [ClearGrabStateAtEndOfFrame(InteractableFacade)]
+  * [ClearVelocityTracker()]
   * [CreateCollisionPayload(GameObject)]
   * [Grab(GameObject)]
   * [Grab(GameObject, Boolean)]
@@ -145,7 +148,7 @@ The currently active touched GameObject.
 ##### Declaration
 
 ```
-public GameObject ActiveTouchedObject { get; }
+public virtual GameObject ActiveTouchedObject { get; }
 ```
 
 #### AvatarContainer
@@ -185,7 +188,7 @@ A collection of currently grabbed GameObjects.
 ##### Declaration
 
 ```
-public IReadOnlyList<GameObject> GrabbedObjects { get; }
+public virtual IReadOnlyList<GameObject> GrabbedObjects { get; }
 ```
 
 #### GrabConfiguration
@@ -235,7 +238,7 @@ A collection of currently touched GameObjects.
 ##### Declaration
 
 ```
-public IReadOnlyList<GameObject> TouchedObjects { get; }
+public virtual IReadOnlyList<GameObject> TouchedObjects { get; }
 ```
 
 #### VelocityTracker
@@ -249,6 +252,26 @@ public VelocityTracker VelocityTracker { get; set; }
 ```
 
 ### Methods
+
+#### ClearGrabAction()
+
+Clears [GrabAction].
+
+##### Declaration
+
+```
+public virtual void ClearGrabAction()
+```
+
+#### ClearGrabAttachPoint()
+
+Clears [GrabAttachPoint].
+
+##### Declaration
+
+```
+public virtual void ClearGrabAttachPoint()
+```
 
 #### ClearGrabState(InteractableFacade)
 
@@ -287,6 +310,16 @@ protected virtual IEnumerator ClearGrabStateAtEndOfFrame(InteractableFacade inte
 | Type | Description |
 | --- | --- |
 | System.Collections.IEnumerator | An Enumerator to manage the running of the Coroutine. |
+
+#### ClearVelocityTracker()
+
+Clears [VelocityTracker].
+
+##### Declaration
+
+```
+public virtual void ClearVelocityTracker()
+```
 
 #### CreateCollisionPayload(GameObject)
 
@@ -712,7 +745,10 @@ public virtual void Ungrab()
 [GrabAction]: InteractorFacade.md#GrabAction
 [TouchInteractorConfigurator]: TouchInteractorConfigurator.md
 [VelocityTracker]: InteractorFacade.md#VelocityTracker
+[GrabAction]: InteractorFacade.md#GrabAction
+[GrabAttachPoint]: InteractorFacade.md#GrabAttachPoint
 [InteractableFacade]: ../Interactables/InteractableFacade.md
+[VelocityTracker]: InteractorFacade.md#VelocityTracker
 [InteractorFacade]: InteractorFacade.md
 [GrabAction]: InteractorFacade.md#GrabAction
 [GrabPrecognition]: InteractorFacade.md#GrabPrecognition
@@ -740,8 +776,11 @@ public virtual void Ungrab()
 [TouchedObjects]: #TouchedObjects
 [VelocityTracker]: #VelocityTracker
 [Methods]: #Methods
+[ClearGrabAction()]: #ClearGrabAction
+[ClearGrabAttachPoint()]: #ClearGrabAttachPoint
 [ClearGrabState(InteractableFacade)]: #ClearGrabStateInteractableFacade
 [ClearGrabStateAtEndOfFrame(InteractableFacade)]: #ClearGrabStateAtEndOfFrameInteractableFacade
+[ClearVelocityTracker()]: #ClearVelocityTracker
 [CreateCollisionPayload(GameObject)]: #CreateCollisionPayloadGameObject
 [Grab(GameObject)]: #GrabGameObject
 [Grab(GameObject, Boolean)]: #GrabGameObject-Boolean

@@ -1,7 +1,5 @@
 ﻿namespace Tilia.Interactions.Interactables.Interactables.Grab.Action
 {
-    using Malimbe.PropertySerializationAttribute;
-    using Malimbe.XmlDocumentationAttribute;
     using UnityEngine;
     using Zinnia.Data.Attribute;
     using Zinnia.Data.Collection.List;
@@ -13,18 +11,42 @@
     public class GrabInteractableControlDirectionAction : GrabInteractableAction
     {
         #region Interactable Settings
+        [Header("Interactable Settings")]
+        [Tooltip("A GameObject collection to enable/disabled as part of the direction control process.")]
+        [SerializeField]
+        private GameObjectObservableList linkedObjects;
         /// <summary>
         /// A <see cref="GameObject"/> collection to enable/disabled as part of the direction control process.
         /// </summary>
-        [Serialized]
-        [field: Header("Interactable Settings"), DocumentedByXml]
-        public GameObjectObservableList LinkedObjects { get; set; }
+        public GameObjectObservableList LinkedObjects
+        {
+            get
+            {
+                return linkedObjects;
+            }
+            set
+            {
+                linkedObjects = value;
+            }
+        }
+        [Tooltip("The Zinnia.Tracking.Modification.DirectionModifier to process the direction control.")]
+        [SerializeField]
+        [Restricted]
+        private DirectionModifier directionModifier;
         /// <summary>
         /// The <see cref="Zinnia.Tracking.Modification.DirectionModifier"/> to process the direction control.
         /// </summary>
-        [Serialized]
-        [field: DocumentedByXml, Restricted]
-        public DirectionModifier DirectionModifier { get; protected set; }
+        public DirectionModifier DirectionModifier
+        {
+            get
+            {
+                return directionModifier;
+            }
+            protected set
+            {
+                directionModifier = value;
+            }
+        }
         #endregion
 
         /// <summary>

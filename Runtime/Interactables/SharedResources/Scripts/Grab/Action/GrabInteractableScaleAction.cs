@@ -1,7 +1,5 @@
 ﻿namespace Tilia.Interactions.Interactables.Interactables.Grab.Action
 {
-    using Malimbe.PropertySerializationAttribute;
-    using Malimbe.XmlDocumentationAttribute;
     using UnityEngine;
     using Zinnia.Data.Attribute;
     using Zinnia.Tracking.Modification;
@@ -12,12 +10,25 @@
     public class GrabInteractableScaleAction : GrabInteractableAction
     {
         #region Interactable Settings
+        [Header("Interactable Settings")]
+        [Tooltip("The Zinnia.Tracking.Modification.PinchScaler to process the scale control.")]
+        [SerializeField]
+        [Restricted]
+        private PinchScaler pinchScaler;
         /// <summary>
         /// The <see cref="Zinnia.Tracking.Modification.PinchScaler"/> to process the scale control.
         /// </summary>
-        [Serialized]
-        [field: Header("Interactable Settings"), DocumentedByXml, Restricted]
-        public PinchScaler PinchScaler { get; protected set; }
+        public PinchScaler PinchScaler
+        {
+            get
+            {
+                return pinchScaler;
+            }
+            protected set
+            {
+                pinchScaler = value;
+            }
+        }
         #endregion
 
         /// <inheritdoc />

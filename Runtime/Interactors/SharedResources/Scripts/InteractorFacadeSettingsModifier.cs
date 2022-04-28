@@ -1,14 +1,10 @@
 ﻿namespace Tilia.Interactions.Interactables.Interactors
 {
-    using Malimbe.BehaviourStateRequirementMethod;
-    using Malimbe.MemberChangeMethod;
-    using Malimbe.MemberClearanceMethod;
-    using Malimbe.PropertySerializationAttribute;
-    using Malimbe.XmlDocumentationAttribute;
     using System;
     using System.Collections.Generic;
     using UnityEngine;
     using Zinnia.Action;
+    using Zinnia.Extension;
     using Zinnia.Tracking.Velocity;
 
     /// <summary>
@@ -19,30 +15,75 @@
         [Serializable]
         public class InteractorElement
         {
+            [Tooltip("The InteractorFacade to modify the settings on.")]
+            [SerializeField]
+            private InteractorFacade targetFacade;
             /// <summary>
             /// The <see cref="InteractorFacade"/> to modify the settings on.
             /// </summary>
-            [Serialized, Cleared]
-            [field: DocumentedByXml]
-            public InteractorFacade TargetFacade { get; set; }
+            public InteractorFacade TargetFacade
+            {
+                get
+                {
+                    return targetFacade;
+                }
+                set
+                {
+                    targetFacade = value;
+                    OnAfterTargetFacadeChange();
+                }
+            }
+            [Tooltip("The BooleanAction to update the InteractorFacade.GrabAction to.")]
+            [SerializeField]
+            private BooleanAction targetGrabAction;
             /// <summary>
             /// The <see cref="BooleanAction"/> to update the <see cref="InteractorFacade.GrabAction"/> to.
             /// </summary>
-            [Serialized, Cleared]
-            [field: DocumentedByXml]
-            public BooleanAction TargetGrabAction { get; set; }
+            public BooleanAction TargetGrabAction
+            {
+                get
+                {
+                    return targetGrabAction;
+                }
+                set
+                {
+                    targetGrabAction = value;
+                }
+            }
+            [Tooltip("The VelocityTracker to update the InteractorFacade.VelocityTracker to.")]
+            [SerializeField]
+            private VelocityTracker targetVelocityTracker;
             /// <summary>
             /// The <see cref="VelocityTracker"/> to update the <see cref="InteractorFacade.VelocityTracker"/> to.
             /// </summary>
-            [Serialized, Cleared]
-            [field: DocumentedByXml]
-            public VelocityTracker TargetVelocityTracker { get; set; }
+            public VelocityTracker TargetVelocityTracker
+            {
+                get
+                {
+                    return targetVelocityTracker;
+                }
+                set
+                {
+                    targetVelocityTracker = value;
+                }
+            }
+            [Tooltip("The updated value to set the InteractorFacade.GrabPrecognition to.")]
+            [SerializeField]
+            private float targetGrabPrecognition;
             /// <summary>
             /// The updated value to set the <see cref="InteractorFacade.GrabPrecognition"/> to.
             /// </summary>
-            [Serialized]
-            [field: DocumentedByXml]
-            public float TargetGrabPrecognition { get; set; }
+            public float TargetGrabPrecognition
+            {
+                get
+                {
+                    return targetGrabPrecognition;
+                }
+                set
+                {
+                    targetGrabPrecognition = value;
+                }
+            }
 
             /// <summary>
             /// The original <see cref="BooleanAction"/> on the <see cref="TargetFacade"/> to revert back to.
@@ -56,6 +97,30 @@
             /// The original <see cref="GrabPrecognition"/> on the <see cref="TargetFacade"/> to revert back to.
             /// </summary>
             protected float cachedGrabPrecognition;
+
+            /// <summary>
+            /// Clears <see cref="TargetFacade"/>.
+            /// </summary>
+            public virtual void ClearTargetFacade()
+            {
+                TargetFacade = default;
+            }
+
+            /// <summary>
+            /// Clears <see cref="TargetGrabAction"/>.
+            /// </summary>
+            public virtual void ClearTargetGrabAction()
+            {
+                TargetGrabAction = default;
+            }
+
+            /// <summary>
+            /// Clears <see cref="TargetVelocityTracker"/>.
+            /// </summary>
+            public virtual void ClearTargetVelocityTracker()
+            {
+                TargetVelocityTracker = default;
+            }
 
             /// <summary>
             /// Sets the <see cref="InteractorFacade.GrabAction"/> to the value of <see cref="TargetGrabAction"/>.
@@ -126,35 +191,79 @@
             /// <summary>
             /// Called after <see cref="TargetFacade"/> has been changed.
             /// </summary>
-            [CalledAfterChangeOf(nameof(TargetFacade))]
-            protected virtual void OnAfterFacadeChange()
+            protected virtual void OnAfterTargetFacadeChange()
             {
                 cachedGrabAction = TargetFacade.GrabAction;
                 cachedVelocityTracker = TargetFacade.VelocityTracker;
                 cachedGrabPrecognition = TargetFacade.GrabPrecognition;
             }
+
+            [Obsolete("Use `OnAfterTargetFacadeChange` instead.")]
+            protected virtual void OnAfterFacadeChange()
+            {
+                OnAfterTargetFacadeChange();
+            }
         }
 
+        [Tooltip("The InteractorElement collection of settings to modify per InteractorFacade.")]
+        [SerializeField]
+        private List<InteractorElement> elements = new List<InteractorElement>();
         /// <summary>
         /// The <see cref="InteractorElement"/> collection of settings to modify per <see cref="InteractorFacade"/>.
         /// </summary>
-        [Serialized, Cleared]
-        [field: DocumentedByXml]
-        public List<InteractorElement> Elements { get; set; }
+        public List<InteractorElement> Elements
+        {
+            get
+            {
+                return elements;
+            }
+            set
+            {
+                elements = value;
+            }
+        }
+        [Tooltip("Determines whether to cache the element settings when attempting to set them.")]
+        [SerializeField]
+        private bool cacheElementSettings = true;
         /// <summary>
         /// Determines whether to cache the element settings when attempting to set them.
         /// </summary>
-        [Serialized]
-        [field: DocumentedByXml]
-        public bool CacheElementSettings { get; set; } = true;
+        public bool CacheElementSettings
+        {
+            get
+            {
+                return cacheElementSettings;
+            }
+            set
+            {
+                cacheElementSettings = value;
+            }
+        }
+
+        /// <summary>
+        /// Clears <see cref="Elements"/>.
+        /// </summary>
+        public virtual void ClearElements()
+        {
+            if (!this.IsValidState())
+            {
+                return;
+            }
+
+            Elements.Clear();
+        }
 
         /// <summary>
         /// Matches the given <see cref="InteractorFacade"/> in the <see cref="Elements"/> and updates the <see cref="InteractorFacade.GrabAction"/> with the relevant <see cref="InteractorElement.TargetGrabAction"/>.
         /// </summary>
         /// <param name="interactorFacade">The <see cref="InteractorFacade"/> to update.</param>
-        [RequiresBehaviourState]
         public virtual void SetTargetGrabActionFor(InteractorFacade interactorFacade)
         {
+            if (!this.IsValidState())
+            {
+                return;
+            }
+
             InteractorElement interactor = Elements.Find(x => x.TargetFacade.Equals(interactorFacade));
             if (interactor != null)
             {
@@ -179,9 +288,13 @@
         /// Matches the given <see cref="InteractorFacade"/> in the <see cref="Elements"/> and updates the <see cref="InteractorFacade.VelocityTracker"/> with the relevant <see cref="InteractorElement.TargetVelocityTracker"/>.
         /// </summary>
         /// <param name="interactorFacade">The <see cref="InteractorFacade"/> to update.</param>
-        [RequiresBehaviourState]
         public virtual void SetTargetVelocityTracker(InteractorFacade interactorFacade)
         {
+            if (!this.IsValidState())
+            {
+                return;
+            }
+
             InteractorElement interactor = Elements.Find(x => x.TargetFacade.Equals(interactorFacade));
             if (interactor != null)
             {
@@ -206,9 +319,13 @@
         /// Matches the given <see cref="InteractorFacade"/> in the <see cref="Elements"/> and updates the <see cref="InteractorFacade.GrabPrecognition"/> with the relevant <see cref="InteractorElement.TargetGrabPrecognition"/>.
         /// </summary>
         /// <param name="interactorFacade">The <see cref="InteractorFacade"/> to update.</param>
-        [RequiresBehaviourState]
         public virtual void SetTargetGrabPrecognition(InteractorFacade interactorFacade)
         {
+            if (!this.IsValidState())
+            {
+                return;
+            }
+
             InteractorElement interactor = Elements.Find(x => x.TargetFacade.Equals(interactorFacade));
             if (interactor != null)
             {

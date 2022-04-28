@@ -19,6 +19,10 @@ Sets up the Interactable Prefab based on the provided user settings.
   * [MeshContainer]
   * [TouchConfiguration]
 * [Methods]
+  * [ClearConsumerContainer()]
+  * [ClearConsumerRigidbody()]
+  * [ClearDisallowedGrabInteractors()]
+  * [ClearDisallowedTouchInteractors()]
   * [ConfigureContainer()]
   * [OnAfterConsumerContainerChange()]
   * [OnAfterConsumerRigidbodyChange()]
@@ -75,6 +79,8 @@ public GameObject ConsumerContainer { get; set; }
 ```
 
 #### ConsumerRigidbody
+
+The Rigidbody for the overall collisions.
 
 ##### Declaration
 
@@ -144,6 +150,46 @@ public TouchInteractableConfigurator TouchConfiguration { get; protected set; }
 
 ### Methods
 
+#### ClearConsumerContainer()
+
+Clears [ConsumerContainer].
+
+##### Declaration
+
+```
+public virtual void ClearConsumerContainer()
+```
+
+#### ClearConsumerRigidbody()
+
+Clears [ConsumerRigidbody].
+
+##### Declaration
+
+```
+public virtual void ClearConsumerRigidbody()
+```
+
+#### ClearDisallowedGrabInteractors()
+
+Clears [DisallowedGrabInteractors].
+
+##### Declaration
+
+```
+public virtual void ClearDisallowedGrabInteractors()
+```
+
+#### ClearDisallowedTouchInteractors()
+
+Clears [DisallowedTouchInteractors].
+
+##### Declaration
+
+```
+public virtual void ClearDisallowedTouchInteractors()
+```
+
 #### ConfigureContainer()
 
 Configures any container data to the sub setup components.
@@ -203,6 +249,10 @@ protected virtual void OnAfterDisallowedTouchInteractorsChange()
 [ConsumerRigidbody]: InteractableConfigurator.md#ConsumerRigidbody
 [DisallowedGrabInteractors]: InteractableConfigurator.md#DisallowedGrabInteractors
 [DisallowedTouchInteractors]: InteractableConfigurator.md#DisallowedTouchInteractors
+[ConsumerContainer]: InteractableConfigurator.md#ConsumerContainer
+[ConsumerRigidbody]: InteractableConfigurator.md#ConsumerRigidbody
+[DisallowedGrabInteractors]: InteractableConfigurator.md#DisallowedGrabInteractors
+[DisallowedTouchInteractors]: InteractableConfigurator.md#DisallowedTouchInteractors
 [Inheritance]: #Inheritance
 [Namespace]: #Namespace
 [Syntax]: #Syntax
@@ -218,6 +268,10 @@ protected virtual void OnAfterDisallowedTouchInteractorsChange()
 [MeshContainer]: #MeshContainer
 [TouchConfiguration]: #TouchConfiguration
 [Methods]: #Methods
+[ClearConsumerContainer()]: #ClearConsumerContainer
+[ClearConsumerRigidbody()]: #ClearConsumerRigidbody
+[ClearDisallowedGrabInteractors()]: #ClearDisallowedGrabInteractors
+[ClearDisallowedTouchInteractors()]: #ClearDisallowedTouchInteractors
 [ConfigureContainer()]: #ConfigureContainer
 [OnAfterConsumerContainerChange()]: #OnAfterConsumerContainerChange
 [OnAfterConsumerRigidbodyChange()]: #OnAfterConsumerRigidbodyChange

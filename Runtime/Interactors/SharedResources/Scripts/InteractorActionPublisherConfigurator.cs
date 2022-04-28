@@ -1,7 +1,5 @@
 ﻿namespace Tilia.Interactions.Interactables.Interactors
 {
-    using Malimbe.PropertySerializationAttribute;
-    using Malimbe.XmlDocumentationAttribute;
     using Tilia.Interactions.Interactables.Interactables;
     using UnityEngine;
     using Zinnia.Action;
@@ -18,63 +16,161 @@
     public class InteractorActionPublisherConfigurator : MonoBehaviour
     {
         #region Facade Settings
+        [Header("Facade Settings")]
+        [Tooltip("The public interface facade.")]
+        [SerializeField]
+        [Restricted]
+        private InteractorActionPublisherFacade facade;
         /// <summary>
         /// The public interface facade.
         /// </summary>
-        [Serialized]
-        [field: Header("Facade Settings"), DocumentedByXml, Restricted]
-        public InteractorActionPublisherFacade Facade { get; protected set; }
+        public InteractorActionPublisherFacade Facade
+        {
+            get
+            {
+                return facade;
+            }
+            protected set
+            {
+                facade = value;
+            }
+        }
         #endregion
 
         #region Reference Settings
+        [Header("Reference Settings")]
+        [Tooltip("The ActionObservableList that contains the Action collection that can be linked to the InteractorActionFacade.SourceAction.")]
+        [SerializeField]
+        [Restricted]
+        private ActionObservableList targetActions;
         /// <summary>
         /// The <see cref="ActionObservableList"/> that contains the <see cref="Action"/> collection that can be linked to the <see cref="InteractorActionFacade.SourceAction"/>.
         /// </summary>
-        [Serialized]
-        [field: Header("Reference Settings"), DocumentedByXml, Restricted]
-        public ActionObservableList TargetActions { get; protected set; }
+        public ActionObservableList TargetActions
+        {
+            get
+            {
+                return targetActions;
+            }
+            protected set
+            {
+                targetActions = value;
+            }
+        }
+        [Tooltip("The ActiveCollisionPublisher for checking valid start action.")]
+        [SerializeField]
+        [Restricted]
+        private ActiveCollisionPublisher startActionPublisher;
         /// <summary>
         /// The <see cref="ActiveCollisionPublisher"/> for checking valid start action.
         /// </summary>
-        [Serialized]
-        [field: DocumentedByXml, Restricted]
-        public ActiveCollisionPublisher StartActionPublisher { get; protected set; }
+        public ActiveCollisionPublisher StartActionPublisher
+        {
+            get
+            {
+                return startActionPublisher;
+            }
+            protected set
+            {
+                startActionPublisher = value;
+            }
+        }
+        [Tooltip("The StringObservableList for tagging the valid start action.")]
+        [SerializeField]
+        [Restricted]
+        private StringObservableList startActionStringCollection;
         /// <summary>
         /// The <see cref="StringObservableList"/> for tagging the valid start action.
         /// </summary>
-        [Serialized]
-        [field: DocumentedByXml, Restricted]
-        public StringObservableList StartActionStringCollection { get; protected set; }
+        public StringObservableList StartActionStringCollection
+        {
+            get
+            {
+                return startActionStringCollection;
+            }
+            protected set
+            {
+                startActionStringCollection = value;
+            }
+        }
+        [Tooltip("The ActiveCollisionPublisher for checking valid stop action.")]
+        [SerializeField]
+        [Restricted]
+        private ActiveCollisionPublisher stopActionPublisher;
         /// <summary>
         /// The <see cref="ActiveCollisionPublisher"/> for checking valid stop action.
         /// </summary>
-        [Serialized]
-        [field: DocumentedByXml, Restricted]
-        public ActiveCollisionPublisher StopActionPublisher { get; protected set; }
+        public ActiveCollisionPublisher StopActionPublisher
+        {
+            get
+            {
+                return stopActionPublisher;
+            }
+            protected set
+            {
+                stopActionPublisher = value;
+            }
+        }
+        [Tooltip("The StringObservableList for tagging the valid stop action.")]
+        [SerializeField]
+        [Restricted]
+        private StringObservableList stopActionStringCollection;
         /// <summary>
         /// The <see cref="StringObservableList"/> for tagging the valid stop action.
         /// </summary>
-        [Serialized]
-        [field: DocumentedByXml, Restricted]
-        public StringObservableList StopActionStringCollection { get; protected set; }
+        public StringObservableList StopActionStringCollection
+        {
+            get
+            {
+                return stopActionStringCollection;
+            }
+            protected set
+            {
+                stopActionStringCollection = value;
+            }
+        }
+        [Tooltip("The ActiveCollisionsContainerEventProxyEmitter setting the active collisions on the StartActionPublisher on touch.")]
+        [SerializeField]
+        [Restricted]
+        private ActiveCollisionsContainerEventProxyEmitter setOnTouchEmitter;
         /// <summary>
         /// The <see cref="ActiveCollisionsContainerEventProxyEmitter"/> setting the active collisions on the <see cref="StartActionPublisher"/> on touch.
         /// </summary>
-        [Serialized]
-        [field: DocumentedByXml, Restricted]
-        public ActiveCollisionsContainerEventProxyEmitter SetOnTouchEmitter { get; protected set; }
+        public ActiveCollisionsContainerEventProxyEmitter SetOnTouchEmitter
+        {
+            get
+            {
+                return setOnTouchEmitter;
+            }
+            protected set
+            {
+                setOnTouchEmitter = value;
+            }
+        }
+        [Tooltip("The ActiveCollisionPublisherEventProxyEmitter setting the active collisions on the StartActionPublisher on grab.")]
+        [SerializeField]
+        [Restricted]
+        private ActiveCollisionPublisherEventProxyEmitter setOnGrabEmitter;
         /// <summary>
         /// The <see cref="ActiveCollisionPublisherEventProxyEmitter"/> setting the active collisions on the <see cref="StartActionPublisher"/> on grab.
         /// </summary>
-        [Serialized]
-        [field: DocumentedByXml, Restricted]
-        public ActiveCollisionPublisherEventProxyEmitter SetOnGrabEmitter { get; protected set; }
+        public ActiveCollisionPublisherEventProxyEmitter SetOnGrabEmitter
+        {
+            get
+            {
+                return setOnGrabEmitter;
+            }
+            protected set
+            {
+                setOnGrabEmitter = value;
+            }
+        }
         #endregion
 
         /// <summary>
         /// The current active <see cref="Action"/>.
         /// </summary>
-        public Action ActiveAction { get; protected set; }
+        public virtual Action ActiveAction { get; protected set; }
 
         protected virtual void OnEnable()
         {

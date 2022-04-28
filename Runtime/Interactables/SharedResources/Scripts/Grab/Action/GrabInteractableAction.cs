@@ -1,11 +1,9 @@
 ﻿namespace Tilia.Interactions.Interactables.Interactables.Grab.Action
 {
-    using Malimbe.MemberChangeMethod;
-    using Malimbe.PropertySerializationAttribute;
-    using Malimbe.XmlDocumentationAttribute;
     using UnityEngine;
     using Zinnia.Data.Attribute;
     using Zinnia.Event.Proxy;
+    using Zinnia.Extension;
     using Zinnia.Tracking.Collision.Active.Event.Proxy;
 
     /// <summary>
@@ -14,42 +12,121 @@
     public class GrabInteractableAction : MonoBehaviour
     {
         #region Input Settings
+        [Header("Input Settings")]
+        [Tooltip("The input ActiveCollisionConsumerEventProxyEmitter for the grab action.")]
+        [SerializeField]
+        [Restricted]
+        private ActiveCollisionConsumerEventProxyEmitter inputActiveCollisionConsumer;
         /// <summary>
         /// The input <see cref="ActiveCollisionConsumerEventProxyEmitter"/> for the grab action.
         /// </summary>
-        [Serialized]
-        [field: Header("Input Settings"), DocumentedByXml, Restricted]
-        public ActiveCollisionConsumerEventProxyEmitter InputActiveCollisionConsumer { get; protected set; }
+        public ActiveCollisionConsumerEventProxyEmitter InputActiveCollisionConsumer
+        {
+            get
+            {
+                return inputActiveCollisionConsumer;
+            }
+            protected set
+            {
+                inputActiveCollisionConsumer = value;
+            }
+        }
+        [Tooltip("The input GameObjectEventProxyEmitter for the grab action.")]
+        [SerializeField]
+        [Restricted]
+        private GameObjectEventProxyEmitter inputGrabReceived;
         /// <summary>
         /// The input <see cref="GameObjectEventProxyEmitter"/> for the grab action.
         /// </summary>
-        [Serialized]
-        [field: DocumentedByXml, Restricted]
-        public GameObjectEventProxyEmitter InputGrabReceived { get; protected set; }
+        public GameObjectEventProxyEmitter InputGrabReceived
+        {
+            get
+            {
+                return inputGrabReceived;
+            }
+            protected set
+            {
+                inputGrabReceived = value;
+            }
+        }
+        [Tooltip("The input GameObjectEventProxyEmitter for the grab action.")]
+        [SerializeField]
+        [Restricted]
+        private GameObjectEventProxyEmitter inputUngrabReceived;
         /// <summary>
         /// The input <see cref="GameObjectEventProxyEmitter"/> for the grab action.
         /// </summary>
-        [Serialized]
-        [field: DocumentedByXml, Restricted]
-        public GameObjectEventProxyEmitter InputUngrabReceived { get; protected set; }
+        public GameObjectEventProxyEmitter InputUngrabReceived
+        {
+            get
+            {
+                return inputUngrabReceived;
+            }
+            protected set
+            {
+                inputUngrabReceived = value;
+            }
+        }
+        [Tooltip("The input GameObjectEventProxyEmitter for any pre setup on grab.")]
+        [SerializeField]
+        [Restricted]
+        private GameObjectEventProxyEmitter inputGrabSetup;
         /// <summary>
         /// The input <see cref="GameObjectEventProxyEmitter"/> for any pre setup on grab.
         /// </summary>
-        [Serialized]
-        [field: DocumentedByXml, Restricted]
-        public GameObjectEventProxyEmitter InputGrabSetup { get; protected set; }
+        public GameObjectEventProxyEmitter InputGrabSetup
+        {
+            get
+            {
+                return inputGrabSetup;
+            }
+            protected set
+            {
+                inputGrabSetup = value;
+            }
+        }
+        [Tooltip("The input GameObjectEventProxyEmitter for any post reset on ungrab.")]
+        [SerializeField]
+        [Restricted]
+        private GameObjectEventProxyEmitter inputUngrabReset;
         /// <summary>
         /// The input <see cref="GameObjectEventProxyEmitter"/> for any post reset on ungrab.
         /// </summary>
-        [Serialized]
-        [field: DocumentedByXml, Restricted]
-        public GameObjectEventProxyEmitter InputUngrabReset { get; protected set; }
+        public GameObjectEventProxyEmitter InputUngrabReset
+        {
+            get
+            {
+                return inputUngrabReset;
+            }
+            protected set
+            {
+                inputUngrabReset = value;
+            }
+        }
         #endregion
 
         /// <summary>
+        /// Backing field for <see cref="GrabSetup"/>
+        /// </summary>
+        private GrabInteractableConfigurator grabSetup;
+        /// <summary>
         /// The internal setup for the grab action.
         /// </summary>
-        public GrabInteractableConfigurator GrabSetup { get; set; }
+        public GrabInteractableConfigurator GrabSetup
+        {
+            get
+            {
+                return grabSetup;
+            }
+            set
+            {
+                grabSetup = value;
+                if (this.IsMemberChangeAllowed())
+                {
+                    OnAfterGrabSetupChange();
+                }
+            }
+        }
 
         /// <summary>
         /// Notifies that the Interactable is being grabbed.
@@ -72,7 +149,6 @@
         /// <summary>
         /// Called after <see cref="GrabSetup"/> has been changed.
         /// </summary>
-        [CalledAfterChangeOf(nameof(GrabSetup))]
         protected virtual void OnAfterGrabSetupChange() { }
     }
 }

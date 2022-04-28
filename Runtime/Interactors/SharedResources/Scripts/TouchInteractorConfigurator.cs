@@ -1,7 +1,5 @@
 ﻿namespace Tilia.Interactions.Interactables.Interactors
 {
-    using Malimbe.PropertySerializationAttribute;
-    using Malimbe.XmlDocumentationAttribute;
     using System.Collections.Generic;
     using UnityEngine;
     using Zinnia.Action;
@@ -18,67 +16,165 @@
     public class TouchInteractorConfigurator : MonoBehaviour
     {
         #region Facade Settings
+        [Header("Facade Settings")]
+        [Tooltip("The public interface facade.")]
+        [SerializeField]
+        [Restricted]
+        private InteractorFacade facade;
         /// <summary>
         /// The public interface facade.
         /// </summary>
-        [Serialized]
-        [field: Header("Facade Settings"), DocumentedByXml, Restricted]
-        public InteractorFacade Facade { get; protected set; }
+        public InteractorFacade Facade
+        {
+            get
+            {
+                return facade;
+            }
+            protected set
+            {
+                facade = value;
+            }
+        }
         #endregion
 
         #region Touch Settings
+        [Header("Touch Settings")]
+        [Tooltip("The Zinnia.Tracking.Collision.Active.ActiveCollisionsContainer that holds all current collisions.")]
+        [SerializeField]
+        [Restricted]
+        private ActiveCollisionsContainer activeCollisionsContainer;
         /// <summary>
         /// The <see cref="Zinnia.Tracking.Collision.Active.ActiveCollisionsContainer"/> that holds all current collisions.
         /// </summary>
-        [Serialized]
-        [field: Header("Touch Settings"), DocumentedByXml, Restricted]
-        public ActiveCollisionsContainer ActiveCollisionsContainer { get; protected set; }
+        public ActiveCollisionsContainer ActiveCollisionsContainer
+        {
+            get
+            {
+                return activeCollisionsContainer;
+            }
+            protected set
+            {
+                activeCollisionsContainer = value;
+            }
+        }
+        [Tooltip("The Slicer that holds the current active collision.")]
+        [SerializeField]
+        [Restricted]
+        private Slicer currentActiveCollision;
         /// <summary>
         /// The <see cref="Slicer"/> that holds the current active collision.
         /// </summary>
-        [Serialized]
-        [field: DocumentedByXml, Restricted]
-        public Slicer CurrentActiveCollision { get; protected set; }
+        public Slicer CurrentActiveCollision
+        {
+            get
+            {
+                return currentActiveCollision;
+            }
+            protected set
+            {
+                currentActiveCollision = value;
+            }
+        }
+        [Tooltip("The link to any external emitters of the touch state.")]
+        [SerializeField]
+        [Restricted]
+        private ActiveCollisionsContainerEventProxyEmitter externalEmitters;
         /// <summary>
         /// The link to any external emitters of the touch state.
         /// </summary>
-        [Serialized]
-        [field: DocumentedByXml, Restricted]
-        public ActiveCollisionsContainerEventProxyEmitter ExternalEmitters { get; protected set; }
+        public ActiveCollisionsContainerEventProxyEmitter ExternalEmitters
+        {
+            get
+            {
+                return externalEmitters;
+            }
+            protected set
+            {
+                externalEmitters = value;
+            }
+        }
+        [Tooltip("The ActiveCollisionPublisher for checking valid start touching collisions.")]
+        [SerializeField]
+        [Restricted]
+        private ActiveCollisionPublisher startTouchingPublisher;
         /// <summary>
         /// The <see cref="ActiveCollisionPublisher"/> for checking valid start touching collisions.
         /// </summary>
-        [Serialized]
-        [field: DocumentedByXml, Restricted]
-        public ActiveCollisionPublisher StartTouchingPublisher { get; protected set; }
+        public ActiveCollisionPublisher StartTouchingPublisher
+        {
+            get
+            {
+                return startTouchingPublisher;
+            }
+            protected set
+            {
+                startTouchingPublisher = value;
+            }
+        }
+        [Tooltip("The ActiveCollisionPublisher for checking valid stop touching collisions.")]
+        [SerializeField]
+        [Restricted]
+        private ActiveCollisionPublisher stopTouchingPublisher;
         /// <summary>
         /// The <see cref="ActiveCollisionPublisher"/> for checking valid stop touching collisions.
         /// </summary>
-        [Serialized]
-        [field: DocumentedByXml, Restricted]
-        public ActiveCollisionPublisher StopTouchingPublisher { get; protected set; }
+        public ActiveCollisionPublisher StopTouchingPublisher
+        {
+            get
+            {
+                return stopTouchingPublisher;
+            }
+            protected set
+            {
+                stopTouchingPublisher = value;
+            }
+        }
+        [Tooltip("A BooleanAction for holding the state of whether the Interactor is touching something.")]
+        [SerializeField]
+        [Restricted]
+        private BooleanAction isTouchingAction;
         /// <summary>
         /// A <see cref="BooleanAction"/> for holding the state of whether the Interactor is touching something.
         /// </summary>
-        [Serialized]
-        [field: DocumentedByXml, Restricted]
-        public BooleanAction IsTouchingAction { get; protected set; }
+        public BooleanAction IsTouchingAction
+        {
+            get
+            {
+                return isTouchingAction;
+            }
+            protected set
+            {
+                isTouchingAction = value;
+            }
+        }
+        [Tooltip("A CollisionTracker for tracking collisions/touches on this Interactor.")]
+        [SerializeField]
+        [Restricted]
+        private CollisionTracker touchTracker;
         /// <summary>
         /// A <see cref="CollisionTracker"/> for tracking collisions/touches on this Interactor.
         /// </summary>
-        [Serialized]
-        [field: DocumentedByXml, Restricted]
-        public CollisionTracker TouchTracker { get; protected set; }
+        public CollisionTracker TouchTracker
+        {
+            get
+            {
+                return touchTracker;
+            }
+            protected set
+            {
+                touchTracker = value;
+            }
+        }
         #endregion
 
         /// <summary>
         /// A collection of currently touched GameObjects.
         /// </summary>
-        public IReadOnlyList<GameObject> TouchedObjects => GetTouchedObjects();
+        public virtual IReadOnlyList<GameObject> TouchedObjects => GetTouchedObjects();
         /// <summary>
         /// The currently active touched GameObject.
         /// </summary>
-        public GameObject ActiveTouchedObject => GetActiveTouchedObject();
+        public virtual GameObject ActiveTouchedObject => GetActiveTouchedObject();
 
         /// <summary>
         /// A reusable collection to hold the returned touched objects.
