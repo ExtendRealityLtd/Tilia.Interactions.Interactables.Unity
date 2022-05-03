@@ -13,6 +13,7 @@
     /// <summary>
     /// The public interface into the Interactable Prefab.
     /// </summary>
+    [SelectionBase]
     public class InteractableFacade : MonoBehaviour
     {
         /// <summary>
