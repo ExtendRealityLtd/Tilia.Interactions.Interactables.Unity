@@ -16,6 +16,7 @@
     /// <summary>
     /// The public interface into the Interactor Prefab.
     /// </summary>
+    [SelectionBase]
     public class InteractorFacade : MonoBehaviour
     {
         /// <summary>
