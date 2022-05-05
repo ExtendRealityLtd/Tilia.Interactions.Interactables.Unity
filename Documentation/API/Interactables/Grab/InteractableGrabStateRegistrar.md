@@ -9,6 +9,8 @@ Registers listeners to the initial grab and final ungrab states of an [Interacta
 * [Syntax]
 * [Fields]
   * [Grabbed]
+  * [KinematicStateChangedOnGrabbed]
+  * [KinematicStateChangedOnUngrabbed]
   * [Ungrabbed]
   * [unsubscribeGrabActions]
   * [unsubscribeUngrabActions]
@@ -16,7 +18,9 @@ Registers listeners to the initial grab and final ungrab states of an [Interacta
   * [UnsubscribeOnDisable]
 * [Methods]
   * [InteractableGrabbed(InteractableFacade)]
+  * [InteractableGrabbedKinematicChange(InteractableFacade)]
   * [InteractableUngrabbed(InteractableFacade)]
+  * [InteractableUngrabbedKinematicChange(InteractableFacade)]
   * [OnDisable()]
   * [RegisterGrabbed(GameObject)]
   * [RegisterGrabbed(InteractableFacade)]
@@ -51,12 +55,28 @@ public class InteractableGrabStateRegistrar : MonoBehaviour
 
 #### Grabbed
 
-Emitted when the [InteractableFacade] is grabbed.
-
 ##### Declaration
 
 ```
 public InteractableGrabStateRegistrar.UnityEvent Grabbed
+```
+
+#### KinematicStateChangedOnGrabbed
+
+##### Declaration
+
+```
+public InteractableGrabStateRegistrar.RigidbodyUnityEvent KinematicStateChangedOnGrabbed
+```
+
+#### KinematicStateChangedOnUngrabbed
+
+Emitted when the [InteractableFacade] is about to change the kinematic state of its Rigidbody when ungrabbed.
+
+##### Declaration
+
+```
+public InteractableGrabStateRegistrar.RigidbodyUnityEvent KinematicStateChangedOnUngrabbed
 ```
 
 #### Ungrabbed
@@ -119,6 +139,22 @@ protected virtual void InteractableGrabbed(InteractableFacade interactable)
 | --- | --- | --- |
 | [InteractableFacade] | interactable | The Interactable to process the grab event for. |
 
+#### InteractableGrabbedKinematicChange(InteractableFacade)
+
+Processes the kinematic state change on the grabbed event on the given Interactable.
+
+##### Declaration
+
+```
+protected virtual void InteractableGrabbedKinematicChange(InteractableFacade interactable)
+```
+
+##### Parameters
+
+| Type | Name | Description |
+| --- | --- | --- |
+| [InteractableFacade] | interactable | The Interactable to process the grab event for. |
+
 #### InteractableUngrabbed(InteractableFacade)
 
 Processes the ungrabbed event on the given Interactable.
@@ -134,6 +170,22 @@ protected virtual void InteractableUngrabbed(InteractableFacade interactable)
 | Type | Name | Description |
 | --- | --- | --- |
 | [InteractableFacade] | interactable | The Interactable to process the ungrab event for. |
+
+#### InteractableUngrabbedKinematicChange(InteractableFacade)
+
+Processes the kinematic state change on the ungrabbed event on the given Interactable.
+
+##### Declaration
+
+```
+protected virtual void InteractableUngrabbedKinematicChange(InteractableFacade interactable)
+```
+
+##### Parameters
+
+| Type | Name | Description |
+| --- | --- | --- |
+| [InteractableFacade] | interactable | The Interactable to process the grab event for. |
 
 #### OnDisable()
 
@@ -303,12 +355,15 @@ public virtual void UnregisterUngrabbed(InteractableFacade ungrabbable)
 
 [InteractableFacade]: ../../Interactables/InteractableFacade.md
 [Tilia.Interactions.Interactables.Interactables.Grab]: README.md
+[InteractableGrabStateRegistrar.RigidbodyUnityEvent]: InteractableGrabStateRegistrar.RigidbodyUnityEvent.md
 [InteractableGrabStateRegistrar.UnityEvent]: InteractableGrabStateRegistrar.UnityEvent.md
 [Inheritance]: #Inheritance
 [Namespace]: #Namespace
 [Syntax]: #Syntax
 [Fields]: #Fields
 [Grabbed]: #Grabbed
+[KinematicStateChangedOnGrabbed]: #KinematicStateChangedOnGrabbed
+[KinematicStateChangedOnUngrabbed]: #KinematicStateChangedOnUngrabbed
 [Ungrabbed]: #Ungrabbed
 [unsubscribeGrabActions]: #unsubscribeGrabActions
 [unsubscribeUngrabActions]: #unsubscribeUngrabActions
@@ -316,7 +371,9 @@ public virtual void UnregisterUngrabbed(InteractableFacade ungrabbable)
 [UnsubscribeOnDisable]: #UnsubscribeOnDisable
 [Methods]: #Methods
 [InteractableGrabbed(InteractableFacade)]: #InteractableGrabbedInteractableFacade
+[InteractableGrabbedKinematicChange(InteractableFacade)]: #InteractableGrabbedKinematicChangeInteractableFacade
 [InteractableUngrabbed(InteractableFacade)]: #InteractableUngrabbedInteractableFacade
+[InteractableUngrabbedKinematicChange(InteractableFacade)]: #InteractableUngrabbedKinematicChangeInteractableFacade
 [OnDisable()]: #OnDisable
 [RegisterGrabbed(GameObject)]: #RegisterGrabbedGameObject
 [RegisterGrabbed(InteractableFacade)]: #RegisterGrabbedInteractableFacade

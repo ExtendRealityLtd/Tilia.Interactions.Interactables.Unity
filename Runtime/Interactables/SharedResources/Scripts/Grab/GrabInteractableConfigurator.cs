@@ -1,5 +1,6 @@
 ﻿namespace Tilia.Interactions.Interactables.Interactables.Grab
 {
+    using System;
     using System.Collections.Generic;
     using System.Linq;
     using Tilia.Interactions.Interactables.Interactables.Grab.Action;
@@ -7,6 +8,7 @@
     using Tilia.Interactions.Interactables.Interactables.Grab.Receiver;
     using Tilia.Interactions.Interactables.Interactors;
     using UnityEngine;
+    using UnityEngine.Events;
     using Zinnia.Data.Attribute;
     using Zinnia.Data.Collection.List;
     using Zinnia.Extension;
@@ -16,6 +18,12 @@
     /// </summary>
     public class GrabInteractableConfigurator : MonoBehaviour
     {
+        /// <summary>
+        /// Defines the event with the <see cref="Rigidbody"/>.
+        /// </summary>
+        [Serializable]
+        public class UnityEvent : UnityEvent<Rigidbody> { }
+
         #region Facade Settings
         [Header("Facade Settings")]
         [Tooltip("The public interface facade.")]
@@ -166,6 +174,11 @@
                 actionTypes = value;
             }
         }
+        #endregion
+
+        #region Events
+        [Header("Events")]
+        public UnityEvent KinematicStateToChange = new UnityEvent();
         #endregion
 
         /// <summary>
