@@ -1,5 +1,22 @@
 # Changelog
 
+## [2.1.0](https://github.com/ExtendRealityLtd/Tilia.Interactions.Interactables.Unity/compare/v2.0.1...v2.1.0) (2022-05-05)
+
+#### Features
+
+* **Grab:** emit event when kinematic state will change ([e7e7bbe](https://github.com/ExtendRealityLtd/Tilia.Interactions.Interactables.Unity/commit/e7e7bbea6e7026e5216c5bbd032ddb60a4bcd073))
+  > Due to the changes in PhysX, the change of a Rigidbody kinematic state will cause the collider to call the exit, then enter events even though the collider has not stopped intersecting.
+  > 
+  > This was fixed in the Zinnia Collision Tracker and in turn the Interactable and Interactor connection, but anywhere else that relies on the interactable kinematic state will not have a clear point to know when this happens.
+  > 
+  > So a new event has been added to the GrabInteractableConfigurator that emits the rigidbody that the kinematic state is about to change on.
+  > 
+  > Other dependents can now listen to this event to prepare any colliding rigidbody for the impending exit/enter.
+  > 
+  > The GrabInteractableFollowAction emits this event when it changes the kinematic state upon grab and ungrab.
+  > 
+  > The InteractableGrabStateRegistrar has also been updated to have two new events that are connected to the kinematic state change on grab and on ungrab, so they can be listened to when the grab or ungrab occurs so any rigidbody can be prepared accordingly.
+
 ### [2.0.1](https://github.com/ExtendRealityLtd/Tilia.Interactions.Interactables.Unity/compare/v2.0.0...v2.0.1) (2022-04-28)
 
 #### Miscellaneous Chores
