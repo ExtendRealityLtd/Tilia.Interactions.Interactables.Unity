@@ -7,6 +7,8 @@ Sets up the Interactable Prefab grab settings based on the provided user setting
 * [Inheritance]
 * [Namespace]
 * [Syntax]
+* [Fields]
+  * [KinematicStateToChange]
 * [Properties]
   * [ActionTypes]
   * [Facade]
@@ -62,6 +64,16 @@ Sets up the Interactable Prefab grab settings based on the provided user setting
 
 ```
 public class GrabInteractableConfigurator : MonoBehaviour
+```
+
+### Fields
+
+#### KinematicStateToChange
+
+##### Declaration
+
+```
+public GrabInteractableConfigurator.UnityEvent KinematicStateToChange
 ```
 
 ### Properties
@@ -507,6 +519,7 @@ protected virtual void UnlinkToSecondaryAction()
 ```
 
 [Tilia.Interactions.Interactables.Interactables.Grab]: README.md
+[GrabInteractableConfigurator.UnityEvent]: GrabInteractableConfigurator.UnityEvent.md
 [InteractableFacade]: ../../Interactables/InteractableFacade.md
 [InteractorFacade]: ../../Interactors/InteractorFacade.md
 [GrabInteractableInteractorProvider]: Provider/GrabInteractableInteractorProvider.md
@@ -529,6 +542,8 @@ protected virtual void UnlinkToSecondaryAction()
 [Inheritance]: #Inheritance
 [Namespace]: #Namespace
 [Syntax]: #Syntax
+[Fields]: #Fields
+[KinematicStateToChange]: #KinematicStateToChange
 [Properties]: #Properties
 [ActionTypes]: #ActionTypes
 [Facade]: #Facade

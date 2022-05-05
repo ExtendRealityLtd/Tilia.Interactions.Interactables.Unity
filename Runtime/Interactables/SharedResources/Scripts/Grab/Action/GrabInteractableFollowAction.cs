@@ -486,6 +486,7 @@
             }
 
             interactor.TouchConfiguration.TouchTracker.PrepareKinematicStateChange(GrabSetup.Facade.Configuration.ConsumerRigidbody);
+            GrabSetup.KinematicStateToChange?.Invoke(GrabSetup.Facade.Configuration.ConsumerRigidbody);
         }
 
         /// <summary>
