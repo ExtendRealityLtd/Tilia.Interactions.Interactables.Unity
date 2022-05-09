@@ -1,5 +1,12 @@
 # Changelog
 
+### [2.1.1](https://github.com/ExtendRealityLtd/Tilia.Interactions.Interactables.Unity/compare/v2.1.0...v2.1.1) (2022-05-09)
+
+#### Miscellaneous Chores
+
+* **deps:** bump io.extendreality.zinnia.unity from 2.0.0 to 2.1.0 ([e703969](https://github.com/ExtendRealityLtd/Tilia.Interactions.Interactables.Unity/commit/e703969dbd808ec7fc82c36c60e2b06b80a47e1c))
+  > Bumps [io.extendreality.zinnia.unity](https://github.com/ExtendRealityLtd/Zinnia.Unity) from 2.0.0 to 2.1.0. - [Release notes](https://github.com/ExtendRealityLtd/Zinnia.Unity/releases) - [Changelog](https://github.com/ExtendRealityLtd/Zinnia.Unity/blob/master/CHANGELOG.md) - [Commits](https://github.com/ExtendRealityLtd/Zinnia.Unity/compare/v2.0.0...v2.1.0)
+
 ## [2.1.0](https://github.com/ExtendRealityLtd/Tilia.Interactions.Interactables.Unity/compare/v2.0.1...v2.1.0) (2022-05-05)
 
 #### Features
