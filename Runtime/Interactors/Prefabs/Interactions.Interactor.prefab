@@ -194,6 +194,7 @@ GameObject:
   - component: {fileID: 5839046843648530548}
   - component: {fileID: 8276754598564363198}
   - component: {fileID: 8735317141649716525}
+  - component: {fileID: 5661210283589339750}
   m_Layer: 0
   m_Name: Interactions.Interactor
   m_TagString: Untagged
@@ -235,27 +236,15 @@ MonoBehaviour:
   Touched:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: Tilia.Interactions.Interactables.Interactors.InteractorFacade+UnityEvent,
-      Tilia.Interactions.Interactables.Unity.Runtime, Version=0.0.0.0, Culture=neutral,
-      PublicKeyToken=null
   Untouched:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: Tilia.Interactions.Interactables.Interactors.InteractorFacade+UnityEvent,
-      Tilia.Interactions.Interactables.Unity.Runtime, Version=0.0.0.0, Culture=neutral,
-      PublicKeyToken=null
   Grabbed:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: Tilia.Interactions.Interactables.Interactors.InteractorFacade+UnityEvent,
-      Tilia.Interactions.Interactables.Unity.Runtime, Version=0.0.0.0, Culture=neutral,
-      PublicKeyToken=null
   Ungrabbed:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: Tilia.Interactions.Interactables.Interactors.InteractorFacade+UnityEvent,
-      Tilia.Interactions.Interactables.Unity.Runtime, Version=0.0.0.0, Culture=neutral,
-      PublicKeyToken=null
   grabAttachPoint: {fileID: 46525619791520218}
   precisionAttachPoint: {fileID: 831167926051572747}
   avatarContainer: {fileID: 4211991488241996082}
@@ -308,8 +297,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-    m_TypeName: Zinnia.Tracking.Collision.CollisionNotifier+UnityEvent, Zinnia.Runtime,
-      Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
   CollisionChanged:
     m_PersistentCalls:
       m_Calls:
@@ -324,8 +311,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-    m_TypeName: Zinnia.Tracking.Collision.CollisionNotifier+UnityEvent, Zinnia.Runtime,
-      Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
   CollisionStopped:
     m_PersistentCalls:
       m_Calls:
@@ -340,13 +325,24 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-    m_TypeName: Zinnia.Tracking.Collision.CollisionNotifier+UnityEvent, Zinnia.Runtime,
-      Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
   stopCollisionsOnDisable: 1
   colliderValidity:
     field: {fileID: 1226516374651196114}
   containingTransformValidity:
     field: {fileID: 509181683010680416}
+  stayDelayInterval: 0
+--- !u!114 &5661210283589339750
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3863422424652264037}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 58d6cb68905534b4d8baf13b96b36cd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4211991488241996082
 GameObject:
   m_ObjectHideFlags: 0
@@ -419,26 +415,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3924256656882590479}
     m_Modifications:
-    - target: {fileID: 6024666130437826845, guid: 2cbd94cbb01df384eb07028e0f09c402,
-        type: 3}
-      propertyPath: m_Name
-      value: Interaction.Grabbing
-      objectReference: {fileID: 0}
-    - target: {fileID: 4568962547894877131, guid: 2cbd94cbb01df384eb07028e0f09c402,
-        type: 3}
-      propertyPath: facade
-      value: 
-      objectReference: {fileID: 5839046843648530548}
-    - target: {fileID: 3957090777482764941, guid: 2cbd94cbb01df384eb07028e0f09c402,
-        type: 3}
-      propertyPath: payload.sourceContainer
-      value: 
-      objectReference: {fileID: 3863422424652264037}
-    - target: {fileID: 7465668924379348647, guid: 2cbd94cbb01df384eb07028e0f09c402,
-        type: 3}
-      propertyPath: payload.sourceContainer
-      value: 
-      objectReference: {fileID: 3863422424652264037}
     - target: {fileID: 2635737225441082409, guid: 2cbd94cbb01df384eb07028e0f09c402,
         type: 3}
       propertyPath: m_RootOrder
@@ -494,6 +470,26 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3957090777482764941, guid: 2cbd94cbb01df384eb07028e0f09c402,
+        type: 3}
+      propertyPath: payload.sourceContainer
+      value: 
+      objectReference: {fileID: 3863422424652264037}
+    - target: {fileID: 4568962547894877131, guid: 2cbd94cbb01df384eb07028e0f09c402,
+        type: 3}
+      propertyPath: facade
+      value: 
+      objectReference: {fileID: 5839046843648530548}
+    - target: {fileID: 6024666130437826845, guid: 2cbd94cbb01df384eb07028e0f09c402,
+        type: 3}
+      propertyPath: m_Name
+      value: Interaction.Grabbing
+      objectReference: {fileID: 0}
+    - target: {fileID: 7465668924379348647, guid: 2cbd94cbb01df384eb07028e0f09c402,
+        type: 3}
+      propertyPath: payload.sourceContainer
+      value: 
+      objectReference: {fileID: 3863422424652264037}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2cbd94cbb01df384eb07028e0f09c402, type: 3}
 --- !u!4 &826568248903405400 stripped
@@ -533,76 +529,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3924256656882590479}
     m_Modifications:
-    - target: {fileID: 3916300416617427846, guid: 734c79b0fd2a7ec46932982b9fa8b279,
-        type: 3}
-      propertyPath: m_Name
-      value: Interaction.Touching
-      objectReference: {fileID: 0}
-    - target: {fileID: 3916300416617427845, guid: 734c79b0fd2a7ec46932982b9fa8b279,
-        type: 3}
-      propertyPath: facade
-      value: 
-      objectReference: {fileID: 5839046843648530548}
-    - target: {fileID: 3916300416617427845, guid: 734c79b0fd2a7ec46932982b9fa8b279,
-        type: 3}
-      propertyPath: touchTracker
-      value: 
-      objectReference: {fileID: 8735317141649716525}
-    - target: {fileID: 3916300416617427845, guid: 734c79b0fd2a7ec46932982b9fa8b279,
-        type: 3}
-      propertyPath: publisherContainer
-      value: 
-      objectReference: {fileID: 3863422424652264037}
-    - target: {fileID: 3916300416617427845, guid: 734c79b0fd2a7ec46932982b9fa8b279,
-        type: 3}
-      propertyPath: stopTouchingPublisherContainer
-      value: 
-      objectReference: {fileID: 3863422424652264037}
-    - target: {fileID: 3916300416617427845, guid: 734c79b0fd2a7ec46932982b9fa8b279,
-        type: 3}
-      propertyPath: startTouchingPublisherContainer
-      value: 
-      objectReference: {fileID: 3863422424652264037}
-    - target: {fileID: 3916300416617697655, guid: 734c79b0fd2a7ec46932982b9fa8b279,
-        type: 3}
-      propertyPath: payload.sourceContainer
-      value: 
-      objectReference: {fileID: 3863422424652264037}
     - target: {fileID: 3916300415980811496, guid: 734c79b0fd2a7ec46932982b9fa8b279,
         type: 3}
       propertyPath: payload.sourceContainer
       value: 
       objectReference: {fileID: 3863422424652264037}
-    - target: {fileID: 7969100211041010529, guid: 734c79b0fd2a7ec46932982b9fa8b279,
-        type: 3}
-      propertyPath: Emitted.m_PersistentCalls.m_Calls.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7969100211041010529, guid: 734c79b0fd2a7ec46932982b9fa8b279,
-        type: 3}
-      propertyPath: Emitted.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7969100211041010529, guid: 734c79b0fd2a7ec46932982b9fa8b279,
-        type: 3}
-      propertyPath: Emitted.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 3663147785276308700}
-    - target: {fileID: 7969100211041010529, guid: 734c79b0fd2a7ec46932982b9fa8b279,
-        type: 3}
-      propertyPath: Emitted.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 7969100211041010529, guid: 734c79b0fd2a7ec46932982b9fa8b279,
-        type: 3}
-      propertyPath: Emitted.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: Receive
-      objectReference: {fileID: 0}
-    - target: {fileID: 7969100211041010529, guid: 734c79b0fd2a7ec46932982b9fa8b279,
-        type: 3}
-      propertyPath: Emitted.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
-      objectReference: {fileID: 0}
     - target: {fileID: 3916300416617427844, guid: 734c79b0fd2a7ec46932982b9fa8b279,
         type: 3}
       propertyPath: m_RootOrder
@@ -658,11 +589,76 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3916300416617427845, guid: 734c79b0fd2a7ec46932982b9fa8b279,
+        type: 3}
+      propertyPath: facade
+      value: 
+      objectReference: {fileID: 5839046843648530548}
+    - target: {fileID: 3916300416617427845, guid: 734c79b0fd2a7ec46932982b9fa8b279,
+        type: 3}
+      propertyPath: touchTracker
+      value: 
+      objectReference: {fileID: 8735317141649716525}
+    - target: {fileID: 3916300416617427845, guid: 734c79b0fd2a7ec46932982b9fa8b279,
+        type: 3}
+      propertyPath: publisherContainer
+      value: 
+      objectReference: {fileID: 3863422424652264037}
+    - target: {fileID: 3916300416617427845, guid: 734c79b0fd2a7ec46932982b9fa8b279,
+        type: 3}
+      propertyPath: stopTouchingPublisherContainer
+      value: 
+      objectReference: {fileID: 3863422424652264037}
+    - target: {fileID: 3916300416617427845, guid: 734c79b0fd2a7ec46932982b9fa8b279,
+        type: 3}
+      propertyPath: startTouchingPublisherContainer
+      value: 
+      objectReference: {fileID: 3863422424652264037}
+    - target: {fileID: 3916300416617427846, guid: 734c79b0fd2a7ec46932982b9fa8b279,
+        type: 3}
+      propertyPath: m_Name
+      value: Interaction.Touching
+      objectReference: {fileID: 0}
+    - target: {fileID: 3916300416617697655, guid: 734c79b0fd2a7ec46932982b9fa8b279,
+        type: 3}
+      propertyPath: payload.sourceContainer
+      value: 
+      objectReference: {fileID: 3863422424652264037}
     - target: {fileID: 3916300417121912082, guid: 734c79b0fd2a7ec46932982b9fa8b279,
         type: 3}
       propertyPath: source
       value: 
       objectReference: {fileID: 46525619791520218}
+    - target: {fileID: 7969100211041010529, guid: 734c79b0fd2a7ec46932982b9fa8b279,
+        type: 3}
+      propertyPath: Emitted.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7969100211041010529, guid: 734c79b0fd2a7ec46932982b9fa8b279,
+        type: 3}
+      propertyPath: Emitted.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7969100211041010529, guid: 734c79b0fd2a7ec46932982b9fa8b279,
+        type: 3}
+      propertyPath: Emitted.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 3663147785276308700}
+    - target: {fileID: 7969100211041010529, guid: 734c79b0fd2a7ec46932982b9fa8b279,
+        type: 3}
+      propertyPath: Emitted.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7969100211041010529, guid: 734c79b0fd2a7ec46932982b9fa8b279,
+        type: 3}
+      propertyPath: Emitted.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Receive
+      objectReference: {fileID: 0}
+    - target: {fileID: 7969100211041010529, guid: 734c79b0fd2a7ec46932982b9fa8b279,
+        type: 3}
+      propertyPath: Emitted.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 734c79b0fd2a7ec46932982b9fa8b279, type: 3}
 --- !u!4 &575120022572046410 stripped
