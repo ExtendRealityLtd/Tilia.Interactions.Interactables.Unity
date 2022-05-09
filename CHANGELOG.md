@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.2.0](https://github.com/ExtendRealityLtd/Tilia.Interactions.Interactables.Unity/compare/v2.1.1...v2.2.0) (2022-05-09)
+
+#### Features
+
+* **prefabs:** add selection base component to facade ([5aaebd9](https://github.com/ExtendRealityLtd/Tilia.Interactions.Interactables.Unity/commit/5aaebd9e4e698ce68b66e902e66e2670de162e93))
+  > The new Zinnia BaseGameObjectSelector when added to a GameObject will cause the GameObject to be selected when the mesh is clicked in the Unity scene view. This has been added to the facade to ensure the facade is selected when the mesh is clicked.
+
 ### [2.1.1](https://github.com/ExtendRealityLtd/Tilia.Interactions.Interactables.Unity/compare/v2.1.0...v2.1.1) (2022-05-09)
 
 #### Miscellaneous Chores
