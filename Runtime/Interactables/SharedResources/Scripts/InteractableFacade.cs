@@ -239,6 +239,15 @@
         protected WaitForEndOfFrame delayInstruction = new WaitForEndOfFrame();
 
         /// <summary>
+        /// Sets the <see cref="GrabType"/>.
+        /// </summary>
+        /// <param name="index">The index of the <see cref="GrabInteractableReceiver.ActiveType"/>.</param>
+        public virtual void SetGrabType(int index)
+        {
+            GrabType = EnumExtensions.GetByIndex<GrabInteractableReceiver.ActiveType>(index);
+        }
+
+        /// <summary>
         /// Attempt to grab the Interactable to the given <see cref="GameObject"/> that contains an Interactor and ungrabs any existing grabbed Interactable.
         /// </summary>
         /// <param name="interactor">The GameObject that the Interactor is on.</param>

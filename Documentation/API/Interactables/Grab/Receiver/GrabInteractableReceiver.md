@@ -25,6 +25,7 @@ Handles the way in which a grab event from an Interactor is received and process
   * [ConfigureGrabType()]
   * [OnAfterGrabTypeChange()]
   * [OnEnable()]
+  * [SetGrabType(Int32)]
 
 ## Details
 
@@ -211,9 +212,26 @@ protected virtual void OnAfterGrabTypeChange()
 protected virtual void OnEnable()
 ```
 
+#### SetGrabType(Int32)
+
+Sets the [GrabType].
+
+##### Declaration
+
+```
+public virtual void SetGrabType(int index)
+```
+
+##### Parameters
+
+| Type | Name | Description |
+| --- | --- | --- |
+| System.Int32 | index | The index of the [GrabInteractableReceiver.ActiveType]. |
+
 [Tilia.Interactions.Interactables.Interactables.Grab.Receiver]: README.md
-[GrabInteractableReceiver.ActiveType]: GrabInteractableReceiver.ActiveType.md
 [GrabType]: GrabInteractableReceiver.md#GrabType
+[GrabType]: GrabInteractableReceiver.md#GrabType
+[GrabInteractableReceiver.ActiveType]: GrabInteractableReceiver.ActiveType.md
 [Inheritance]: #Inheritance
 [Namespace]: #Namespace
 [Syntax]: #Syntax
@@ -235,3 +253,4 @@ protected virtual void OnEnable()
 [ConfigureGrabType()]: #ConfigureGrabType
 [OnAfterGrabTypeChange()]: #OnAfterGrabTypeChange
 [OnEnable()]: #OnEnable
+[SetGrabType(Int32)]: #SetGrabTypeInt32

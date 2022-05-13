@@ -65,6 +65,7 @@ The public interface into the Interactable Prefab.
   * [OnAfterGrabTypeChange()]
   * [OnAfterValidInteractionTypesChange()]
   * [OnEnable()]
+  * [SetGrabType(Int32)]
   * [SetValidInteractionTypes()]
   * [SnapFollowOrientation()]
   * [Ungrab(GameObject)]
@@ -764,6 +765,22 @@ protected virtual void OnAfterValidInteractionTypesChange()
 protected virtual void OnEnable()
 ```
 
+#### SetGrabType(Int32)
+
+Sets the [GrabType].
+
+##### Declaration
+
+```
+public virtual void SetGrabType(int index)
+```
+
+##### Parameters
+
+| Type | Name | Description |
+| --- | --- | --- |
+| System.Int32 | index | The index of the [GrabInteractableReceiver.ActiveType]. |
+
 #### SetValidInteractionTypes()
 
 Activates or Deactivates the interaction types based on the selected [ValidInteractionTypes].
@@ -915,6 +932,7 @@ public virtual void UngrabAtEndOfFrame(InteractorFacade interactor)
 [GrabProviderIndex]: InteractableFacade.md#GrabProviderIndex
 [GrabType]: InteractableFacade.md#GrabType
 [ValidInteractionTypes]: InteractableFacade.md#ValidInteractionTypes
+[GrabType]: InteractableFacade.md#GrabType
 [ValidInteractionTypes]: InteractableFacade.md#ValidInteractionTypes
 [Inheritance]: #Inheritance
 [Namespace]: #Namespace
@@ -977,6 +995,7 @@ public virtual void UngrabAtEndOfFrame(InteractorFacade interactor)
 [OnAfterGrabTypeChange()]: #OnAfterGrabTypeChange
 [OnAfterValidInteractionTypesChange()]: #OnAfterValidInteractionTypesChange
 [OnEnable()]: #OnEnable
+[SetGrabType(Int32)]: #SetGrabTypeInt32
 [SetValidInteractionTypes()]: #SetValidInteractionTypes
 [SnapFollowOrientation()]: #SnapFollowOrientation
 [Ungrab(GameObject)]: #UngrabGameObject

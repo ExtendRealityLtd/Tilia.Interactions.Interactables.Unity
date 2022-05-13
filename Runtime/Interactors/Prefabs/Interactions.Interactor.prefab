@@ -192,6 +192,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5475526938935984466}
   - component: {fileID: 5839046843648530548}
+  - component: {fileID: 6986367063924956428}
   - component: {fileID: 8276754598564363198}
   - component: {fileID: 8735317141649716525}
   - component: {fileID: 5661210283589339750}
@@ -250,6 +251,21 @@ MonoBehaviour:
   avatarContainer: {fileID: 4211991488241996082}
   touchConfiguration: {fileID: 575120022572046411}
   grabConfiguration: {fileID: 1190284288443484346}
+--- !u!114 &6986367063924956428
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3863422424652264037}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0253ce762a8da144bb6efe72d543f606, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  source: {fileID: 8523271565689214913}
+  velocityMultiplierFactor: {x: 1, y: 1, z: 1}
+  angularVelocityMultiplierFactor: {x: 1, y: 1, z: 1}
 --- !u!54 &8276754598564363198
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -508,6 +524,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 389d7bfb100b39146a67ccaf229a6311, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &8523271565689214913 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6459345143972930736, guid: 2cbd94cbb01df384eb07028e0f09c402,
+    type: 3}
+  m_PrefabInstance: {fileID: 3453287278815834993}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 60829535893427a45be5af6abd9f0426, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &3663147785276308700 stripped
