@@ -1,5 +1,16 @@
 # Changelog
 
+## [2.3.0](https://github.com/ExtendRealityLtd/Tilia.Interactions.Interactables.Unity/compare/v2.2.0...v2.3.0) (2022-05-13)
+
+#### Features
+
+* **Interactions:** multiply velocity on interactor and interactable ([e9bcff3](https://github.com/ExtendRealityLtd/Tilia.Interactions.Interactables.Unity/commit/e9bcff381c3afe2e5f44a5db683c5d0a9ac578be))
+  > The Interactor and Interactable now has a VelocityMultiplier on them so the throw velocity can be multiplied on either the Interactor or the Interactable (or both).
+  > 
+  > The Interactable Editor has also been tidied up a bit with some horizontal lines added and a bit more indentation to make it easier to follow the flow of data.
+  > 
+  > A number of enum properties have also had set methods added for them as well.
+
 ## [2.2.0](https://github.com/ExtendRealityLtd/Tilia.Interactions.Interactables.Unity/compare/v2.1.1...v2.2.0) (2022-05-09)
 
 #### Features
