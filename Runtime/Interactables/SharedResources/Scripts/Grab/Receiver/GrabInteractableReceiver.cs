@@ -278,6 +278,15 @@
         }
 
         /// <summary>
+        /// Sets the <see cref="GrabType"/>.
+        /// </summary>
+        /// <param name="index">The index of the <see cref="ActiveType"/>.</param>
+        public virtual void SetGrabType(int index)
+        {
+            GrabType = EnumExtensions.GetByIndex<ActiveType>(index);
+        }
+
+        /// <summary>
         /// Configures the Grab Type to be used.
         /// </summary>
         public virtual void ConfigureGrabType()

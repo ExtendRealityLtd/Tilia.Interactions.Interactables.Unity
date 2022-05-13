@@ -27,6 +27,7 @@ Describes an action that allows the Interactable to follow an Interactor's posit
   * [RotationModifiers]
   * [ScaleModifiers]
   * [VelocityApplier]
+  * [VelocityMultiplier]
   * [WillInheritIsKinematicWhenInactiveFromConsumerRigidbody]
 * [Methods]
   * [ApplyActiveKinematicState(GameObject)]
@@ -39,6 +40,8 @@ Describes an action that allows the Interactable to follow an Interactor's posit
   * [OnAfterGrabSetupChange()]
   * [OnEnable()]
   * [PrepareColliderForKinematicChange(GameObject)]
+  * [SetFollowTracking(Int32)]
+  * [SetGrabOffset(Int32)]
 
 ## Details
 
@@ -268,6 +271,16 @@ The Zinnia.Tracking.Velocity.VelocityApplier to apply velocity on ungrab.
 public VelocityApplier VelocityApplier { get; protected set; }
 ```
 
+#### VelocityMultiplier
+
+The Zinnia.Tracking.Velocity.VelocityMultiplier to multiply the applied velocity on ungrab.
+
+##### Declaration
+
+```
+public VelocityMultiplier VelocityMultiplier { get; protected set; }
+```
+
 #### WillInheritIsKinematicWhenInactiveFromConsumerRigidbody
 
 Whether the [IsKinematicWhenInactive] property inherits the kinematic state from GrabSetup.Facade.ConsumerRigidbody.isKinematic.
@@ -400,6 +413,38 @@ protected virtual void PrepareColliderForKinematicChange(GameObject initiator)
 | --- | --- | --- |
 | GameObject | initiator | The potential Interactor causing this state change. |
 
+#### SetFollowTracking(Int32)
+
+Sets the [FollowTracking].
+
+##### Declaration
+
+```
+public virtual void SetFollowTracking(int index)
+```
+
+##### Parameters
+
+| Type | Name | Description |
+| --- | --- | --- |
+| System.Int32 | index | The index of the [GrabInteractableFollowAction.TrackingType]. |
+
+#### SetGrabOffset(Int32)
+
+Sets the [GrabOffset].
+
+##### Declaration
+
+```
+public virtual void SetGrabOffset(int index)
+```
+
+##### Parameters
+
+| Type | Name | Description |
+| --- | --- | --- |
+| System.Int32 | index | The index of the [GrabInteractableFollowAction.OffsetType]. |
+
 [GrabInteractableAction]: GrabInteractableAction.md
 [GrabInteractableAction.InputActiveCollisionConsumer]: GrabInteractableAction.md#Tilia_Interactions_Interactables_Interactables_Grab_Action_GrabInteractableAction_InputActiveCollisionConsumer
 [GrabInteractableAction.InputGrabReceived]: GrabInteractableAction.md#Tilia_Interactions_Interactables_Interactables_Grab_Action_GrabInteractableAction_InputGrabReceived
@@ -410,9 +455,7 @@ protected virtual void PrepareColliderForKinematicChange(GameObject initiator)
 [GrabInteractableAction.NotifyGrab(GameObject)]: GrabInteractableAction.md#Tilia_Interactions_Interactables_Interactables_Grab_Action_GrabInteractableAction_NotifyGrab_GameObject_
 [GrabInteractableAction.NotifyUngrab(GameObject)]: GrabInteractableAction.md#Tilia_Interactions_Interactables_Interactables_Grab_Action_GrabInteractableAction_NotifyUngrab_GameObject_
 [Tilia.Interactions.Interactables.Interactables.Grab.Action]: README.md
-[GrabInteractableFollowAction.TrackingType]: GrabInteractableFollowAction.TrackingType.md
 [ObjectFollower]: GrabInteractableFollowAction.md#ObjectFollower
-[GrabInteractableFollowAction.OffsetType]: GrabInteractableFollowAction.OffsetType.md
 [IsKinematicWhenInactive]: GrabInteractableFollowAction.md#IsKinematicWhenInactive
 [FollowTracking]: GrabInteractableFollowAction.md#FollowTracking
 [GrabOffset]: GrabInteractableFollowAction.md#GrabOffset
@@ -420,6 +463,10 @@ protected virtual void PrepareColliderForKinematicChange(GameObject initiator)
 [GrabOffset]: GrabInteractableFollowAction.md#GrabOffset
 [GrabSetup]: GrabInteractableAction.md#Tilia_Interactions_Interactables_Interactables_Grab_Action_GrabInteractableAction_GrabSetup
 [GrabInteractableAction.OnAfterGrabSetupChange()]: GrabInteractableAction.md#Tilia_Interactions_Interactables_Interactables_Grab_Action_GrabInteractableAction_OnAfterGrabSetupChange
+[FollowTracking]: GrabInteractableFollowAction.md#FollowTracking
+[GrabInteractableFollowAction.TrackingType]: GrabInteractableFollowAction.TrackingType.md
+[GrabOffset]: GrabInteractableFollowAction.md#GrabOffset
+[GrabInteractableFollowAction.OffsetType]: GrabInteractableFollowAction.OffsetType.md
 [Inheritance]: #Inheritance
 [Namespace]: #Namespace
 [Syntax]: #Syntax
@@ -443,6 +490,7 @@ protected virtual void PrepareColliderForKinematicChange(GameObject initiator)
 [RotationModifiers]: #RotationModifiers
 [ScaleModifiers]: #ScaleModifiers
 [VelocityApplier]: #VelocityApplier
+[VelocityMultiplier]: #VelocityMultiplier
 [WillInheritIsKinematicWhenInactiveFromConsumerRigidbody]: #WillInheritIsKinematicWhenInactiveFromConsumerRigidbody
 [Methods]: #Methods
 [ApplyActiveKinematicState(GameObject)]: #ApplyActiveKinematicStateGameObject
@@ -455,3 +503,5 @@ protected virtual void PrepareColliderForKinematicChange(GameObject initiator)
 [OnAfterGrabSetupChange()]: #OnAfterGrabSetupChange
 [OnEnable()]: #OnEnable
 [PrepareColliderForKinematicChange(GameObject)]: #PrepareColliderForKinematicChangeGameObject
+[SetFollowTracking(Int32)]: #SetFollowTrackingInt32
+[SetGrabOffset(Int32)]: #SetGrabOffsetInt32

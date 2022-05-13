@@ -23,6 +23,7 @@ The public interface into the Interactor Action Receiver Prefab.
   * [OnAfterTargetInteractableChange()]
   * [OnBeforeActivationStateChange()]
   * [OnBeforeTargetInteractableChange()]
+  * [SetActivationState(Int32)]
 
 ## Details
 
@@ -209,8 +210,23 @@ Called before [TargetInteractable] has been changed.
 protected virtual void OnBeforeTargetInteractableChange()
 ```
 
+#### SetActivationState(Int32)
+
+Sets the [ActivationState].
+
+##### Declaration
+
+```
+public virtual void SetActivationState(int index)
+```
+
+##### Parameters
+
+| Type | Name | Description |
+| --- | --- | --- |
+| System.Int32 | index | The index of the [InteractableActionReceiverFacade.InteractionState]. |
+
 [Tilia.Interactions.Interactables.Interactables]: README.md
-[InteractableActionReceiverFacade.InteractionState]: InteractableActionReceiverFacade.InteractionState.md
 [InteractableActionReceiverConfigurator]: InteractableActionReceiverConfigurator.md
 [InteractorActionPublisherFacade]: ../Interactors/InteractorActionPublisherFacade.md
 [InteractorActionPublisherFacadeObservableList]: ../Interactors/Collection/InteractorActionPublisherFacadeObservableList.md
@@ -222,6 +238,8 @@ protected virtual void OnBeforeTargetInteractableChange()
 [TargetInteractable]: InteractableActionReceiverFacade.md#TargetInteractable
 [ActivationState]: InteractableActionReceiverFacade.md#ActivationState
 [TargetInteractable]: InteractableActionReceiverFacade.md#TargetInteractable
+[ActivationState]: InteractableActionReceiverFacade.md#ActivationState
+[InteractableActionReceiverFacade.InteractionState]: InteractableActionReceiverFacade.InteractionState.md
 [Inheritance]: #Inheritance
 [Namespace]: #Namespace
 [Syntax]: #Syntax
@@ -241,3 +259,4 @@ protected virtual void OnBeforeTargetInteractableChange()
 [OnAfterTargetInteractableChange()]: #OnAfterTargetInteractableChange
 [OnBeforeActivationStateChange()]: #OnBeforeActivationStateChange
 [OnBeforeTargetInteractableChange()]: #OnBeforeTargetInteractableChange
+[SetActivationState(Int32)]: #SetActivationStateInt32

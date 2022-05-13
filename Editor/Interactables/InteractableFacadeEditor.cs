@@ -34,48 +34,62 @@
             string undoRedoWarningPropertyPath = UndoRedoWarningPropertyPath;
             grabConfigurationIsDirty = false;
 
+            EditorHelper.DrawHorizontalLine();
+
             EditorGUILayout.Space();
             EditorGUILayout.LabelField("Primary Action Settings", EditorStyles.boldLabel);
 
             selectedPrimaryActionIndex = EditorGUILayout.Popup(new GUIContent("Primary Action"), currentPrimaryActionIndex, primaryActions);
 
-            GrabInteractableAction updatedPrimaryAction = UpdateAction(facade, primaryActionsIndexes, currentPrimaryActionIndex, selectedPrimaryActionIndex, facade.Configuration.GrabConfiguration.PrimaryAction, 0);
-            if (facade.Configuration.GrabConfiguration.PrimaryAction != updatedPrimaryAction)
+            GrabInteractableAction updatedPrimaryAction = UpdateAction(facade, primaryActionsIndexes, currentPrimaryActionIndex, selectedPrimaryActionIndex, GetPrimaryAction(), 0);
+            if (IsGrabConfigurationSet() && GetPrimaryAction() != updatedPrimaryAction)
             {
                 facade.Configuration.GrabConfiguration.PrimaryAction = updatedPrimaryAction;
                 grabConfigurationIsDirty = true;
             }
             currentPrimaryActionIndex = selectedPrimaryActionIndex;
 
-            DrawFollowActionSettings(facade, facade.Configuration.GrabConfiguration.PrimaryAction, undoRedoWarningPropertyPath);
+            DrawFollowActionSettings(facade, GetPrimaryAction(), undoRedoWarningPropertyPath);
+
+            EditorHelper.DrawHorizontalLine();
 
             EditorGUILayout.Space();
             EditorGUILayout.LabelField("Secondary Action Settings", EditorStyles.boldLabel);
 
             selectedSecondaryActionIndex = EditorGUILayout.Popup(new GUIContent("Secondary Action"), currentSecondaryActionIndex, secondaryActions);
-            GrabInteractableAction updatedSecondaryAction = UpdateAction(facade, secondaryActionsIndexes, currentSecondaryActionIndex, selectedSecondaryActionIndex, facade.Configuration.GrabConfiguration.SecondaryAction, 1);
-            if (facade.Configuration.GrabConfiguration.SecondaryAction != updatedSecondaryAction)
+            GrabInteractableAction updatedSecondaryAction = UpdateAction(facade, secondaryActionsIndexes, currentSecondaryActionIndex, selectedSecondaryActionIndex, GetSecondaryAction(), 1);
+            if (IsGrabConfigurationSet() && GetSecondaryAction() != updatedSecondaryAction)
             {
                 facade.Configuration.GrabConfiguration.SecondaryAction = updatedSecondaryAction;
                 grabConfigurationIsDirty = true;
             }
             currentSecondaryActionIndex = selectedSecondaryActionIndex;
 
-            DrawFollowActionSettings(facade, facade.Configuration.GrabConfiguration.SecondaryAction, undoRedoWarningPropertyPath);
+            DrawFollowActionSettings(facade, GetSecondaryAction(), undoRedoWarningPropertyPath);
+
+            EditorHelper.DrawHorizontalLine();
 
             EditorGUILayout.Space();
             EditorGUILayout.LabelField("Disallowed Touch Interactor Settings", EditorStyles.boldLabel);
 
             EditorGUI.indentLevel++;
-            DrawDisallowedInteractorsList(facade.Configuration.DisallowedTouchInteractors, undoRedoWarningPropertyPath);
+            if (IsConfigurationSet())
+            {
+                DrawDisallowedInteractorsList(facade.Configuration.DisallowedTouchInteractors, undoRedoWarningPropertyPath);
+            }
             EditorGUI.indentLevel--;
 
             EditorGUILayout.Space();
             EditorGUILayout.LabelField("Disallowed Grab Interactor Settings", EditorStyles.boldLabel);
 
             EditorGUI.indentLevel++;
-            DrawDisallowedInteractorsList(facade.Configuration.DisallowedGrabInteractors, undoRedoWarningPropertyPath);
+            if (IsConfigurationSet())
+            {
+                DrawDisallowedInteractorsList(facade.Configuration.DisallowedGrabInteractors, undoRedoWarningPropertyPath);
+            }
             EditorGUI.indentLevel--;
+
+            EditorHelper.DrawHorizontalLine();
 
             EditorGUILayout.BeginHorizontal("GroupBox");
             GUILayout.FlexibleSpace();
@@ -100,8 +114,28 @@
             SetActionArray(facade, primaryActionsIndexes, ref primaryActions);
             SetActionArray(facade, secondaryActionsIndexes, ref secondaryActions);
 
-            currentPrimaryActionIndex = UpdateIndex(facade, facade.Configuration.GrabConfiguration.PrimaryAction, primaryActionsIndexes, currentPrimaryActionIndex);
-            currentSecondaryActionIndex = UpdateIndex(facade, facade.Configuration.GrabConfiguration.SecondaryAction, secondaryActionsIndexes, currentSecondaryActionIndex);
+            currentPrimaryActionIndex = UpdateIndex(facade, GetPrimaryAction(), primaryActionsIndexes, currentPrimaryActionIndex);
+            currentSecondaryActionIndex = UpdateIndex(facade, GetSecondaryAction(), secondaryActionsIndexes, currentSecondaryActionIndex);
+        }
+
+        protected virtual bool IsConfigurationSet()
+        {
+            return facade != null && facade.Configuration != null;
+        }
+
+        protected virtual bool IsGrabConfigurationSet()
+        {
+            return IsConfigurationSet() && facade.Configuration.GrabConfiguration != null;
+        }
+
+        protected virtual GrabInteractableAction GetPrimaryAction()
+        {
+            return IsGrabConfigurationSet() && facade.Configuration.GrabConfiguration.PrimaryAction != null ? facade.Configuration.GrabConfiguration.PrimaryAction : null;
+        }
+
+        protected virtual GrabInteractableAction GetSecondaryAction()
+        {
+            return IsGrabConfigurationSet() && facade.Configuration.GrabConfiguration.SecondaryAction != null ? facade.Configuration.GrabConfiguration.SecondaryAction : null;
         }
 
         protected virtual SerializedProperty DrawPropertyFieldWithChangeHandlers(SerializedObject sourceObject, string propertyName, string undoRedoWarningPropertyPath)
@@ -123,6 +157,7 @@
                 return;
             }
 
+            EditorGUI.indentLevel++;
             GrabInteractableFollowAction followAction = (GrabInteractableFollowAction)actionProperty;
             SerializedObject actionObject = new SerializedObject(followAction);
 
@@ -130,8 +165,11 @@
 
             if (followTracking.intValue == 4)
             {
+                EditorGUI.indentLevel++;
                 RotateAroundAngularVelocity rotationModifier = (RotateAroundAngularVelocity)followAction.FollowRotateAroundAngularVelocityModifier.RotationModifier;
                 DrawPropertyFieldWithChangeHandlers(new SerializedObject(rotationModifier), "applyToAxis", undoRedoWarningPropertyPath);
+                DrawPropertyFieldWithChangeHandlers(new SerializedObject(rotationModifier), "sourceMultiplier", undoRedoWarningPropertyPath);
+                EditorGUI.indentLevel--;
             }
 
             SerializedProperty grabOffset = DrawPropertyFieldWithChangeHandlers(actionObject, "grabOffset", undoRedoWarningPropertyPath);
@@ -147,6 +185,15 @@
                 EditorGUILayout.EndHorizontal();
             }
 
+            SerializedObject velocityMultiplierObject = new SerializedObject(followAction.VelocityMultiplier);
+
+            EditorHelper.DrawHorizontalLine();
+
+            SerializedProperty velocityMultiplerValue = DrawPropertyFieldWithChangeHandlers(velocityMultiplierObject, "velocityMultiplierFactor", undoRedoWarningPropertyPath);
+            SerializedProperty angularVelocityMultiplerValue = DrawPropertyFieldWithChangeHandlers(velocityMultiplierObject, "angularVelocityMultiplierFactor", undoRedoWarningPropertyPath);
+
+            EditorHelper.DrawHorizontalLine();
+
             showFollowAdvancedFeatures = EditorGUILayout.Foldout(showFollowAdvancedFeatures, "Advanced Follow Settings");
             if (showFollowAdvancedFeatures)
             {
@@ -156,6 +203,7 @@
                 DrawPropertyFieldWithChangeHandlers(actionObject, "willInheritIsKinematicWhenInactiveFromConsumerRigidbody", undoRedoWarningPropertyPath);
                 EditorGUI.indentLevel--;
             }
+            EditorGUI.indentLevel--;
         }
 
         protected virtual void DrawDisallowedInteractorsList(RuleContainer rule, string undoRedoWarningPropertyPath)
@@ -201,6 +249,11 @@
             actions[0] = "Custom";
             for (int actionIndex = 0; actionIndex < template.Length; actionIndex++)
             {
+                if (!IsGrabConfigurationSet() || facade.Configuration.GrabConfiguration.ActionTypes.NonSubscribableElements.Count == 0)
+                {
+                    continue;
+                }
+
                 string actionName = facade.Configuration.GrabConfiguration.ActionTypes.NonSubscribableElements[template[actionIndex]].name;
                 actions[actionIndex + 1] = actionName;
             }

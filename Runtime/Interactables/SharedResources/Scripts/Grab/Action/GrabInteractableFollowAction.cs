@@ -361,6 +361,24 @@
                 velocityApplier = value;
             }
         }
+        [Tooltip("The Zinnia.Tracking.Velocity.VelocityMultiplier to multiply the applied velocity on ungrab.")]
+        [SerializeField]
+        [Restricted]
+        private VelocityMultiplier velocityMultiplier;
+        /// <summary>
+        /// The <see cref="Zinnia.Tracking.Velocity.VelocityMultiplier"/> to multiply the applied velocity on ungrab.
+        /// </summary>
+        public VelocityMultiplier VelocityMultiplier
+        {
+            get
+            {
+                return velocityMultiplier;
+            }
+            protected set
+            {
+                velocityMultiplier = value;
+            }
+        }
         #endregion
 
         #region Grab Offset Settings
@@ -438,6 +456,24 @@
             }
         }
         #endregion
+
+        /// <summary>
+        /// Sets the <see cref="FollowTracking"/>.
+        /// </summary>
+        /// <param name="index">The index of the <see cref="TrackingType"/>.</param>
+        public virtual void SetFollowTracking(int index)
+        {
+            FollowTracking = EnumExtensions.GetByIndex<TrackingType>(index);
+        }
+
+        /// <summary>
+        /// Sets the <see cref="GrabOffset"/>.
+        /// </summary>
+        /// <param name="index">The index of the <see cref="OffsetType"/>.</param>
+        public virtual void SetGrabOffset(int index)
+        {
+            GrabOffset = EnumExtensions.GetByIndex<OffsetType>(index);
+        }
 
         /// <summary>
         /// Applies the active kinematic state to the <see cref="Rigidbody"/> of the Interactable.

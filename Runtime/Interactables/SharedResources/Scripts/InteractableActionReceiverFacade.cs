@@ -159,6 +159,15 @@
         }
 
         /// <summary>
+        /// Sets the <see cref="ActivationState"/>.
+        /// </summary>
+        /// <param name="index">The index of the <see cref="InteractionState"/>.</param>
+        public virtual void SetActivationState(int index)
+        {
+            ActivationState = EnumExtensions.GetByIndex<InteractionState>(index);
+        }
+
+        /// <summary>
         /// Enables the given source <see cref="InteractorFacade"/> on the <see cref="ActionRegistrar"/>.
         /// </summary>
         /// <param name="source">The source to enable.</param>
