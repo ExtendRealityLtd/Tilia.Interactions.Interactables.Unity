@@ -70,16 +70,6 @@ Drag and drop the `CameraRigs.TrackedAlias -> Aliases -> LeftControllerAlias -> 
 
 ### Step 6
 
-The `Publisher Identifier` property is used to group the Action Publishers to the same final Action Receiver, so for these two triggers we want them to have the same `Publisher Identifier` value.
-
-Set the `Publisher Identifier` property value to `TriggerPublisher` on the `CameraRigs.TrackedAlias -> Aliases -> LeftControllerAlias -> Interactions.ActionPublisher -> Interactor Action Publisher Facade` component 
-
-![Rename Publisher Identifier](assets/images/RenamePublisherIdentifier.png)
-
-> Make sure to set the right controller `Publisher Indentifier` property value to `TriggerPublisher` on the `CameraRigs.TrackedAlias -> Aliases -> RightControllerAlias -> Interactions.ActionPublisher -> Interactor Action Publisher Facade` component 
-
-### Step 7
-
 Before we set up the Interactable, let's create a container GameObject for all the required logic.
 
 Create a new `Empty` GameObject by selecting `Main Menu -> GameObject -> Create Empty` and change the Transform properties to:
@@ -96,17 +86,17 @@ Then drag and drop the `Interactions.Interactable` GameObject to be a child of t
 
 ![Make Interactions Interactable A Child Of Opacity Changing Interactable](assets/images/MakeInteractionsInteractableAChildOfOpacityChangingInteractable.png)
 
-### Step 8
+### Step 7
 
 Add a `Interactions.ActionReceiver` prefab to the Unity project hierarchy by selecting `GameObject -> Tilia -> Prefabs -> Interactions -> Interactables -> Interactions.ActionReceiver` from the Unity main top menu and drag it into being a child of the `OpacityChangingInteractable` GameObject.
 
-### Step 9
+### Step 8
 
 Drag and drop the `OpacityChangingInteractable -> Interactions.Interactable` GameObject into the `Target Interactable` property on the `Interactable Action Receiver Facade` component on the `OpacityChangingInteractable -> Interactions.ActionReceiver` GameObject.
 
 ![Drag And Drop Interactions Interactable Into Target Interactable](assets/images/DragAndDropInteractionsInteractableIntoTargetInteractable.png)
 
-### Step 10
+### Step 9
 
 Select the `OpacityChangingInteractable -> Interactions.ActionReceiver` GameObject in the Unity Hierarchy window then increase the `Source Publishers -> Elements -> Size` property by `2` on the `Interactable Action Receiver Facade`.
 
@@ -114,7 +104,9 @@ Select the `OpacityChangingInteractable -> Interactions.ActionReceiver` GameObje
 
 ![Change Size Element To 2](assets/images/ChangeSizeElementTo2.png)
 
-### Step 11
+### Step 10
+
+Now we need to tell our `Interactions.ActionReceiver` which Action Publishers will provide the source Action data for it.
 
 Add the two `Interactions.ActionPublisher` GameObjects we added into the `LeftControllerAlias` and the `RightControllerAlias` to the newly created Elements.
 
@@ -124,7 +116,7 @@ Then drag and drop the `CameraRigs.TrackedAlias -> Aliases -> RightControllerAli
 
 ![Drag And Drop Action Publishers](assets/images/DragAndDropActionPublishers.png)
 
-### Step 12
+### Step 11
 
 Expand the `OpacityChangingInteractable -> Interactions.ActionReceiver` GameObject and then expand the `OutputActions` GameObject, you'll see 3 action GameObjects.
 
@@ -134,7 +126,7 @@ Expand the `OpacityChangingInteractable -> Interactions.ActionReceiver` GameObje
 
 In this example we are going to use the `Float Action` because we are going to use a trigger press.
 
-### Step 13
+### Step 12
 
 We'll need to create a small script that allows us to change the opacity of our interactable GameObject to test that the trigger value from the controller passes over to the interactable.
 
@@ -173,7 +165,7 @@ Add the new `OpacityChanger` component to the `OpacityChangingInteractable -> Op
 
 ![Add Opacity Changer Script](assets/images/AddOpacityChangerScript.png)
 
-### Step 14
+### Step 13
 
 Drag and Drop the `OpacityChangingInteractable -> Interactions.Interactable` GameObject into the `Mesh To Change` property on the `OpacityChanger` component.
 
@@ -181,7 +173,7 @@ Drag and Drop the `OpacityChangingInteractable -> Interactions.Interactable` Gam
 
 > This will tell our `OpacityChanger` script to change the mesh material used by the Interactable GameObject.
 
-### Step 15
+### Step 14
 
 Create a new material by selecting `Main Menu -> Assets -> Create -> Material` in the Unity software and name it `ChangingMaterial`.
 
@@ -191,13 +183,13 @@ Then change the `Albedo` property on the `ChangingMaterial` material to another 
 
 ![Create Transparent Material](assets/images/CreateTransparentMaterial.png)
 
-### Step 16
+### Step 15
 
 Drag and drop the `Assets -> ChangingMaterial` material from the Unity Project window onto the Interactable cube in the Unity scene and this will update the material being used by the Interactable.
 
 ![Drag And Drop Changing Material](assets/images/DragAndDropChangingMaterial.png)
 
-### Step 17
+### Step 16
 
 Now to set up the `OpacityChanger` component to work when the trigger is pressed on either of the controllers.
 

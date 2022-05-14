@@ -12,8 +12,8 @@ Sets up the Interactor Action Receiver Prefab action settings based on the provi
 * [Properties]
   * [ActionRegistrar]
   * [Facade]
-  * [ReceiveStartActionStringRule]
-  * [ReceiveStopActionStringRule]
+  * [ReceiveStartActionRule]
+  * [ReceiveStopActionRule]
   * [StartActionConsumer]
   * [StopActionConsumer]
   * [TargetActions]
@@ -21,11 +21,13 @@ Sets up the Interactor Action Receiver Prefab action settings based on the provi
   * [ActivateOutputAction(Type)]
   * [Awake()]
   * [ClearPublisherSetup()]
+  * [DisableFirstTouchedOnActionRegistrar(InteractorFacade)]
+  * [EnableFirstTouchedOnActionRegistrar(InteractorFacade)]
   * [IsValidPublisherElement(Object, Object, String)]
   * [LinkInteractableToConsumers()]
   * [OnDisable()]
   * [OnEnable()]
-  * [ProcessPublisher(InteractorActionPublisherFacade, ref String, ref Type)]
+  * [ProcessPublisher(InteractorActionPublisherFacade, ref Type)]
   * [ProcessPublisherList()]
   * [RegisterInteractableEvents(InteractableFacade, InteractableActionReceiverFacade.InteractionState)]
   * [SetupPublisherLinks(InteractorActionPublisherFacade)]
@@ -82,24 +84,24 @@ The public interface facade.
 public InteractableActionReceiverFacade Facade { get; protected set; }
 ```
 
-#### ReceiveStartActionStringRule
+#### ReceiveStartActionRule
 
-The StringInListRule for the start action.
-
-##### Declaration
-
-```
-public StringInListRule ReceiveStartActionStringRule { get; protected set; }
-```
-
-#### ReceiveStopActionStringRule
-
-The StringInListRule for the stop action.
+The ListContainsRule for the start action.
 
 ##### Declaration
 
 ```
-public StringInListRule ReceiveStopActionStringRule { get; protected set; }
+public ListContainsRule ReceiveStartActionRule { get; protected set; }
+```
+
+#### ReceiveStopActionRule
+
+The ListContainsRule for the stop action.
+
+##### Declaration
+
+```
+public ListContainsRule ReceiveStopActionRule { get; protected set; }
 ```
 
 #### StartActionConsumer
@@ -168,6 +170,38 @@ Clears the publisher setup.
 protected virtual void ClearPublisherSetup()
 ```
 
+#### DisableFirstTouchedOnActionRegistrar(InteractorFacade)
+
+Disables the given [InteractorFacade] on the action registrar.
+
+##### Declaration
+
+```
+protected virtual void DisableFirstTouchedOnActionRegistrar(InteractorFacade interactor)
+```
+
+##### Parameters
+
+| Type | Name | Description |
+| --- | --- | --- |
+| [InteractorFacade] | interactor | The interactor to disable. |
+
+#### EnableFirstTouchedOnActionRegistrar(InteractorFacade)
+
+Enables the first touched [InteractorFacade] that is touching the [InteractableFacade] on the action registrar.
+
+##### Declaration
+
+```
+protected virtual void EnableFirstTouchedOnActionRegistrar(InteractorFacade _)
+```
+
+##### Parameters
+
+| Type | Name | Description |
+| --- | --- | --- |
+| [InteractorFacade] | \_ | Not used |
+
 #### IsValidPublisherElement(Object, Object, String)
 
 Determines if the given publisher element is valid.
@@ -218,14 +252,14 @@ protected virtual void OnDisable()
 protected virtual void OnEnable()
 ```
 
-#### ProcessPublisher(InteractorActionPublisherFacade, ref String, ref Type)
+#### ProcessPublisher(InteractorActionPublisherFacade, ref Type)
 
 Processes the given publisher data.
 
 ##### Declaration
 
 ```
-protected virtual void ProcessPublisher(InteractorActionPublisherFacade publisher, ref string previousIdentifier, ref Type previousActionType)
+protected virtual void ProcessPublisher(InteractorActionPublisherFacade publisher, ref Type previousActionType)
 ```
 
 ##### Parameters
@@ -233,7 +267,6 @@ protected virtual void ProcessPublisher(InteractorActionPublisherFacade publishe
 | Type | Name | Description |
 | --- | --- | --- |
 | [InteractorActionPublisherFacade] | publisher | The publisher to process. |
-| System.String | previousIdentifier | The previous publisher's identifier. |
 | System.Type | previousActionType | The previous publisher's action type. |
 
 #### ProcessPublisherList()
@@ -299,6 +332,7 @@ public virtual void UnregisterInteractableEvents(InteractableFacade interactable
 [Tilia.Interactions.Interactables.Interactables]: README.md
 [ActionRegistrar]: InteractableActionReceiverConfigurator.md#ActionRegistrar
 [InteractableActionReceiverFacade]: InteractableActionReceiverFacade.md
+[InteractorFacade]: ../Interactors/InteractorFacade.md
 [InteractorActionPublisherFacade]: ../Interactors/InteractorActionPublisherFacade.md
 [InteractableFacade]: InteractableFacade.md
 [InteractableActionReceiverFacade.InteractionState]: InteractableActionReceiverFacade.InteractionState.md
@@ -310,8 +344,8 @@ public virtual void UnregisterInteractableEvents(InteractableFacade interactable
 [Properties]: #Properties
 [ActionRegistrar]: #ActionRegistrar
 [Facade]: #Facade
-[ReceiveStartActionStringRule]: #ReceiveStartActionStringRule
-[ReceiveStopActionStringRule]: #ReceiveStopActionStringRule
+[ReceiveStartActionRule]: #ReceiveStartActionRule
+[ReceiveStopActionRule]: #ReceiveStopActionRule
 [StartActionConsumer]: #StartActionConsumer
 [StopActionConsumer]: #StopActionConsumer
 [TargetActions]: #TargetActions
@@ -319,11 +353,13 @@ public virtual void UnregisterInteractableEvents(InteractableFacade interactable
 [ActivateOutputAction(Type)]: #ActivateOutputActionType
 [Awake()]: #Awake
 [ClearPublisherSetup()]: #ClearPublisherSetup
+[DisableFirstTouchedOnActionRegistrar(InteractorFacade)]: #DisableFirstTouchedOnActionRegistrarInteractorFacade
+[EnableFirstTouchedOnActionRegistrar(InteractorFacade)]: #EnableFirstTouchedOnActionRegistrarInteractorFacade
 [IsValidPublisherElement(Object, Object, String)]: #IsValidPublisherElementObject-Object-String
 [LinkInteractableToConsumers()]: #LinkInteractableToConsumers
 [OnDisable()]: #OnDisable
 [OnEnable()]: #OnEnable
-[ProcessPublisher(InteractorActionPublisherFacade, ref String, ref Type)]: #ProcessPublisherInteractorActionPublisherFacade-ref String-ref Type
+[ProcessPublisher(InteractorActionPublisherFacade, ref Type)]: #ProcessPublisherInteractorActionPublisherFacade-ref Type
 [ProcessPublisherList()]: #ProcessPublisherList
 [RegisterInteractableEvents(InteractableFacade, InteractableActionReceiverFacade.InteractionState)]: #RegisterInteractableEventsInteractableFacade-InteractableActionReceiverFacade.InteractionState
 [SetupPublisherLinks(InteractorActionPublisherFacade)]: #SetupPublisherLinksInteractorActionPublisherFacade

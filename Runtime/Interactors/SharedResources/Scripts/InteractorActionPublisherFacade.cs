@@ -58,27 +58,6 @@
                 }
             }
         }
-        [Tooltip("An indentifier for the publisher that is used by the Action Receiver to create the link between publisher and receiver.")]
-        [SerializeField]
-        private string publisherIdentifier = "ActionPublisher";
-        /// <summary>
-        /// An indentifier for the publisher that is used by the Action Receiver to create the link between publisher and receiver.
-        /// </summary>
-        public string PublisherIdentifier
-        {
-            get
-            {
-                return publisherIdentifier;
-            }
-            set
-            {
-                publisherIdentifier = value;
-                if (this.IsMemberChangeAllowed())
-                {
-                    OnAfterPublisherIdentifierChange();
-                }
-            }
-        }
         #endregion
 
         #region Reference Settings
@@ -135,19 +114,6 @@
         }
 
         /// <summary>
-        /// Clears <see cref="PublisherIdentifier"/>.
-        /// </summary>
-        public virtual void ClearPublisherIdentifier()
-        {
-            if (!this.IsValidState())
-            {
-                return;
-            }
-
-            PublisherIdentifier = default;
-        }
-
-        /// <summary>
         /// Called after <see cref="SourceAction"/> has been changed.
         /// </summary>
         protected virtual void OnAfterSourceActionChange()
@@ -170,14 +136,6 @@
         {
             Configuration.LinkSourceContainerToPublishers();
             Configuration.LinkActiveCollisions();
-        }
-
-        /// <summary>
-        /// Called after <see cref="PublisherIdentifier"/> has been changed.
-        /// </summary>
-        protected virtual void OnAfterPublisherIdentifierChange()
-        {
-            Configuration.SetPublisherTags();
         }
     }
 }
