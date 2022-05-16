@@ -26,6 +26,7 @@
         private InteractableFacade facade;
         private bool showFollowAdvancedFeatures;
         private bool grabConfigurationIsDirty;
+        private bool showVelocityMultiplierFeatures;
 
         public override void OnInspectorGUI()
         {
@@ -189,10 +190,14 @@
 
             EditorHelper.DrawHorizontalLine();
 
-            SerializedProperty velocityMultiplerValue = DrawPropertyFieldWithChangeHandlers(velocityMultiplierObject, "velocityMultiplierFactor", undoRedoWarningPropertyPath);
-            SerializedProperty angularVelocityMultiplerValue = DrawPropertyFieldWithChangeHandlers(velocityMultiplierObject, "angularVelocityMultiplierFactor", undoRedoWarningPropertyPath);
-
-            EditorHelper.DrawHorizontalLine();
+            showVelocityMultiplierFeatures = EditorGUILayout.Foldout(showVelocityMultiplierFeatures, "Velocity Multiplier Settings");
+            if (showVelocityMultiplierFeatures)
+            {
+                EditorGUI.indentLevel++;
+                SerializedProperty velocityMultiplerValue = DrawPropertyFieldWithChangeHandlers(velocityMultiplierObject, "velocityMultiplierFactor", undoRedoWarningPropertyPath);
+                SerializedProperty angularVelocityMultiplerValue = DrawPropertyFieldWithChangeHandlers(velocityMultiplierObject, "angularVelocityMultiplierFactor", undoRedoWarningPropertyPath);
+                EditorGUI.indentLevel--;
+            }
 
             showFollowAdvancedFeatures = EditorGUILayout.Foldout(showFollowAdvancedFeatures, "Advanced Follow Settings");
             if (showFollowAdvancedFeatures)

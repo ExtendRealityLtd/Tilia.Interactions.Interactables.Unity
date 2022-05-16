@@ -94,22 +94,22 @@
                 startActionConsumer = value;
             }
         }
-        [Tooltip("The StringInListRule for the start action.")]
+        [Tooltip("The ListContainsRule for the start action.")]
         [SerializeField]
         [Restricted]
-        private StringInListRule receiveStartActionStringRule;
+        private ListContainsRule receiveStartActionRule;
         /// <summary>
-        /// The <see cref="StringInListRule"/> for the start action.
+        /// The <see cref="ListContainsRule"/> for the start action.
         /// </summary>
-        public StringInListRule ReceiveStartActionStringRule
+        public ListContainsRule ReceiveStartActionRule
         {
             get
             {
-                return receiveStartActionStringRule;
+                return receiveStartActionRule;
             }
             protected set
             {
-                receiveStartActionStringRule = value;
+                receiveStartActionRule = value;
             }
         }
         [Tooltip("The ActiveCollisionConsumer for checking valid stop action.")]
@@ -130,22 +130,22 @@
                 stopActionConsumer = value;
             }
         }
-        [Tooltip("The StringInListRule for the stop action.")]
+        [Tooltip("The ListContainsRule for the stop action.")]
         [SerializeField]
         [Restricted]
-        private StringInListRule receiveStopActionStringRule;
+        private ListContainsRule receiveStopActionRule;
         /// <summary>
-        /// The <see cref="StringInListRule"/> for the stop action.
+        /// The <see cref="ListContainsRule"/> for the stop action.
         /// </summary>
-        public StringInListRule ReceiveStopActionStringRule
+        public ListContainsRule ReceiveStopActionRule
         {
             get
             {
-                return receiveStopActionStringRule;
+                return receiveStopActionRule;
             }
             protected set
             {
-                receiveStopActionStringRule = value;
+                receiveStopActionRule = value;
             }
         }
         #endregion
@@ -188,8 +188,8 @@
             switch (interactionState)
             {
                 case InteractableActionReceiverFacade.InteractionState.FirstTouch:
-                    interactable.FirstTouched.AddListener(Facade.EnableActionRegistrar);
-                    interactable.LastUntouched.AddListener(Facade.DisableActionRegistrar);
+                    interactable.Touched.AddListener(EnableFirstTouchedOnActionRegistrar);
+                    interactable.Untouched.AddListener(DisableFirstTouchedOnActionRegistrar);
                     break;
                 case InteractableActionReceiverFacade.InteractionState.Touch:
                     interactable.Touched.AddListener(Facade.EnableActionRegistrar);
@@ -221,8 +221,8 @@
             switch (interactionState)
             {
                 case InteractableActionReceiverFacade.InteractionState.FirstTouch:
-                    interactable.FirstTouched.RemoveListener(Facade.EnableActionRegistrar);
-                    interactable.LastUntouched.RemoveListener(Facade.DisableActionRegistrar);
+                    interactable.Touched.RemoveListener(EnableFirstTouchedOnActionRegistrar);
+                    interactable.Untouched.RemoveListener(DisableFirstTouchedOnActionRegistrar);
                     break;
                 case InteractableActionReceiverFacade.InteractionState.Touch:
                     interactable.Touched.RemoveListener(Facade.EnableActionRegistrar);
@@ -246,11 +246,10 @@
         {
             ClearPublisherSetup();
 
-            string currentIdentifier = null;
             Type currentActionType = null;
             foreach (InteractorActionPublisherFacade publisher in Facade.SourcePublishers.SubscribableElements)
             {
-                publisher.Configuration.RunWhenActiveAndEnabled(() => ProcessPublisher(publisher, ref currentIdentifier, ref currentActionType));
+                publisher.Configuration.RunWhenActiveAndEnabled(() => ProcessPublisher(publisher, ref currentActionType));
             }
         }
 
@@ -271,14 +270,36 @@
         }
 
         /// <summary>
+        /// Enables the first touched <see cref="InteractorFacade"/> that is touching the <see cref="InteractableFacade"/> on the action registrar.
+        /// </summary>
+        /// <param name="_">Not used</param>
+        protected virtual void EnableFirstTouchedOnActionRegistrar(InteractorFacade _)
+        {
+            if (Facade.TargetInteractable.Configuration.TouchConfiguration.CurrentTouchingObjects.NonSubscribableElements.Count > 0)
+            {
+                Facade.EnableActionRegistrar(Facade.TargetInteractable.Configuration.TouchConfiguration.CurrentTouchingObjects.NonSubscribableElements[0]);
+            }
+        }
+
+        /// <summary>
+        /// Disables the given <see cref="InteractorFacade"/> on the action registrar.
+        /// </summary>
+        /// <param name="interactor">The interactor to disable.</param>
+        protected virtual void DisableFirstTouchedOnActionRegistrar(InteractorFacade interactor)
+        {
+            Facade.DisableActionRegistrar(interactor);
+            EnableFirstTouchedOnActionRegistrar(null);
+        }
+
+        /// <summary>
         /// Clears the publisher setup.
         /// </summary>
         protected virtual void ClearPublisherSetup()
         {
             ActionRegistrar.Target = null;
             ActionRegistrar.Sources.Clear();
-            ReceiveStartActionStringRule.InListPattern = "";
-            ReceiveStopActionStringRule.InListPattern = "";
+            ReceiveStartActionRule.RunWhenActiveAndEnabled(() => ReceiveStartActionRule.Objects.Clear());
+            ReceiveStopActionRule.RunWhenActiveAndEnabled(() => ReceiveStopActionRule.Objects.Clear());
         }
 
         /// <summary>
@@ -331,27 +352,24 @@
 
             ActionRegistrar.Sources.Add(actionSource);
 
-            ReceiveStartActionStringRule.InListPattern = string.Format("^Start{0}$", publisher.PublisherIdentifier);
-            ReceiveStopActionStringRule.InListPattern = string.Format("^Stop{0}$", publisher.PublisherIdentifier);
+            ReceiveStartActionRule.Objects.Add(publisher.Configuration.StartActionPublisher.gameObject);
+            ReceiveStopActionRule.Objects.Add(publisher.Configuration.StopActionPublisher.gameObject);
         }
 
         /// <summary>
         /// Processes the given publisher data.
         /// </summary>
         /// <param name="publisher">The publisher to process.</param>
-        /// <param name="previousIdentifier">The previous publisher's identifier.</param>
         /// <param name="previousActionType">The previous publisher's action type.</param>
-        protected virtual void ProcessPublisher(InteractorActionPublisherFacade publisher, ref string previousIdentifier, ref Type previousActionType)
+        protected virtual void ProcessPublisher(InteractorActionPublisherFacade publisher, ref Type previousActionType)
         {
             Type publisherActionType = publisher.ActiveAction.GetType();
 
-            IsValidPublisherElement(previousIdentifier, publisher.PublisherIdentifier, string.Format("All `SourcePublishers` identifiers must be identical. Mismatch found between previous value of `{0}` and the publisher `{1}` which has a value of `{2}`.", previousIdentifier, publisher.name, publisher.PublisherIdentifier));
             IsValidPublisherElement(previousActionType, publisherActionType, string.Format("All `SourcePublishers` Action types must be identical. Mismatch found between previous value of `{0}` and the publisher `{1}` which has a value of `{2}`.", previousActionType, publisher.name, publisherActionType));
 
             ActivateOutputAction(publisherActionType);
             SetupPublisherLinks(publisher);
 
-            previousIdentifier = publisher.PublisherIdentifier;
             previousActionType = publisherActionType;
         }
     }

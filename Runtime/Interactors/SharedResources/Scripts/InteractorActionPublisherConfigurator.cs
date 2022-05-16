@@ -75,24 +75,6 @@
                 startActionPublisher = value;
             }
         }
-        [Tooltip("The StringObservableList for tagging the valid start action.")]
-        [SerializeField]
-        [Restricted]
-        private StringObservableList startActionStringCollection;
-        /// <summary>
-        /// The <see cref="StringObservableList"/> for tagging the valid start action.
-        /// </summary>
-        public StringObservableList StartActionStringCollection
-        {
-            get
-            {
-                return startActionStringCollection;
-            }
-            protected set
-            {
-                startActionStringCollection = value;
-            }
-        }
         [Tooltip("The ActiveCollisionPublisher for checking valid stop action.")]
         [SerializeField]
         [Restricted]
@@ -109,24 +91,6 @@
             protected set
             {
                 stopActionPublisher = value;
-            }
-        }
-        [Tooltip("The StringObservableList for tagging the valid stop action.")]
-        [SerializeField]
-        [Restricted]
-        private StringObservableList stopActionStringCollection;
-        /// <summary>
-        /// The <see cref="StringObservableList"/> for tagging the valid stop action.
-        /// </summary>
-        public StringObservableList StopActionStringCollection
-        {
-            get
-            {
-                return stopActionStringCollection;
-            }
-            protected set
-            {
-                stopActionStringCollection = value;
             }
         }
         [Tooltip("The ActiveCollisionsContainerEventProxyEmitter setting the active collisions on the StartActionPublisher on touch.")]
@@ -179,7 +143,6 @@
             LinkSourceActionToTargetAction();
             LinkSourceContainerToPublishers();
             LinkActiveCollisions();
-            SetPublisherTags();
         }
 
         protected virtual void OnDisable()
@@ -254,17 +217,6 @@
 
             Facade.SourceInteractor.Grabbed.RemoveListener(InteractorGrabbed);
             Facade.SourceInteractor.Ungrabbed.RemoveListener(InteractorUngrabbed);
-        }
-
-        /// <summary>
-        /// Sets the tags of the relevant publishers to the facade identifier.
-        /// </summary>
-        public virtual void SetPublisherTags()
-        {
-            StartActionStringCollection.RunWhenActiveAndEnabled(() => StartActionStringCollection.Clear());
-            StartActionStringCollection.RunWhenActiveAndEnabled(() => StartActionStringCollection.Add("Start" + Facade.PublisherIdentifier));
-            StopActionStringCollection.RunWhenActiveAndEnabled(() => StopActionStringCollection.Clear());
-            StopActionStringCollection.RunWhenActiveAndEnabled(() => StopActionStringCollection.Add("Stop" + Facade.PublisherIdentifier));
         }
 
         /// <summary>

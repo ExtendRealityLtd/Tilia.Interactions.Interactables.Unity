@@ -10,14 +10,11 @@ The public interface into the Interactor Action Publisher Prefab.
 * [Properties]
   * [ActiveAction]
   * [Configuration]
-  * [PublisherIdentifier]
   * [SourceAction]
   * [SourceInteractor]
 * [Methods]
-  * [ClearPublisherIdentifier()]
   * [ClearSourceAction()]
   * [ClearSourceInteractor()]
-  * [OnAfterPublisherIdentifierChange()]
   * [OnAfterSourceActionChange()]
   * [OnAfterSourceInteractorChange()]
   * [OnBeforeSourceInteractorChange()]
@@ -61,16 +58,6 @@ The Action that will be linked to the [SourceAction].
 public InteractorActionPublisherConfigurator Configuration { get; protected set; }
 ```
 
-#### PublisherIdentifier
-
-An indentifier for the publisher that is used by the Action Receiver to create the link between publisher and receiver.
-
-##### Declaration
-
-```
-public string PublisherIdentifier { get; set; }
-```
-
 #### SourceAction
 
 The Action to be monitored to control the interaction.
@@ -93,16 +80,6 @@ public InteractorFacade SourceInteractor { get; set; }
 
 ### Methods
 
-#### ClearPublisherIdentifier()
-
-Clears [PublisherIdentifier].
-
-##### Declaration
-
-```
-public virtual void ClearPublisherIdentifier()
-```
-
 #### ClearSourceAction()
 
 Clears [SourceAction].
@@ -121,16 +98,6 @@ Clears [SourceInteractor].
 
 ```
 public virtual void ClearSourceInteractor()
-```
-
-#### OnAfterPublisherIdentifierChange()
-
-Called after [PublisherIdentifier] has been changed.
-
-##### Declaration
-
-```
-protected virtual void OnAfterPublisherIdentifierChange()
 ```
 
 #### OnAfterSourceActionChange()
@@ -167,10 +134,8 @@ protected virtual void OnBeforeSourceInteractorChange()
 [SourceAction]: InteractorActionPublisherFacade.md#SourceAction
 [InteractorActionPublisherConfigurator]: InteractorActionPublisherConfigurator.md
 [InteractorFacade]: InteractorFacade.md
-[PublisherIdentifier]: InteractorActionPublisherFacade.md#PublisherIdentifier
 [SourceAction]: InteractorActionPublisherFacade.md#SourceAction
 [SourceInteractor]: InteractorActionPublisherFacade.md#SourceInteractor
-[PublisherIdentifier]: InteractorActionPublisherFacade.md#PublisherIdentifier
 [SourceAction]: InteractorActionPublisherFacade.md#SourceAction
 [SourceInteractor]: InteractorActionPublisherFacade.md#SourceInteractor
 [SourceInteractor]: InteractorActionPublisherFacade.md#SourceInteractor
@@ -180,14 +145,11 @@ protected virtual void OnBeforeSourceInteractorChange()
 [Properties]: #Properties
 [ActiveAction]: #ActiveAction
 [Configuration]: #Configuration
-[PublisherIdentifier]: #PublisherIdentifier
 [SourceAction]: #SourceAction
 [SourceInteractor]: #SourceInteractor
 [Methods]: #Methods
-[ClearPublisherIdentifier()]: #ClearPublisherIdentifier
 [ClearSourceAction()]: #ClearSourceAction
 [ClearSourceInteractor()]: #ClearSourceInteractor
-[OnAfterPublisherIdentifierChange()]: #OnAfterPublisherIdentifierChange
 [OnAfterSourceActionChange()]: #OnAfterSourceActionChange
 [OnAfterSourceInteractorChange()]: #OnAfterSourceInteractorChange
 [OnBeforeSourceInteractorChange()]: #OnBeforeSourceInteractorChange

@@ -13,9 +13,7 @@ Sets up the Interactor Action Publisher Prefab action settings based on the prov
   * [SetOnGrabEmitter]
   * [SetOnTouchEmitter]
   * [StartActionPublisher]
-  * [StartActionStringCollection]
   * [StopActionPublisher]
-  * [StopActionStringCollection]
   * [TargetActions]
 * [Methods]
   * [InteractorGrabbed(InteractableFacade)]
@@ -25,7 +23,6 @@ Sets up the Interactor Action Publisher Prefab action settings based on the prov
   * [LinkSourceContainerToPublishers()]
   * [OnDisable()]
   * [OnEnable()]
-  * [SetPublisherTags()]
   * [UnlinkActiveCollisions()]
 
 ## Details
@@ -97,16 +94,6 @@ The ActiveCollisionPublisher for checking valid start action.
 public ActiveCollisionPublisher StartActionPublisher { get; protected set; }
 ```
 
-#### StartActionStringCollection
-
-The StringObservableList for tagging the valid start action.
-
-##### Declaration
-
-```
-public StringObservableList StartActionStringCollection { get; protected set; }
-```
-
 #### StopActionPublisher
 
 The ActiveCollisionPublisher for checking valid stop action.
@@ -115,16 +102,6 @@ The ActiveCollisionPublisher for checking valid stop action.
 
 ```
 public ActiveCollisionPublisher StopActionPublisher { get; protected set; }
-```
-
-#### StopActionStringCollection
-
-The StringObservableList for tagging the valid stop action.
-
-##### Declaration
-
-```
-public StringObservableList StopActionStringCollection { get; protected set; }
 ```
 
 #### TargetActions
@@ -217,16 +194,6 @@ protected virtual void OnDisable()
 protected virtual void OnEnable()
 ```
 
-#### SetPublisherTags()
-
-Sets the tags of the relevant publishers to the facade identifier.
-
-##### Declaration
-
-```
-public virtual void SetPublisherTags()
-```
-
 #### UnlinkActiveCollisions()
 
 Unlinks the start publisher from the InteractorActionFacade.SourceInteractor.
@@ -252,9 +219,7 @@ public virtual void UnlinkActiveCollisions()
 [SetOnGrabEmitter]: #SetOnGrabEmitter
 [SetOnTouchEmitter]: #SetOnTouchEmitter
 [StartActionPublisher]: #StartActionPublisher
-[StartActionStringCollection]: #StartActionStringCollection
 [StopActionPublisher]: #StopActionPublisher
-[StopActionStringCollection]: #StopActionStringCollection
 [TargetActions]: #TargetActions
 [Methods]: #Methods
 [InteractorGrabbed(InteractableFacade)]: #InteractorGrabbedInteractableFacade
@@ -264,5 +229,4 @@ public virtual void UnlinkActiveCollisions()
 [LinkSourceContainerToPublishers()]: #LinkSourceContainerToPublishers
 [OnDisable()]: #OnDisable
 [OnEnable()]: #OnEnable
-[SetPublisherTags()]: #SetPublisherTags
 [UnlinkActiveCollisions()]: #UnlinkActiveCollisions
