@@ -1,5 +1,16 @@
 # Changelog
 
+## [2.4.0](https://github.com/ExtendRealityLtd/Tilia.Interactions.Interactables.Unity/compare/v2.3.0...v2.4.0) (2022-05-16)
+
+#### Features
+
+* **ActionPublisher:** remove need for string identifier ([26e2a6a](https://github.com/ExtendRealityLtd/Tilia.Interactions.Interactables.Unity/commit/26e2a6a181932b518063df0503319a2788302be4))
+  > The ActionPublisher no longer needs a string for the publisher identifier as this was just being used intenally in the rules. But this has now been replaced with a List Contains Rule and it just uses the actual ActionPublishers that are linked onto the ActionReceiver to make the internal rule work.
+  > 
+  > The FirstTouched logic was also broken so that has been fixed as part of this commit.
+* **Editor:** move velocity multipler settings into foldout ([4b8ed8f](https://github.com/ExtendRealityLtd/Tilia.Interactions.Interactables.Unity/commit/4b8ed8fbff1a4c853575eeee188161e5ac262e87))
+  > The Velocity Multiplier settings are now in a foldout just above the Advanced Follow settings as it's a bit neater to just show them when necessary as they are somewhat optional.
+
 ## [2.3.0](https://github.com/ExtendRealityLtd/Tilia.Interactions.Interactables.Unity/compare/v2.2.0...v2.3.0) (2022-05-13)
 
 #### Features
