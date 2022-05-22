@@ -515,7 +515,13 @@
         /// <returns>Whether the primary grab is of type <see cref="GrabInteractableNullAction"/>.</returns>
         protected virtual bool PrimaryGrabIsNone(int interactorCount)
         {
-            return Facade.GrabbingInteractors.Count > interactorCount && PrimaryAction.GetType() == typeof(GrabInteractableNullAction);
+            bool validNullAction = false;
+            if (PrimaryAction.GetType() == typeof(GrabInteractableNullAction))
+            {
+                GrabInteractableNullAction checkAction = (GrabInteractableNullAction)PrimaryAction;
+                validNullAction = checkAction.ForceEmitEvents ? false : true;
+            }
+            return Facade.GrabbingInteractors.Count > interactorCount && validNullAction;
         }
 
         /// <summary>
