@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.5.0](https://github.com/ExtendRealityLtd/Tilia.Interactions.Interactables.Unity/compare/v2.4.1...v2.5.0) (2022-05-28)
+
+#### Features
+
+* **Action:** allow null grab action to force grab/ungrab events ([3ca710e](https://github.com/ExtendRealityLtd/Tilia.Interactions.Interactables.Unity/commit/3ca710e888e5fa330f42a6420b1ef0e65d9c9214))
+  > The GrabInteractableNullAction did not emit any events when the grab or ungrab action occurred, which was technically correct because nothing has happened, but there may be occasions where you'd want the events to occur. This change allows the null action to be set to force the events if required, but by default it still doesn't force the events so no breaking changes will occur.
+
 ### [2.4.1](https://github.com/ExtendRealityLtd/Tilia.Interactions.Interactables.Unity/compare/v2.4.0...v2.4.1) (2022-05-20)
 
 #### Miscellaneous Chores
