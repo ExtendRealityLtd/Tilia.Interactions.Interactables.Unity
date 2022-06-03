@@ -6,9 +6,11 @@
     [InitializeOnLoad]
     public class InteractableCreatorEditorWindow : EditorWindow
     {
+        private const string windowPath = "Window/Tilia/Interactions/";
         private const string windowTitle = "Interactable Creator";
         private const string assetName = "Interactions.Interactable";
         private const string assetSuffix = ".prefab";
+        private const string buttonText = "Convert To Interactable";
         private static EditorWindow promptWindow;
         private Vector2 scrollPosition;
         private GameObject interactablePrefab;
@@ -18,8 +20,8 @@
             using (GUILayout.ScrollViewScope scrollViewScope = new GUILayout.ScrollViewScope(scrollPosition))
             {
                 scrollPosition = scrollViewScope.scrollPosition;
-                GUILayout.Label("Interactable Creator", EditorStyles.boldLabel);
-                if (GUILayout.Button("Convert To Interactable"))
+                GUILayout.Label(windowTitle, EditorStyles.boldLabel);
+                if (GUILayout.Button(buttonText))
                 {
                     ProcessSelectedGameObjects();
                 }
@@ -80,7 +82,7 @@
             newInteractable.transform.SetSiblingIndex(siblingIndex);
         }
 
-        [MenuItem("Window/Tilia/Interactions/" + windowTitle)]
+        [MenuItem(windowPath + windowTitle)]
         private static void ShowWindow()
         {
             promptWindow = EditorWindow.GetWindow(typeof(InteractableCreatorEditorWindow));
