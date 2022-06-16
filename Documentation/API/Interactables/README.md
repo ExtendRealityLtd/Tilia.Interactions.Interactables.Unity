@@ -10,6 +10,10 @@ Sets up the Interactor Action Receiver Prefab action settings based on the provi
 
 The public interface into the Interactor Action Receiver Prefab.
 
+#### [InteractableActionReceiverFacade.UnityEvent]
+
+Defines the event with the System.Action.
+
 #### [InteractableConfigurator]
 
 Sets up the Interactable Prefab based on the provided user settings.
@@ -46,6 +50,7 @@ The allowed interaction states.
 
 [InteractableActionReceiverConfigurator]: InteractableActionReceiverConfigurator.md
 [InteractableActionReceiverFacade]: InteractableActionReceiverFacade.md
+[InteractableActionReceiverFacade.UnityEvent]: InteractableActionReceiverFacade.UnityEvent.md
 [InteractableConfigurator]: InteractableConfigurator.md
 [InteractableFacade.UnityEvent]: InteractableFacade.UnityEvent.md
 [InteractorFacade]: ../Interactors/InteractorFacade.md

@@ -25,6 +25,8 @@ Sets up the Interactor Action Receiver Prefab action settings based on the provi
   * [EnableFirstTouchedOnActionRegistrar(InteractorFacade)]
   * [IsValidPublisherElement(Object, Object, String)]
   * [LinkInteractableToConsumers()]
+  * [NotifyActivated(GameObject)]
+  * [NotifyDeactivated(GameObject)]
   * [OnDisable()]
   * [OnEnable()]
   * [ProcessPublisher(InteractorActionPublisherFacade, ref Type)]
@@ -236,6 +238,38 @@ Links the InteractorActionFacade.SourceInteractor to the payload source containe
 public virtual void LinkInteractableToConsumers()
 ```
 
+#### NotifyActivated(GameObject)
+
+Notifies the Activated event on the [Facade].
+
+##### Declaration
+
+```
+public virtual void NotifyActivated(GameObject source)
+```
+
+##### Parameters
+
+| Type | Name | Description |
+| --- | --- | --- |
+| GameObject | source | The source Interactor. |
+
+#### NotifyDeactivated(GameObject)
+
+Notifies the Deactivated event on the [Facade].
+
+##### Declaration
+
+```
+public virtual void NotifyDeactivated(GameObject source)
+```
+
+##### Parameters
+
+| Type | Name | Description |
+| --- | --- | --- |
+| GameObject | source | The source Interactor. |
+
 #### OnDisable()
 
 ##### Declaration
@@ -333,6 +367,8 @@ public virtual void UnregisterInteractableEvents(InteractableFacade interactable
 [ActionRegistrar]: InteractableActionReceiverConfigurator.md#ActionRegistrar
 [InteractableActionReceiverFacade]: InteractableActionReceiverFacade.md
 [InteractorFacade]: ../Interactors/InteractorFacade.md
+[Facade]: InteractableActionReceiverConfigurator.md#Facade
+[Facade]: InteractableActionReceiverConfigurator.md#Facade
 [InteractorActionPublisherFacade]: ../Interactors/InteractorActionPublisherFacade.md
 [InteractableFacade]: InteractableFacade.md
 [InteractableActionReceiverFacade.InteractionState]: InteractableActionReceiverFacade.InteractionState.md
@@ -357,6 +393,8 @@ public virtual void UnregisterInteractableEvents(InteractableFacade interactable
 [EnableFirstTouchedOnActionRegistrar(InteractorFacade)]: #EnableFirstTouchedOnActionRegistrarInteractorFacade
 [IsValidPublisherElement(Object, Object, String)]: #IsValidPublisherElementObject-Object-String
 [LinkInteractableToConsumers()]: #LinkInteractableToConsumers
+[NotifyActivated(GameObject)]: #NotifyActivatedGameObject
+[NotifyDeactivated(GameObject)]: #NotifyDeactivatedGameObject
 [OnDisable()]: #OnDisable
 [OnEnable()]: #OnEnable
 [ProcessPublisher(InteractorActionPublisherFacade, ref Type)]: #ProcessPublisherInteractorActionPublisherFacade-ref Type

@@ -7,6 +7,9 @@ The public interface into the Interactor Action Receiver Prefab.
 * [Inheritance]
 * [Namespace]
 * [Syntax]
+* [Fields]
+  * [Activated]
+  * [Deactivated]
 * [Properties]
   * [ActivationState]
   * [Configuration]
@@ -42,6 +45,28 @@ The public interface into the Interactor Action Receiver Prefab.
 public class InteractableActionReceiverFacade : MonoBehaviour
 ```
 
+### Fields
+
+#### Activated
+
+Emitted when the Receiver is activated by an allowed publisher.
+
+##### Declaration
+
+```
+public InteractableActionReceiverFacade.UnityEvent Activated
+```
+
+#### Deactivated
+
+Emitted when the Receiver is deactivated from an allowed publisher.
+
+##### Declaration
+
+```
+public InteractableActionReceiverFacade.UnityEvent Deactivated
+```
+
 ### Properties
 
 #### ActivationState
@@ -56,7 +81,7 @@ public InteractableActionReceiverFacade.InteractionState ActivationState { get; 
 
 #### Configuration
 
-The Action that will be linked to the SourceAction.
+The System.Action that will be linked to the SourceAction.
 
 ##### Declaration
 
@@ -227,6 +252,7 @@ public virtual void SetActivationState(int index)
 | System.Int32 | index | The index of the [InteractableActionReceiverFacade.InteractionState]. |
 
 [Tilia.Interactions.Interactables.Interactables]: README.md
+[InteractableActionReceiverFacade.UnityEvent]: InteractableActionReceiverFacade.UnityEvent.md
 [InteractableActionReceiverConfigurator]: InteractableActionReceiverConfigurator.md
 [InteractorActionPublisherFacade]: ../Interactors/InteractorActionPublisherFacade.md
 [InteractorActionPublisherFacadeObservableList]: ../Interactors/Collection/InteractorActionPublisherFacadeObservableList.md
@@ -243,6 +269,9 @@ public virtual void SetActivationState(int index)
 [Inheritance]: #Inheritance
 [Namespace]: #Namespace
 [Syntax]: #Syntax
+[Fields]: #Fields
+[Activated]: #Activated
+[Deactivated]: #Deactivated
 [Properties]: #Properties
 [ActivationState]: #ActivationState
 [Configuration]: #Configuration

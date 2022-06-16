@@ -1,8 +1,10 @@
 ﻿namespace Tilia.Interactions.Interactables.Interactables
 {
+    using System;
     using Tilia.Interactions.Interactables.Interactors;
     using Tilia.Interactions.Interactables.Interactors.Collection;
     using UnityEngine;
+    using UnityEngine.Events;
     using Zinnia.Action;
     using Zinnia.Data.Attribute;
     using Zinnia.Extension;
@@ -12,6 +14,12 @@
     /// </summary>
     public class InteractableActionReceiverFacade : MonoBehaviour
     {
+        /// <summary>
+        /// Defines the event with the <see cref="Action"/>.
+        /// </summary>
+        [Serializable]
+        public class UnityEvent : UnityEvent<InteractorFacade> { }
+
         /// <summary>
         /// The states of interaction.
         /// </summary>
@@ -108,6 +116,18 @@
                 sourcePublishers = value;
             }
         }
+        #endregion
+
+        #region Publisher Events
+        /// <summary>
+        /// Emitted when the Receiver is activated by an allowed publisher.
+        /// </summary>
+        [Header("Publisher Events")]
+        public UnityEvent Activated = new UnityEvent();
+        /// <summary>
+        /// Emitted when the Receiver is deactivated from an allowed publisher.
+        /// </summary>
+        public UnityEvent Deactivated = new UnityEvent();
         #endregion
 
         #region Reference Settings
