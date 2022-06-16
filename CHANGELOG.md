@@ -1,5 +1,14 @@
 # Changelog
 
+## [2.6.0](https://github.com/ExtendRealityLtd/Tilia.Interactions.Interactables.Unity/compare/v2.5.1...v2.6.0) (2022-06-16)
+
+#### Features
+
+* **ActionReceiver:** add notify events when receiver is received ([6f9ce20](https://github.com/ExtendRealityLtd/Tilia.Interactions.Interactables.Unity/commit/6f9ce20f753dd48357b33fed8187028cae58ee64))
+  > The ActionReceiver now has a notify activated and deactivated when a publisher activates or deactivates a receiver.
+* **Editor:** use string constants for labels ([ed571f1](https://github.com/ExtendRealityLtd/Tilia.Interactions.Interactables.Unity/commit/ed571f1a07fc5c72783a8a6288f08ff4ffe9a5af))
+  > The Interactable Creator Editor Window now uses string constants for labels rather than inline strings.
+
 ### [2.5.1](https://github.com/ExtendRealityLtd/Tilia.Interactions.Interactables.Unity/compare/v2.5.0...v2.5.1) (2022-06-16)
 
 #### Miscellaneous Chores
