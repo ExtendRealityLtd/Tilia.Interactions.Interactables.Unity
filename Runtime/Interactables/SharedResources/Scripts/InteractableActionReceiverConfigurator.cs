@@ -253,6 +253,36 @@
             }
         }
 
+        /// <summary>
+        /// Notifies the Activated event on the <see cref="Facade"/>.
+        /// </summary>
+        /// <param name="source">The source Interactor.</param>
+        public virtual void NotifyActivated(GameObject source)
+        {
+            InteractorFacade interactor = source.TryGetComponent<InteractorFacade>();
+            if (interactor == null)
+            {
+                return;
+            }
+
+            Facade.Activated?.Invoke(interactor);
+        }
+
+        /// <summary>
+        /// Notifies the Deactivated event on the <see cref="Facade"/>.
+        /// </summary>
+        /// <param name="source">The source Interactor.</param>
+        public virtual void NotifyDeactivated(GameObject source)
+        {
+            InteractorFacade interactor = source.TryGetComponent<InteractorFacade>();
+            if (interactor == null)
+            {
+                return;
+            }
+
+            Facade.Deactivated?.Invoke(interactor);
+        }
+
         protected virtual void Awake()
         {
             defaultParent = Facade.transform.parent;
