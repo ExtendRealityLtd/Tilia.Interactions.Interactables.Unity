@@ -1,5 +1,6 @@
 ﻿namespace Tilia.Interactions.Interactables.Interactors
 {
+    using System.Collections;
     using System.Collections.Generic;
     using Tilia.Interactions.Interactables.Interactables;
     using UnityEngine;
@@ -251,6 +252,10 @@
         public virtual IReadOnlyList<GameObject> GrabbedObjects => GrabbedObjectsCollection.NonSubscribableElements;
 
         /// <summary>
+        /// Manages the reset simulate touch logic.
+        /// </summary>
+        protected Coroutine simulateTouchResetRoutine;
+        /// <summary>
         /// A reusable instance of event data.
         /// </summary>
         protected readonly ActiveCollisionsContainer.EventData activeCollisionsEventData = new ActiveCollisionsContainer.EventData();
@@ -350,6 +355,13 @@
             if (TouchBeforeForceGrab)
             {
                 Facade.SimulateTouch(interactable);
+                CancelSimulateTouchResetRoutine();
+                simulateTouchResetRoutine = StartCoroutine(
+                                                ResetSimulateTouchState(interactable,
+                                                                        interactable.Configuration.CollisionNotifier.enabled,
+                                                                        interactable.Configuration.CollisionNotifier.ProcessCollisionsWhenDisabled));
+                interactable.Configuration.CollisionNotifier.ProcessCollisionsWhenDisabled = false;
+                interactable.Configuration.CollisionNotifier.enabled = false;
             }
 
             StartGrabbingPublisher.SetActiveCollisions(CreateActiveCollisionsEventData(interactable.gameObject, collision, collider));
@@ -399,6 +411,42 @@
             ConfigureGrabAction();
             ConfigureVelocityTrackers();
             ConfigureGrabPrecognition();
+        }
+
+        protected virtual void OnDisable()
+        {
+            CancelSimulateTouchResetRoutine();
+        }
+
+        /// <summary>
+        /// Cancels the <see cref="simulateTouchResetRoutine"/> coroutine.
+        /// </summary>
+        protected virtual void CancelSimulateTouchResetRoutine()
+        {
+            if (simulateTouchResetRoutine != null)
+            {
+                StopCoroutine(simulateTouchResetRoutine);
+                simulateTouchResetRoutine = null;
+            }
+        }
+
+        /// <summary>
+        /// Resets the state set by the simulate touch logic.
+        /// </summary>
+        /// <param name="interactable">The interactable to reset on.</param>
+        /// <param name="collisionNotifierEnabled">The value to set the <see cref="CollisionNotifier.enabled"/> value to.</param>
+        /// <param name="processCollisionsWhenDisabled">The value to set the <see cref="CollisionNotifier.ProcessCollisionsWhenDisabled"/> value to.</param>
+        /// <returns>An enumerator for controlling the coroutine.</returns>
+        protected virtual IEnumerator ResetSimulateTouchState(InteractableFacade interactable, bool collisionNotifierEnabled, bool processCollisionsWhenDisabled)
+        {
+            yield return new WaitForFixedUpdate();
+
+            if (interactable != null)
+            {
+                interactable.Configuration.CollisionNotifier.enabled = collisionNotifierEnabled;
+                interactable.Configuration.CollisionNotifier.ProcessCollisionsWhenDisabled = processCollisionsWhenDisabled;
+            }
+            simulateTouchResetRoutine = null;
         }
 
         /// <summary>
