@@ -9,6 +9,7 @@ Sets up the Interactor Prefab grab settings based on the provided user settings.
 * [Syntax]
 * [Fields]
   * [activeCollisionsEventData]
+  * [simulateTouchResetRoutine]
 * [Properties]
   * [Facade]
   * [GrabAction]
@@ -24,6 +25,7 @@ Sets up the Interactor Prefab grab settings based on the provided user settings.
   * [TouchBeforeForceGrab]
   * [VelocityTracker]
 * [Methods]
+  * [CancelSimulateTouchResetRoutine()]
   * [ChooseGrabProcessor()]
   * [ClearVelocityTracker()]
   * [ConfigureGrabAction()]
@@ -34,9 +36,11 @@ Sets up the Interactor Prefab grab settings based on the provided user settings.
   * [Grab(InteractableFacade, Collision, Collider, Boolean)]
   * [GrabIgnoreUngrab(InteractableFacade, Collision, Collider)]
   * [OnAfterVelocityTrackerChange()]
+  * [OnDisable()]
   * [OnEnable()]
   * [PrecognitionGrabForRegisteredConsumers()]
   * [ProcessGrabAction(ActiveCollisionPublisher, Boolean)]
+  * [ResetSimulateTouchState(InteractableFacade, Boolean, Boolean)]
   * [Ungrab()]
 
 ## Details
@@ -66,6 +70,16 @@ A reusable instance of event data.
 
 ```
 protected readonly ActiveCollisionsContainer.EventData activeCollisionsEventData
+```
+
+#### simulateTouchResetRoutine
+
+Manages the reset simulate touch logic.
+
+##### Declaration
+
+```
+protected Coroutine simulateTouchResetRoutine
 ```
 
 ### Properties
@@ -201,6 +215,16 @@ public VelocityTrackerProcessor VelocityTracker { get; protected set; }
 ```
 
 ### Methods
+
+#### CancelSimulateTouchResetRoutine()
+
+Cancels the [simulateTouchResetRoutine] coroutine.
+
+##### Declaration
+
+```
+protected virtual void CancelSimulateTouchResetRoutine()
+```
 
 #### ChooseGrabProcessor()
 
@@ -341,6 +365,14 @@ Called after [VelocityTracker] has been changed.
 protected virtual void OnAfterVelocityTrackerChange()
 ```
 
+#### OnDisable()
+
+##### Declaration
+
+```
+protected virtual void OnDisable()
+```
+
 #### OnEnable()
 
 ##### Declaration
@@ -376,6 +408,30 @@ protected virtual void ProcessGrabAction(ActiveCollisionPublisher publisher, boo
 | ActiveCollisionPublisher | publisher | The collision data to process. |
 | System.Boolean | actionState | The grab state to check against. |
 
+#### ResetSimulateTouchState(InteractableFacade, Boolean, Boolean)
+
+Resets the state set by the simulate touch logic.
+
+##### Declaration
+
+```
+protected virtual IEnumerator ResetSimulateTouchState(InteractableFacade interactable, bool collisionNotifierEnabled, bool processCollisionsWhenDisabled)
+```
+
+##### Parameters
+
+| Type | Name | Description |
+| --- | --- | --- |
+| [InteractableFacade] | interactable | The interactable to reset on. |
+| System.Boolean | collisionNotifierEnabled | The value to set the CollisionNotifier.enabled value to. |
+| System.Boolean | processCollisionsWhenDisabled | The value to set the CollisionNotifier.ProcessCollisionsWhenDisabled value to. |
+
+##### Returns
+
+| Type | Description |
+| --- | --- |
+| System.Collections.IEnumerator | An enumerator for controlling the coroutine. |
+
 #### Ungrab()
 
 Attempt to ungrab currently grabbed Interactables to the current Interactor.
@@ -388,6 +444,7 @@ public virtual void Ungrab()
 
 [Tilia.Interactions.Interactables.Interactors]: README.md
 [InteractorFacade]: InteractorFacade.md
+[simulateTouchResetRoutine]: GrabInteractorConfigurator.md#simulateTouchResetRoutine
 [VelocityTracker]: GrabInteractorConfigurator.md#VelocityTracker
 [InteractableFacade]: ../Interactables/InteractableFacade.md
 [VelocityTracker]: GrabInteractorConfigurator.md#VelocityTracker
@@ -396,6 +453,7 @@ public virtual void Ungrab()
 [Syntax]: #Syntax
 [Fields]: #Fields
 [activeCollisionsEventData]: #activeCollisionsEventData
+[simulateTouchResetRoutine]: #simulateTouchResetRoutine
 [Properties]: #Properties
 [Facade]: #Facade
 [GrabAction]: #GrabAction
@@ -411,6 +469,7 @@ public virtual void Ungrab()
 [TouchBeforeForceGrab]: #TouchBeforeForceGrab
 [VelocityTracker]: #VelocityTracker
 [Methods]: #Methods
+[CancelSimulateTouchResetRoutine()]: #CancelSimulateTouchResetRoutine
 [ChooseGrabProcessor()]: #ChooseGrabProcessor
 [ClearVelocityTracker()]: #ClearVelocityTracker
 [ConfigureGrabAction()]: #ConfigureGrabAction
@@ -421,7 +480,9 @@ public virtual void Ungrab()
 [Grab(InteractableFacade, Collision, Collider, Boolean)]: #GrabInteractableFacade-Collision-Collider-Boolean
 [GrabIgnoreUngrab(InteractableFacade, Collision, Collider)]: #GrabIgnoreUngrabInteractableFacade-Collision-Collider
 [OnAfterVelocityTrackerChange()]: #OnAfterVelocityTrackerChange
+[OnDisable()]: #OnDisable
 [OnEnable()]: #OnEnable
 [PrecognitionGrabForRegisteredConsumers()]: #PrecognitionGrabForRegisteredConsumers
 [ProcessGrabAction(ActiveCollisionPublisher, Boolean)]: #ProcessGrabActionActiveCollisionPublisher-Boolean
+[ResetSimulateTouchState(InteractableFacade, Boolean, Boolean)]: #ResetSimulateTouchStateInteractableFacade-Boolean-Boolean
 [Ungrab()]: #Ungrab
