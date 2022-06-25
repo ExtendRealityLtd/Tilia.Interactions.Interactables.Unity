@@ -1,5 +1,14 @@
 # Changelog
 
+### [2.6.1](https://github.com/ExtendRealityLtd/Tilia.Interactions.Interactables.Unity/compare/v2.6.0...v2.6.1) (2022-06-25)
+
+#### Bug Fixes
+
+* **Interactor:** prevent double touch on force grab ([0f7e32e](https://github.com/ExtendRealityLtd/Tilia.Interactions.Interactables.Unity/commit/0f7e32ed4e3074ca35c6ea4502ff14bb89b78f9a))
+  > When the Interactor Force `Grab()` method was being called it would first do a simulate touch (to ensure the events were in the right order). Then it would do the grab, which would make the interactable physically touch the interactor, which would call the touch logic again, therefore breaking the untouch logic and meaning the untouched event would not fire as it thought it was still being touched with the second touch that had happened.
+  > 
+  > This fix resolves that by when a simulate touch occurs, the Interactor then turns off the Interactable CollisionNotifier for a fixed update frame so the second touch cannot occur after the simulated touch.
+
 ## [2.6.0](https://github.com/ExtendRealityLtd/Tilia.Interactions.Interactables.Unity/compare/v2.5.1...v2.6.0) (2022-06-16)
 
 #### Features
