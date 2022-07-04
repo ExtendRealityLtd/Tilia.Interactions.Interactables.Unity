@@ -2837,7 +2837,7 @@ MonoBehaviour:
     xState: 0
     yState: 0
     zState: 0
-  inTargetSpace: 0
+  inTargetSpace: 1
 --- !u!1 &5701689818747509894
 GameObject:
   m_ObjectHideFlags: 0
