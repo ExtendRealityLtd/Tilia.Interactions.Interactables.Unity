@@ -1,5 +1,23 @@
 # Changelog
 
+## [2.7.0](https://github.com/ExtendRealityLtd/Tilia.Interactions.Interactables.Unity/compare/v2.6.1...v2.7.0) (2022-07-05)
+
+#### Features
+
+* **Action:** add property for precision collision point ([565e786](https://github.com/ExtendRealityLtd/Tilia.Interactions.Interactables.Unity/commit/565e786b6c22411188f96c0c3991316e06b79c3a))
+  > The GrabInteractableFollowAction now has a property that allows the retrieval of the current precision grab collision point GameObject in case this runtime generated object is required for any reason.
+* **Action:** provide rule based orientation handle option ([0704996](https://github.com/ExtendRealityLtd/Tilia.Interactions.Interactables.Unity/commit/070499640f1904f1e8e89f4f43a3865b4faa9297))
+  > The GrabInteractableFollowAction and the GrabAction.Follow prefab have now been updated to also allow for the orientation handle to be set via a rule.
+  > 
+  > This makes it possible to determine orientation handles by a rule at runtime, so an interactable can be instantiated and does not need any custom code to hook up the GameObject Relation.
+
+#### Bug Fixes
+
+* **GrabActions:** rotate around angular velocity in target space ([13c343c](https://github.com/ExtendRealityLtd/Tilia.Interactions.Interactables.Unity/commit/13c343c8df1a41631e5027c5880dbfbf4231a95a))
+  > The Rotate Around Angular Velocity component now has the In Target Space option checked so it operates in local space fo the target.
+  > 
+  > This enables any Interactable using the Follow action set to Follow Rotate Around Angular Velocity to be able to rotate correctly even if the object is rotated in the world space.
+
 ### [2.6.1](https://github.com/ExtendRealityLtd/Tilia.Interactions.Interactables.Unity/compare/v2.6.0...v2.6.1) (2022-06-25)
 
 #### Bug Fixes
