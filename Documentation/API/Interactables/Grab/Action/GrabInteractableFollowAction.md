@@ -21,6 +21,7 @@ Describes an action that allows the Interactable to follow an Interactor's posit
   * [ObjectFollower]
   * [OrientationLogicContainer]
   * [PositionModifiers]
+  * [PrecisionCollisionPoint]
   * [PrecisionCreateContainer]
   * [PrecisionForceCreateContainer]
   * [PrecisionLogicContainer]
@@ -209,6 +210,16 @@ A GameObjectObservableList collection of all position modifiers used within the 
 
 ```
 public GameObjectObservableList PositionModifiers { get; protected set; }
+```
+
+#### PrecisionCollisionPoint
+
+The collsiion point GameObject that is created upon a precision grab occurring.
+
+##### Declaration
+
+```
+public virtual GameObject PrecisionCollisionPoint { get; }
 ```
 
 #### PrecisionCreateContainer
@@ -484,6 +495,7 @@ public virtual void SetGrabOffset(int index)
 [ObjectFollower]: #ObjectFollower
 [OrientationLogicContainer]: #OrientationLogicContainer
 [PositionModifiers]: #PositionModifiers
+[PrecisionCollisionPoint]: #PrecisionCollisionPoint
 [PrecisionCreateContainer]: #PrecisionCreateContainer
 [PrecisionForceCreateContainer]: #PrecisionForceCreateContainer
 [PrecisionLogicContainer]: #PrecisionLogicContainer

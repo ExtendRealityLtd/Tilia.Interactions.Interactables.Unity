@@ -458,6 +458,11 @@
         #endregion
 
         /// <summary>
+        /// The collsiion point <see cref="GameObject"/> that is created upon a precision grab occurring.
+        /// </summary>
+        public virtual GameObject PrecisionCollisionPoint => ObjectFollower != null && ObjectFollower.TargetOffsets != null && ObjectFollower.TargetOffsets.NonSubscribableElements.Count > 0 ? ObjectFollower.TargetOffsets.NonSubscribableElements[0] : null;
+
+        /// <summary>
         /// Sets the <see cref="FollowTracking"/>.
         /// </summary>
         /// <param name="index">The index of the <see cref="TrackingType"/>.</param>
