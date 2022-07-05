@@ -13,17 +13,30 @@
     [CustomEditor(typeof(InteractableFacade), true)]
     public class InteractableFacadeEditor : ZinniaInspector
     {
+        private const string primaryActionTitle = "Primary Action Settings";
+        private const string primaryActionLabel = "Primary Action";
+        private const string secondaryActionTitle = "Secondary Action Settings";
+        private const string secondaryActionLabel = "Secondary Action";
+        private const string disallowedTouchInteractorTitle = "Disallowed Touch Interactor Settings";
+        private const string disallowedGrabInteractorTitle = "Disallowed Grab Interactor Settings";
+        private const string showMeshContainerButtonText = "Show Mesh Container";
+        private const string showOrientationRuleButtonText = "Show Orientation Rule Container";
+        private const string showOrientationHandleButtonText = "Show Orientation Handle Container";
+        private const string velocityMultiplierTitle = "Velocity Multiplier Settings";
+        private const string advancedFollowTitle = "Advanced Follow Settings";
+        private const string customFollowOption = "Custom";
+
         private static readonly int[] primaryActionsIndexes = new int[] { 0, 1 };
         private static readonly int[] secondaryActionsIndexes = new int[] { 0, 1, 2, 3, 4 };
 
         private string[] primaryActions = new string[0];
         private string[] secondaryActions = new string[0];
 
+        private InteractableFacade facade;
         private int currentPrimaryActionIndex;
         private int currentSecondaryActionIndex;
         private int selectedPrimaryActionIndex;
         private int selectedSecondaryActionIndex;
-        private InteractableFacade facade;
         private bool showFollowAdvancedFeatures;
         private bool grabConfigurationIsDirty;
         private bool showVelocityMultiplierFeatures;
@@ -38,9 +51,9 @@
             EditorHelper.DrawHorizontalLine();
 
             EditorGUILayout.Space();
-            EditorGUILayout.LabelField("Primary Action Settings", EditorStyles.boldLabel);
+            EditorGUILayout.LabelField(primaryActionTitle, EditorStyles.boldLabel);
 
-            selectedPrimaryActionIndex = EditorGUILayout.Popup(new GUIContent("Primary Action"), currentPrimaryActionIndex, primaryActions);
+            selectedPrimaryActionIndex = EditorGUILayout.Popup(new GUIContent(primaryActionLabel), currentPrimaryActionIndex, primaryActions);
 
             GrabInteractableAction updatedPrimaryAction = UpdateAction(facade, primaryActionsIndexes, currentPrimaryActionIndex, selectedPrimaryActionIndex, GetPrimaryAction(), 0);
             if (IsGrabConfigurationSet() && GetPrimaryAction() != updatedPrimaryAction)
@@ -55,9 +68,9 @@
             EditorHelper.DrawHorizontalLine();
 
             EditorGUILayout.Space();
-            EditorGUILayout.LabelField("Secondary Action Settings", EditorStyles.boldLabel);
+            EditorGUILayout.LabelField(secondaryActionTitle, EditorStyles.boldLabel);
 
-            selectedSecondaryActionIndex = EditorGUILayout.Popup(new GUIContent("Secondary Action"), currentSecondaryActionIndex, secondaryActions);
+            selectedSecondaryActionIndex = EditorGUILayout.Popup(new GUIContent(secondaryActionLabel), currentSecondaryActionIndex, secondaryActions);
             GrabInteractableAction updatedSecondaryAction = UpdateAction(facade, secondaryActionsIndexes, currentSecondaryActionIndex, selectedSecondaryActionIndex, GetSecondaryAction(), 1);
             if (IsGrabConfigurationSet() && GetSecondaryAction() != updatedSecondaryAction)
             {
@@ -71,7 +84,7 @@
             EditorHelper.DrawHorizontalLine();
 
             EditorGUILayout.Space();
-            EditorGUILayout.LabelField("Disallowed Touch Interactor Settings", EditorStyles.boldLabel);
+            EditorGUILayout.LabelField(disallowedTouchInteractorTitle, EditorStyles.boldLabel);
 
             EditorGUI.indentLevel++;
             if (IsConfigurationSet())
@@ -81,7 +94,7 @@
             EditorGUI.indentLevel--;
 
             EditorGUILayout.Space();
-            EditorGUILayout.LabelField("Disallowed Grab Interactor Settings", EditorStyles.boldLabel);
+            EditorGUILayout.LabelField(disallowedGrabInteractorTitle, EditorStyles.boldLabel);
 
             EditorGUI.indentLevel++;
             if (IsConfigurationSet())
@@ -92,14 +105,14 @@
 
             EditorHelper.DrawHorizontalLine();
 
-            EditorGUILayout.BeginHorizontal("GroupBox");
+            GUILayout.BeginHorizontal("GroupBox");
             GUILayout.FlexibleSpace();
-            if (GUILayout.Button("Show Mesh Container"))
+            if (GUILayout.Button(showMeshContainerButtonText))
             {
                 EditorGUIUtility.PingObject(facade.Configuration.MeshContainer);
             }
             GUILayout.FlexibleSpace();
-            EditorGUILayout.EndHorizontal();
+            GUILayout.EndHorizontal();
 
             if (grabConfigurationIsDirty)
             {
@@ -177,20 +190,40 @@
 
             if (grabOffset.intValue == 1)
             {
+                EditorGUI.indentLevel++;
+                SerializedProperty orientationHandleLogic = DrawPropertyFieldWithChangeHandlers(actionObject, "orientationHandleLogic", undoRedoWarningPropertyPath);
                 EditorGUILayout.BeginHorizontal();
                 EditorGUILayout.PrefixLabel(" ");
-                if (GUILayout.Button("Show Orientation Container"))
+                if (GUILayout.Button(showOrientationRuleButtonText))
                 {
-                    EditorGUIUtility.PingObject(followAction.OrientationLogicContainer);
+                    GameObject logicContainerToPing = followAction.OrientationLogicContainer;
+                    switch (orientationHandleLogic.intValue)
+                    {
+                        case 0:
+                            logicContainerToPing = followAction.OrientationRelationsLogicContainer;
+                            break;
+                        case 1:
+                            logicContainerToPing = followAction.OrientationRulesMatcherLogicContainer;
+                            break;
+                    }
+                    EditorGUIUtility.PingObject(logicContainerToPing);
                 }
                 EditorGUILayout.EndHorizontal();
+                EditorGUILayout.BeginHorizontal();
+                EditorGUILayout.PrefixLabel(" ");
+                if (GUILayout.Button(showOrientationHandleButtonText))
+                {
+                    EditorGUIUtility.PingObject(followAction.OrientationHandleContainer);
+                }
+                EditorGUILayout.EndHorizontal();
+                EditorGUI.indentLevel--;
             }
 
             SerializedObject velocityMultiplierObject = new SerializedObject(followAction.VelocityMultiplier);
 
             EditorHelper.DrawHorizontalLine();
 
-            showVelocityMultiplierFeatures = EditorGUILayout.Foldout(showVelocityMultiplierFeatures, "Velocity Multiplier Settings");
+            showVelocityMultiplierFeatures = EditorGUILayout.Foldout(showVelocityMultiplierFeatures, velocityMultiplierTitle);
             if (showVelocityMultiplierFeatures)
             {
                 EditorGUI.indentLevel++;
@@ -199,7 +232,7 @@
                 EditorGUI.indentLevel--;
             }
 
-            showFollowAdvancedFeatures = EditorGUILayout.Foldout(showFollowAdvancedFeatures, "Advanced Follow Settings");
+            showFollowAdvancedFeatures = EditorGUILayout.Foldout(showFollowAdvancedFeatures, advancedFollowTitle);
             if (showFollowAdvancedFeatures)
             {
                 EditorGUI.indentLevel++;
@@ -251,7 +284,7 @@
             }
 
             actions = new string[template.Length + 1];
-            actions[0] = "Custom";
+            actions[0] = customFollowOption;
             for (int actionIndex = 0; actionIndex < template.Length; actionIndex++)
             {
                 if (!IsGrabConfigurationSet() || facade.Configuration.GrabConfiguration.ActionTypes.NonSubscribableElements.Count == 0)

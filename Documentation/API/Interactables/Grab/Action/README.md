@@ -32,6 +32,10 @@ Describes the action of swapping a an action from being the secondary action to 
 
 The offset to apply on grab.
 
+#### [GrabInteractableFollowAction.OrientationProcessorType]
+
+The type of processing for the orientation handle.
+
 #### [GrabInteractableFollowAction.TrackingType]
 
 The way in which the object is moved.
@@ -43,4 +47,5 @@ The way in which the object is moved.
 [GrabInteractableScaleAction]: GrabInteractableScaleAction.md
 [GrabInteractableSwapAction]: GrabInteractableSwapAction.md
 [GrabInteractableFollowAction.OffsetType]: GrabInteractableFollowAction.OffsetType.md
+[GrabInteractableFollowAction.OrientationProcessorType]: GrabInteractableFollowAction.OrientationProcessorType.md
 [GrabInteractableFollowAction.TrackingType]: GrabInteractableFollowAction.TrackingType.md

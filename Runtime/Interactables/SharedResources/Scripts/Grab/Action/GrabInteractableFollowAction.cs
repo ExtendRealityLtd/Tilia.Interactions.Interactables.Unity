@@ -64,6 +64,21 @@
             ForcePrecisionPoint
         }
 
+        /// <summary>
+        /// The type of processing for the orientation handle.
+        /// </summary>
+        public enum OrientationProcessorType
+        {
+            /// <summary>
+            /// Uses the GameObjectRelations logic.
+            /// </summary>
+            GameObjectRelation,
+            /// <summary>
+            /// Uses the Rules Matcherr logic.
+            /// </summary>
+            RuleBased
+        }
+
         #region Interactable Settings
         [Header("Follow Settings")]
         [Tooltip("Determines how to track the movement of Interactable to the Interactor.")]
@@ -105,6 +120,27 @@
                 if (this.IsMemberChangeAllowed())
                 {
                     OnAfterGrabOffsetChange();
+                }
+            }
+        }
+        [Tooltip("The type of orientation handle logic to use.")]
+        [SerializeField]
+        private OrientationProcessorType orientationHandleLogic;
+        /// <summary>
+        /// The type of orientation handle logic to use.
+        /// </summary>
+        public OrientationProcessorType OrientationHandleLogic
+        {
+            get
+            {
+                return orientationHandleLogic;
+            }
+            set
+            {
+                orientationHandleLogic = value;
+                if (this.IsMemberChangeAllowed())
+                {
+                    OnAfterOrientationHandleLogicChange();
                 }
             }
         }
@@ -437,6 +473,24 @@
                 precisionForceCreateContainer = value;
             }
         }
+        [Tooltip("The container for the orientation handles.")]
+        [SerializeField]
+        [Restricted]
+        private GameObject orientationHandleContainer;
+        /// <summary>
+        /// The container for the orientation handles.
+        /// </summary>
+        public GameObject OrientationHandleContainer
+        {
+            get
+            {
+                return orientationHandleContainer;
+            }
+            protected set
+            {
+                orientationHandleContainer = value;
+            }
+        }
         [Tooltip("The container for the orientation handle logic.")]
         [SerializeField]
         [Restricted]
@@ -453,6 +507,42 @@
             protected set
             {
                 orientationLogicContainer = value;
+            }
+        }
+        [Tooltip("The container for the orientation GameObject Relations logic.")]
+        [SerializeField]
+        [Restricted]
+        private GameObject orientationRelationsLogicContainer;
+        /// <summary>
+        /// The container for the orientation GameObject Relations logic.
+        /// </summary>
+        public GameObject OrientationRelationsLogicContainer
+        {
+            get
+            {
+                return orientationRelationsLogicContainer;
+            }
+            protected set
+            {
+                orientationRelationsLogicContainer = value;
+            }
+        }
+        [Tooltip("The container for the orientation Rules Matcher logic.")]
+        [SerializeField]
+        [Restricted]
+        private GameObject orientationRulesMatcherLogicContainer;
+        /// <summary>
+        /// The container for the orientation Rules Matcher logic.
+        /// </summary>
+        public GameObject OrientationRulesMatcherLogicContainer
+        {
+            get
+            {
+                return orientationRulesMatcherLogicContainer;
+            }
+            protected set
+            {
+                orientationRulesMatcherLogicContainer = value;
             }
         }
         #endregion
@@ -478,6 +568,15 @@
         public virtual void SetGrabOffset(int index)
         {
             GrabOffset = EnumExtensions.GetByIndex<OffsetType>(index);
+        }
+
+        /// <summary>
+        /// Sets the <see cref="OrientationHandleLogic"/>.
+        /// </summary>
+        /// <param name="index">The index of the <see cref="OrientationProcessorType"/>.</param>
+        public virtual void SetOrientationHandleLogic(int index)
+        {
+            OrientationHandleLogic = EnumExtensions.GetByIndex<OrientationProcessorType>(index);
         }
 
         /// <summary>
@@ -508,10 +607,29 @@
             ForceSnapFollower.Process();
         }
 
+        /// <summary>
+        /// Enables the GameObject Relations Orientation Handle logic.
+        /// </summary>
+        public virtual void UseGameObjectRelationsOrientationHandleLogic()
+        {
+            orientationRelationsLogicContainer.SetActive(true);
+            orientationRulesMatcherLogicContainer.SetActive(false);
+        }
+
+        /// <summary>
+        /// Enables the Rules Matcher Orientation Handle logic.
+        /// </summary>
+        public virtual void UseRulesMatcherOrientationHandleLogic()
+        {
+            orientationRelationsLogicContainer.SetActive(false);
+            orientationRulesMatcherLogicContainer.SetActive(true);
+        }
+
         protected virtual void OnEnable()
         {
             ConfigureFollowTracking();
             ConfigureGrabOffset();
+            OnAfterOrientationHandleLogicChange();
         }
 
         /// <summary>
@@ -642,6 +760,22 @@
         protected virtual void OnAfterGrabOffsetChange()
         {
             ConfigureGrabOffset();
+        }
+
+        /// <summary>
+        /// Called after <see cref="OrientationHandleLogic"/> has been changed.
+        /// </summary>
+        protected virtual void OnAfterOrientationHandleLogicChange()
+        {
+            switch (orientationHandleLogic)
+            {
+                case OrientationProcessorType.GameObjectRelation:
+                    UseGameObjectRelationsOrientationHandleLogic();
+                    break;
+                case OrientationProcessorType.RuleBased:
+                    UseRulesMatcherOrientationHandleLogic();
+                    break;
+            }
         }
     }
 }

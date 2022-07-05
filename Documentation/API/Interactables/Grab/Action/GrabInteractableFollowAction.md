@@ -19,7 +19,11 @@ Describes an action that allows the Interactable to follow an Interactor's posit
   * [IsKinematicWhenActive]
   * [IsKinematicWhenInactive]
   * [ObjectFollower]
+  * [OrientationHandleContainer]
+  * [OrientationHandleLogic]
   * [OrientationLogicContainer]
+  * [OrientationRelationsLogicContainer]
+  * [OrientationRulesMatcherLogicContainer]
   * [PositionModifiers]
   * [PrecisionCollisionPoint]
   * [PrecisionCreateContainer]
@@ -39,10 +43,14 @@ Describes an action that allows the Interactable to follow an Interactor's posit
   * [OnAfterFollowTrackingChange()]
   * [OnAfterGrabOffsetChange()]
   * [OnAfterGrabSetupChange()]
+  * [OnAfterOrientationHandleLogicChange()]
   * [OnEnable()]
   * [PrepareColliderForKinematicChange(GameObject)]
   * [SetFollowTracking(Int32)]
   * [SetGrabOffset(Int32)]
+  * [SetOrientationHandleLogic(Int32)]
+  * [UseGameObjectRelationsOrientationHandleLogic()]
+  * [UseRulesMatcherOrientationHandleLogic()]
 
 ## Details
 
@@ -192,6 +200,26 @@ The Zinnia.Tracking.Follow.ObjectFollower for tracking movement.
 public ObjectFollower ObjectFollower { get; protected set; }
 ```
 
+#### OrientationHandleContainer
+
+The container for the orientation handles.
+
+##### Declaration
+
+```
+public GameObject OrientationHandleContainer { get; protected set; }
+```
+
+#### OrientationHandleLogic
+
+The type of orientation handle logic to use.
+
+##### Declaration
+
+```
+public GrabInteractableFollowAction.OrientationProcessorType OrientationHandleLogic { get; set; }
+```
+
 #### OrientationLogicContainer
 
 The container for the orientation handle logic.
@@ -200,6 +228,26 @@ The container for the orientation handle logic.
 
 ```
 public GameObject OrientationLogicContainer { get; protected set; }
+```
+
+#### OrientationRelationsLogicContainer
+
+The container for the orientation GameObject Relations logic.
+
+##### Declaration
+
+```
+public GameObject OrientationRelationsLogicContainer { get; protected set; }
+```
+
+#### OrientationRulesMatcherLogicContainer
+
+The container for the orientation Rules Matcher logic.
+
+##### Declaration
+
+```
+public GameObject OrientationRulesMatcherLogicContainer { get; protected set; }
 ```
 
 #### PositionModifiers
@@ -400,6 +448,16 @@ protected override void OnAfterGrabSetupChange()
 
 [GrabInteractableAction.OnAfterGrabSetupChange()]
 
+#### OnAfterOrientationHandleLogicChange()
+
+Called after [OrientationHandleLogic] has been changed.
+
+##### Declaration
+
+```
+protected virtual void OnAfterOrientationHandleLogicChange()
+```
+
 #### OnEnable()
 
 ##### Declaration
@@ -456,6 +514,42 @@ public virtual void SetGrabOffset(int index)
 | --- | --- | --- |
 | System.Int32 | index | The index of the [GrabInteractableFollowAction.OffsetType]. |
 
+#### SetOrientationHandleLogic(Int32)
+
+Sets the [OrientationHandleLogic].
+
+##### Declaration
+
+```
+public virtual void SetOrientationHandleLogic(int index)
+```
+
+##### Parameters
+
+| Type | Name | Description |
+| --- | --- | --- |
+| System.Int32 | index | The index of the [GrabInteractableFollowAction.OrientationProcessorType]. |
+
+#### UseGameObjectRelationsOrientationHandleLogic()
+
+Enables the GameObject Relations Orientation Handle logic.
+
+##### Declaration
+
+```
+public virtual void UseGameObjectRelationsOrientationHandleLogic()
+```
+
+#### UseRulesMatcherOrientationHandleLogic()
+
+Enables the Rules Matcher Orientation Handle logic.
+
+##### Declaration
+
+```
+public virtual void UseRulesMatcherOrientationHandleLogic()
+```
+
 [GrabInteractableAction]: GrabInteractableAction.md
 [GrabInteractableAction.InputActiveCollisionConsumer]: GrabInteractableAction.md#Tilia_Interactions_Interactables_Interactables_Grab_Action_GrabInteractableAction_InputActiveCollisionConsumer
 [GrabInteractableAction.InputGrabReceived]: GrabInteractableAction.md#Tilia_Interactions_Interactables_Interactables_Grab_Action_GrabInteractableAction_InputGrabReceived
@@ -474,10 +568,13 @@ public virtual void SetGrabOffset(int index)
 [GrabOffset]: GrabInteractableFollowAction.md#GrabOffset
 [GrabSetup]: GrabInteractableAction.md#Tilia_Interactions_Interactables_Interactables_Grab_Action_GrabInteractableAction_GrabSetup
 [GrabInteractableAction.OnAfterGrabSetupChange()]: GrabInteractableAction.md#Tilia_Interactions_Interactables_Interactables_Grab_Action_GrabInteractableAction_OnAfterGrabSetupChange
+[OrientationHandleLogic]: GrabInteractableFollowAction.md#OrientationHandleLogic
 [FollowTracking]: GrabInteractableFollowAction.md#FollowTracking
 [GrabInteractableFollowAction.TrackingType]: GrabInteractableFollowAction.TrackingType.md
 [GrabOffset]: GrabInteractableFollowAction.md#GrabOffset
 [GrabInteractableFollowAction.OffsetType]: GrabInteractableFollowAction.OffsetType.md
+[OrientationHandleLogic]: GrabInteractableFollowAction.md#OrientationHandleLogic
+[GrabInteractableFollowAction.OrientationProcessorType]: GrabInteractableFollowAction.OrientationProcessorType.md
 [Inheritance]: #Inheritance
 [Namespace]: #Namespace
 [Syntax]: #Syntax
@@ -493,7 +590,11 @@ public virtual void SetGrabOffset(int index)
 [IsKinematicWhenActive]: #IsKinematicWhenActive
 [IsKinematicWhenInactive]: #IsKinematicWhenInactive
 [ObjectFollower]: #ObjectFollower
+[OrientationHandleContainer]: #OrientationHandleContainer
+[OrientationHandleLogic]: #OrientationHandleLogic
 [OrientationLogicContainer]: #OrientationLogicContainer
+[OrientationRelationsLogicContainer]: #OrientationRelationsLogicContainer
+[OrientationRulesMatcherLogicContainer]: #OrientationRulesMatcherLogicContainer
 [PositionModifiers]: #PositionModifiers
 [PrecisionCollisionPoint]: #PrecisionCollisionPoint
 [PrecisionCreateContainer]: #PrecisionCreateContainer
@@ -513,7 +614,11 @@ public virtual void SetGrabOffset(int index)
 [OnAfterFollowTrackingChange()]: #OnAfterFollowTrackingChange
 [OnAfterGrabOffsetChange()]: #OnAfterGrabOffsetChange
 [OnAfterGrabSetupChange()]: #OnAfterGrabSetupChange
+[OnAfterOrientationHandleLogicChange()]: #OnAfterOrientationHandleLogicChange
 [OnEnable()]: #OnEnable
 [PrepareColliderForKinematicChange(GameObject)]: #PrepareColliderForKinematicChangeGameObject
 [SetFollowTracking(Int32)]: #SetFollowTrackingInt32
 [SetGrabOffset(Int32)]: #SetGrabOffsetInt32
+[SetOrientationHandleLogic(Int32)]: #SetOrientationHandleLogicInt32
+[UseGameObjectRelationsOrientationHandleLogic()]: #UseGameObjectRelationsOrientationHandleLogic
+[UseRulesMatcherOrientationHandleLogic()]: #UseRulesMatcherOrientationHandleLogic
