@@ -1,5 +1,16 @@
 # Changelog
 
+## [2.8.0](https://github.com/ExtendRealityLtd/Tilia.Interactions.Interactables.Unity/compare/v2.7.1...v2.8.0) (2023-02-13)
+
+#### Features
+
+* **Editor:** add button to link to selected follow tracking container ([0729640](https://github.com/ExtendRealityLtd/Tilia.Interactions.Interactables.Unity/commit/0729640a5f408eb8c049d7e9a383764a32c420d0))
+  > The new Show Follow Tracking Container button will ping the GameObject in the Interactable hierarchy that contains the currently selected follow tracking logic, making it easier to traverse to the logic to customise settings further.
+* **Utility:** add streamline way to generate interactables via code ([51c6025](https://github.com/ExtendRealityLtd/Tilia.Interactions.Interactables.Unity/commit/51c602527913b0bb8e5861f3ed6749b5994fff9e))
+  > The new InteractableCreator prefab makes it much easier to create an Interactable Object via code by simply calling the `Convert` method passing in the GameObject to convert (and wrap) to an Interactable.
+  > 
+  > The core generation code has now been moved into a factory that the Interactable Creator Editor Window now also uses. The ability to set the primary and secondary actions has also been moved to the InteractableConfigurator as it already holds all of the relevant prefab references to be able to set an action.
+
 ### [2.7.1](https://github.com/ExtendRealityLtd/Tilia.Interactions.Interactables.Unity/compare/v2.7.0...v2.7.1) (2023-02-08)
 
 #### Miscellaneous Chores
