@@ -1,7 +1,12 @@
 ﻿namespace Tilia.Interactions.Interactables.Interactables
 {
     using Tilia.Interactions.Interactables.Interactables.Grab;
+    using Tilia.Interactions.Interactables.Interactables.Grab.Action;
     using Tilia.Interactions.Interactables.Interactables.Touch;
+    using Tilia.Interactions.Interactables.Interactables.Utility;
+#if UNITY_EDITOR
+    using UnityEditor;
+#endif
     using UnityEngine;
     using Zinnia.Data.Attribute;
     using Zinnia.Data.Collection.List;
@@ -223,6 +228,11 @@
         #endregion
 
         /// <summary>
+        /// The total number of available grab action types.
+        /// </summary>
+        public virtual int GrabActionTypesCount => GrabConfiguration.ActionTypes.NonSubscribableElements.Count;
+
+        /// <summary>
         /// Clears <see cref="DisallowedTouchInteractors"/>.
         /// </summary>
         public virtual void ClearDisallowedTouchInteractors()
@@ -272,6 +282,162 @@
             }
 
             ConsumerRigidbody = default;
+        }
+
+        /// <summary>
+        /// Determines whether the grab configuration is set.
+        /// </summary>
+        /// <returns>Whether the grab configuration is set.</returns>
+        public virtual bool IsGrabConfigurationSet()
+        {
+            return GrabConfiguration != null;
+        }
+
+        /// <summary>
+        /// Gets the <see cref="GameObject"/> for the given Grab <see cref="InteractableFactory.ActionType"/>.
+        /// </summary>
+        /// <param name="type">The action type to attempt to get.</param>
+        /// <returns>The GameObject for the given action type.</returns>
+        public virtual GameObject GetGrabActionTypeObject(InteractableFactory.ActionType type)
+        {
+            return GetGrabActionTypeObject((int)type);
+        }
+
+        /// <summary>
+        /// Gets the <see cref="GameObject"/> for the given Grab Action Type index.
+        /// </summary>
+        /// <param name="index">The index to attempt to get.</param>
+        /// <returns>The found GameObject for the given index type.</returns>
+        public virtual GameObject GetGrabActionTypeObject(int index)
+        {
+            return GrabConfiguration.ActionTypes.NonSubscribableElements[index];
+        }
+
+        /// <summary>
+        /// Gets the current grab configuration primary action.
+        /// </summary>
+        /// <returns>The current primary action.</returns>
+        public virtual GrabInteractableAction GetPrimaryAction()
+        {
+            return IsGrabConfigurationSet() && GrabConfiguration.PrimaryAction != null ? GrabConfiguration.PrimaryAction : null;
+        }
+
+        /// <summary>
+        /// Gets the current grab configuration secondary action.
+        /// </summary>
+        /// <returns>The current secondary action.</returns>
+        public virtual GrabInteractableAction GetSecondaryAction()
+        {
+            return IsGrabConfigurationSet() && GrabConfiguration.SecondaryAction != null ? GrabConfiguration.SecondaryAction : null;
+        }
+
+        /// <summary>
+        /// Updates the primary grab action to the given type.
+        /// </summary>
+        /// <param name="type">The grab action type.</param>
+        /// <returns>The new grab action.</returns>
+        public virtual GrabInteractableAction UpdatePrimaryAction(InteractableFactory.ActionType type)
+        {
+            return UpdatePrimaryAction((int)type);
+        }
+
+        /// <summary>
+        /// Updates the primary grab action to the given type index.
+        /// </summary>
+        /// <param name="index">The grab action type index.</param>
+        /// <returns>The new grab action.</returns>
+        public virtual GrabInteractableAction UpdatePrimaryAction(int index)
+        {
+            GrabInteractableAction action = CreateGrabAction(GetPrimaryAction(), index, 0);
+            GrabConfiguration.PrimaryAction = action;
+            SetFollowAndControlDirectionPair();
+            return action;
+        }
+
+        /// <summary>
+        /// Updates the secondary grab action to the given type.
+        /// </summary>
+        /// <param name="type">The grab action type.</param>
+        /// <returns>The new grab action.</returns>
+        public virtual GrabInteractableAction UpdateSecondaryAction(InteractableFactory.ActionType type)
+        {
+            return UpdateSecondaryAction((int)type);
+        }
+
+        /// <summary>
+        /// Updates the secondary grab action to the given type index.
+        /// </summary>
+        /// <param name="index">The grab action type index.</param>
+        /// <returns>The new grab action.</returns>
+        public virtual GrabInteractableAction UpdateSecondaryAction(int index)
+        {
+            GrabInteractableAction action = CreateGrabAction(GetSecondaryAction(), index, 1);
+            GrabConfiguration.SecondaryAction = action;
+            SetFollowAndControlDirectionPair();
+            return action;
+        }
+
+        /// <summary>
+        /// Sets up the relevant linkages if the follow and control direction actions are selected in a pairing.
+        /// </summary>
+        protected virtual void SetFollowAndControlDirectionPair()
+        {
+            GrabInteractableAction primaryAction = GetPrimaryAction();
+            GrabInteractableAction secondaryAction = GetSecondaryAction();
+            GrabInteractableFollowAction followAction;
+            GrabInteractableControlDirectionAction controlDirectionAction;
+
+            if (secondaryAction != null && typeof(GrabInteractableControlDirectionAction).IsAssignableFrom(secondaryAction.GetType()))
+            {
+                controlDirectionAction = (GrabInteractableControlDirectionAction)secondaryAction;
+                controlDirectionAction.LinkedObjects = null;
+            }
+
+            if (primaryAction == null ||
+                secondaryAction == null ||
+                !typeof(GrabInteractableFollowAction).IsAssignableFrom(primaryAction.GetType()) ||
+                !typeof(GrabInteractableControlDirectionAction).IsAssignableFrom(secondaryAction.GetType()))
+            {
+                return;
+            }
+
+            followAction = (GrabInteractableFollowAction)primaryAction;
+            controlDirectionAction = (GrabInteractableControlDirectionAction)secondaryAction;
+
+            controlDirectionAction.LinkedObjects = followAction.RotationModifiers;
+        }
+
+        /// <summary>
+        /// Creates a grab action for the given type.
+        /// </summary>
+        /// <param name="currentAction">The current action.</param>
+        /// <param name="newActionType">The new action type to create.</param>
+        /// <param name="siblingPosition">The position the action should take in the hierarcy.</param>
+        /// <returns>The created Grab Action.</returns>
+        protected virtual GrabInteractableAction CreateGrabAction(GrabInteractableAction currentAction, int newActionType, int siblingPosition)
+        {
+            if (!IsGrabConfigurationSet())
+            {
+                return null;
+            }
+
+            if (currentAction != null)
+            {
+                DestroyImmediate(currentAction.gameObject);
+            }
+
+            GameObject toInstantiate = GrabConfiguration.ActionTypes.NonSubscribableElements[newActionType];
+            GameObject actionObject = null;
+#if UNITY_EDITOR
+            actionObject = (GameObject)PrefabUtility.InstantiatePrefab(toInstantiate);
+#else
+            actionObject = Instantiate(toInstantiate);
+#endif
+            actionObject.name = actionObject.name.Replace("(Clone)", "(Generated)");
+            actionObject.transform.SetParent(facade.Configuration.GrabConfiguration.ActionTypes.transform);
+            actionObject.transform.SetSiblingIndex(siblingPosition);
+
+            return actionObject.GetComponent<GrabInteractableAction>();
         }
 
         /// <summary>
