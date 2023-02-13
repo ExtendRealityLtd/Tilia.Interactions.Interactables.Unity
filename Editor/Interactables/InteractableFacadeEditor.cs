@@ -45,6 +45,11 @@
         {
             base.OnInspectorGUI();
 
+            if (!facade.Configuration.IsGrabConfigurationSet())
+            {
+                return;
+            }
+
             string undoRedoWarningPropertyPath = UndoRedoWarningPropertyPath;
             grabConfigurationIsDirty = false;
 
@@ -55,15 +60,14 @@
 
             selectedPrimaryActionIndex = EditorGUILayout.Popup(new GUIContent(primaryActionLabel), currentPrimaryActionIndex, primaryActions);
 
-            GrabInteractableAction updatedPrimaryAction = UpdateAction(facade, primaryActionsIndexes, currentPrimaryActionIndex, selectedPrimaryActionIndex, GetPrimaryAction(), 0);
-            if (IsGrabConfigurationSet() && GetPrimaryAction() != updatedPrimaryAction)
-            {
-                facade.Configuration.GrabConfiguration.PrimaryAction = updatedPrimaryAction;
-                grabConfigurationIsDirty = true;
-            }
+            GrabInteractableAction currentPrimaryAction = facade.Configuration.GetPrimaryAction();
+            GrabInteractableAction updatedPrimaryAction =
+                currentPrimaryActionIndex == selectedPrimaryActionIndex || selectedPrimaryActionIndex == 0
+                ? facade.Configuration.GetPrimaryAction()
+                : facade.Configuration.UpdatePrimaryAction(primaryActionsIndexes[selectedPrimaryActionIndex - 1]);
             currentPrimaryActionIndex = selectedPrimaryActionIndex;
 
-            DrawFollowActionSettings(facade, GetPrimaryAction(), undoRedoWarningPropertyPath);
+            DrawFollowActionSettings(facade, facade.Configuration.GetPrimaryAction(), undoRedoWarningPropertyPath);
 
             EditorHelper.DrawHorizontalLine();
 
@@ -71,15 +75,17 @@
             EditorGUILayout.LabelField(secondaryActionTitle, EditorStyles.boldLabel);
 
             selectedSecondaryActionIndex = EditorGUILayout.Popup(new GUIContent(secondaryActionLabel), currentSecondaryActionIndex, secondaryActions);
-            GrabInteractableAction updatedSecondaryAction = UpdateAction(facade, secondaryActionsIndexes, currentSecondaryActionIndex, selectedSecondaryActionIndex, GetSecondaryAction(), 1);
-            if (IsGrabConfigurationSet() && GetSecondaryAction() != updatedSecondaryAction)
-            {
-                facade.Configuration.GrabConfiguration.SecondaryAction = updatedSecondaryAction;
-                grabConfigurationIsDirty = true;
-            }
+
+            GrabInteractableAction currentSecondaryAction = facade.Configuration.GetSecondaryAction();
+            GrabInteractableAction updatedSecondaryAction =
+                currentSecondaryActionIndex == selectedSecondaryActionIndex || selectedSecondaryActionIndex == 0
+                ? facade.Configuration.GetSecondaryAction()
+                : facade.Configuration.UpdateSecondaryAction(secondaryActionsIndexes[selectedSecondaryActionIndex - 1]);
             currentSecondaryActionIndex = selectedSecondaryActionIndex;
 
-            DrawFollowActionSettings(facade, GetSecondaryAction(), undoRedoWarningPropertyPath);
+            grabConfigurationIsDirty = currentPrimaryAction != updatedPrimaryAction || currentSecondaryAction != updatedSecondaryAction;
+
+            DrawFollowActionSettings(facade, facade.Configuration.GetSecondaryAction(), undoRedoWarningPropertyPath);
 
             EditorHelper.DrawHorizontalLine();
 
@@ -116,7 +122,6 @@
 
             if (grabConfigurationIsDirty)
             {
-                CheckFollowAndControlDirectionPair(updatedPrimaryAction, updatedSecondaryAction);
                 EditorSceneManager.MarkSceneDirty(SceneManager.GetActiveScene());
                 EditorUtility.SetDirty(facade.Configuration.GrabConfiguration);
             }
@@ -128,28 +133,13 @@
             SetActionArray(facade, primaryActionsIndexes, ref primaryActions);
             SetActionArray(facade, secondaryActionsIndexes, ref secondaryActions);
 
-            currentPrimaryActionIndex = UpdateIndex(facade, GetPrimaryAction(), primaryActionsIndexes, currentPrimaryActionIndex);
-            currentSecondaryActionIndex = UpdateIndex(facade, GetSecondaryAction(), secondaryActionsIndexes, currentSecondaryActionIndex);
+            currentPrimaryActionIndex = UpdateIndex(facade, facade.Configuration.GetPrimaryAction(), primaryActionsIndexes, currentPrimaryActionIndex);
+            currentSecondaryActionIndex = UpdateIndex(facade, facade.Configuration.GetSecondaryAction(), secondaryActionsIndexes, currentSecondaryActionIndex);
         }
 
         protected virtual bool IsConfigurationSet()
         {
             return facade != null && facade.Configuration != null;
-        }
-
-        protected virtual bool IsGrabConfigurationSet()
-        {
-            return IsConfigurationSet() && facade.Configuration.GrabConfiguration != null;
-        }
-
-        protected virtual GrabInteractableAction GetPrimaryAction()
-        {
-            return IsGrabConfigurationSet() && facade.Configuration.GrabConfiguration.PrimaryAction != null ? facade.Configuration.GrabConfiguration.PrimaryAction : null;
-        }
-
-        protected virtual GrabInteractableAction GetSecondaryAction()
-        {
-            return IsGrabConfigurationSet() && facade.Configuration.GrabConfiguration.SecondaryAction != null ? facade.Configuration.GrabConfiguration.SecondaryAction : null;
         }
 
         protected virtual SerializedProperty DrawPropertyFieldWithChangeHandlers(SerializedObject sourceObject, string propertyName, string undoRedoWarningPropertyPath)
@@ -264,9 +254,9 @@
                 return 0;
             }
 
-            for (int actionIndex = 0; actionIndex < facade.Configuration.GrabConfiguration.ActionTypes.NonSubscribableElements.Count; actionIndex++)
+            for (int actionIndex = 0; actionIndex < facade.Configuration.GrabActionTypesCount; actionIndex++)
             {
-                GrabInteractableAction actionComponent = facade.Configuration.GrabConfiguration.ActionTypes.NonSubscribableElements[actionIndex].GetComponent<GrabInteractableAction>();
+                GrabInteractableAction actionComponent = facade.Configuration.GetGrabActionTypeObject(actionIndex).GetComponent<GrabInteractableAction>();
                 if (actionComponent != null && actionComponent.GetType() == actionProperty.GetType())
                 {
                     return Array.IndexOf(template, actionIndex) + 1;
@@ -287,57 +277,14 @@
             actions[0] = customFollowOption;
             for (int actionIndex = 0; actionIndex < template.Length; actionIndex++)
             {
-                if (!IsGrabConfigurationSet() || facade.Configuration.GrabConfiguration.ActionTypes.NonSubscribableElements.Count == 0)
+                if (!facade.Configuration.IsGrabConfigurationSet() || facade.Configuration.GrabActionTypesCount == 0)
                 {
                     continue;
                 }
 
-                string actionName = facade.Configuration.GrabConfiguration.ActionTypes.NonSubscribableElements[template[actionIndex]].name;
+                string actionName = facade.Configuration.GetGrabActionTypeObject(template[actionIndex]).name;
                 actions[actionIndex + 1] = actionName;
             }
-        }
-
-        protected virtual GrabInteractableAction UpdateAction(InteractableFacade facade, int[] template, int currentAction, int selectedAction, GrabInteractableAction actionProperty, int siblingPosition)
-        {
-            if (currentAction == selectedAction || selectedAction == 0)
-            {
-                return actionProperty;
-            }
-
-            if (actionProperty != null)
-            {
-                DestroyImmediate(actionProperty.gameObject);
-            }
-
-            int actualSelectedAction = template[selectedAction - 1];
-            GameObject actionPrefab = (GameObject)PrefabUtility.InstantiatePrefab(facade.Configuration.GrabConfiguration.ActionTypes.NonSubscribableElements[actualSelectedAction], facade.Configuration.GrabConfiguration.ActionTypes.transform);
-            actionPrefab.transform.SetSiblingIndex(siblingPosition);
-            return actionPrefab.GetComponent<GrabInteractableAction>();
-        }
-
-        protected virtual void CheckFollowAndControlDirectionPair(GrabInteractableAction primaryAction, GrabInteractableAction secondaryAction)
-        {
-            GrabInteractableFollowAction followAction;
-            GrabInteractableControlDirectionAction controlDirectionAction;
-
-            if (secondaryAction != null && typeof(GrabInteractableControlDirectionAction).IsAssignableFrom(secondaryAction.GetType()))
-            {
-                controlDirectionAction = (GrabInteractableControlDirectionAction)secondaryAction;
-                controlDirectionAction.LinkedObjects = null;
-            }
-
-            if (primaryAction == null ||
-                secondaryAction == null ||
-                !typeof(GrabInteractableFollowAction).IsAssignableFrom(primaryAction.GetType()) ||
-                !typeof(GrabInteractableControlDirectionAction).IsAssignableFrom(secondaryAction.GetType()))
-            {
-                return;
-            }
-
-            followAction = (GrabInteractableFollowAction)primaryAction;
-            controlDirectionAction = (GrabInteractableControlDirectionAction)secondaryAction;
-
-            controlDirectionAction.LinkedObjects = followAction.RotationModifiers;
         }
     }
 }
