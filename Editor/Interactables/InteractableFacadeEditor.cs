@@ -22,6 +22,7 @@
         private const string showMeshContainerButtonText = "Show Mesh Container";
         private const string showOrientationRuleButtonText = "Show Orientation Rule Container";
         private const string showOrientationHandleButtonText = "Show Orientation Handle Container";
+        private const string showFollowContainerButtonText = "Show Follow Tracking Container";
         private const string velocityMultiplierTitle = "Velocity Multiplier Settings";
         private const string advancedFollowTitle = "Advanced Follow Settings";
         private const string customFollowOption = "Custom";
@@ -167,14 +168,45 @@
 
             SerializedProperty followTracking = DrawPropertyFieldWithChangeHandlers(actionObject, "followTracking", undoRedoWarningPropertyPath);
 
-            if (followTracking.intValue == 4)
+            GameObject followContainer = null;
+
+            switch (followTracking.intValue)
             {
-                EditorGUI.indentLevel++;
-                RotateAroundAngularVelocity rotationModifier = (RotateAroundAngularVelocity)followAction.FollowRotateAroundAngularVelocityModifier.RotationModifier;
-                DrawPropertyFieldWithChangeHandlers(new SerializedObject(rotationModifier), "applyToAxis", undoRedoWarningPropertyPath);
-                DrawPropertyFieldWithChangeHandlers(new SerializedObject(rotationModifier), "sourceMultiplier", undoRedoWarningPropertyPath);
-                EditorGUI.indentLevel--;
+                case 0:
+                    followContainer = followAction.FollowTransformModifier.gameObject;
+                    break;
+                case 1:
+                    followContainer = followAction.FollowRigidbodyModifier.gameObject;
+                    break;
+                case 2:
+                    followContainer = followAction.FollowRigidbodyForceRotateModifier.gameObject;
+                    break;
+                case 3:
+                    followContainer = followAction.FollowTransformRotateOnPositionDifferenceModifier.gameObject;
+                    break;
+                case 4:
+                    followContainer = followAction.FollowRotateAroundAngularVelocityModifier.gameObject;
+                    break;
             }
+
+            GUILayout.BeginHorizontal();
+            EditorGUILayout.PrefixLabel(" ");
+            if (followContainer != null && GUILayout.Button(showFollowContainerButtonText))
+            {
+                EditorGUIUtility.PingObject(followContainer);
+            }
+            GUILayout.EndHorizontal();
+
+            EditorGUI.indentLevel++;
+            switch (followTracking.intValue)
+            {
+                case 4:
+                    RotateAroundAngularVelocity rotationModifier = (RotateAroundAngularVelocity)followAction.FollowRotateAroundAngularVelocityModifier.RotationModifier;
+                    DrawPropertyFieldWithChangeHandlers(new SerializedObject(rotationModifier), "applyToAxis", undoRedoWarningPropertyPath);
+                    DrawPropertyFieldWithChangeHandlers(new SerializedObject(rotationModifier), "sourceMultiplier", undoRedoWarningPropertyPath);
+                    break;
+            }
+            EditorGUI.indentLevel--;
 
             SerializedProperty grabOffset = DrawPropertyFieldWithChangeHandlers(actionObject, "grabOffset", undoRedoWarningPropertyPath);
 
