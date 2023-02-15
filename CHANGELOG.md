@@ -1,5 +1,14 @@
 # Changelog
 
+### [2.8.1](https://github.com/ExtendRealityLtd/Tilia.Interactions.Interactables.Unity/compare/v2.8.0...v2.8.1) (2023-02-15)
+
+#### Bug Fixes
+
+* **InteractableConfigurator:** reset instantiated action orientation ([70c43da](https://github.com/ExtendRealityLtd/Tilia.Interactions.Interactables.Unity/commit/70c43dab6cfcfa78c0afaa49a22a1d7efa7f97eb))
+  > When the interactable action is instantiated it was not having the position, rotation and scale reset so if the original converted object was not at the zero orientation then the action was being offset.
+  > 
+  > This fix ensures the position, rotation and scale is reset to the identity when the action is childed to the interactable.
+
 ## [2.8.0](https://github.com/ExtendRealityLtd/Tilia.Interactions.Interactables.Unity/compare/v2.7.1...v2.8.0) (2023-02-13)
 
 #### Features
