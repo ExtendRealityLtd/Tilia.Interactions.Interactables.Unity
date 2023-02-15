@@ -436,6 +436,9 @@
             actionObject.name = actionObject.name.Replace("(Clone)", "(Generated)");
             actionObject.transform.SetParent(facade.Configuration.GrabConfiguration.ActionTypes.transform);
             actionObject.transform.SetSiblingIndex(siblingPosition);
+            actionObject.transform.localPosition = Vector3.zero;
+            actionObject.transform.localRotation = Quaternion.identity;
+            actionObject.transform.localScale = Vector3.zero;
 
             return actionObject.GetComponent<GrabInteractableAction>();
         }
