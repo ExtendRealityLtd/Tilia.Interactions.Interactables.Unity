@@ -429,16 +429,18 @@
             GameObject toInstantiate = GrabConfiguration.ActionTypes.NonSubscribableElements[newActionType];
             GameObject actionObject = null;
 #if UNITY_EDITOR
-            actionObject = (GameObject)PrefabUtility.InstantiatePrefab(toInstantiate);
+            actionObject = Application.isPlaying ? Instantiate(toInstantiate) : (GameObject)PrefabUtility.InstantiatePrefab(toInstantiate, facade.Configuration.GrabConfiguration.ActionTypes.transform);
 #else
             actionObject = Instantiate(toInstantiate);
 #endif
-            actionObject.name = actionObject.name.Replace("(Clone)", "(Generated)");
+            actionObject.transform.position = facade.transform.position;
+            actionObject.transform.rotation = facade.transform.rotation;
+            actionObject.transform.SetGlobalScale(facade.transform.lossyScale);
             actionObject.transform.SetParent(facade.Configuration.GrabConfiguration.ActionTypes.transform);
+
+            actionObject.name = actionObject.name.Replace("(Clone)", "(Generated)");
             actionObject.transform.SetSiblingIndex(siblingPosition);
-            actionObject.transform.localPosition = Vector3.zero;
-            actionObject.transform.localRotation = Quaternion.identity;
-            actionObject.transform.localScale = Vector3.zero;
+
 
             return actionObject.GetComponent<GrabInteractableAction>();
         }
