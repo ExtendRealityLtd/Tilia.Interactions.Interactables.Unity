@@ -1,5 +1,14 @@
 # Changelog
 
+### [2.8.2](https://github.com/ExtendRealityLtd/Tilia.Interactions.Interactables.Unity/compare/v2.8.1...v2.8.2) (2023-02-15)
+
+#### Bug Fixes
+
+* **InteractableConfigurator:** set action instantiation correctly ([510184a](https://github.com/ExtendRealityLtd/Tilia.Interactions.Interactables.Unity/commit/510184a5eeff27f60dd86c6ac8ddeac67ce97b5e))
+  > There was an issue when instantiating a new action it was not possible to update the position, rotation or scale of any child object in the action GameObject. This has now been fixed by making the action object match the world orientation/scale of the interactable facade so when it is childed it resets to the correct zero origin.
+  > 
+  > The Instantiate method is also always called if the app is playing and not the PrefabUtility method as this is only now used at edit time in the editor.
+
 ### [2.8.1](https://github.com/ExtendRealityLtd/Tilia.Interactions.Interactables.Unity/compare/v2.8.0...v2.8.1) (2023-02-15)
 
 #### Bug Fixes
