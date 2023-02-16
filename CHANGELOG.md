@@ -1,5 +1,16 @@
 # Changelog
 
+## [2.9.0](https://github.com/ExtendRealityLtd/Tilia.Interactions.Interactables.Unity/compare/v2.8.2...v2.9.0) (2023-02-16)
+
+#### Features
+
+* **Editor:** add sub options for action types ([ce452a5](https://github.com/ExtendRealityLtd/Tilia.Interactions.Interactables.Unity/commit/ce452a521b96f545a4b0677378760fb284ccd55a))
+  > A new sub option has been added for the `None` action and the `Scale` action that bubbles up useful internal settings.
+  > 
+  > The primary/secondary action drop downs also now have a button next to them that pings the action gameobject within the interactable hierarchy to make it easier to navigate to.
+  > 
+  > Also, the entire editor script has been refactored to make it tidier and more concise to read.
+
 ### [2.8.2](https://github.com/ExtendRealityLtd/Tilia.Interactions.Interactables.Unity/compare/v2.8.1...v2.8.2) (2023-02-15)
 
 #### Bug Fixes
