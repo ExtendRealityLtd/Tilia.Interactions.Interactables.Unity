@@ -26,7 +26,7 @@
         private const string velocityMultiplierTitle = "Velocity Multiplier Settings";
         private const string advancedFollowTitle = "Advanced Follow Settings";
         private const string customFollowOption = "Custom";
-        private const string dropdownButtonHelperIcon = "d_UnityEditor.LookDevView";
+        private const string dropdownButtonHelperIcon = "animationvisibilitytoggleon";
         private const string dropdownButtonHelperText = "|View Action GameObject";
         private Vector2 dropdownButtonHelperSize = new Vector2(22f, 14f);
 
