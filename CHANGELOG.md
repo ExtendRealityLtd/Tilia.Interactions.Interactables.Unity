@@ -1,5 +1,12 @@
 # Changelog
 
+### [2.9.1](https://github.com/ExtendRealityLtd/Tilia.Interactions.Interactables.Unity/compare/v2.9.0...v2.9.1) (2023-02-16)
+
+#### Bug Fixes
+
+* **Editor:** replace missing icon in newer unity versions ([3aa147a](https://github.com/ExtendRealityLtd/Tilia.Interactions.Interactables.Unity/commit/3aa147a23706c56c5c211ef5126ea702e6ea545c))
+  > The icon was available in Unity 2018 but does not seem to be available in 2022 so it has been replaced with something that is similar and seems to be available in all current versions.
+
 ## [2.9.0](https://github.com/ExtendRealityLtd/Tilia.Interactions.Interactables.Unity/compare/v2.8.2...v2.9.0) (2023-02-16)
 
 #### Features
