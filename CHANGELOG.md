@@ -1,5 +1,14 @@
 # Changelog
 
+## [2.10.0](https://github.com/ExtendRealityLtd/Tilia.Interactions.Interactables.Unity/compare/v2.9.3...v2.10.0) (2023-02-26)
+
+#### Features
+
+* **Interactions:** add IsVisible property to interactable ([a77cb65](https://github.com/ExtendRealityLtd/Tilia.Interactions.Interactables.Unity/commit/a77cb6595e210f55f90077a11bf16367073df5e2))
+  > The IsVisible property on the getter will return whether the interactable object is in its `visible` state which is the renderers are active and the colliders working.
+  > 
+  > When the IsVisible property is set to `false` then all of the renderers are disabled and all of the colliders are set to trigger colliders to mimmic the GameObject becoming invisible but still active within the scene.
+
 ### [2.9.3](https://github.com/ExtendRealityLtd/Tilia.Interactions.Interactables.Unity/compare/v2.9.2...v2.9.3) (2023-02-22)
 
 #### Miscellaneous Chores
