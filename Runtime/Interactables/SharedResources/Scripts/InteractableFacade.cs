@@ -223,6 +223,20 @@
         /// Whether the secondary grab action functionality is enabled.
         /// </summary>
         public virtual bool SecondaryGrabEnabled => Configuration.GrabConfiguration.PrimaryAction.gameObject.activeInHierarchy;
+        /// <summary>
+        /// Whether the Interactable is visible or not. Collisions will still occur on a hidden Interactable but only against a trigger collider.
+        /// </summary>
+        public virtual bool IsVisible
+        {
+            get
+            {
+                return Configuration.IsVisible;
+            }
+            set
+            {
+                Configuration.IsVisible = value;
+            }
+        }
 
         /// <summary>
         /// The routine for grabbing after a certain instruction.
