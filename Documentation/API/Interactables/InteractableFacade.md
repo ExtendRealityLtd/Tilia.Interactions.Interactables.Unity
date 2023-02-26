@@ -30,6 +30,7 @@ The public interface into the Interactable Prefab.
   * [IsGrabbed]
   * [IsGrabTypeToggle]
   * [IsTouched]
+  * [IsVisible]
   * [MeshContainer]
   * [Meshes]
   * [PrimaryGrabEnabled]
@@ -307,6 +308,16 @@ Whether the Interactable is currently being touched by any valid Interactor.
 
 ```
 public virtual bool IsTouched { get; }
+```
+
+#### IsVisible
+
+Whether the Interactable is visible or not. Collisions will still occur on a hidden Interactable but only against a trigger collider.
+
+##### Declaration
+
+```
+public virtual bool IsVisible { get; set; }
 ```
 
 #### MeshContainer
@@ -960,6 +971,7 @@ public virtual void UngrabAtEndOfFrame(InteractorFacade interactor)
 [IsGrabbed]: #IsGrabbed
 [IsGrabTypeToggle]: #IsGrabTypeToggle
 [IsTouched]: #IsTouched
+[IsVisible]: #IsVisible
 [MeshContainer]: #MeshContainer
 [Meshes]: #Meshes
 [PrimaryGrabEnabled]: #PrimaryGrabEnabled

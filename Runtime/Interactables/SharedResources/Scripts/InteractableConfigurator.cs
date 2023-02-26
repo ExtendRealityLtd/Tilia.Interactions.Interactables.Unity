@@ -1,5 +1,6 @@
 ﻿namespace Tilia.Interactions.Interactables.Interactables
 {
+    using System.Collections.Generic;
     using Tilia.Interactions.Interactables.Interactables.Grab;
     using Tilia.Interactions.Interactables.Interactables.Grab.Action;
     using Tilia.Interactions.Interactables.Interactables.Touch;
@@ -233,6 +234,37 @@
         public virtual int GrabActionTypesCount => GrabConfiguration.ActionTypes.NonSubscribableElements.Count;
 
         /// <summary>
+        /// Whether the Interactable is visible or not.
+        /// </summary>
+        public virtual bool IsVisible
+        {
+            get
+            {
+                return meshColliderTriggerStates.Count == 0;
+            }
+            set
+            {
+                if (value)
+                {
+                    RestoreCollidersAndRenderers();
+                }
+                else
+                {
+                    DisableCollidersAndRenderers();
+                }
+            }
+        }
+
+        /// <summary>
+        /// A collection of trigger states for the colliders held within the <see cref="MeshContainer"/>.
+        /// </summary>
+        protected Dictionary<Collider, bool> meshColliderTriggerStates = new Dictionary<Collider, bool>();
+        /// <summary>
+        /// A collection of enabled states for the renderers held within the <see cref="MeshContainer"/>.
+        /// </summary>
+        protected Dictionary<Renderer, bool> meshRendererEnabledStates = new Dictionary<Renderer, bool>();
+
+        /// <summary>
         /// Clears <see cref="DisallowedTouchInteractors"/>.
         /// </summary>
         public virtual void ClearDisallowedTouchInteractors()
@@ -452,6 +484,61 @@
         {
             TouchConfiguration.ConfigureContainer();
             GrabConfiguration.ConfigureContainer();
+        }
+
+
+        /// <summary>
+        /// Hides all of the found <see cref="Collider"/> and <see cref="Renderer"/> components in the <see cref="MeshContainer"/> and saves their current state for later restore.
+        /// </summary>
+        protected virtual void DisableCollidersAndRenderers()
+        {
+            if (MeshContainer == null)
+            {
+                return;
+            }
+
+            meshColliderTriggerStates.Clear();
+            foreach (Collider current in MeshContainer.GetComponentsInChildren<Collider>())
+            {
+                meshColliderTriggerStates.Add(current, current.isTrigger);
+                current.isTrigger = true;
+            }
+
+            meshRendererEnabledStates.Clear();
+            foreach (Renderer current in MeshContainer.GetComponentsInChildren<Renderer>())
+            {
+                meshRendererEnabledStates.Add(current, current.enabled);
+                current.enabled = false;
+            }
+        }
+
+        /// <summary>
+        /// Restores all of the current saved states for the found <see cref="Collider"/> and <see cref="Renderer"/> components found in the <see cref="MeshContainer"/>.
+        /// </summary>
+        protected virtual void RestoreCollidersAndRenderers()
+        {
+            if (MeshContainer == null)
+            {
+                return;
+            }
+
+            foreach (Collider current in MeshContainer.GetComponentsInChildren<Collider>())
+            {
+                if (meshColliderTriggerStates.TryGetValue(current, out bool state))
+                {
+                    current.isTrigger = state;
+                }
+            }
+            meshColliderTriggerStates.Clear();
+
+            foreach (Renderer current in MeshContainer.GetComponentsInChildren<Renderer>())
+            {
+                if (meshRendererEnabledStates.TryGetValue(current, out bool state))
+                {
+                    current.enabled = state;
+                }
+            }
+            meshRendererEnabledStates.Clear();
         }
 
         /// <summary>

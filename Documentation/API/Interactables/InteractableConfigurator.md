@@ -7,6 +7,9 @@ Sets up the Interactable Prefab based on the provided user settings.
 * [Inheritance]
 * [Namespace]
 * [Syntax]
+* [Fields]
+  * [meshColliderTriggerStates]
+  * [meshRendererEnabledStates]
 * [Properties]
   * [ActiveCollisions]
   * [CollisionNotifier]
@@ -15,7 +18,9 @@ Sets up the Interactable Prefab based on the provided user settings.
   * [DisallowedGrabInteractors]
   * [DisallowedTouchInteractors]
   * [Facade]
+  * [GrabActionTypesCount]
   * [GrabConfiguration]
+  * [IsVisible]
   * [MeshContainer]
   * [TouchConfiguration]
 * [Methods]
@@ -24,10 +29,23 @@ Sets up the Interactable Prefab based on the provided user settings.
   * [ClearDisallowedGrabInteractors()]
   * [ClearDisallowedTouchInteractors()]
   * [ConfigureContainer()]
+  * [CreateGrabAction(GrabInteractableAction, Int32, Int32)]
+  * [DisableCollidersAndRenderers()]
+  * [GetGrabActionTypeObject(Int32)]
+  * [GetGrabActionTypeObject(InteractableFactory.ActionType)]
+  * [GetPrimaryAction()]
+  * [GetSecondaryAction()]
+  * [IsGrabConfigurationSet()]
   * [OnAfterConsumerContainerChange()]
   * [OnAfterConsumerRigidbodyChange()]
   * [OnAfterDisallowedGrabInteractorsChange()]
   * [OnAfterDisallowedTouchInteractorsChange()]
+  * [RestoreCollidersAndRenderers()]
+  * [SetFollowAndControlDirectionPair()]
+  * [UpdatePrimaryAction(Int32)]
+  * [UpdatePrimaryAction(InteractableFactory.ActionType)]
+  * [UpdateSecondaryAction(Int32)]
+  * [UpdateSecondaryAction(InteractableFactory.ActionType)]
 
 ## Details
 
@@ -44,6 +62,28 @@ Sets up the Interactable Prefab based on the provided user settings.
 
 ```
 public class InteractableConfigurator : MonoBehaviour
+```
+
+### Fields
+
+#### meshColliderTriggerStates
+
+A collection of trigger states for the colliders held within the [MeshContainer].
+
+##### Declaration
+
+```
+protected Dictionary<Collider, bool> meshColliderTriggerStates
+```
+
+#### meshRendererEnabledStates
+
+A collection of enabled states for the renderers held within the [MeshContainer].
+
+##### Declaration
+
+```
+protected Dictionary<Renderer, bool> meshRendererEnabledStates
 ```
 
 ### Properties
@@ -118,6 +158,16 @@ The public interface facade.
 public InteractableFacade Facade { get; protected set; }
 ```
 
+#### GrabActionTypesCount
+
+The total number of available grab action types.
+
+##### Declaration
+
+```
+public virtual int GrabActionTypesCount { get; }
+```
+
 #### GrabConfiguration
 
 The linked Grab Internal Setup.
@@ -126,6 +176,16 @@ The linked Grab Internal Setup.
 
 ```
 public GrabInteractableConfigurator GrabConfiguration { get; protected set; }
+```
+
+#### IsVisible
+
+Whether the Interactable is visible or not.
+
+##### Declaration
+
+```
+public virtual bool IsVisible { get; set; }
 ```
 
 #### MeshContainer
@@ -200,6 +260,132 @@ Configures any container data to the sub setup components.
 protected virtual void ConfigureContainer()
 ```
 
+#### CreateGrabAction(GrabInteractableAction, Int32, Int32)
+
+Creates a grab action for the given type.
+
+##### Declaration
+
+```
+protected virtual GrabInteractableAction CreateGrabAction(GrabInteractableAction currentAction, int newActionType, int siblingPosition)
+```
+
+##### Parameters
+
+| Type | Name | Description |
+| --- | --- | --- |
+| [GrabInteractableAction] | currentAction | The current action. |
+| System.Int32 | newActionType | The new action type to create. |
+| System.Int32 | siblingPosition | The position the action should take in the hierarcy. |
+
+##### Returns
+
+| Type | Description |
+| --- | --- |
+| [GrabInteractableAction] | The created Grab Action. |
+
+#### DisableCollidersAndRenderers()
+
+Hides all of the found Collider and Renderer components in the [MeshContainer] and saves their current state for later restore.
+
+##### Declaration
+
+```
+protected virtual void DisableCollidersAndRenderers()
+```
+
+#### GetGrabActionTypeObject(Int32)
+
+Gets the GameObject for the given Grab Action Type index.
+
+##### Declaration
+
+```
+public virtual GameObject GetGrabActionTypeObject(int index)
+```
+
+##### Parameters
+
+| Type | Name | Description |
+| --- | --- | --- |
+| System.Int32 | index | The index to attempt to get. |
+
+##### Returns
+
+| Type | Description |
+| --- | --- |
+| GameObject | The found GameObject for the given index type. |
+
+#### GetGrabActionTypeObject(InteractableFactory.ActionType)
+
+Gets the GameObject for the given Grab [InteractableFactory.ActionType].
+
+##### Declaration
+
+```
+public virtual GameObject GetGrabActionTypeObject(InteractableFactory.ActionType type)
+```
+
+##### Parameters
+
+| Type | Name | Description |
+| --- | --- | --- |
+| [InteractableFactory.ActionType] | type | The action type to attempt to get. |
+
+##### Returns
+
+| Type | Description |
+| --- | --- |
+| GameObject | The GameObject for the given action type. |
+
+#### GetPrimaryAction()
+
+Gets the current grab configuration primary action.
+
+##### Declaration
+
+```
+public virtual GrabInteractableAction GetPrimaryAction()
+```
+
+##### Returns
+
+| Type | Description |
+| --- | --- |
+| [GrabInteractableAction] | The current primary action. |
+
+#### GetSecondaryAction()
+
+Gets the current grab configuration secondary action.
+
+##### Declaration
+
+```
+public virtual GrabInteractableAction GetSecondaryAction()
+```
+
+##### Returns
+
+| Type | Description |
+| --- | --- |
+| [GrabInteractableAction] | The current secondary action. |
+
+#### IsGrabConfigurationSet()
+
+Determines whether the grab configuration is set.
+
+##### Declaration
+
+```
+public virtual bool IsGrabConfigurationSet()
+```
+
+##### Returns
+
+| Type | Description |
+| --- | --- |
+| System.Boolean | Whether the grab configuration is set. |
+
 #### OnAfterConsumerContainerChange()
 
 Called after [ConsumerContainer] has been changed.
@@ -240,7 +426,117 @@ Called after [DisallowedTouchInteractors] has been changed.
 protected virtual void OnAfterDisallowedTouchInteractorsChange()
 ```
 
+#### RestoreCollidersAndRenderers()
+
+Restores all of the current saved states for the found Collider and Renderer components found in the [MeshContainer].
+
+##### Declaration
+
+```
+protected virtual void RestoreCollidersAndRenderers()
+```
+
+#### SetFollowAndControlDirectionPair()
+
+Sets up the relevant linkages if the follow and control direction actions are selected in a pairing.
+
+##### Declaration
+
+```
+protected virtual void SetFollowAndControlDirectionPair()
+```
+
+#### UpdatePrimaryAction(Int32)
+
+Updates the primary grab action to the given type index.
+
+##### Declaration
+
+```
+public virtual GrabInteractableAction UpdatePrimaryAction(int index)
+```
+
+##### Parameters
+
+| Type | Name | Description |
+| --- | --- | --- |
+| System.Int32 | index | The grab action type index. |
+
+##### Returns
+
+| Type | Description |
+| --- | --- |
+| [GrabInteractableAction] | The new grab action. |
+
+#### UpdatePrimaryAction(InteractableFactory.ActionType)
+
+Updates the primary grab action to the given type.
+
+##### Declaration
+
+```
+public virtual GrabInteractableAction UpdatePrimaryAction(InteractableFactory.ActionType type)
+```
+
+##### Parameters
+
+| Type | Name | Description |
+| --- | --- | --- |
+| [InteractableFactory.ActionType] | type | The grab action type. |
+
+##### Returns
+
+| Type | Description |
+| --- | --- |
+| [GrabInteractableAction] | The new grab action. |
+
+#### UpdateSecondaryAction(Int32)
+
+Updates the secondary grab action to the given type index.
+
+##### Declaration
+
+```
+public virtual GrabInteractableAction UpdateSecondaryAction(int index)
+```
+
+##### Parameters
+
+| Type | Name | Description |
+| --- | --- | --- |
+| System.Int32 | index | The grab action type index. |
+
+##### Returns
+
+| Type | Description |
+| --- | --- |
+| [GrabInteractableAction] | The new grab action. |
+
+#### UpdateSecondaryAction(InteractableFactory.ActionType)
+
+Updates the secondary grab action to the given type.
+
+##### Declaration
+
+```
+public virtual GrabInteractableAction UpdateSecondaryAction(InteractableFactory.ActionType type)
+```
+
+##### Parameters
+
+| Type | Name | Description |
+| --- | --- | --- |
+| [InteractableFactory.ActionType] | type | The grab action type. |
+
+##### Returns
+
+| Type | Description |
+| --- | --- |
+| [GrabInteractableAction] | The new grab action. |
+
 [Tilia.Interactions.Interactables.Interactables]: README.md
+[MeshContainer]: InteractableConfigurator.md#MeshContainer
+[MeshContainer]: InteractableConfigurator.md#MeshContainer
 [CollisionNotifier]: InteractableConfigurator.md#CollisionNotifier
 [InteractableFacade]: InteractableFacade.md
 [GrabInteractableConfigurator]: Grab/GrabInteractableConfigurator.md
@@ -249,13 +545,20 @@ protected virtual void OnAfterDisallowedTouchInteractorsChange()
 [ConsumerRigidbody]: InteractableConfigurator.md#ConsumerRigidbody
 [DisallowedGrabInteractors]: InteractableConfigurator.md#DisallowedGrabInteractors
 [DisallowedTouchInteractors]: InteractableConfigurator.md#DisallowedTouchInteractors
+[GrabInteractableAction]: Grab/Action/GrabInteractableAction.md
+[MeshContainer]: InteractableConfigurator.md#MeshContainer
+[InteractableFactory.ActionType]: Utility/InteractableFactory.ActionType.md
 [ConsumerContainer]: InteractableConfigurator.md#ConsumerContainer
 [ConsumerRigidbody]: InteractableConfigurator.md#ConsumerRigidbody
 [DisallowedGrabInteractors]: InteractableConfigurator.md#DisallowedGrabInteractors
 [DisallowedTouchInteractors]: InteractableConfigurator.md#DisallowedTouchInteractors
+[MeshContainer]: InteractableConfigurator.md#MeshContainer
 [Inheritance]: #Inheritance
 [Namespace]: #Namespace
 [Syntax]: #Syntax
+[Fields]: #Fields
+[meshColliderTriggerStates]: #meshColliderTriggerStates
+[meshRendererEnabledStates]: #meshRendererEnabledStates
 [Properties]: #Properties
 [ActiveCollisions]: #ActiveCollisions
 [CollisionNotifier]: #CollisionNotifier
@@ -264,7 +567,9 @@ protected virtual void OnAfterDisallowedTouchInteractorsChange()
 [DisallowedGrabInteractors]: #DisallowedGrabInteractors
 [DisallowedTouchInteractors]: #DisallowedTouchInteractors
 [Facade]: #Facade
+[GrabActionTypesCount]: #GrabActionTypesCount
 [GrabConfiguration]: #GrabConfiguration
+[IsVisible]: #IsVisible
 [MeshContainer]: #MeshContainer
 [TouchConfiguration]: #TouchConfiguration
 [Methods]: #Methods
@@ -273,7 +578,20 @@ protected virtual void OnAfterDisallowedTouchInteractorsChange()
 [ClearDisallowedGrabInteractors()]: #ClearDisallowedGrabInteractors
 [ClearDisallowedTouchInteractors()]: #ClearDisallowedTouchInteractors
 [ConfigureContainer()]: #ConfigureContainer
+[CreateGrabAction(GrabInteractableAction, Int32, Int32)]: #CreateGrabActionGrabInteractableAction-Int32-Int32
+[DisableCollidersAndRenderers()]: #DisableCollidersAndRenderers
+[GetGrabActionTypeObject(Int32)]: #GetGrabActionTypeObjectInt32
+[GetGrabActionTypeObject(InteractableFactory.ActionType)]: #GetGrabActionTypeObjectInteractableFactory.ActionType
+[GetPrimaryAction()]: #GetPrimaryAction
+[GetSecondaryAction()]: #GetSecondaryAction
+[IsGrabConfigurationSet()]: #IsGrabConfigurationSet
 [OnAfterConsumerContainerChange()]: #OnAfterConsumerContainerChange
 [OnAfterConsumerRigidbodyChange()]: #OnAfterConsumerRigidbodyChange
 [OnAfterDisallowedGrabInteractorsChange()]: #OnAfterDisallowedGrabInteractorsChange
 [OnAfterDisallowedTouchInteractorsChange()]: #OnAfterDisallowedTouchInteractorsChange
+[RestoreCollidersAndRenderers()]: #RestoreCollidersAndRenderers
+[SetFollowAndControlDirectionPair()]: #SetFollowAndControlDirectionPair
+[UpdatePrimaryAction(Int32)]: #UpdatePrimaryActionInt32
+[UpdatePrimaryAction(InteractableFactory.ActionType)]: #UpdatePrimaryActionInteractableFactory.ActionType
+[UpdateSecondaryAction(Int32)]: #UpdateSecondaryActionInt32
+[UpdateSecondaryAction(InteractableFactory.ActionType)]: #UpdateSecondaryActionInteractableFactory.ActionType
