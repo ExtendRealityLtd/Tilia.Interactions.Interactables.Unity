@@ -5,6 +5,7 @@
     using Zinnia.Data.Attribute;
     using Zinnia.Data.Collection.List;
     using Zinnia.Extension;
+    using Zinnia.Tracking.Collision.Active;
     using Zinnia.Tracking.Follow;
     using Zinnia.Tracking.Follow.Modifier;
     using Zinnia.Tracking.Velocity;
@@ -435,6 +436,24 @@
             protected set
             {
                 precisionLogicContainer = value;
+            }
+        }
+        [Tooltip("The Collision Point Container component for the precision point logic.")]
+        [SerializeField]
+        [Restricted]
+        private CollisionPointContainer collisionPointContainerComponent;
+        /// <summary>
+        /// The <see cref="CollisionPointContainer"/> component for the precision point logic.
+        /// </summary>
+        public CollisionPointContainer CollisionPointContainerComponent
+        {
+            get
+            {
+                return collisionPointContainerComponent;
+            }
+            protected set
+            {
+                collisionPointContainerComponent = value;
             }
         }
         [Tooltip("The container for the precision point creation logic.")]

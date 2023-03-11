@@ -43,6 +43,7 @@ Sets up the Interactable Prefab grab settings based on the provided user setting
   * [PrimaryGrabIsNone(Int32)]
   * [SetGrabProvider(Int32)]
   * [SnapFollowOrientation()]
+  * [ToggleAttemptSwapLogicContainer(Boolean)]
   * [Ungrab(Int32)]
   * [Ungrab(InteractorFacade)]
   * [UnlinkReceiverToProvider()]
@@ -456,6 +457,22 @@ Snaps the follow on the primary and secondary action if they are [GrabInteractab
 public virtual void SnapFollowOrientation()
 ```
 
+#### ToggleAttemptSwapLogicContainer(Boolean)
+
+Toggles the state of the Attempt Swap Logic container.
+
+##### Declaration
+
+```
+public virtual void ToggleAttemptSwapLogicContainer(bool state)
+```
+
+##### Parameters
+
+| Type | Name | Description |
+| --- | --- | --- |
+| System.Boolean | state | The state to toggle to. |
+
 #### Ungrab(Int32)
 
 Attempt to ungrab the Interactable.
@@ -578,6 +595,7 @@ protected virtual void UnlinkToSecondaryAction()
 [PrimaryGrabIsNone(Int32)]: #PrimaryGrabIsNoneInt32
 [SetGrabProvider(Int32)]: #SetGrabProviderInt32
 [SnapFollowOrientation()]: #SnapFollowOrientation
+[ToggleAttemptSwapLogicContainer(Boolean)]: #ToggleAttemptSwapLogicContainerBoolean
 [Ungrab(Int32)]: #UngrabInt32
 [Ungrab(InteractorFacade)]: #UngrabInteractorFacade
 [UnlinkReceiverToProvider()]: #UnlinkReceiverToProvider

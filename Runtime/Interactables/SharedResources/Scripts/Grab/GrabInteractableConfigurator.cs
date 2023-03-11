@@ -369,6 +369,19 @@
         }
 
         /// <summary>
+        /// Toggles the state of the Attempt Swap Logic container.
+        /// </summary>
+        /// <param name="state">The state to toggle to.</param>
+        public virtual void ToggleAttemptSwapLogicContainer(bool state)
+        {
+            if (GrabProviderOptions.Length > 0 && typeof(GrabInteractableStackInteractorProvider).IsAssignableFrom(GrabProviderOptions[0].GetType()))
+            {
+                GrabInteractableStackInteractorProvider stackProvider = (GrabInteractableStackInteractorProvider)GrabProviderOptions[0];
+                stackProvider.AttemptSwapLogicContainer.SetActive(state);
+            }
+        }
+
+        /// <summary>
         /// Snaps the follow on the primary and secondary action if they are <see cref="GrabInteractableFollowAction"/> type.
         /// </summary>
         public virtual void SnapFollowOrientation()
@@ -389,6 +402,7 @@
         protected virtual void OnEnable()
         {
             SetGrabProvider(Facade.GrabProviderIndex);
+            ToggleAttemptSwapLogicContainer(Facade.AttemptSwapSecondaryForPrimaryOnPrimaryDrop);
             ConfigureContainer();
             GrabReceiver.GrabValidity.ReceiveValidity = Facade.Configuration.DisallowedGrabInteractors;
             GrabReceiver.GrabType = Facade.GrabType;

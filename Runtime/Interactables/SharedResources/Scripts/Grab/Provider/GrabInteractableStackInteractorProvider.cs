@@ -31,6 +31,24 @@
                 eventStack = value;
             }
         }
+        [Tooltip("The container that holds the logic for attempting to swap the stacks on force pop.")]
+        [SerializeField]
+        [Restricted]
+        private GameObject attemptSwapLogicContainer;
+        /// <summary>
+        /// The container that holds the logic for attempting to swap the stacks on force pop.
+        /// </summary>
+        public GameObject AttemptSwapLogicContainer
+        {
+            get
+            {
+                return attemptSwapLogicContainer;
+            }
+            protected set
+            {
+                attemptSwapLogicContainer = value;
+            }
+        }
         #endregion
 
         /// <inheritdoc />

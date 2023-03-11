@@ -8,6 +8,8 @@ Sets up the Interactable Prefab based on the provided user settings.
 * [Namespace]
 * [Syntax]
 * [Fields]
+  * [controlDirectionCachedAction]
+  * [followCachedAction]
   * [meshColliderTriggerStates]
   * [meshRendererEnabledStates]
 * [Properties]
@@ -40,8 +42,11 @@ Sets up the Interactable Prefab based on the provided user settings.
   * [OnAfterConsumerRigidbodyChange()]
   * [OnAfterDisallowedGrabInteractorsChange()]
   * [OnAfterDisallowedTouchInteractorsChange()]
+  * [OnEnable()]
   * [RestoreCollidersAndRenderers()]
   * [SetFollowAndControlDirectionPair()]
+  * [SetFollowPrecisionPointToDirectionModifierPivot(GameObject)]
+  * [UnsetFollowPrecisionPointToDirectionModifierPivot(GameObject)]
   * [UpdatePrimaryAction(Int32)]
   * [UpdatePrimaryAction(InteractableFactory.ActionType)]
   * [UpdateSecondaryAction(Int32)]
@@ -65,6 +70,26 @@ public class InteractableConfigurator : MonoBehaviour
 ```
 
 ### Fields
+
+#### controlDirectionCachedAction
+
+The cached [GrabInteractableControlDirectionAction] for when the follow/control direction pairing is required to be set up.
+
+##### Declaration
+
+```
+protected GrabInteractableControlDirectionAction controlDirectionCachedAction
+```
+
+#### followCachedAction
+
+The cached [GrabInteractableFollowAction] for when the follow/control direction pairing is required to be set up.
+
+##### Declaration
+
+```
+protected GrabInteractableFollowAction followCachedAction
+```
 
 #### meshColliderTriggerStates
 
@@ -426,6 +451,14 @@ Called after [DisallowedTouchInteractors] has been changed.
 protected virtual void OnAfterDisallowedTouchInteractorsChange()
 ```
 
+#### OnEnable()
+
+##### Declaration
+
+```
+protected virtual void OnEnable()
+```
+
 #### RestoreCollidersAndRenderers()
 
 Restores all of the current saved states for the found Collider and Renderer components found in the [MeshContainer].
@@ -445,6 +478,38 @@ Sets up the relevant linkages if the follow and control direction actions are se
 ```
 protected virtual void SetFollowAndControlDirectionPair()
 ```
+
+#### SetFollowPrecisionPointToDirectionModifierPivot(GameObject)
+
+Sets up the link between the primary [GrabInteractableFollowAction] and the secondary [GrabInteractableControlDirectionAction] to mirror the follow precision point to the control direction pivot.
+
+##### Declaration
+
+```
+protected virtual void SetFollowPrecisionPointToDirectionModifierPivot(GameObject precisionPointContainer)
+```
+
+##### Parameters
+
+| Type | Name | Description |
+| --- | --- | --- |
+| GameObject | precisionPointContainer | The precision point container. |
+
+#### UnsetFollowPrecisionPointToDirectionModifierPivot(GameObject)
+
+Unsets the set up done in the [SetFollowPrecisionPointToDirectionModifierPivot(GameObject)] method.
+
+##### Declaration
+
+```
+protected virtual void UnsetFollowPrecisionPointToDirectionModifierPivot(GameObject precisionPointContainer)
+```
+
+##### Parameters
+
+| Type | Name | Description |
+| --- | --- | --- |
+| GameObject | precisionPointContainer | The precision point container. |
 
 #### UpdatePrimaryAction(Int32)
 
@@ -535,6 +600,8 @@ public virtual GrabInteractableAction UpdateSecondaryAction(InteractableFactory.
 | [GrabInteractableAction] | The new grab action. |
 
 [Tilia.Interactions.Interactables.Interactables]: README.md
+[GrabInteractableControlDirectionAction]: Grab/Action/GrabInteractableControlDirectionAction.md
+[GrabInteractableFollowAction]: Grab/Action/GrabInteractableFollowAction.md
 [MeshContainer]: InteractableConfigurator.md#MeshContainer
 [MeshContainer]: InteractableConfigurator.md#MeshContainer
 [CollisionNotifier]: InteractableConfigurator.md#CollisionNotifier
@@ -553,10 +620,13 @@ public virtual GrabInteractableAction UpdateSecondaryAction(InteractableFactory.
 [DisallowedGrabInteractors]: InteractableConfigurator.md#DisallowedGrabInteractors
 [DisallowedTouchInteractors]: InteractableConfigurator.md#DisallowedTouchInteractors
 [MeshContainer]: InteractableConfigurator.md#MeshContainer
+[SetFollowPrecisionPointToDirectionModifierPivot(GameObject)]: InteractableConfigurator.md#SetFollowPrecisionPointToDirectionModifierPivot_GameObject_
 [Inheritance]: #Inheritance
 [Namespace]: #Namespace
 [Syntax]: #Syntax
 [Fields]: #Fields
+[controlDirectionCachedAction]: #controlDirectionCachedAction
+[followCachedAction]: #followCachedAction
 [meshColliderTriggerStates]: #meshColliderTriggerStates
 [meshRendererEnabledStates]: #meshRendererEnabledStates
 [Properties]: #Properties
@@ -589,8 +659,11 @@ public virtual GrabInteractableAction UpdateSecondaryAction(InteractableFactory.
 [OnAfterConsumerRigidbodyChange()]: #OnAfterConsumerRigidbodyChange
 [OnAfterDisallowedGrabInteractorsChange()]: #OnAfterDisallowedGrabInteractorsChange
 [OnAfterDisallowedTouchInteractorsChange()]: #OnAfterDisallowedTouchInteractorsChange
+[OnEnable()]: #OnEnable
 [RestoreCollidersAndRenderers()]: #RestoreCollidersAndRenderers
 [SetFollowAndControlDirectionPair()]: #SetFollowAndControlDirectionPair
+[SetFollowPrecisionPointToDirectionModifierPivot(GameObject)]: #SetFollowPrecisionPointToDirectionModifierPivotGameObject
+[UnsetFollowPrecisionPointToDirectionModifierPivot(GameObject)]: #UnsetFollowPrecisionPointToDirectionModifierPivotGameObject
 [UpdatePrimaryAction(Int32)]: #UpdatePrimaryActionInt32
 [UpdatePrimaryAction(InteractableFactory.ActionType)]: #UpdatePrimaryActionInteractableFactory.ActionType
 [UpdateSecondaryAction(Int32)]: #UpdateSecondaryActionInt32
