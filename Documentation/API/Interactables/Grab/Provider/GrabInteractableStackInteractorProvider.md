@@ -8,6 +8,7 @@ Processes a received grab event into an Observable Stack to handle multiple outp
 * [Namespace]
 * [Syntax]
 * [Properties]
+  * [AttemptSwapLogicContainer]
   * [EventStack]
   * [GrabbingInteractors]
 
@@ -52,6 +53,16 @@ public class GrabInteractableStackInteractorProvider : GrabInteractableInteracto
 ```
 
 ### Properties
+
+#### AttemptSwapLogicContainer
+
+The container that holds the logic for attempting to swap the stacks on force pop.
+
+##### Declaration
+
+```
+public GameObject AttemptSwapLogicContainer { get; protected set; }
+```
 
 #### EventStack
 
@@ -101,5 +112,6 @@ public override IReadOnlyList<InteractorFacade> GrabbingInteractors { get; }
 [Namespace]: #Namespace
 [Syntax]: #Syntax
 [Properties]: #Properties
+[AttemptSwapLogicContainer]: #AttemptSwapLogicContainer
 [EventStack]: #EventStack
 [GrabbingInteractors]: #GrabbingInteractors

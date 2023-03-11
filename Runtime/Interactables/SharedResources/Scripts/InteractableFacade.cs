@@ -3,6 +3,7 @@
     using System;
     using System.Collections;
     using System.Collections.Generic;
+    using Tilia.Interactions.Interactables.Interactables.Grab.Provider;
     using Tilia.Interactions.Interactables.Interactables.Grab.Receiver;
     using Tilia.Interactions.Interactables.Interactors;
     using UnityEngine;
@@ -166,6 +167,27 @@
                 if (this.IsMemberChangeAllowed())
                 {
                     OnAfterGrabProviderIndexChange();
+                }
+            }
+        }
+        [Tooltip("Attempts to swap the Secondary action to become the primary action if the primary interactor ungrabs causing a force ungrab of the secondary interactor.")]
+        [SerializeField]
+        private bool attemptSwapSecondaryForPrimaryOnPrimaryDrop;
+        /// <summary>
+        /// Attempts to swap the Secondary action to become the primary action if the primary interactor ungrabs causing a force ungrab of the secondary interactor.
+        /// </summary>
+        public bool AttemptSwapSecondaryForPrimaryOnPrimaryDrop
+        {
+            get
+            {
+                return attemptSwapSecondaryForPrimaryOnPrimaryDrop;
+            }
+            set
+            {
+                attemptSwapSecondaryForPrimaryOnPrimaryDrop = value;
+                if (this.IsMemberChangeAllowed())
+                {
+                    OnAfterAttemptSwapSecondaryForPrimaryOnPrimaryDropChange();
                 }
             }
         }
@@ -663,6 +685,14 @@
         protected virtual void OnAfterGrabProviderIndexChange()
         {
             Configuration.GrabConfiguration.SetGrabProvider(GrabProviderIndex);
+        }
+
+        /// <summary>
+        /// Called after <see cref="AttemptSwapSecondaryForPrimaryOnPrimaryDrop"/> has been changed.
+        /// </summary>
+        protected virtual void OnAfterAttemptSwapSecondaryForPrimaryOnPrimaryDropChange()
+        {
+            Configuration.GrabConfiguration.ToggleAttemptSwapLogicContainer(AttemptSwapSecondaryForPrimaryOnPrimaryDrop);
         }
     }
 }

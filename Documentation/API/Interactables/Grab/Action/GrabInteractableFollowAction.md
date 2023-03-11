@@ -8,6 +8,7 @@ Describes an action that allows the Interactable to follow an Interactor's posit
 * [Namespace]
 * [Syntax]
 * [Properties]
+  * [CollisionPointContainerComponent]
   * [FollowRigidbodyForceRotateModifier]
   * [FollowRigidbodyModifier]
   * [FollowRotateAroundAngularVelocityModifier]
@@ -89,6 +90,16 @@ public class GrabInteractableFollowAction : GrabInteractableAction
 ```
 
 ### Properties
+
+#### CollisionPointContainerComponent
+
+The CollisionPointContainer component for the precision point logic.
+
+##### Declaration
+
+```
+public CollisionPointContainer CollisionPointContainerComponent { get; protected set; }
+```
 
 #### FollowRigidbodyForceRotateModifier
 
@@ -579,6 +590,7 @@ public virtual void UseRulesMatcherOrientationHandleLogic()
 [Namespace]: #Namespace
 [Syntax]: #Syntax
 [Properties]: #Properties
+[CollisionPointContainerComponent]: #CollisionPointContainerComponent
 [FollowRigidbodyForceRotateModifier]: #FollowRigidbodyForceRotateModifier
 [FollowRigidbodyModifier]: #FollowRigidbodyModifier
 [FollowRotateAroundAngularVelocityModifier]: #FollowRotateAroundAngularVelocityModifier

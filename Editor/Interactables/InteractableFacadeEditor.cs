@@ -147,6 +147,7 @@
 
             DrawNullActionSettings(facade, facade.Configuration.GetSecondaryAction(), undoRedoWarningPropertyPath);
             DrawFollowActionSettings(facade, facade.Configuration.GetSecondaryAction(), undoRedoWarningPropertyPath);
+            DrawControlDirectionActionSettings(facade, facade.Configuration.GetSecondaryAction(), undoRedoWarningPropertyPath);
             DrawScaleActionSettings(facade, facade.Configuration.GetSecondaryAction(), undoRedoWarningPropertyPath);
         }
 
@@ -198,6 +199,21 @@
             SerializedObject actionObject = new SerializedObject(nullAction);
             EditorGUI.indentLevel++;
             DrawPropertyFieldWithChangeHandlers(actionObject, "forceEmitEvents", undoRedoWarningPropertyPath);
+            EditorGUI.indentLevel--;
+        }
+
+        protected virtual void DrawControlDirectionActionSettings(InteractableFacade facade, GrabInteractableAction actionProperty, string undoRedoWarningPropertyPath)
+        {
+            if (actionProperty == null || !typeof(GrabInteractableControlDirectionAction).IsAssignableFrom(actionProperty.GetType()))
+            {
+                return;
+            }
+
+            GrabInteractableControlDirectionAction controlDirectionAction = (GrabInteractableControlDirectionAction)actionProperty;
+            SerializedObject actionObject = new SerializedObject(controlDirectionAction.DirectionModifier);
+            EditorGUI.indentLevel++;
+            DrawPropertyFieldWithChangeHandlers(actionObject, "snapToLookAt", undoRedoWarningPropertyPath);
+            DrawPropertyFieldWithChangeHandlers(actionObject, "resetOrientationSpeed", undoRedoWarningPropertyPath);
             EditorGUI.indentLevel--;
         }
 

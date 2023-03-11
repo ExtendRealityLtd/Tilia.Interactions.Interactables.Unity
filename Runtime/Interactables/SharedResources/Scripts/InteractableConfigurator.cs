@@ -263,6 +263,14 @@
         /// A collection of enabled states for the renderers held within the <see cref="MeshContainer"/>.
         /// </summary>
         protected Dictionary<Renderer, bool> meshRendererEnabledStates = new Dictionary<Renderer, bool>();
+        /// <summary>
+        /// The cached <see cref="GrabInteractableFollowAction"/> for when the follow/control direction pairing is required to be set up.
+        /// </summary>
+        protected GrabInteractableFollowAction followCachedAction;
+        /// <summary>
+        /// The cached <see cref="GrabInteractableControlDirectionAction"/> for when the follow/control direction pairing is required to be set up.
+        /// </summary>
+        protected GrabInteractableControlDirectionAction controlDirectionCachedAction;
 
         /// <summary>
         /// Clears <see cref="DisallowedTouchInteractors"/>.
@@ -409,6 +417,11 @@
             return action;
         }
 
+        protected virtual void OnEnable()
+        {
+            SetFollowAndControlDirectionPair();
+        }
+
         /// <summary>
         /// Sets up the relevant linkages if the follow and control direction actions are selected in a pairing.
         /// </summary>
@@ -416,13 +429,11 @@
         {
             GrabInteractableAction primaryAction = GetPrimaryAction();
             GrabInteractableAction secondaryAction = GetSecondaryAction();
-            GrabInteractableFollowAction followAction;
-            GrabInteractableControlDirectionAction controlDirectionAction;
 
             if (secondaryAction != null && typeof(GrabInteractableControlDirectionAction).IsAssignableFrom(secondaryAction.GetType()))
             {
-                controlDirectionAction = (GrabInteractableControlDirectionAction)secondaryAction;
-                controlDirectionAction.LinkedObjects = null;
+                controlDirectionCachedAction = (GrabInteractableControlDirectionAction)secondaryAction;
+                controlDirectionCachedAction.LinkedObjects = null;
             }
 
             if (primaryAction == null ||
@@ -430,13 +441,46 @@
                 !typeof(GrabInteractableFollowAction).IsAssignableFrom(primaryAction.GetType()) ||
                 !typeof(GrabInteractableControlDirectionAction).IsAssignableFrom(secondaryAction.GetType()))
             {
+                if (followCachedAction != null)
+                {
+                    followCachedAction.CollisionPointContainerComponent.PointSet.RemoveListener(SetFollowPrecisionPointToDirectionModifierPivot);
+                    followCachedAction.CollisionPointContainerComponent.PointUnset.RemoveListener(UnsetFollowPrecisionPointToDirectionModifierPivot);
+                    followCachedAction = null;
+                    controlDirectionCachedAction = null;
+                }
                 return;
             }
 
-            followAction = (GrabInteractableFollowAction)primaryAction;
-            controlDirectionAction = (GrabInteractableControlDirectionAction)secondaryAction;
+            followCachedAction = (GrabInteractableFollowAction)primaryAction;
+            controlDirectionCachedAction = (GrabInteractableControlDirectionAction)secondaryAction;
 
-            controlDirectionAction.LinkedObjects = followAction.RotationModifiers;
+            controlDirectionCachedAction.LinkedObjects = followCachedAction.RotationModifiers;
+
+            followCachedAction.CollisionPointContainerComponent.PointSet.AddListener(SetFollowPrecisionPointToDirectionModifierPivot);
+            followCachedAction.CollisionPointContainerComponent.PointUnset.AddListener(UnsetFollowPrecisionPointToDirectionModifierPivot);
+        }
+
+        /// <summary>
+        /// Sets up the link between the primary <see cref="GrabInteractableFollowAction"/> and the secondary <see cref="GrabInteractableControlDirectionAction"/> to mirror the follow precision point to the control direction pivot.
+        /// </summary>
+        /// <param name="precisionPointContainer">The precision point container.</param>
+        protected virtual void SetFollowPrecisionPointToDirectionModifierPivot(GameObject precisionPointContainer)
+        {
+            if (controlDirectionCachedAction.DirectionModifier.ResetOrientationSpeed < float.MaxValue)
+            {
+                return;
+            }
+
+            controlDirectionCachedAction.DirectionModifier.PivotRotationMirror = precisionPointContainer;
+        }
+
+        /// <summary>
+        /// Unsets the set up done in the <see cref="SetFollowPrecisionPointToDirectionModifierPivot"/> method.
+        /// </summary>
+        /// <param name="precisionPointContainer">The precision point container.</param>
+        protected virtual void UnsetFollowPrecisionPointToDirectionModifierPivot(GameObject precisionPointContainer)
+        {
+            controlDirectionCachedAction.DirectionModifier.ClearPivotRotationMirror();
         }
 
         /// <summary>

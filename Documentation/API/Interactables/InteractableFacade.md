@@ -20,6 +20,7 @@ The public interface into the Interactable Prefab.
   * [ungrabRoutine]
   * [Untouched]
 * [Properties]
+  * [AttemptSwapSecondaryForPrimaryOnPrimaryDrop]
   * [Colliders]
   * [Configuration]
   * [GrabbingInteractors]
@@ -62,6 +63,7 @@ The public interface into the Interactable Prefab.
   * [GrabIgnoreUngrab(InteractorFacade)]
   * [GrabIgnoreUngrabAtEndOfFrame(GameObject)]
   * [GrabIgnoreUngrabAtEndOfFrame(InteractorFacade)]
+  * [OnAfterAttemptSwapSecondaryForPrimaryOnPrimaryDropChange()]
   * [OnAfterGrabProviderIndexChange()]
   * [OnAfterGrabTypeChange()]
   * [OnAfterValidInteractionTypesChange()]
@@ -210,6 +212,16 @@ public InteractableFacade.UnityEvent Untouched
 
 ### Properties
 
+#### AttemptSwapSecondaryForPrimaryOnPrimaryDrop
+
+Attempts to swap the Secondary action to become the primary action if the primary interactor ungrabs causing a force ungrab of the secondary interactor.
+
+##### Declaration
+
+```
+public bool AttemptSwapSecondaryForPrimaryOnPrimaryDrop { get; set; }
+```
+
 #### Colliders
 
 Returns a Collider collection of all the [MeshContainer] child colliders.
@@ -252,7 +264,7 @@ public virtual bool GrabEnabled { get; }
 
 #### GrabProviderIndex
 
-The GrabInteractableInteractorProvider to use.
+The [GrabInteractableInteractorProvider] to use.
 
 ##### Declaration
 
@@ -738,6 +750,16 @@ public virtual void GrabIgnoreUngrabAtEndOfFrame(InteractorFacade interactor)
 | --- | --- | --- |
 | [InteractorFacade] | interactor | The Interactor to attach the Interactable to. |
 
+#### OnAfterAttemptSwapSecondaryForPrimaryOnPrimaryDropChange()
+
+Called after [AttemptSwapSecondaryForPrimaryOnPrimaryDrop] has been changed.
+
+##### Declaration
+
+```
+protected virtual void OnAfterAttemptSwapSecondaryForPrimaryOnPrimaryDropChange()
+```
+
 #### OnAfterGrabProviderIndexChange()
 
 Called after [GrabProviderIndex] has been changed.
@@ -937,9 +959,11 @@ public virtual void UngrabAtEndOfFrame(InteractorFacade interactor)
 [MeshContainer]: InteractableFacade.md#MeshContainer
 [InteractableConfigurator]: InteractableConfigurator.md
 [InteractorFacade]: ../Interactors/InteractorFacade.md
+[GrabInteractableInteractorProvider]: Grab/Provider/GrabInteractableInteractorProvider.md
 [GrabInteractableReceiver.ActiveType]: Grab/Receiver/GrabInteractableReceiver.ActiveType.md
 [MeshContainer]: InteractableFacade.md#MeshContainer
 [InteractableFacade.InteractionTypes]: InteractableFacade.InteractionTypes.md
+[AttemptSwapSecondaryForPrimaryOnPrimaryDrop]: InteractableFacade.md#AttemptSwapSecondaryForPrimaryOnPrimaryDrop
 [GrabProviderIndex]: InteractableFacade.md#GrabProviderIndex
 [GrabType]: InteractableFacade.md#GrabType
 [ValidInteractionTypes]: InteractableFacade.md#ValidInteractionTypes
@@ -961,6 +985,7 @@ public virtual void UngrabAtEndOfFrame(InteractorFacade interactor)
 [ungrabRoutine]: #ungrabRoutine
 [Untouched]: #Untouched
 [Properties]: #Properties
+[AttemptSwapSecondaryForPrimaryOnPrimaryDrop]: #AttemptSwapSecondaryForPrimaryOnPrimaryDrop
 [Colliders]: #Colliders
 [Configuration]: #Configuration
 [GrabbingInteractors]: #GrabbingInteractors
@@ -1003,6 +1028,7 @@ public virtual void UngrabAtEndOfFrame(InteractorFacade interactor)
 [GrabIgnoreUngrab(InteractorFacade)]: #GrabIgnoreUngrabInteractorFacade
 [GrabIgnoreUngrabAtEndOfFrame(GameObject)]: #GrabIgnoreUngrabAtEndOfFrameGameObject
 [GrabIgnoreUngrabAtEndOfFrame(InteractorFacade)]: #GrabIgnoreUngrabAtEndOfFrameInteractorFacade
+[OnAfterAttemptSwapSecondaryForPrimaryOnPrimaryDropChange()]: #OnAfterAttemptSwapSecondaryForPrimaryOnPrimaryDropChange
 [OnAfterGrabProviderIndexChange()]: #OnAfterGrabProviderIndexChange
 [OnAfterGrabTypeChange()]: #OnAfterGrabTypeChange
 [OnAfterValidInteractionTypesChange()]: #OnAfterValidInteractionTypesChange
