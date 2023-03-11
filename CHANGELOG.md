@@ -1,5 +1,16 @@
 # Changelog
 
+## [2.11.0](https://github.com/ExtendRealityLtd/Tilia.Interactions.Interactables.Unity/compare/v2.10.1...v2.11.0) (2023-03-11)
+
+#### Features
+
+* **Editor:** add inspector options for control direction ([e73ea3b](https://github.com/ExtendRealityLtd/Tilia.Interactions.Interactables.Unity/commit/e73ea3b26e2ccca8a33f9d7a613b3d27702adfdf))
+  > The Interactable inspector now draws additional options if the Control Direction action is selected.
+* **Grab:** add option to attempt swap grab options ([4b89b6c](https://github.com/ExtendRealityLtd/Tilia.Interactions.Interactables.Unity/commit/4b89b6c54b6ff4736a896da26690ed7ac3c991ef))
+  > A new option that provides the ability to attempt to swap the secondary grab action to the primary grab action when the secondary grab is still active when the primary action ungrabs.
+  > 
+  > This also fixes an issue where using Primary:Follow and Secondary:ControlDirection causes the rotation upon release of the secondary interactor to not stay in the correct rotation when precision grab is used because the precision grab container rotation wasn't being updated with the control direction pivot.
+
 ### [2.10.1](https://github.com/ExtendRealityLtd/Tilia.Interactions.Interactables.Unity/compare/v2.10.0...v2.10.1) (2023-03-11)
 
 #### Miscellaneous Chores
