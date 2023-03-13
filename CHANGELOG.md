@@ -1,5 +1,14 @@
 # Changelog
 
+### [2.11.2](https://github.com/ExtendRealityLtd/Tilia.Interactions.Interactables.Unity/compare/v2.11.1...v2.11.2) (2023-03-13)
+
+#### Bug Fixes
+
+* **Prefabs:** reset default mesh collider scale to 1,1,1 ([e146052](https://github.com/ExtendRealityLtd/Tilia.Interactions.Interactables.Unity/commit/e146052bfd581e6b35e5d4baca4df610423729b9))
+  > The collider scale on the interactable default mesh was set to 2,2,2 which meant the collider was twice as big as the mesh.
+  > 
+  > This has now been fixed.
+
 ### [2.11.1](https://github.com/ExtendRealityLtd/Tilia.Interactions.Interactables.Unity/compare/v2.11.0...v2.11.1) (2023-03-13)
 
 #### Miscellaneous Chores
