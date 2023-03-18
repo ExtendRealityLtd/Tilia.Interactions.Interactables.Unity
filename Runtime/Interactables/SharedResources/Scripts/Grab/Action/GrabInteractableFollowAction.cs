@@ -570,6 +570,10 @@
         /// The collsiion point <see cref="GameObject"/> that is created upon a precision grab occurring.
         /// </summary>
         public virtual GameObject PrecisionCollisionPoint => ObjectFollower != null && ObjectFollower.TargetOffsets != null && ObjectFollower.TargetOffsets.NonSubscribableElements.Count > 0 ? ObjectFollower.TargetOffsets.NonSubscribableElements[0] : null;
+        /// <summary>
+        /// The <see cref="Rigidbody"/> linked to the interactable.
+        /// </summary>
+        public virtual Rigidbody InteractableRigidbody => GrabSetup != null && GrabSetup.Facade != null && GrabSetup.Facade.Configuration != null ? GrabSetup.Facade.Configuration.ConsumerRigidbody : null;
 
         /// <summary>
         /// Sets the <see cref="FollowTracking"/>.
@@ -604,8 +608,13 @@
         /// <param name="initiator">The initiator that is causing this state change.</param>
         public virtual void ApplyActiveKinematicState(GameObject initiator)
         {
+            if (InteractableRigidbody == null)
+            {
+                return;
+            }
+
             PrepareColliderForKinematicChange(initiator);
-            GrabSetup.Facade.Configuration.ConsumerRigidbody.isKinematic = IsKinematicWhenActive;
+            InteractableRigidbody.isKinematic = IsKinematicWhenActive;
         }
 
         /// <summary>
@@ -614,8 +623,13 @@
         /// <param name="initiator">The initiator that is causing this state change.</param>
         public virtual void ApplyInactiveKinematicState(GameObject initiator)
         {
+            if (InteractableRigidbody == null)
+            {
+                return;
+            }
+
             PrepareColliderForKinematicChange(initiator);
-            GrabSetup.Facade.Configuration.ConsumerRigidbody.isKinematic = IsKinematicWhenInactive;
+            InteractableRigidbody.isKinematic = IsKinematicWhenInactive;
         }
 
         /// <summary>
@@ -658,13 +672,13 @@
         protected virtual void PrepareColliderForKinematicChange(GameObject initiator)
         {
             InteractorFacade interactor = initiator.GetComponent<InteractorFacade>();
-            if (interactor == null)
+            if (interactor == null || InteractableRigidbody == null)
             {
                 return;
             }
 
-            interactor.TouchConfiguration.TouchTracker.PrepareKinematicStateChange(GrabSetup.Facade.Configuration.ConsumerRigidbody);
-            GrabSetup.KinematicStateToChange?.Invoke(GrabSetup.Facade.Configuration.ConsumerRigidbody);
+            interactor.TouchConfiguration.TouchTracker.PrepareKinematicStateChange(InteractableRigidbody);
+            GrabSetup.KinematicStateToChange?.Invoke(InteractableRigidbody);
         }
 
         /// <summary>
@@ -674,7 +688,7 @@
         {
             if (WillInheritIsKinematicWhenInactiveFromConsumerRigidbody)
             {
-                IsKinematicWhenInactive = GrabSetup != null ? GrabSetup.Facade.Configuration.ConsumerRigidbody.isKinematic : false;
+                IsKinematicWhenInactive = GrabSetup != null && InteractableRigidbody != null ? InteractableRigidbody.isKinematic : false;
             }
             switch (FollowTracking)
             {
@@ -761,7 +775,7 @@
         {
             ObjectFollower.Targets.RunWhenActiveAndEnabled(() => ObjectFollower.Targets.Clear());
             ObjectFollower.Targets.RunWhenActiveAndEnabled(() => ObjectFollower.Targets.Add(GrabSetup.Facade.Configuration.ConsumerContainer));
-            VelocityApplier.Target = GrabSetup.Facade.Configuration.ConsumerRigidbody != null ? GrabSetup.Facade.Configuration.ConsumerRigidbody : null;
+            VelocityApplier.Target = InteractableRigidbody != null ? InteractableRigidbody : null;
             ConfigureFollowTracking();
         }
 
