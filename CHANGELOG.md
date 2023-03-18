@@ -1,5 +1,14 @@
 # Changelog
 
+### [2.11.4](https://github.com/ExtendRealityLtd/Tilia.Interactions.Interactables.Unity/compare/v2.11.3...v2.11.4) (2023-03-18)
+
+#### Bug Fixes
+
+* **Grab:** remove hard requirement for rigidbody ([a615465](https://github.com/ExtendRealityLtd/Tilia.Interactions.Interactables.Unity/commit/a6154652e4be193fb32fe2a949b501e2331aa9e8))
+  > There is no definitive requirement for a rigidbody on an Interactable but the previous changes that prepared rigidbody for kinematic changes has meant that a Rigidbody is required to set up the state to prepare for any kinematic change.
+  > 
+  > This fix just makes sure these state preparations are only done if a rigidbody is provided, so it no longer needs a rigidbody if not required.
+
 ### [2.11.3](https://github.com/ExtendRealityLtd/Tilia.Interactions.Interactables.Unity/compare/v2.11.2...v2.11.3) (2023-03-16)
 
 #### Miscellaneous Chores
