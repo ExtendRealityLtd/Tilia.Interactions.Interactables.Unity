@@ -182,7 +182,7 @@
         /// </summary>
         public virtual void RestoreRigidbodyKinematicState()
         {
-            if (!this.IsValidState() || Source == null)
+            if (!this.IsValidState() || Source == null || Source.Configuration.ConsumerRigidbody == null)
             {
                 return;
             }
