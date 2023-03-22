@@ -1,5 +1,14 @@
 # Changelog
 
+### [2.11.6](https://github.com/ExtendRealityLtd/Tilia.Interactions.Interactables.Unity/compare/v2.11.5...v2.11.6) (2023-03-22)
+
+#### Bug Fixes
+
+* **Configurator:** catch error on destroy nested prefabs ([eb42364](https://github.com/ExtendRealityLtd/Tilia.Interactions.Interactables.Unity/commit/eb423642736fe1b4f4ee9a1188908526dd382b1f))
+  > Older versions of Unity cannot destroy a nested prefab, so as the Controllables for example nest the Interactable prefab, if the Interactable prefab is attempted to change the grab action then this tries to delete the nested grab action but will raise an InvalidOperationException because this nested prefab cannot be deleted.
+  > 
+  > The fix for this is to just disable the hard wired prefab and then create a new temporary prefab that can be continually updated.
+
 ### [2.11.5](https://github.com/ExtendRealityLtd/Tilia.Interactions.Interactables.Unity/compare/v2.11.4...v2.11.5) (2023-03-21)
 
 #### Miscellaneous Chores
