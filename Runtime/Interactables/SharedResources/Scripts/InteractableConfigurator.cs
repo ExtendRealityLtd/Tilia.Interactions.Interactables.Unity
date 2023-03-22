@@ -1,5 +1,6 @@
 ﻿namespace Tilia.Interactions.Interactables.Interactables
 {
+    using System;
     using System.Collections.Generic;
     using Tilia.Interactions.Interactables.Interactables.Grab;
     using Tilia.Interactions.Interactables.Interactables.Grab.Action;
@@ -499,7 +500,16 @@
 
             if (currentAction != null)
             {
-                DestroyImmediate(currentAction.gameObject);
+                try
+                {
+                    //If the Unity version supports destroying the nested prefab then do that.
+                    DestroyImmediate(currentAction.gameObject);
+                }
+                catch (InvalidOperationException)
+                {
+                    //Otherwise just disable that GameObject.
+                    currentAction.gameObject.SetActive(false);
+                }
             }
 
             GameObject toInstantiate = GrabConfiguration.ActionTypes.NonSubscribableElements[newActionType];
