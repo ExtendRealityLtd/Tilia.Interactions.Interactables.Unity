@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.12.0](https://github.com/ExtendRealityLtd/Tilia.Interactions.Interactables.Unity/compare/v2.11.8...v2.12.0) (2023-04-04)
+
+#### Features
+
+* **Resources:** add multiple render pipeline materials ([aec0fa2](https://github.com/ExtendRealityLtd/Tilia.Interactions.Interactables.Unity/commit/aec0fa2b30a8027d30abd0cca776294565c4a8d3))
+  > The prefab now uses the Pipeline Material Applier to provide multiple material types for the main render pipelines to improve compatibility.
+
 ### [2.11.8](https://github.com/ExtendRealityLtd/Tilia.Interactions.Interactables.Unity/compare/v2.11.7...v2.11.8) (2023-04-03)
 
 #### Miscellaneous Chores
