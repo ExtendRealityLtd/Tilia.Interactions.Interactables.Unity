@@ -68,5 +68,39 @@
         {
             Convert(objectToConvert);
         }
+
+        /// <summary>
+        /// Embeds a created <see cref="InteractableFacade"/> into the given <see cref="GameObject"/>.
+        /// </summary>
+        /// <param name="embedObject">The GameObject to embed the Interactable within.</param>
+        /// <returns>The created Interactable Facade.</returns>
+        public virtual InteractableFacade Embed(GameObject embedObject)
+        {
+            if (InteractableObject == null || !interactableFactory.CanConvert(embedObject))
+            {
+                return null;
+            }
+
+            bool prefabState = interactableObject.activeSelf;
+            interactableObject.SetActive(false);
+            GameObject newInteractable = Instantiate(interactableObject);
+            GameObject createdInteractable = interactableFactory.Embed(newInteractable, embedObject);
+            InteractableFacade interactableFacade = createdInteractable.GetComponentInChildren<InteractableFacade>();
+            interactableFacade.Configuration.UpdatePrimaryAction(InteractableFactory.ActionType.None);
+            interactableFacade.Configuration.UpdateSecondaryAction(InteractableFactory.ActionType.None);
+            createdInteractable.SetActive(true);
+            interactableObject.SetActive(prefabState);
+
+            return interactableFacade;
+        }
+
+        /// <summary>
+        /// Embeds a created <see cref="InteractableFacade"/> into the given <see cref="GameObject"/>.
+        /// </summary>
+        /// <param name="embedObject">The GameObject to embed the Interactable within.</param>
+        public virtual void DoEmbed(GameObject embedObject)
+        {
+            Embed(embedObject);
+        }
     }
 }

@@ -15,6 +15,7 @@
     using Zinnia.Extension;
     using Zinnia.Rule;
     using Zinnia.Tracking.Collision;
+    using Zinnia.Tracking.Collision.Active.Operation.Extraction;
 
     /// <summary>
     /// Sets up the Interactable Prefab based on the provided user settings.
@@ -36,7 +37,7 @@
             {
                 return facade;
             }
-            protected set
+            set
             {
                 facade = value;
             }
@@ -150,7 +151,7 @@
             {
                 return collisionNotifier;
             }
-            protected set
+            set
             {
                 collisionNotifier = value;
             }
@@ -168,9 +169,45 @@
             {
                 return meshContainer;
             }
-            protected set
+            set
             {
                 meshContainer = value;
+            }
+        }
+        [Tooltip("The linked NotifierContainerExtractor for adding collisions.")]
+        [SerializeField]
+        [Restricted]
+        private NotifierContainerExtractor addCollisionExtractor;
+        /// <summary>
+        /// The linked <see cref="NotifierContainerExtractor"/> for adding collisions.
+        /// </summary>
+        public NotifierContainerExtractor AddCollisionExtractor
+        {
+            get
+            {
+                return addCollisionExtractor;
+            }
+            set
+            {
+                addCollisionExtractor = value;
+            }
+        }
+        [Tooltip("The linked NotifierContainerExtractor for removing collisions.")]
+        [SerializeField]
+        [Restricted]
+        private NotifierContainerExtractor removeCollisionExtractor;
+        /// <summary>
+        /// The linked <see cref="NotifierContainerExtractor"/> for removing collisions.
+        /// </summary>
+        public NotifierContainerExtractor RemoveCollisionExtractor
+        {
+            get
+            {
+                return removeCollisionExtractor;
+            }
+            set
+            {
+                removeCollisionExtractor = value;
             }
         }
         [Tooltip("The linked GameObjectObservableList.")]
@@ -186,7 +223,7 @@
             {
                 return activeCollisions;
             }
-            protected set
+            set
             {
                 activeCollisions = value;
             }
@@ -204,7 +241,7 @@
             {
                 return touchConfiguration;
             }
-            protected set
+            set
             {
                 touchConfiguration = value;
             }
@@ -222,7 +259,7 @@
             {
                 return grabConfiguration;
             }
-            protected set
+            set
             {
                 grabConfiguration = value;
             }
@@ -416,6 +453,20 @@
             GrabConfiguration.SecondaryAction = action;
             SetFollowAndControlDirectionPair();
             return action;
+        }
+
+        /// <summary>
+        /// Sets the Maximum Angular Velocity of the <see cref="Rigidbody"/> in radians per seconds.
+        /// </summary>
+        /// <param name="angularVelocity">The maximum angular velocity in radians per seconds.</param>
+        public virtual void SetRigidbodyMaxAngularVelocity(float angularVelocity)
+        {
+            if (consumerRigidbody == null)
+            {
+                return;
+            }
+
+            consumerRigidbody.maxAngularVelocity = angularVelocity;
         }
 
         protected virtual void OnEnable()

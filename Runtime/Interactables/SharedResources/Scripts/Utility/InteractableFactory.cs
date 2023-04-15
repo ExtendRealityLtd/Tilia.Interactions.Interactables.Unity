@@ -1,6 +1,9 @@
 ﻿namespace Tilia.Interactions.Interactables.Interactables.Utility
 {
+    using Tilia.Interactions.Interactables.Interactors.ComponentTags;
     using UnityEngine;
+    using Zinnia.Tracking.Collision;
+    using Zinnia.Utility;
 
     /// <summary>
     /// A factory for creating an Interactable Object.
@@ -67,10 +70,7 @@
             interactablePrefab.transform.localRotation = objectToConvert.transform.localRotation;
             interactablePrefab.transform.localScale = objectToConvert.transform.localScale;
 
-            foreach (MeshRenderer defaultMeshes in facade.Configuration.MeshContainer.GetComponentsInChildren<MeshRenderer>())
-            {
-                defaultMeshes.gameObject.SetActive(false);
-            }
+            HideMeshes(facade.Configuration.MeshContainer);
 
             objectToConvert.transform.SetParent(facade.Configuration.MeshContainer.transform);
             objectToConvert.transform.localPosition = Vector3.zero;
@@ -80,6 +80,59 @@
             interactablePrefab.transform.SetSiblingIndex(siblingIndex);
 
             return interactablePrefab;
+        }
+
+        /// <summary>
+        /// Embeds an Interactable Object as a child of the existing scene GameObject.
+        /// </summary>
+        /// <param name="interactablePrefab">The Interactable Object prefab to create from and embed.</param>
+        /// <param name="objectToConvert">The Object to embed the new Interactable Object into.</param>
+        /// <returns>The existing scene GameObject with the embedded newly created Interactable Object.</returns>
+        public virtual GameObject Embed(GameObject interactablePrefab, GameObject embedInto)
+        {
+            if (!CanConvert(embedInto))
+            {
+                return null;
+            }
+
+            interactablePrefab.transform.SetParent(embedInto.transform);
+            interactablePrefab.transform.localPosition = Vector3.zero;
+            interactablePrefab.transform.localRotation = Quaternion.identity;
+            interactablePrefab.transform.localScale = Vector3.one;
+
+            InteractableFacade facade = interactablePrefab.GetComponent<InteractableFacade>();
+            Object.DestroyImmediate(facade.GetComponent<AllowInteractorCollisionTag>());
+            Object.DestroyImmediate(facade.GetComponent<Rigidbody>());
+            Object.DestroyImmediate(facade.GetComponent<BaseGameObjectSelector>());
+            Object.DestroyImmediate(facade.GetComponent<CollisionNotifier>());
+
+            embedInto.AddComponent<AllowInteractorCollisionTag>();
+            embedInto.AddComponent<BaseGameObjectSelector>();
+            facade.Configuration.CollisionNotifier = embedInto.AddComponent<CollisionNotifier>();
+            Rigidbody baseRigidbody = embedInto.GetComponent<Rigidbody>();
+
+            facade.Configuration.CollisionNotifier.CollisionStarted.AddListener(facade.Configuration.AddCollisionExtractor.DoExtract);
+            facade.Configuration.CollisionNotifier.CollisionStopped.AddListener(facade.Configuration.RemoveCollisionExtractor.DoExtract);
+
+            facade.Configuration.ConsumerContainer = embedInto;
+            facade.Configuration.ConsumerRigidbody = baseRigidbody;
+
+            HideMeshes(facade.Configuration.MeshContainer);
+            facade.Configuration.MeshContainer = embedInto;
+
+            return embedInto;
+        }
+
+        /// <summary>
+        /// Hides all of the meshes found in the given <see cref="GameObject"/> child hierarchy.
+        /// </summary>
+        /// <param name="container">The container to find the meshes in.</param>
+        protected virtual void HideMeshes(GameObject container)
+        {
+            foreach (Renderer currentMesh in container.GetComponentsInChildren<Renderer>())
+            {
+                currentMesh.gameObject.SetActive(false);
+            }
         }
     }
 }
