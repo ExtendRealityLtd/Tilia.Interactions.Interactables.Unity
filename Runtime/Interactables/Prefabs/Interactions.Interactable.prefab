@@ -201,6 +201,8 @@ MonoBehaviour:
   consumerRigidbody: {fileID: 8862883227734677280}
   collisionNotifier: {fileID: 9199224307250505429}
   meshContainer: {fileID: 1417232386877869616}
+  addCollisionExtractor: {fileID: 1675643346568561770}
+  removeCollisionExtractor: {fileID: 4518449307050931127}
   activeCollisions: {fileID: 48161569986075815}
   touchConfiguration: {fileID: 3185517254728749105}
   grabConfiguration: {fileID: 3648960081298957348}
@@ -639,7 +641,7 @@ PrefabInstance:
         type: 3}
       propertyPath: ActiveAndEnabled.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 8862883227734677280}
+      objectReference: {fileID: 6666400304308521552}
     - target: {fileID: 2316798138750101695, guid: 2006f213367c78b4690c00ea488ad06f,
         type: 3}
       propertyPath: ActiveAndEnabled.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
@@ -648,7 +650,7 @@ PrefabInstance:
     - target: {fileID: 2316798138750101695, guid: 2006f213367c78b4690c00ea488ad06f,
         type: 3}
       propertyPath: ActiveAndEnabled.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: set_maxAngularVelocity
+      value: SetRigidbodyMaxAngularVelocity
       objectReference: {fileID: 0}
     - target: {fileID: 2316798138750101695, guid: 2006f213367c78b4690c00ea488ad06f,
         type: 3}
