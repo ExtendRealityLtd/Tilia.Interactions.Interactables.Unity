@@ -14,6 +14,7 @@ Sets up the Interactable Prefab based on the provided user settings.
   * [meshRendererEnabledStates]
 * [Properties]
   * [ActiveCollisions]
+  * [AddCollisionExtractor]
   * [CollisionNotifier]
   * [ConsumerContainer]
   * [ConsumerRigidbody]
@@ -24,6 +25,7 @@ Sets up the Interactable Prefab based on the provided user settings.
   * [GrabConfiguration]
   * [IsVisible]
   * [MeshContainer]
+  * [RemoveCollisionExtractor]
   * [TouchConfiguration]
 * [Methods]
   * [ClearConsumerContainer()]
@@ -46,6 +48,7 @@ Sets up the Interactable Prefab based on the provided user settings.
   * [RestoreCollidersAndRenderers()]
   * [SetFollowAndControlDirectionPair()]
   * [SetFollowPrecisionPointToDirectionModifierPivot(GameObject)]
+  * [SetRigidbodyMaxAngularVelocity(Single)]
   * [UnsetFollowPrecisionPointToDirectionModifierPivot(GameObject)]
   * [UpdatePrimaryAction(Int32)]
   * [UpdatePrimaryAction(InteractableFactory.ActionType)]
@@ -120,7 +123,17 @@ The linked GameObjectObservableList.
 ##### Declaration
 
 ```
-public GameObjectObservableList ActiveCollisions { get; protected set; }
+public GameObjectObservableList ActiveCollisions { get; set; }
+```
+
+#### AddCollisionExtractor
+
+The linked NotifierContainerExtractor for adding collisions.
+
+##### Declaration
+
+```
+public NotifierContainerExtractor AddCollisionExtractor { get; set; }
 ```
 
 #### CollisionNotifier
@@ -130,7 +143,7 @@ The linked [CollisionNotifier].
 ##### Declaration
 
 ```
-public CollisionNotifier CollisionNotifier { get; protected set; }
+public CollisionNotifier CollisionNotifier { get; set; }
 ```
 
 #### ConsumerContainer
@@ -180,7 +193,7 @@ The public interface facade.
 ##### Declaration
 
 ```
-public InteractableFacade Facade { get; protected set; }
+public InteractableFacade Facade { get; set; }
 ```
 
 #### GrabActionTypesCount
@@ -200,7 +213,7 @@ The linked Grab Internal Setup.
 ##### Declaration
 
 ```
-public GrabInteractableConfigurator GrabConfiguration { get; protected set; }
+public GrabInteractableConfigurator GrabConfiguration { get; set; }
 ```
 
 #### IsVisible
@@ -220,7 +233,17 @@ The GameObject that contains the mesh for the Interactable.
 ##### Declaration
 
 ```
-public GameObject MeshContainer { get; protected set; }
+public GameObject MeshContainer { get; set; }
+```
+
+#### RemoveCollisionExtractor
+
+The linked NotifierContainerExtractor for removing collisions.
+
+##### Declaration
+
+```
+public NotifierContainerExtractor RemoveCollisionExtractor { get; set; }
 ```
 
 #### TouchConfiguration
@@ -230,7 +253,7 @@ The linked Touch Internal Setup.
 ##### Declaration
 
 ```
-public TouchInteractableConfigurator TouchConfiguration { get; protected set; }
+public TouchInteractableConfigurator TouchConfiguration { get; set; }
 ```
 
 ### Methods
@@ -495,6 +518,22 @@ protected virtual void SetFollowPrecisionPointToDirectionModifierPivot(GameObjec
 | --- | --- | --- |
 | GameObject | precisionPointContainer | The precision point container. |
 
+#### SetRigidbodyMaxAngularVelocity(Single)
+
+Sets the Maximum Angular Velocity of the Rigidbody in radians per seconds.
+
+##### Declaration
+
+```
+public virtual void SetRigidbodyMaxAngularVelocity(float angularVelocity)
+```
+
+##### Parameters
+
+| Type | Name | Description |
+| --- | --- | --- |
+| System.Single | angularVelocity | The maximum angular velocity in radians per seconds. |
+
 #### UnsetFollowPrecisionPointToDirectionModifierPivot(GameObject)
 
 Unsets the set up done in the [SetFollowPrecisionPointToDirectionModifierPivot(GameObject)] method.
@@ -631,6 +670,7 @@ public virtual GrabInteractableAction UpdateSecondaryAction(InteractableFactory.
 [meshRendererEnabledStates]: #meshRendererEnabledStates
 [Properties]: #Properties
 [ActiveCollisions]: #ActiveCollisions
+[AddCollisionExtractor]: #AddCollisionExtractor
 [CollisionNotifier]: #CollisionNotifier
 [ConsumerContainer]: #ConsumerContainer
 [ConsumerRigidbody]: #ConsumerRigidbody
@@ -641,6 +681,7 @@ public virtual GrabInteractableAction UpdateSecondaryAction(InteractableFactory.
 [GrabConfiguration]: #GrabConfiguration
 [IsVisible]: #IsVisible
 [MeshContainer]: #MeshContainer
+[RemoveCollisionExtractor]: #RemoveCollisionExtractor
 [TouchConfiguration]: #TouchConfiguration
 [Methods]: #Methods
 [ClearConsumerContainer()]: #ClearConsumerContainer
@@ -663,6 +704,7 @@ public virtual GrabInteractableAction UpdateSecondaryAction(InteractableFactory.
 [RestoreCollidersAndRenderers()]: #RestoreCollidersAndRenderers
 [SetFollowAndControlDirectionPair()]: #SetFollowAndControlDirectionPair
 [SetFollowPrecisionPointToDirectionModifierPivot(GameObject)]: #SetFollowPrecisionPointToDirectionModifierPivotGameObject
+[SetRigidbodyMaxAngularVelocity(Single)]: #SetRigidbodyMaxAngularVelocitySingle
 [UnsetFollowPrecisionPointToDirectionModifierPivot(GameObject)]: #UnsetFollowPrecisionPointToDirectionModifierPivotGameObject
 [UpdatePrimaryAction(Int32)]: #UpdatePrimaryActionInt32
 [UpdatePrimaryAction(InteractableFactory.ActionType)]: #UpdatePrimaryActionInteractableFactory.ActionType

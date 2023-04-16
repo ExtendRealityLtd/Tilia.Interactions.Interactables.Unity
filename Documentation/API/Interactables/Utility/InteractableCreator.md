@@ -14,6 +14,8 @@ A helper class to easily create an Interactable Object via script.
 * [Methods]
   * [Convert(GameObject)]
   * [DoConvert(GameObject)]
+  * [DoEmbed(GameObject)]
+  * [Embed(GameObject)]
 
 ## Details
 
@@ -96,6 +98,44 @@ public virtual void DoConvert(GameObject objectToConvert)
 | --- | --- | --- |
 | GameObject | objectToConvert | The GameObject to convert. |
 
+#### DoEmbed(GameObject)
+
+Embeds a created [InteractableFacade] into the given GameObject.
+
+##### Declaration
+
+```
+public virtual void DoEmbed(GameObject embedObject)
+```
+
+##### Parameters
+
+| Type | Name | Description |
+| --- | --- | --- |
+| GameObject | embedObject | The GameObject to embed the Interactable within. |
+
+#### Embed(GameObject)
+
+Embeds a created [InteractableFacade] into the given GameObject.
+
+##### Declaration
+
+```
+public virtual InteractableFacade Embed(GameObject embedObject)
+```
+
+##### Parameters
+
+| Type | Name | Description |
+| --- | --- | --- |
+| GameObject | embedObject | The GameObject to embed the Interactable within. |
+
+##### Returns
+
+| Type | Description |
+| --- | --- |
+| [InteractableFacade] | The created Interactable Facade. |
+
 [Tilia.Interactions.Interactables.Interactables.Utility]: README.md
 [InteractableFactory]: InteractableFactory.md
 [InteractableFacade]: ../../Interactables/InteractableFacade.md
@@ -109,3 +149,5 @@ public virtual void DoConvert(GameObject objectToConvert)
 [Methods]: #Methods
 [Convert(GameObject)]: #ConvertGameObject
 [DoConvert(GameObject)]: #DoConvertGameObject
+[DoEmbed(GameObject)]: #DoEmbedGameObject
+[Embed(GameObject)]: #EmbedGameObject
