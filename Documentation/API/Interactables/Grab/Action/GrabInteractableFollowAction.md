@@ -17,6 +17,7 @@ Describes an action that allows the Interactable to follow an Interactor's posit
   * [FollowTransformRotateOnPositionDifferenceModifier]
   * [ForceSnapFollower]
   * [GrabOffset]
+  * [InteractableRigidbody]
   * [IsKinematicWhenActive]
   * [IsKinematicWhenInactive]
   * [ObjectFollower]
@@ -179,6 +180,16 @@ The offset to apply when grabbing the Interactable.
 
 ```
 public GrabInteractableFollowAction.OffsetType GrabOffset { get; set; }
+```
+
+#### InteractableRigidbody
+
+The Rigidbody linked to the interactable.
+
+##### Declaration
+
+```
+public virtual Rigidbody InteractableRigidbody { get; }
 ```
 
 #### IsKinematicWhenActive
@@ -599,6 +610,7 @@ public virtual void UseRulesMatcherOrientationHandleLogic()
 [FollowTransformRotateOnPositionDifferenceModifier]: #FollowTransformRotateOnPositionDifferenceModifier
 [ForceSnapFollower]: #ForceSnapFollower
 [GrabOffset]: #GrabOffset
+[InteractableRigidbody]: #InteractableRigidbody
 [IsKinematicWhenActive]: #IsKinematicWhenActive
 [IsKinematicWhenInactive]: #IsKinematicWhenInactive
 [ObjectFollower]: #ObjectFollower

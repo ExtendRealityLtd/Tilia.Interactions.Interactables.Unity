@@ -239,7 +239,7 @@ The linked [InteractableConfigurator].
 ##### Declaration
 
 ```
-public InteractableConfigurator Configuration { get; protected set; }
+public InteractableConfigurator Configuration { get; set; }
 ```
 
 #### GrabbingInteractors

@@ -10,6 +10,8 @@ A factory for creating an Interactable Object.
 * [Methods]
   * [CanConvert(GameObject)]
   * [Create(GameObject, GameObject)]
+  * [Embed(GameObject, GameObject)]
+  * [HideMeshes(GameObject)]
 
 ## Details
 
@@ -91,6 +93,45 @@ public virtual GameObject Create(GameObject interactablePrefab, GameObject objec
 | --- | --- |
 | GameObject | The created Interactable Object. |
 
+#### Embed(GameObject, GameObject)
+
+Embeds an Interactable Object as a child of the existing scene GameObject.
+
+##### Declaration
+
+```
+public virtual GameObject Embed(GameObject interactablePrefab, GameObject embedInto)
+```
+
+##### Parameters
+
+| Type | Name | Description |
+| --- | --- | --- |
+| GameObject | interactablePrefab | The Interactable Object prefab to create from and embed. |
+| GameObject | embedInto | n/a |
+
+##### Returns
+
+| Type | Description |
+| --- | --- |
+| GameObject | The existing scene GameObject with the embedded newly created Interactable Object. |
+
+#### HideMeshes(GameObject)
+
+Hides all of the meshes found in the given GameObject child hierarchy.
+
+##### Declaration
+
+```
+protected virtual void HideMeshes(GameObject container)
+```
+
+##### Parameters
+
+| Type | Name | Description |
+| --- | --- | --- |
+| GameObject | container | The container to find the meshes in. |
+
 [Tilia.Interactions.Interactables.Interactables.Utility]: README.md
 [Inheritance]: #Inheritance
 [Namespace]: #Namespace
@@ -98,3 +139,5 @@ public virtual GameObject Create(GameObject interactablePrefab, GameObject objec
 [Methods]: #Methods
 [CanConvert(GameObject)]: #CanConvertGameObject
 [Create(GameObject, GameObject)]: #CreateGameObject-GameObject
+[Embed(GameObject, GameObject)]: #EmbedGameObject-GameObject
+[HideMeshes(GameObject)]: #HideMeshesGameObject
