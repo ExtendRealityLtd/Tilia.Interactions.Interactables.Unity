@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.13.0](https://github.com/ExtendRealityLtd/Tilia.Interactions.Interactables.Unity/compare/v2.12.0...v2.13.0) (2023-04-16)
+
+#### Features
+
+* **Editor:** add embed interactable into gameobject option ([28bde5c](https://github.com/ExtendRealityLtd/Tilia.Interactions.Interactables.Unity/commit/28bde5c1e9ccdd3f5531683c765c1ded57791ecf))
+  > The InteractableCreatorEditorWindow now has an extra button that instead of nesting the selected GameObject inside an interactable prefab it will instead embed the newly created interactable prefab as a child of the selected GameObject.
+
 ## [2.12.0](https://github.com/ExtendRealityLtd/Tilia.Interactions.Interactables.Unity/compare/v2.11.8...v2.12.0) (2023-04-04)
 
 #### Features
