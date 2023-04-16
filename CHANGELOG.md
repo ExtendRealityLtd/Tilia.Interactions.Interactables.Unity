@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.14.0](https://github.com/ExtendRealityLtd/Tilia.Interactions.Interactables.Unity/compare/v2.13.1...v2.14.0) (2023-04-16)
+
+#### Features
+
+* **Prefabs:** match rules to the grabbed interactable collider ([94425b7](https://github.com/ExtendRealityLtd/Tilia.Interactions.Interactables.Unity/commit/94425b78235daa1e84f19bd2f0f03a41318becfa))
+  > A new path has been added that when an interactable is grabbed, the specific collider on the interactable is emitted to a Rules Matcher so custom logic can be applied before the grab mechanics execute.
+
 ### [2.13.1](https://github.com/ExtendRealityLtd/Tilia.Interactions.Interactables.Unity/compare/v2.13.0...v2.13.1) (2023-04-16)
 
 #### Miscellaneous Chores
