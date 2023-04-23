@@ -1,5 +1,14 @@
 # Changelog
 
+## [2.15.0](https://github.com/ExtendRealityLtd/Tilia.Interactions.Interactables.Unity/compare/v2.14.0...v2.15.0) (2023-04-23)
+
+#### Features
+
+* **prefabs:** add rules matcher for touched colliders ([ea05f16](https://github.com/ExtendRealityLtd/Tilia.Interactions.Interactables.Unity/commit/ea05f16224044102dd6b5eaf905a9ef8d1019860))
+  > A new Rules Matcher has been added that can be used to process the touched collider of the interactable in a similar way to how the grabbed collider matcher works. This makes it possible to know which collider has been touched on the interactable and do something with this information before the rest of the touch logic is run.
+  > 
+  > The touch (and now the grab) collider logic only runs if the interactor is not in the disallowed interactors list for the interaction type.
+
 ## [2.14.0](https://github.com/ExtendRealityLtd/Tilia.Interactions.Interactables.Unity/compare/v2.13.1...v2.14.0) (2023-04-16)
 
 #### Features
