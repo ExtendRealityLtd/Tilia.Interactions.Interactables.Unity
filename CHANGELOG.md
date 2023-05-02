@@ -1,5 +1,17 @@
 # Changelog
 
+## [2.16.0](https://github.com/ExtendRealityLtd/Tilia.Interactions.Interactables.Unity/compare/v2.15.1...v2.16.0) (2023-05-02)
+
+#### Features
+
+* **Editor:** add restriction options for scale action ([a983813](https://github.com/ExtendRealityLtd/Tilia.Interactions.Interactables.Unity/commit/a9838134ad29da76bf86b1bfde1e85178b8f99ab))
+  > The Scale action now has restrictions for scale axis and min/max scale values which are now present on the custom inspector window.
+
+#### Bug Fixes
+
+* **Interactables:** ensure reference properties are public ([86f092a](https://github.com/ExtendRealityLtd/Tilia.Interactions.Interactables.Unity/commit/86f092a2d31bfa4955765da483837bf4ac4bdc70))
+  > There is no point in having reference properties as protected as this just makes it harder to set these elements via code and they should be available to do so.
+
 ### [2.15.1](https://github.com/ExtendRealityLtd/Tilia.Interactions.Interactables.Unity/compare/v2.15.0...v2.15.1) (2023-05-02)
 
 #### Miscellaneous Chores
