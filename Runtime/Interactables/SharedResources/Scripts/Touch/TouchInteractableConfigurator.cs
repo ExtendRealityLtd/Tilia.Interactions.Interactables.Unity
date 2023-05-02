@@ -29,7 +29,7 @@
             {
                 return facade;
             }
-            protected set
+            set
             {
                 facade = value;
             }
@@ -51,7 +51,7 @@
             {
                 return touchConsumer;
             }
-            protected set
+            set
             {
                 touchConsumer = value;
             }
@@ -69,7 +69,7 @@
             {
                 return untouchConsumer;
             }
-            protected set
+            set
             {
                 untouchConsumer = value;
             }
@@ -91,7 +91,7 @@
             {
                 return currentTouchingObjects;
             }
-            protected set
+            set
             {
                 currentTouchingObjects = value;
             }
@@ -109,7 +109,7 @@
             {
                 return currentUntouchingObjects;
             }
-            protected set
+            set
             {
                 currentUntouchingObjects = value;
             }
@@ -127,7 +127,7 @@
             {
                 return currentUntouchingEventProxy;
             }
-            protected set
+            set
             {
                 currentUntouchingEventProxy = value;
             }
@@ -145,7 +145,7 @@
             {
                 return touchValidity;
             }
-            protected set
+            set
             {
                 touchValidity = value;
             }
@@ -167,7 +167,7 @@
             {
                 return potentialInteractors;
             }
-            protected set
+            set
             {
                 potentialInteractors = value;
             }
@@ -185,7 +185,7 @@
             {
                 return activeInteractorCounter;
             }
-            protected set
+            set
             {
                 activeInteractorCounter = value;
             }
@@ -203,7 +203,7 @@
             {
                 return addActiveInteractor;
             }
-            protected set
+            set
             {
                 addActiveInteractor = value;
             }
@@ -221,7 +221,7 @@
             {
                 return removeActiveInteractor;
             }
-            protected set
+            set
             {
                 removeActiveInteractor = value;
             }

@@ -86,7 +86,7 @@ The GameObjectObservableList that contains the available grab action prefabs.
 ##### Declaration
 
 ```
-public GameObjectObservableList ActionTypes { get; protected set; }
+public GameObjectObservableList ActionTypes { get; set; }
 ```
 
 #### Facade
@@ -96,7 +96,7 @@ The public interface facade.
 ##### Declaration
 
 ```
-public InteractableFacade Facade { get; protected set; }
+public InteractableFacade Facade { get; set; }
 ```
 
 #### GrabbingInteractors
@@ -116,7 +116,7 @@ The Grab Provider setup.
 ##### Declaration
 
 ```
-public GrabInteractableInteractorProvider GrabProvider { get; protected set; }
+public GrabInteractableInteractorProvider GrabProvider { get; set; }
 ```
 
 #### GrabProviderOptions
@@ -126,7 +126,7 @@ The potential options for the [GrabProvider].
 ##### Declaration
 
 ```
-public GrabInteractableInteractorProvider[] GrabProviderOptions { get; protected set; }
+public GrabInteractableInteractorProvider[] GrabProviderOptions { get; set; }
 ```
 
 #### GrabReceiver
@@ -136,7 +136,7 @@ The Grab Receiver setup.
 ##### Declaration
 
 ```
-public GrabInteractableReceiver GrabReceiver { get; protected set; }
+public GrabInteractableReceiver GrabReceiver { get; set; }
 ```
 
 #### IsGrabTypeToggle

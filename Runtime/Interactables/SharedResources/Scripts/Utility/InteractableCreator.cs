@@ -23,7 +23,7 @@
             {
                 return interactableObject;
             }
-            protected set
+            set
             {
                 interactableObject = value;
             }

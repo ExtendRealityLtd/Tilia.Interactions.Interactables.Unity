@@ -24,7 +24,7 @@
             {
                 return pinchScaler;
             }
-            protected set
+            set
             {
                 pinchScaler = value;
             }

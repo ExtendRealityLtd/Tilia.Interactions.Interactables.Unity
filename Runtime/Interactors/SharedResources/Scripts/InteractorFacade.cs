@@ -143,7 +143,7 @@
             {
                 return precisionAttachPoint;
             }
-            protected set
+            set
             {
                 precisionAttachPoint = value;
             }
@@ -161,7 +161,7 @@
             {
                 return avatarContainer;
             }
-            protected set
+            set
             {
                 avatarContainer = value;
             }
@@ -179,7 +179,7 @@
             {
                 return touchConfiguration;
             }
-            protected set
+            set
             {
                 touchConfiguration = value;
             }
@@ -197,7 +197,7 @@
             {
                 return grabConfiguration;
             }
-            protected set
+            set
             {
                 grabConfiguration = value;
             }

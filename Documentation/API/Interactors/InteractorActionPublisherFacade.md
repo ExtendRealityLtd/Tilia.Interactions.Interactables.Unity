@@ -55,7 +55,7 @@ The Action that will be linked to the [SourceAction].
 ##### Declaration
 
 ```
-public InteractorActionPublisherConfigurator Configuration { get; protected set; }
+public InteractorActionPublisherConfigurator Configuration { get; set; }
 ```
 
 #### SourceAction

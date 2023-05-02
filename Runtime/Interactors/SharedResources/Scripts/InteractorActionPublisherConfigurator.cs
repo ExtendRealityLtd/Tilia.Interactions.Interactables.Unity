@@ -30,7 +30,7 @@
             {
                 return facade;
             }
-            protected set
+            set
             {
                 facade = value;
             }
@@ -52,7 +52,7 @@
             {
                 return targetActions;
             }
-            protected set
+            set
             {
                 targetActions = value;
             }
@@ -70,7 +70,7 @@
             {
                 return startActionPublisher;
             }
-            protected set
+            set
             {
                 startActionPublisher = value;
             }
@@ -88,7 +88,7 @@
             {
                 return stopActionPublisher;
             }
-            protected set
+            set
             {
                 stopActionPublisher = value;
             }
@@ -106,7 +106,7 @@
             {
                 return setOnTouchEmitter;
             }
-            protected set
+            set
             {
                 setOnTouchEmitter = value;
             }
@@ -124,7 +124,7 @@
             {
                 return setOnGrabEmitter;
             }
-            protected set
+            set
             {
                 setOnGrabEmitter = value;
             }

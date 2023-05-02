@@ -60,7 +60,7 @@ The set to get the current interactors from.
 ##### Declaration
 
 ```
-public GameObjectObservableList EventList { get; protected set; }
+public GameObjectObservableList EventList { get; set; }
 ```
 
 #### GrabbingInteractors

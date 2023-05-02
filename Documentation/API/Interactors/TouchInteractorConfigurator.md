@@ -63,7 +63,7 @@ The Zinnia.Tracking.Collision.Active.ActiveCollisionsContainer that holds all cu
 ##### Declaration
 
 ```
-public ActiveCollisionsContainer ActiveCollisionsContainer { get; protected set; }
+public ActiveCollisionsContainer ActiveCollisionsContainer { get; set; }
 ```
 
 #### ActiveTouchedObject
@@ -83,7 +83,7 @@ The Slicer that holds the current active collision.
 ##### Declaration
 
 ```
-public Slicer CurrentActiveCollision { get; protected set; }
+public Slicer CurrentActiveCollision { get; set; }
 ```
 
 #### ExternalEmitters
@@ -93,7 +93,7 @@ The link to any external emitters of the touch state.
 ##### Declaration
 
 ```
-public ActiveCollisionsContainerEventProxyEmitter ExternalEmitters { get; protected set; }
+public ActiveCollisionsContainerEventProxyEmitter ExternalEmitters { get; set; }
 ```
 
 #### Facade
@@ -103,7 +103,7 @@ The public interface facade.
 ##### Declaration
 
 ```
-public InteractorFacade Facade { get; protected set; }
+public InteractorFacade Facade { get; set; }
 ```
 
 #### IsTouchingAction
@@ -113,7 +113,7 @@ A BooleanAction for holding the state of whether the Interactor is touching some
 ##### Declaration
 
 ```
-public BooleanAction IsTouchingAction { get; protected set; }
+public BooleanAction IsTouchingAction { get; set; }
 ```
 
 #### StartTouchingPublisher
@@ -123,7 +123,7 @@ The ActiveCollisionPublisher for checking valid start touching collisions.
 ##### Declaration
 
 ```
-public ActiveCollisionPublisher StartTouchingPublisher { get; protected set; }
+public ActiveCollisionPublisher StartTouchingPublisher { get; set; }
 ```
 
 #### StopTouchingPublisher
@@ -133,7 +133,7 @@ The ActiveCollisionPublisher for checking valid stop touching collisions.
 ##### Declaration
 
 ```
-public ActiveCollisionPublisher StopTouchingPublisher { get; protected set; }
+public ActiveCollisionPublisher StopTouchingPublisher { get; set; }
 ```
 
 #### TouchedObjects
@@ -153,7 +153,7 @@ A CollisionTracker for tracking collisions/touches on this Interactor.
 ##### Declaration
 
 ```
-public CollisionTracker TouchTracker { get; protected set; }
+public CollisionTracker TouchTracker { get; set; }
 ```
 
 ### Methods

@@ -26,7 +26,7 @@
             {
                 return inputActiveCollisionConsumer;
             }
-            protected set
+            set
             {
                 inputActiveCollisionConsumer = value;
             }
@@ -44,7 +44,7 @@
             {
                 return inputGrabReceived;
             }
-            protected set
+            set
             {
                 inputGrabReceived = value;
             }
@@ -62,7 +62,7 @@
             {
                 return inputUngrabReceived;
             }
-            protected set
+            set
             {
                 inputUngrabReceived = value;
             }
@@ -80,7 +80,7 @@
             {
                 return inputGrabSetup;
             }
-            protected set
+            set
             {
                 inputGrabSetup = value;
             }
@@ -98,7 +98,7 @@
             {
                 return inputUngrabReset;
             }
-            protected set
+            set
             {
                 inputUngrabReset = value;
             }

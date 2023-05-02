@@ -30,7 +30,7 @@
             {
                 return facade;
             }
-            protected set
+            set
             {
                 facade = value;
             }
@@ -52,7 +52,7 @@
             {
                 return activeCollisionsContainer;
             }
-            protected set
+            set
             {
                 activeCollisionsContainer = value;
             }
@@ -70,7 +70,7 @@
             {
                 return currentActiveCollision;
             }
-            protected set
+            set
             {
                 currentActiveCollision = value;
             }
@@ -88,7 +88,7 @@
             {
                 return externalEmitters;
             }
-            protected set
+            set
             {
                 externalEmitters = value;
             }
@@ -106,7 +106,7 @@
             {
                 return startTouchingPublisher;
             }
-            protected set
+            set
             {
                 startTouchingPublisher = value;
             }
@@ -124,7 +124,7 @@
             {
                 return stopTouchingPublisher;
             }
-            protected set
+            set
             {
                 stopTouchingPublisher = value;
             }
@@ -142,7 +142,7 @@
             {
                 return isTouchingAction;
             }
-            protected set
+            set
             {
                 isTouchingAction = value;
             }
@@ -160,7 +160,7 @@
             {
                 return touchTracker;
             }
-            protected set
+            set
             {
                 touchTracker = value;
             }

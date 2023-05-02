@@ -61,7 +61,7 @@ The public interface facade.
 ##### Declaration
 
 ```
-public InteractorActionPublisherFacade Facade { get; protected set; }
+public InteractorActionPublisherFacade Facade { get; set; }
 ```
 
 #### SetOnGrabEmitter
@@ -71,7 +71,7 @@ The ActiveCollisionPublisherEventProxyEmitter setting the active collisions on t
 ##### Declaration
 
 ```
-public ActiveCollisionPublisherEventProxyEmitter SetOnGrabEmitter { get; protected set; }
+public ActiveCollisionPublisherEventProxyEmitter SetOnGrabEmitter { get; set; }
 ```
 
 #### SetOnTouchEmitter
@@ -81,7 +81,7 @@ The ActiveCollisionsContainerEventProxyEmitter setting the active collisions on 
 ##### Declaration
 
 ```
-public ActiveCollisionsContainerEventProxyEmitter SetOnTouchEmitter { get; protected set; }
+public ActiveCollisionsContainerEventProxyEmitter SetOnTouchEmitter { get; set; }
 ```
 
 #### StartActionPublisher
@@ -91,7 +91,7 @@ The ActiveCollisionPublisher for checking valid start action.
 ##### Declaration
 
 ```
-public ActiveCollisionPublisher StartActionPublisher { get; protected set; }
+public ActiveCollisionPublisher StartActionPublisher { get; set; }
 ```
 
 #### StopActionPublisher
@@ -101,7 +101,7 @@ The ActiveCollisionPublisher for checking valid stop action.
 ##### Declaration
 
 ```
-public ActiveCollisionPublisher StopActionPublisher { get; protected set; }
+public ActiveCollisionPublisher StopActionPublisher { get; set; }
 ```
 
 #### TargetActions
@@ -111,7 +111,7 @@ The ActionObservableList that contains the Action collection that can be linked 
 ##### Declaration
 
 ```
-public ActionObservableList TargetActions { get; protected set; }
+public ActionObservableList TargetActions { get; set; }
 ```
 
 ### Methods

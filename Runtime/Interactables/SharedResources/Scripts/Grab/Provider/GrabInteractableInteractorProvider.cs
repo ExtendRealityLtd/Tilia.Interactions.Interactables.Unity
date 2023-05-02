@@ -27,7 +27,7 @@
             {
                 return inputGrabReceived;
             }
-            protected set
+            set
             {
                 inputGrabReceived = value;
             }
@@ -45,7 +45,7 @@
             {
                 return inputUngrabReceived;
             }
-            protected set
+            set
             {
                 inputUngrabReceived = value;
             }
@@ -67,7 +67,7 @@
             {
                 return outputPrimaryGrabAction;
             }
-            protected set
+            set
             {
                 outputPrimaryGrabAction = value;
             }
@@ -85,7 +85,7 @@
             {
                 return outputPrimaryGrabSetupOnSecondaryAction;
             }
-            protected set
+            set
             {
                 outputPrimaryGrabSetupOnSecondaryAction = value;
             }
@@ -103,7 +103,7 @@
             {
                 return outputPrimaryUngrabAction;
             }
-            protected set
+            set
             {
                 outputPrimaryUngrabAction = value;
             }
@@ -121,7 +121,7 @@
             {
                 return outputPrimaryUngrabResetOnSecondaryAction;
             }
-            protected set
+            set
             {
                 outputPrimaryUngrabResetOnSecondaryAction = value;
             }
@@ -143,7 +143,7 @@
             {
                 return outputSecondaryGrabAction;
             }
-            protected set
+            set
             {
                 outputSecondaryGrabAction = value;
             }
@@ -161,7 +161,7 @@
             {
                 return outputSecondaryUngrabAction;
             }
-            protected set
+            set
             {
                 outputSecondaryUngrabAction = value;
             }

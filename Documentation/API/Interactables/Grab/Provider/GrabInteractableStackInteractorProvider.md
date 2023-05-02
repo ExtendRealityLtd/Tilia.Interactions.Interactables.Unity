@@ -61,7 +61,7 @@ The container that holds the logic for attempting to swap the stacks on force po
 ##### Declaration
 
 ```
-public GameObject AttemptSwapLogicContainer { get; protected set; }
+public GameObject AttemptSwapLogicContainer { get; set; }
 ```
 
 #### EventStack
@@ -71,7 +71,7 @@ The stack to get the current interactors from.
 ##### Declaration
 
 ```
-public GameObjectObservableStack EventStack { get; protected set; }
+public GameObjectObservableStack EventStack { get; set; }
 ```
 
 #### GrabbingInteractors

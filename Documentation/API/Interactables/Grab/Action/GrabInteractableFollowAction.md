@@ -99,7 +99,7 @@ The CollisionPointContainer component for the precision point logic.
 ##### Declaration
 
 ```
-public CollisionPointContainer CollisionPointContainerComponent { get; protected set; }
+public CollisionPointContainer CollisionPointContainerComponent { get; set; }
 ```
 
 #### FollowRigidbodyForceRotateModifier
@@ -109,7 +109,7 @@ The FollowModifier to rotate by applying a force to the Rigidbody.
 ##### Declaration
 
 ```
-public FollowModifier FollowRigidbodyForceRotateModifier { get; protected set; }
+public FollowModifier FollowRigidbodyForceRotateModifier { get; set; }
 ```
 
 #### FollowRigidbodyModifier
@@ -119,7 +119,7 @@ The FollowModifier to move by applying velocities to the Rigidbody.
 ##### Declaration
 
 ```
-public FollowModifier FollowRigidbodyModifier { get; protected set; }
+public FollowModifier FollowRigidbodyModifier { get; set; }
 ```
 
 #### FollowRotateAroundAngularVelocityModifier
@@ -129,7 +129,7 @@ The FollowModifier to rotate by the angular velocity of the source Interactor.
 ##### Declaration
 
 ```
-public FollowModifier FollowRotateAroundAngularVelocityModifier { get; protected set; }
+public FollowModifier FollowRotateAroundAngularVelocityModifier { get; set; }
 ```
 
 #### FollowTracking
@@ -149,7 +149,7 @@ The FollowModifier to move by following the transform.
 ##### Declaration
 
 ```
-public FollowModifier FollowTransformModifier { get; protected set; }
+public FollowModifier FollowTransformModifier { get; set; }
 ```
 
 #### FollowTransformRotateOnPositionDifferenceModifier
@@ -159,7 +159,7 @@ The FollowModifier to rotate by the angle difference between the source position
 ##### Declaration
 
 ```
-public FollowModifier FollowTransformRotateOnPositionDifferenceModifier { get; protected set; }
+public FollowModifier FollowTransformRotateOnPositionDifferenceModifier { get; set; }
 ```
 
 #### ForceSnapFollower
@@ -169,7 +169,7 @@ The [ObjectFollower] to force snap the Interactable to the Interactor.
 ##### Declaration
 
 ```
-public ObjectFollower ForceSnapFollower { get; protected set; }
+public ObjectFollower ForceSnapFollower { get; set; }
 ```
 
 #### GrabOffset
@@ -219,7 +219,7 @@ The Zinnia.Tracking.Follow.ObjectFollower for tracking movement.
 ##### Declaration
 
 ```
-public ObjectFollower ObjectFollower { get; protected set; }
+public ObjectFollower ObjectFollower { get; set; }
 ```
 
 #### OrientationHandleContainer
@@ -229,7 +229,7 @@ The container for the orientation handles.
 ##### Declaration
 
 ```
-public GameObject OrientationHandleContainer { get; protected set; }
+public GameObject OrientationHandleContainer { get; set; }
 ```
 
 #### OrientationHandleLogic
@@ -249,7 +249,7 @@ The container for the orientation handle logic.
 ##### Declaration
 
 ```
-public GameObject OrientationLogicContainer { get; protected set; }
+public GameObject OrientationLogicContainer { get; set; }
 ```
 
 #### OrientationRelationsLogicContainer
@@ -259,7 +259,7 @@ The container for the orientation GameObject Relations logic.
 ##### Declaration
 
 ```
-public GameObject OrientationRelationsLogicContainer { get; protected set; }
+public GameObject OrientationRelationsLogicContainer { get; set; }
 ```
 
 #### OrientationRulesMatcherLogicContainer
@@ -269,7 +269,7 @@ The container for the orientation Rules Matcher logic.
 ##### Declaration
 
 ```
-public GameObject OrientationRulesMatcherLogicContainer { get; protected set; }
+public GameObject OrientationRulesMatcherLogicContainer { get; set; }
 ```
 
 #### PositionModifiers
@@ -279,7 +279,7 @@ A GameObjectObservableList collection of all position modifiers used within the 
 ##### Declaration
 
 ```
-public GameObjectObservableList PositionModifiers { get; protected set; }
+public GameObjectObservableList PositionModifiers { get; set; }
 ```
 
 #### PrecisionCollisionPoint
@@ -299,7 +299,7 @@ The container for the precision point creation logic.
 ##### Declaration
 
 ```
-public GameObject PrecisionCreateContainer { get; protected set; }
+public GameObject PrecisionCreateContainer { get; set; }
 ```
 
 #### PrecisionForceCreateContainer
@@ -309,7 +309,7 @@ The container for the precision point force creation logic.
 ##### Declaration
 
 ```
-public GameObject PrecisionForceCreateContainer { get; protected set; }
+public GameObject PrecisionForceCreateContainer { get; set; }
 ```
 
 #### PrecisionLogicContainer
@@ -319,7 +319,7 @@ The container for the precision point logic.
 ##### Declaration
 
 ```
-public GameObject PrecisionLogicContainer { get; protected set; }
+public GameObject PrecisionLogicContainer { get; set; }
 ```
 
 #### RotationModifiers
@@ -329,7 +329,7 @@ A GameObjectObservableList collection of all rotation modifiers used within the 
 ##### Declaration
 
 ```
-public GameObjectObservableList RotationModifiers { get; protected set; }
+public GameObjectObservableList RotationModifiers { get; set; }
 ```
 
 #### ScaleModifiers
@@ -339,7 +339,7 @@ A GameObjectObservableList collection of all scale modifiers used within the fol
 ##### Declaration
 
 ```
-public GameObjectObservableList ScaleModifiers { get; protected set; }
+public GameObjectObservableList ScaleModifiers { get; set; }
 ```
 
 #### VelocityApplier
@@ -349,7 +349,7 @@ The Zinnia.Tracking.Velocity.VelocityApplier to apply velocity on ungrab.
 ##### Declaration
 
 ```
-public VelocityApplier VelocityApplier { get; protected set; }
+public VelocityApplier VelocityApplier { get; set; }
 ```
 
 #### VelocityMultiplier
@@ -359,7 +359,7 @@ The Zinnia.Tracking.Velocity.VelocityMultiplier to multiply the applied velocity
 ##### Declaration
 
 ```
-public VelocityMultiplier VelocityMultiplier { get; protected set; }
+public VelocityMultiplier VelocityMultiplier { get; set; }
 ```
 
 #### WillInheritIsKinematicWhenInactiveFromConsumerRigidbody

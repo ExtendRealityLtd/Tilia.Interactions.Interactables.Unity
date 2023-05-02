@@ -230,6 +230,9 @@
             EditorGUI.indentLevel++;
             DrawPropertyFieldWithChangeHandlers(actionObject, "multiplier", undoRedoWarningPropertyPath);
             DrawPropertyFieldWithChangeHandlers(actionObject, "calculateByPower", undoRedoWarningPropertyPath);
+            DrawPropertyFieldWithChangeHandlers(actionObject, "applyScaleOnAxis", undoRedoWarningPropertyPath);
+            DrawPropertyFieldWithChangeHandlers(actionObject, "minimumScaleLimit", undoRedoWarningPropertyPath);
+            DrawPropertyFieldWithChangeHandlers(actionObject, "maximumScaleLimit", undoRedoWarningPropertyPath);
             EditorGUI.indentLevel--;
         }
 

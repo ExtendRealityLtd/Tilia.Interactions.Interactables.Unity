@@ -86,7 +86,7 @@ The System.Action that will be linked to the SourceAction.
 ##### Declaration
 
 ```
-public InteractableActionReceiverConfigurator Configuration { get; protected set; }
+public InteractableActionReceiverConfigurator Configuration { get; set; }
 ```
 
 #### SourcePublishers

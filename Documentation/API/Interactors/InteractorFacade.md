@@ -158,7 +158,7 @@ The container of the Interactor avatar components.
 ##### Declaration
 
 ```
-public GameObject AvatarContainer { get; protected set; }
+public GameObject AvatarContainer { get; set; }
 ```
 
 #### GrabAction
@@ -198,7 +198,7 @@ The linked Grab Internal Setup.
 ##### Declaration
 
 ```
-public GrabInteractorConfigurator GrabConfiguration { get; protected set; }
+public GrabInteractorConfigurator GrabConfiguration { get; set; }
 ```
 
 #### GrabPrecognition
@@ -218,7 +218,7 @@ The point at which the grabbed Interactable will be attached to the Interactor v
 ##### Declaration
 
 ```
-public GameObject PrecisionAttachPoint { get; protected set; }
+public GameObject PrecisionAttachPoint { get; set; }
 ```
 
 #### TouchConfiguration
@@ -228,7 +228,7 @@ The linked Touch Internal Setup.
 ##### Declaration
 
 ```
-public TouchInteractorConfigurator TouchConfiguration { get; protected set; }
+public TouchInteractorConfigurator TouchConfiguration { get; set; }
 ```
 
 #### TouchedObjects

@@ -91,7 +91,7 @@ The public interface facade.
 ##### Declaration
 
 ```
-public InteractorFacade Facade { get; protected set; }
+public InteractorFacade Facade { get; set; }
 ```
 
 #### GrabAction
@@ -101,7 +101,7 @@ The BooleanAction that will initiate the Interactor grab mechanism.
 ##### Declaration
 
 ```
-public BooleanAction GrabAction { get; protected set; }
+public BooleanAction GrabAction { get; set; }
 ```
 
 #### GrabbedObjects
@@ -121,7 +121,7 @@ The GameObjectObservableSet containing the currently grabbed objects.
 ##### Declaration
 
 ```
-public GameObjectObservableList GrabbedObjectsCollection { get; protected set; }
+public GameObjectObservableList GrabbedObjectsCollection { get; set; }
 ```
 
 #### InstantGrabProcessor
@@ -131,7 +131,7 @@ The processor for initiating an instant grab.
 ##### Declaration
 
 ```
-public GameObject InstantGrabProcessor { get; protected set; }
+public GameObject InstantGrabProcessor { get; set; }
 ```
 
 #### IsGrabbingAction
@@ -141,7 +141,7 @@ A BooleanAction for holding the state of whether the Interactor is grabbing some
 ##### Declaration
 
 ```
-public BooleanAction IsGrabbingAction { get; protected set; }
+public BooleanAction IsGrabbingAction { get; set; }
 ```
 
 #### MinPrecognitionTimer
@@ -151,7 +151,7 @@ The minimum timer value for the grab precognition CountdownTimer.
 ##### Declaration
 
 ```
-public float MinPrecognitionTimer { get; protected set; }
+public float MinPrecognitionTimer { get; set; }
 ```
 
 #### PrecognitionGrabProcessor
@@ -161,7 +161,7 @@ The processor for initiating a precognitive grab.
 ##### Declaration
 
 ```
-public GameObject PrecognitionGrabProcessor { get; protected set; }
+public GameObject PrecognitionGrabProcessor { get; set; }
 ```
 
 #### PrecognitionTimer
@@ -171,7 +171,7 @@ The CountdownTimer to determine grab precognition.
 ##### Declaration
 
 ```
-public CountdownTimer PrecognitionTimer { get; protected set; }
+public CountdownTimer PrecognitionTimer { get; set; }
 ```
 
 #### StartGrabbingPublisher
@@ -181,7 +181,7 @@ The ActiveCollisionPublisher for checking valid start grabbing action.
 ##### Declaration
 
 ```
-public ActiveCollisionPublisher StartGrabbingPublisher { get; protected set; }
+public ActiveCollisionPublisher StartGrabbingPublisher { get; set; }
 ```
 
 #### StopGrabbingPublisher
@@ -191,7 +191,7 @@ The ActiveCollisionPublisher for checking valid stop grabbing action.
 ##### Declaration
 
 ```
-public ActiveCollisionPublisher StopGrabbingPublisher { get; protected set; }
+public ActiveCollisionPublisher StopGrabbingPublisher { get; set; }
 ```
 
 #### TouchBeforeForceGrab
@@ -211,7 +211,7 @@ The VelocityTrackerProcessor to measure the interactors current velocity for thr
 ##### Declaration
 
 ```
-public VelocityTrackerProcessor VelocityTracker { get; protected set; }
+public VelocityTrackerProcessor VelocityTracker { get; set; }
 ```
 
 ### Methods

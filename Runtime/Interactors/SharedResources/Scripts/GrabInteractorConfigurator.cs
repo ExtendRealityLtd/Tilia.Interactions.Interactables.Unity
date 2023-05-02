@@ -33,7 +33,7 @@
             {
                 return facade;
             }
-            protected set
+            set
             {
                 facade = value;
             }
@@ -55,7 +55,7 @@
             {
                 return grabAction;
             }
-            protected set
+            set
             {
                 grabAction = value;
             }
@@ -73,7 +73,7 @@
             {
                 return velocityTracker;
             }
-            protected set
+            set
             {
                 velocityTracker = value;
                 if (this.IsMemberChangeAllowed())
@@ -95,7 +95,7 @@
             {
                 return startGrabbingPublisher;
             }
-            protected set
+            set
             {
                 startGrabbingPublisher = value;
             }
@@ -113,7 +113,7 @@
             {
                 return stopGrabbingPublisher;
             }
-            protected set
+            set
             {
                 stopGrabbingPublisher = value;
             }
@@ -131,7 +131,7 @@
             {
                 return instantGrabProcessor;
             }
-            protected set
+            set
             {
                 instantGrabProcessor = value;
             }
@@ -149,7 +149,7 @@
             {
                 return precognitionGrabProcessor;
             }
-            protected set
+            set
             {
                 precognitionGrabProcessor = value;
             }
@@ -167,7 +167,7 @@
             {
                 return precognitionTimer;
             }
-            protected set
+            set
             {
                 precognitionTimer = value;
             }
@@ -185,7 +185,7 @@
             {
                 return minPrecognitionTimer;
             }
-            protected set
+            set
             {
                 minPrecognitionTimer = value;
             }
@@ -203,7 +203,7 @@
             {
                 return grabbedObjectsCollection;
             }
-            protected set
+            set
             {
                 grabbedObjectsCollection = value;
             }
@@ -221,7 +221,7 @@
             {
                 return isGrabbingAction;
             }
-            protected set
+            set
             {
                 isGrabbingAction = value;
             }
