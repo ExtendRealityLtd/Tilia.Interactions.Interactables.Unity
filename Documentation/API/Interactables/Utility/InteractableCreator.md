@@ -55,7 +55,7 @@ The interactable prefab.
 ##### Declaration
 
 ```
-public GameObject InteractableObject { get; protected set; }
+public GameObject InteractableObject { get; set; }
 ```
 
 ### Methods

@@ -73,7 +73,7 @@ The [ActionRegistrar] to create the appropriate action links.
 ##### Declaration
 
 ```
-public ActionRegistrar ActionRegistrar { get; protected set; }
+public ActionRegistrar ActionRegistrar { get; set; }
 ```
 
 #### Facade
@@ -83,7 +83,7 @@ The public interface facade.
 ##### Declaration
 
 ```
-public InteractableActionReceiverFacade Facade { get; protected set; }
+public InteractableActionReceiverFacade Facade { get; set; }
 ```
 
 #### ReceiveStartActionRule
@@ -93,7 +93,7 @@ The ListContainsRule for the start action.
 ##### Declaration
 
 ```
-public ListContainsRule ReceiveStartActionRule { get; protected set; }
+public ListContainsRule ReceiveStartActionRule { get; set; }
 ```
 
 #### ReceiveStopActionRule
@@ -103,7 +103,7 @@ The ListContainsRule for the stop action.
 ##### Declaration
 
 ```
-public ListContainsRule ReceiveStopActionRule { get; protected set; }
+public ListContainsRule ReceiveStopActionRule { get; set; }
 ```
 
 #### StartActionConsumer
@@ -113,7 +113,7 @@ The ActiveCollisionConsumer for checking valid start action.
 ##### Declaration
 
 ```
-public ActiveCollisionConsumer StartActionConsumer { get; protected set; }
+public ActiveCollisionConsumer StartActionConsumer { get; set; }
 ```
 
 #### StopActionConsumer
@@ -123,7 +123,7 @@ The ActiveCollisionConsumer for checking valid stop action.
 ##### Declaration
 
 ```
-public ActiveCollisionConsumer StopActionConsumer { get; protected set; }
+public ActiveCollisionConsumer StopActionConsumer { get; set; }
 ```
 
 #### TargetActions
@@ -133,7 +133,7 @@ The ActionObservableList that containts the Zinnia.Action.Action collection that
 ##### Declaration
 
 ```
-public ActionObservableList TargetActions { get; protected set; }
+public ActionObservableList TargetActions { get; set; }
 ```
 
 ### Methods

@@ -78,7 +78,7 @@ The input GameObjectEventProxyEmitter for the grab action.
 ##### Declaration
 
 ```
-public GameObjectEventProxyEmitter InputGrabReceived { get; protected set; }
+public GameObjectEventProxyEmitter InputGrabReceived { get; set; }
 ```
 
 #### InputUngrabReceived
@@ -88,7 +88,7 @@ The input GameObjectEventProxyEmitter for the ungrab action.
 ##### Declaration
 
 ```
-public GameObjectEventProxyEmitter InputUngrabReceived { get; protected set; }
+public GameObjectEventProxyEmitter InputUngrabReceived { get; set; }
 ```
 
 #### OutputPrimaryGrabAction
@@ -98,7 +98,7 @@ The output GameObjectEventProxyEmitter for the primary grab action.
 ##### Declaration
 
 ```
-public GameObjectEventProxyEmitter OutputPrimaryGrabAction { get; protected set; }
+public GameObjectEventProxyEmitter OutputPrimaryGrabAction { get; set; }
 ```
 
 #### OutputPrimaryGrabSetupOnSecondaryAction
@@ -108,7 +108,7 @@ The output GameObjectEventProxyEmitter for the primary grab setup on secondary a
 ##### Declaration
 
 ```
-public GameObjectEventProxyEmitter OutputPrimaryGrabSetupOnSecondaryAction { get; protected set; }
+public GameObjectEventProxyEmitter OutputPrimaryGrabSetupOnSecondaryAction { get; set; }
 ```
 
 #### OutputPrimaryUngrabAction
@@ -118,7 +118,7 @@ The output GameObjectEventProxyEmitter for the primary ungrab action.
 ##### Declaration
 
 ```
-public GameObjectEventProxyEmitter OutputPrimaryUngrabAction { get; protected set; }
+public GameObjectEventProxyEmitter OutputPrimaryUngrabAction { get; set; }
 ```
 
 #### OutputPrimaryUngrabResetOnSecondaryAction
@@ -128,7 +128,7 @@ The output GameObjectEventProxyEmitter for the primary ungrab reset on secondary
 ##### Declaration
 
 ```
-public GameObjectEventProxyEmitter OutputPrimaryUngrabResetOnSecondaryAction { get; protected set; }
+public GameObjectEventProxyEmitter OutputPrimaryUngrabResetOnSecondaryAction { get; set; }
 ```
 
 #### OutputSecondaryGrabAction
@@ -138,7 +138,7 @@ The output GameObjectEventProxyEmitter for the secondary grab action.
 ##### Declaration
 
 ```
-public GameObjectEventProxyEmitter OutputSecondaryGrabAction { get; protected set; }
+public GameObjectEventProxyEmitter OutputSecondaryGrabAction { get; set; }
 ```
 
 #### OutputSecondaryUngrabAction
@@ -148,7 +148,7 @@ The output GameObjectEventProxyEmitter for the Secondary ungrab action.
 ##### Declaration
 
 ```
-public GameObjectEventProxyEmitter OutputSecondaryUngrabAction { get; protected set; }
+public GameObjectEventProxyEmitter OutputSecondaryUngrabAction { get; set; }
 ```
 
 ### Methods

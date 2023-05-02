@@ -63,7 +63,7 @@ The Zinnia.Tracking.Modification.DirectionModifier to process the direction cont
 ##### Declaration
 
 ```
-public DirectionModifier DirectionModifier { get; protected set; }
+public DirectionModifier DirectionModifier { get; set; }
 ```
 
 #### LinkedObjects

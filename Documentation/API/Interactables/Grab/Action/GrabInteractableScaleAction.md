@@ -57,7 +57,7 @@ The Zinnia.Tracking.Modification.PinchScaler to process the scale control.
 ##### Declaration
 
 ```
-public PinchScaler PinchScaler { get; protected set; }
+public PinchScaler PinchScaler { get; set; }
 ```
 
 ### Methods

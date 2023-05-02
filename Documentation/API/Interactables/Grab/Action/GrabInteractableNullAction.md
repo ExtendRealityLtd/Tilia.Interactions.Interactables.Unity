@@ -72,7 +72,7 @@ The container of the grab event logic.
 ##### Declaration
 
 ```
-public GameObject GrabEventContainer { get; protected set; }
+public GameObject GrabEventContainer { get; set; }
 ```
 
 #### UngrabEventContainer
@@ -82,7 +82,7 @@ The container of the ungrab event logic.
 ##### Declaration
 
 ```
-public GameObject UngrabEventContainer { get; protected set; }
+public GameObject UngrabEventContainer { get; set; }
 ```
 
 ### Methods

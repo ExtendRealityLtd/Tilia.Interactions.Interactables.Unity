@@ -81,7 +81,7 @@ The GameObjectObservableCounter for counting active interactors.
 ##### Declaration
 
 ```
-public GameObjectObservableCounter ActiveInteractorCounter { get; protected set; }
+public GameObjectObservableCounter ActiveInteractorCounter { get; set; }
 ```
 
 #### AddActiveInteractor
@@ -91,7 +91,7 @@ The NotifierContainerExtractor for adding active interactors.
 ##### Declaration
 
 ```
-public NotifierContainerExtractor AddActiveInteractor { get; protected set; }
+public NotifierContainerExtractor AddActiveInteractor { get; set; }
 ```
 
 #### CurrentTouchingObjects
@@ -101,7 +101,7 @@ The GameObjectObservableList that holds the current touching objects data.
 ##### Declaration
 
 ```
-public GameObjectObservableList CurrentTouchingObjects { get; protected set; }
+public GameObjectObservableList CurrentTouchingObjects { get; set; }
 ```
 
 #### CurrentUntouchingEventProxy
@@ -111,7 +111,7 @@ The GameObjectEventProxyEmitter used to determine the untouch actions.
 ##### Declaration
 
 ```
-public GameObjectEventProxyEmitter CurrentUntouchingEventProxy { get; protected set; }
+public GameObjectEventProxyEmitter CurrentUntouchingEventProxy { get; set; }
 ```
 
 #### CurrentUntouchingObjects
@@ -121,7 +121,7 @@ The GameObjectObservableList that holds the current untouching objects data.
 ##### Declaration
 
 ```
-public GameObjectObservableList CurrentUntouchingObjects { get; protected set; }
+public GameObjectObservableList CurrentUntouchingObjects { get; set; }
 ```
 
 #### Facade
@@ -131,7 +131,7 @@ The public interface facade.
 ##### Declaration
 
 ```
-public InteractableFacade Facade { get; protected set; }
+public InteractableFacade Facade { get; set; }
 ```
 
 #### PotentialInteractors
@@ -141,7 +141,7 @@ The ActiveCollisionsContainer for potential interactors.
 ##### Declaration
 
 ```
-public ActiveCollisionsContainer PotentialInteractors { get; protected set; }
+public ActiveCollisionsContainer PotentialInteractors { get; set; }
 ```
 
 #### RemoveActiveInteractor
@@ -151,7 +151,7 @@ The NotifierContainerExtractor for removing active interactors.
 ##### Declaration
 
 ```
-public NotifierContainerExtractor RemoveActiveInteractor { get; protected set; }
+public NotifierContainerExtractor RemoveActiveInteractor { get; set; }
 ```
 
 #### TouchConsumer
@@ -161,7 +161,7 @@ The ActiveCollisionConsumer that listens for the touch payload.
 ##### Declaration
 
 ```
-public ActiveCollisionConsumer TouchConsumer { get; protected set; }
+public ActiveCollisionConsumer TouchConsumer { get; set; }
 ```
 
 #### TouchingInteractors
@@ -181,7 +181,7 @@ The GameObjectEventProxyEmitter used to determine the touch validity.
 ##### Declaration
 
 ```
-public GameObjectEventProxyEmitter TouchValidity { get; protected set; }
+public GameObjectEventProxyEmitter TouchValidity { get; set; }
 ```
 
 #### UntouchConsumer
@@ -191,7 +191,7 @@ The ActiveCollisionConsumer that listens for the untouch payload.
 ##### Declaration
 
 ```
-public ActiveCollisionConsumer UntouchConsumer { get; protected set; }
+public ActiveCollisionConsumer UntouchConsumer { get; set; }
 ```
 
 ### Methods

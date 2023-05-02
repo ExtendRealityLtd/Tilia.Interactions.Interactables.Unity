@@ -53,7 +53,7 @@ The ActiveCollisionConsumer that listens for the grab payload.
 ##### Declaration
 
 ```
-public ActiveCollisionConsumer GrabConsumer { get; protected set; }
+public ActiveCollisionConsumer GrabConsumer { get; set; }
 ```
 
 #### GrabType
@@ -83,7 +83,7 @@ The output ActiveCollisionConsumerEventProxyEmitter for the grab action.
 ##### Declaration
 
 ```
-public ActiveCollisionConsumerEventProxyEmitter OutputActiveCollisionConsumer { get; protected set; }
+public ActiveCollisionConsumerEventProxyEmitter OutputActiveCollisionConsumer { get; set; }
 ```
 
 #### OutputGrabAction
@@ -93,7 +93,7 @@ The output GameObjectEventProxyEmitter for the grab action.
 ##### Declaration
 
 ```
-public GameObjectEventProxyEmitter OutputGrabAction { get; protected set; }
+public GameObjectEventProxyEmitter OutputGrabAction { get; set; }
 ```
 
 #### OutputUngrabAction
@@ -103,7 +103,7 @@ The output GameObjectEventProxyEmitter for the ungrab action.
 ##### Declaration
 
 ```
-public GameObjectEventProxyEmitter OutputUngrabAction { get; protected set; }
+public GameObjectEventProxyEmitter OutputUngrabAction { get; set; }
 ```
 
 #### OutputUngrabOnUntouchAction
@@ -113,7 +113,7 @@ The output GameObjectEventProxyEmitter for the ungrab on untouch action.
 ##### Declaration
 
 ```
-public GameObjectEventProxyEmitter OutputUngrabOnUntouchAction { get; protected set; }
+public GameObjectEventProxyEmitter OutputUngrabOnUntouchAction { get; set; }
 ```
 
 #### StartStateGrab
@@ -123,7 +123,7 @@ The GameObject containing the logic for starting HoldTillRelease grabbing.
 ##### Declaration
 
 ```
-public GameObject StartStateGrab { get; protected set; }
+public GameObject StartStateGrab { get; set; }
 ```
 
 #### StopStateGrab
@@ -133,7 +133,7 @@ The GameObject containing the logic for ending HoldTillRelease grabbing.
 ##### Declaration
 
 ```
-public GameObject StopStateGrab { get; protected set; }
+public GameObject StopStateGrab { get; set; }
 ```
 
 #### ToggleGrab
@@ -143,7 +143,7 @@ The GameObject containing the logic for starting and ending Toggle grabbing.
 ##### Declaration
 
 ```
-public GameObject ToggleGrab { get; protected set; }
+public GameObject ToggleGrab { get; set; }
 ```
 
 #### ToggleList
@@ -153,7 +153,7 @@ The GameObjectObservableSet containing the logic for starting and ending Toggle 
 ##### Declaration
 
 ```
-public GameObjectObservableList ToggleList { get; protected set; }
+public GameObjectObservableList ToggleList { get; set; }
 ```
 
 #### UngrabConsumer
@@ -163,7 +163,7 @@ The ActiveCollisionConsumer that listens for the ungrab payload.
 ##### Declaration
 
 ```
-public ActiveCollisionConsumer UngrabConsumer { get; protected set; }
+public ActiveCollisionConsumer UngrabConsumer { get; set; }
 ```
 
 ### Methods

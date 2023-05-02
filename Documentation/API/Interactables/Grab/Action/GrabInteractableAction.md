@@ -60,7 +60,7 @@ The input ActiveCollisionConsumerEventProxyEmitter for the grab action.
 ##### Declaration
 
 ```
-public ActiveCollisionConsumerEventProxyEmitter InputActiveCollisionConsumer { get; protected set; }
+public ActiveCollisionConsumerEventProxyEmitter InputActiveCollisionConsumer { get; set; }
 ```
 
 #### InputGrabReceived
@@ -70,7 +70,7 @@ The input GameObjectEventProxyEmitter for the grab action.
 ##### Declaration
 
 ```
-public GameObjectEventProxyEmitter InputGrabReceived { get; protected set; }
+public GameObjectEventProxyEmitter InputGrabReceived { get; set; }
 ```
 
 #### InputGrabSetup
@@ -80,7 +80,7 @@ The input GameObjectEventProxyEmitter for any pre setup on grab.
 ##### Declaration
 
 ```
-public GameObjectEventProxyEmitter InputGrabSetup { get; protected set; }
+public GameObjectEventProxyEmitter InputGrabSetup { get; set; }
 ```
 
 #### InputUngrabReceived
@@ -90,7 +90,7 @@ The input GameObjectEventProxyEmitter for the grab action.
 ##### Declaration
 
 ```
-public GameObjectEventProxyEmitter InputUngrabReceived { get; protected set; }
+public GameObjectEventProxyEmitter InputUngrabReceived { get; set; }
 ```
 
 #### InputUngrabReset
@@ -100,7 +100,7 @@ The input GameObjectEventProxyEmitter for any post reset on ungrab.
 ##### Declaration
 
 ```
-public GameObjectEventProxyEmitter InputUngrabReset { get; protected set; }
+public GameObjectEventProxyEmitter InputUngrabReset { get; set; }
 ```
 
 ### Methods
