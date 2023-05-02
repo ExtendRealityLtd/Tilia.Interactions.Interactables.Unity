@@ -26,7 +26,7 @@
             {
                 return eventStack;
             }
-            protected set
+            set
             {
                 eventStack = value;
             }
@@ -44,7 +44,7 @@
             {
                 return attemptSwapLogicContainer;
             }
-            protected set
+            set
             {
                 attemptSwapLogicContainer = value;
             }

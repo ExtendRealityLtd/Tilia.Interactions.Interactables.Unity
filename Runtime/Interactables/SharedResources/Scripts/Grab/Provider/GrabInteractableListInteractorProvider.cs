@@ -26,7 +26,7 @@
             {
                 return eventList;
             }
-            protected set
+            set
             {
                 eventList = value;
             }

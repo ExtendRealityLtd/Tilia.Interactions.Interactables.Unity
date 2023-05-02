@@ -213,7 +213,7 @@
             {
                 return objectFollower;
             }
-            protected set
+            set
             {
                 objectFollower = value;
             }
@@ -231,7 +231,7 @@
             {
                 return positionModifiers;
             }
-            protected set
+            set
             {
                 positionModifiers = value;
             }
@@ -249,7 +249,7 @@
             {
                 return rotationModifiers;
             }
-            protected set
+            set
             {
                 rotationModifiers = value;
             }
@@ -267,7 +267,7 @@
             {
                 return scaleModifiers;
             }
-            protected set
+            set
             {
                 scaleModifiers = value;
             }
@@ -285,7 +285,7 @@
             {
                 return followTransformModifier;
             }
-            protected set
+            set
             {
                 followTransformModifier = value;
             }
@@ -303,7 +303,7 @@
             {
                 return followRigidbodyModifier;
             }
-            protected set
+            set
             {
                 followRigidbodyModifier = value;
             }
@@ -321,7 +321,7 @@
             {
                 return followRigidbodyForceRotateModifier;
             }
-            protected set
+            set
             {
                 followRigidbodyForceRotateModifier = value;
             }
@@ -339,7 +339,7 @@
             {
                 return followTransformRotateOnPositionDifferenceModifier;
             }
-            protected set
+            set
             {
                 followTransformRotateOnPositionDifferenceModifier = value;
             }
@@ -357,7 +357,7 @@
             {
                 return followRotateAroundAngularVelocityModifier;
             }
-            protected set
+            set
             {
                 followRotateAroundAngularVelocityModifier = value;
             }
@@ -375,7 +375,7 @@
             {
                 return forceSnapFollower;
             }
-            protected set
+            set
             {
                 forceSnapFollower = value;
             }
@@ -393,7 +393,7 @@
             {
                 return velocityApplier;
             }
-            protected set
+            set
             {
                 velocityApplier = value;
             }
@@ -411,7 +411,7 @@
             {
                 return velocityMultiplier;
             }
-            protected set
+            set
             {
                 velocityMultiplier = value;
             }
@@ -433,7 +433,7 @@
             {
                 return precisionLogicContainer;
             }
-            protected set
+            set
             {
                 precisionLogicContainer = value;
             }
@@ -451,7 +451,7 @@
             {
                 return collisionPointContainerComponent;
             }
-            protected set
+            set
             {
                 collisionPointContainerComponent = value;
             }
@@ -469,7 +469,7 @@
             {
                 return precisionCreateContainer;
             }
-            protected set
+            set
             {
                 precisionCreateContainer = value;
             }
@@ -487,7 +487,7 @@
             {
                 return precisionForceCreateContainer;
             }
-            protected set
+            set
             {
                 precisionForceCreateContainer = value;
             }
@@ -505,7 +505,7 @@
             {
                 return orientationHandleContainer;
             }
-            protected set
+            set
             {
                 orientationHandleContainer = value;
             }
@@ -523,7 +523,7 @@
             {
                 return orientationLogicContainer;
             }
-            protected set
+            set
             {
                 orientationLogicContainer = value;
             }
@@ -541,7 +541,7 @@
             {
                 return orientationRelationsLogicContainer;
             }
-            protected set
+            set
             {
                 orientationRelationsLogicContainer = value;
             }
@@ -559,7 +559,7 @@
             {
                 return orientationRulesMatcherLogicContainer;
             }
-            protected set
+            set
             {
                 orientationRulesMatcherLogicContainer = value;
             }

@@ -42,7 +42,7 @@
             {
                 return directionModifier;
             }
-            protected set
+            set
             {
                 directionModifier = value;
             }

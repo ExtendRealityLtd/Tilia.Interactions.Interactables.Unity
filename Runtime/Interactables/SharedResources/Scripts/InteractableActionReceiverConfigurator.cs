@@ -31,7 +31,7 @@
             {
                 return facade;
             }
-            protected set
+            set
             {
                 facade = value;
             }
@@ -53,7 +53,7 @@
             {
                 return targetActions;
             }
-            protected set
+            set
             {
                 targetActions = value;
             }
@@ -71,7 +71,7 @@
             {
                 return actionRegistrar;
             }
-            protected set
+            set
             {
                 actionRegistrar = value;
             }
@@ -89,7 +89,7 @@
             {
                 return startActionConsumer;
             }
-            protected set
+            set
             {
                 startActionConsumer = value;
             }
@@ -107,7 +107,7 @@
             {
                 return receiveStartActionRule;
             }
-            protected set
+            set
             {
                 receiveStartActionRule = value;
             }
@@ -125,7 +125,7 @@
             {
                 return stopActionConsumer;
             }
-            protected set
+            set
             {
                 stopActionConsumer = value;
             }
@@ -143,7 +143,7 @@
             {
                 return receiveStopActionRule;
             }
-            protected set
+            set
             {
                 receiveStopActionRule = value;
             }

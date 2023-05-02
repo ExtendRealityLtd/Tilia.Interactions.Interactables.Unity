@@ -68,7 +68,7 @@
             {
                 return grabConsumer;
             }
-            protected set
+            set
             {
                 grabConsumer = value;
             }
@@ -86,7 +86,7 @@
             {
                 return ungrabConsumer;
             }
-            protected set
+            set
             {
                 ungrabConsumer = value;
             }
@@ -130,7 +130,7 @@
             {
                 return startStateGrab;
             }
-            protected set
+            set
             {
                 startStateGrab = value;
             }
@@ -148,7 +148,7 @@
             {
                 return stopStateGrab;
             }
-            protected set
+            set
             {
                 stopStateGrab = value;
             }
@@ -166,7 +166,7 @@
             {
                 return toggleGrab;
             }
-            protected set
+            set
             {
                 toggleGrab = value;
             }
@@ -184,7 +184,7 @@
             {
                 return toggleList;
             }
-            protected set
+            set
             {
                 toggleList = value;
             }
@@ -206,7 +206,7 @@
             {
                 return outputActiveCollisionConsumer;
             }
-            protected set
+            set
             {
                 outputActiveCollisionConsumer = value;
             }
@@ -224,7 +224,7 @@
             {
                 return outputGrabAction;
             }
-            protected set
+            set
             {
                 outputGrabAction = value;
             }
@@ -242,7 +242,7 @@
             {
                 return outputUngrabAction;
             }
-            protected set
+            set
             {
                 outputUngrabAction = value;
             }
@@ -260,7 +260,7 @@
             {
                 return outputUngrabOnUntouchAction;
             }
-            protected set
+            set
             {
                 outputUngrabOnUntouchAction = value;
             }

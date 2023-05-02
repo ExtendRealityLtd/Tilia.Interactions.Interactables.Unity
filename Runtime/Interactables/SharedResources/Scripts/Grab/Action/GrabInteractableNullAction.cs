@@ -21,7 +21,7 @@
             {
                 return grabEventContainer;
             }
-            protected set
+            set
             {
                 grabEventContainer = value;
             }
@@ -39,7 +39,7 @@
             {
                 return ungrabEventContainer;
             }
-            protected set
+            set
             {
                 ungrabEventContainer = value;
             }

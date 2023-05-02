@@ -39,7 +39,7 @@
             {
                 return facade;
             }
-            protected set
+            set
             {
                 facade = value;
             }
@@ -115,7 +115,7 @@
             {
                 return grabReceiver;
             }
-            protected set
+            set
             {
                 grabReceiver = value;
             }
@@ -133,7 +133,7 @@
             {
                 return grabProvider;
             }
-            protected set
+            set
             {
                 grabProvider = value;
             }
@@ -151,7 +151,7 @@
             {
                 return grabProviderOptions;
             }
-            protected set
+            set
             {
                 grabProviderOptions = value;
             }
@@ -169,7 +169,7 @@
             {
                 return actionTypes;
             }
-            protected set
+            set
             {
                 actionTypes = value;
             }
