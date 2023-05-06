@@ -1,5 +1,12 @@
 # Changelog
 
+### [2.16.2](https://github.com/ExtendRealityLtd/Tilia.Interactions.Interactables.Unity/compare/v2.16.1...v2.16.2) (2023-05-06)
+
+#### Bug Fixes
+
+* **Interactors:** prevent grab on disabled game object ([7023269](https://github.com/ExtendRealityLtd/Tilia.Interactions.Interactables.Unity/commit/7023269f8291194e39b9ed061f3005554ccfffb7))
+  > The Grab method on the GrabInteractorConfigurator was able to be run even when the GameObject was disabled, which is not in keeping with Zinnia patterns. This has now been fixed.
+
 ### [2.16.1](https://github.com/ExtendRealityLtd/Tilia.Interactions.Interactables.Unity/compare/v2.16.0...v2.16.1) (2023-05-06)
 
 #### Miscellaneous Chores
