@@ -342,7 +342,7 @@
         /// <param name="ungrabExistingGrab">Whether to ungrab any existing grab.</param>
         public virtual void Grab(InteractableFacade interactable, Collision collision, Collider collider, bool ungrabExistingGrab)
         {
-            if (interactable == null)
+            if (interactable == null || !this.IsValidState())
             {
                 return;
             }
