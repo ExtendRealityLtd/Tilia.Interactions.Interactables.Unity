@@ -40,7 +40,7 @@
         /// <param name="interactable">The Interactable to enable on.</param>
         public virtual void DoEnableDrop(InteractableFacade interactable)
         {
-            DoEnableDrop(interactable);
+            EnableDrop(interactable);
         }
 
         /// <summary>
