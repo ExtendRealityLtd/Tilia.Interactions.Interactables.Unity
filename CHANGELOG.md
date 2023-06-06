@@ -1,5 +1,12 @@
 # Changelog
 
+### [2.16.3](https://github.com/ExtendRealityLtd/Tilia.Interactions.Interactables.Unity/compare/v2.16.2...v2.16.3) (2023-06-06)
+
+#### Bug Fixes
+
+* **Grab:** prevent infinite loop in grab drop restrictor ([87450b5](https://github.com/ExtendRealityLtd/Tilia.Interactions.Interactables.Unity/commit/87450b5c153fab699a643ccc75b067f0c18b8ff6))
+  > When calling `DoEnableDrop` it would go into an infinite loop as the main method was being called rather than the sub method.
+
 ### [2.16.2](https://github.com/ExtendRealityLtd/Tilia.Interactions.Interactables.Unity/compare/v2.16.1...v2.16.2) (2023-05-06)
 
 #### Bug Fixes
