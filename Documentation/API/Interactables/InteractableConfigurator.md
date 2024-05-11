@@ -8,6 +8,8 @@ Sets up the Interactable Prefab based on the provided user settings.
 * [Namespace]
 * [Syntax]
 * [Fields]
+  * [cachedGrabAllowanceState]
+  * [cachedKinematicState]
   * [controlDirectionCachedAction]
   * [followCachedAction]
   * [meshColliderTriggerStates]
@@ -23,11 +25,14 @@ Sets up the Interactable Prefab based on the provided user settings.
   * [Facade]
   * [GrabActionTypesCount]
   * [GrabConfiguration]
+  * [InteractableVisibilityStatusTagContainer]
   * [IsVisible]
   * [MeshContainer]
   * [RemoveCollisionExtractor]
   * [TouchConfiguration]
 * [Methods]
+  * [CacheAndDisableGrabState()]
+  * [CacheAndSetConsumerRigidbodyKinematicState()]
   * [ClearConsumerContainer()]
   * [ClearConsumerRigidbody()]
   * [ClearDisallowedGrabInteractors()]
@@ -39,6 +44,7 @@ Sets up the Interactable Prefab based on the provided user settings.
   * [GetGrabActionTypeObject(InteractableFactory.ActionType)]
   * [GetPrimaryAction()]
   * [GetSecondaryAction()]
+  * [HandleHiddenLastUngrab(InteractorFacade)]
   * [IsGrabConfigurationSet()]
   * [OnAfterConsumerContainerChange()]
   * [OnAfterConsumerRigidbodyChange()]
@@ -46,6 +52,8 @@ Sets up the Interactable Prefab based on the provided user settings.
   * [OnAfterDisallowedTouchInteractorsChange()]
   * [OnEnable()]
   * [RestoreCollidersAndRenderers()]
+  * [RestoreConsumerRigidbodyKinematicStateFromCache()]
+  * [RestoreGrabStateFromCache()]
   * [SetFollowAndControlDirectionPair()]
   * [SetFollowPrecisionPointToDirectionModifierPivot(GameObject)]
   * [SetRigidbodyMaxAngularVelocity(Single)]
@@ -73,6 +81,26 @@ public class InteractableConfigurator : MonoBehaviour
 ```
 
 ### Fields
+
+#### cachedGrabAllowanceState
+
+The cached active state of the GrabConfiguration.gameObject when changing the visibility state.
+
+##### Declaration
+
+```
+protected bool cachedGrabAllowanceState
+```
+
+#### cachedKinematicState
+
+The cached kinematic state of the Rigidbody when changing the visibility state.
+
+##### Declaration
+
+```
+protected bool cachedKinematicState
+```
 
 #### controlDirectionCachedAction
 
@@ -216,6 +244,16 @@ The linked Grab Internal Setup.
 public GrabInteractableConfigurator GrabConfiguration { get; set; }
 ```
 
+#### InteractableVisibilityStatusTagContainer
+
+The linked Interactable Visibility Status Tag.
+
+##### Declaration
+
+```
+public InteractableVisibilityStatusTag InteractableVisibilityStatusTagContainer { get; set; }
+```
+
 #### IsVisible
 
 Whether the Interactable is visible or not.
@@ -257,6 +295,26 @@ public TouchInteractableConfigurator TouchConfiguration { get; set; }
 ```
 
 ### Methods
+
+#### CacheAndDisableGrabState()
+
+Caches the existing grab state of the [GrabConfiguration] and hides the GameObject to prevent grab logic.
+
+##### Declaration
+
+```
+protected virtual void CacheAndDisableGrabState()
+```
+
+#### CacheAndSetConsumerRigidbodyKinematicState()
+
+Caches the existing Tilia.Interactions.Interactables.Interactables.InteractableConfigurator.consumerRigidbody kinematic state and sets it to kinematic.
+
+##### Declaration
+
+```
+protected virtual void CacheAndSetConsumerRigidbodyKinematicState()
+```
 
 #### ClearConsumerContainer()
 
@@ -418,6 +476,22 @@ public virtual GrabInteractableAction GetSecondaryAction()
 | --- | --- |
 | [GrabInteractableAction] | The current secondary action. |
 
+#### HandleHiddenLastUngrab(InteractorFacade)
+
+Deals with when a hidden object is last ungrabbed to ensure the kinematic state is correct.
+
+##### Declaration
+
+```
+protected virtual void HandleHiddenLastUngrab(InteractorFacade _)
+```
+
+##### Parameters
+
+| Type | Name | Description |
+| --- | --- | --- |
+| [InteractorFacade] | \_ | unused. |
+
 #### IsGrabConfigurationSet()
 
 Determines whether the grab configuration is set.
@@ -490,6 +564,26 @@ Restores all of the current saved states for the found Collider and Renderer com
 
 ```
 protected virtual void RestoreCollidersAndRenderers()
+```
+
+#### RestoreConsumerRigidbodyKinematicStateFromCache()
+
+Restores the kinematic state of the Tilia.Interactions.Interactables.Interactables.InteractableConfigurator.consumerRigidbody to the cached state.
+
+##### Declaration
+
+```
+protected virtual void RestoreConsumerRigidbodyKinematicStateFromCache()
+```
+
+#### RestoreGrabStateFromCache()
+
+Restores the grab state of the [GrabConfiguration] and applies the active state to the GameObject from the cached state.
+
+##### Declaration
+
+```
+protected virtual void RestoreGrabStateFromCache()
 ```
 
 #### SetFollowAndControlDirectionPair()
@@ -646,7 +740,9 @@ public virtual GrabInteractableAction UpdateSecondaryAction(InteractableFactory.
 [CollisionNotifier]: InteractableConfigurator.md#CollisionNotifier
 [InteractableFacade]: InteractableFacade.md
 [GrabInteractableConfigurator]: Grab/GrabInteractableConfigurator.md
+[InteractableVisibilityStatusTag]: ComponentTags/InteractableVisibilityStatusTag.md
 [TouchInteractableConfigurator]: Touch/TouchInteractableConfigurator.md
+[GrabConfiguration]: InteractableConfigurator.md#GrabConfiguration
 [ConsumerContainer]: InteractableConfigurator.md#ConsumerContainer
 [ConsumerRigidbody]: InteractableConfigurator.md#ConsumerRigidbody
 [DisallowedGrabInteractors]: InteractableConfigurator.md#DisallowedGrabInteractors
@@ -654,16 +750,20 @@ public virtual GrabInteractableAction UpdateSecondaryAction(InteractableFactory.
 [GrabInteractableAction]: Grab/Action/GrabInteractableAction.md
 [MeshContainer]: InteractableConfigurator.md#MeshContainer
 [InteractableFactory.ActionType]: Utility/InteractableFactory.ActionType.md
+[InteractorFacade]: ../Interactors/InteractorFacade.md
 [ConsumerContainer]: InteractableConfigurator.md#ConsumerContainer
 [ConsumerRigidbody]: InteractableConfigurator.md#ConsumerRigidbody
 [DisallowedGrabInteractors]: InteractableConfigurator.md#DisallowedGrabInteractors
 [DisallowedTouchInteractors]: InteractableConfigurator.md#DisallowedTouchInteractors
 [MeshContainer]: InteractableConfigurator.md#MeshContainer
+[GrabConfiguration]: InteractableConfigurator.md#GrabConfiguration
 [SetFollowPrecisionPointToDirectionModifierPivot(GameObject)]: InteractableConfigurator.md#SetFollowPrecisionPointToDirectionModifierPivot_GameObject_
 [Inheritance]: #Inheritance
 [Namespace]: #Namespace
 [Syntax]: #Syntax
 [Fields]: #Fields
+[cachedGrabAllowanceState]: #cachedGrabAllowanceState
+[cachedKinematicState]: #cachedKinematicState
 [controlDirectionCachedAction]: #controlDirectionCachedAction
 [followCachedAction]: #followCachedAction
 [meshColliderTriggerStates]: #meshColliderTriggerStates
@@ -679,11 +779,14 @@ public virtual GrabInteractableAction UpdateSecondaryAction(InteractableFactory.
 [Facade]: #Facade
 [GrabActionTypesCount]: #GrabActionTypesCount
 [GrabConfiguration]: #GrabConfiguration
+[InteractableVisibilityStatusTagContainer]: #InteractableVisibilityStatusTagContainer
 [IsVisible]: #IsVisible
 [MeshContainer]: #MeshContainer
 [RemoveCollisionExtractor]: #RemoveCollisionExtractor
 [TouchConfiguration]: #TouchConfiguration
 [Methods]: #Methods
+[CacheAndDisableGrabState()]: #CacheAndDisableGrabState
+[CacheAndSetConsumerRigidbodyKinematicState()]: #CacheAndSetConsumerRigidbodyKinematicState
 [ClearConsumerContainer()]: #ClearConsumerContainer
 [ClearConsumerRigidbody()]: #ClearConsumerRigidbody
 [ClearDisallowedGrabInteractors()]: #ClearDisallowedGrabInteractors
@@ -695,6 +798,7 @@ public virtual GrabInteractableAction UpdateSecondaryAction(InteractableFactory.
 [GetGrabActionTypeObject(InteractableFactory.ActionType)]: #GetGrabActionTypeObjectInteractableFactory.ActionType
 [GetPrimaryAction()]: #GetPrimaryAction
 [GetSecondaryAction()]: #GetSecondaryAction
+[HandleHiddenLastUngrab(InteractorFacade)]: #HandleHiddenLastUngrabInteractorFacade
 [IsGrabConfigurationSet()]: #IsGrabConfigurationSet
 [OnAfterConsumerContainerChange()]: #OnAfterConsumerContainerChange
 [OnAfterConsumerRigidbodyChange()]: #OnAfterConsumerRigidbodyChange
@@ -702,6 +806,8 @@ public virtual GrabInteractableAction UpdateSecondaryAction(InteractableFactory.
 [OnAfterDisallowedTouchInteractorsChange()]: #OnAfterDisallowedTouchInteractorsChange
 [OnEnable()]: #OnEnable
 [RestoreCollidersAndRenderers()]: #RestoreCollidersAndRenderers
+[RestoreConsumerRigidbodyKinematicStateFromCache()]: #RestoreConsumerRigidbodyKinematicStateFromCache
+[RestoreGrabStateFromCache()]: #RestoreGrabStateFromCache
 [SetFollowAndControlDirectionPair()]: #SetFollowAndControlDirectionPair
 [SetFollowPrecisionPointToDirectionModifierPivot(GameObject)]: #SetFollowPrecisionPointToDirectionModifierPivotGameObject
 [SetRigidbodyMaxAngularVelocity(Single)]: #SetRigidbodyMaxAngularVelocitySingle

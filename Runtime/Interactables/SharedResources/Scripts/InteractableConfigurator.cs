@@ -2,10 +2,12 @@
 {
     using System;
     using System.Collections.Generic;
+    using Tilia.Interactions.Interactables.Interactables.ComponentTags;
     using Tilia.Interactions.Interactables.Interactables.Grab;
     using Tilia.Interactions.Interactables.Interactables.Grab.Action;
     using Tilia.Interactions.Interactables.Interactables.Touch;
     using Tilia.Interactions.Interactables.Interactables.Utility;
+    using Tilia.Interactions.Interactables.Interactors;
 #if UNITY_EDITOR
     using UnityEditor;
 #endif
@@ -264,6 +266,24 @@
                 grabConfiguration = value;
             }
         }
+        [Tooltip("The linked Interactable Visibility Status Tag.")]
+        [SerializeField]
+        [Restricted]
+        private InteractableVisibilityStatusTag interactableVisibilityStatusTagContainer;
+        /// <summary>
+        /// The linked Interactable Visibility Status Tag.
+        /// </summary>
+        public InteractableVisibilityStatusTag InteractableVisibilityStatusTagContainer
+        {
+            get
+            {
+                return interactableVisibilityStatusTagContainer;
+            }
+            set
+            {
+                interactableVisibilityStatusTagContainer = value;
+            }
+        }
         #endregion
 
         /// <summary>
@@ -284,11 +304,23 @@
             {
                 if (value)
                 {
+                    RestoreGrabStateFromCache();
+                    RestoreConsumerRigidbodyKinematicStateFromCache();
                     RestoreCollidersAndRenderers();
+                    if (InteractableVisibilityStatusTagContainer != null)
+                    {
+                        InteractableVisibilityStatusTagContainer.enabled = true;
+                    }
                 }
                 else
                 {
+                    CacheAndSetConsumerRigidbodyKinematicState();
+                    CacheAndDisableGrabState();
                     DisableCollidersAndRenderers();
+                    if (InteractableVisibilityStatusTagContainer != null)
+                    {
+                        InteractableVisibilityStatusTagContainer.enabled = false;
+                    }
                 }
             }
         }
@@ -309,6 +341,14 @@
         /// The cached <see cref="GrabInteractableControlDirectionAction"/> for when the follow/control direction pairing is required to be set up.
         /// </summary>
         protected GrabInteractableControlDirectionAction controlDirectionCachedAction;
+        /// <summary>
+        /// The cached kinematic state of the <see cref="Rigidbody"/> when changing the visibility state.
+        /// </summary>
+        protected bool cachedKinematicState;
+        /// <summary>
+        /// The cached active state of the <see cref="GrabConfiguration.gameObject"/> when changing the visibility state.
+        /// </summary>
+        protected bool cachedGrabAllowanceState;
 
         /// <summary>
         /// Clears <see cref="DisallowedTouchInteractors"/>.
@@ -589,6 +629,74 @@
         {
             TouchConfiguration.ConfigureContainer();
             GrabConfiguration.ConfigureContainer();
+        }
+
+        /// <summary>
+        /// Caches the existing <see cref="consumerRigidbody"/> kinematic state and sets it to kinematic.
+        /// </summary>
+        protected virtual void CacheAndSetConsumerRigidbodyKinematicState()
+        {
+            if (consumerRigidbody != null)
+            {
+                cachedKinematicState = consumerRigidbody.isKinematic;
+                consumerRigidbody.isKinematic = true;
+
+                if (facade.IsGrabbed)
+                {
+                    facade.LastUngrabbed.AddListener(HandleHiddenLastUngrab);
+                }
+            }
+        }
+
+        /// <summary>
+        /// Deals with when a hidden object is last ungrabbed to ensure the kinematic state is correct.
+        /// </summary>
+        /// <param name="_">unused.</param>
+        protected virtual void HandleHiddenLastUngrab(InteractorFacade _)
+        {
+            cachedKinematicState = consumerRigidbody.isKinematic;
+            consumerRigidbody.isKinematic = true;
+        }
+
+        /// <summary>
+        /// Restores the kinematic state of the <see cref="consumerRigidbody"/> to the cached state.
+        /// </summary>
+        protected virtual void RestoreConsumerRigidbodyKinematicStateFromCache()
+        {
+            if (consumerRigidbody != null)
+            {
+                facade.LastUngrabbed.RemoveListener(HandleHiddenLastUngrab);
+
+                consumerRigidbody.isKinematic = cachedKinematicState;
+
+                if (facade.IsGrabbed)
+                {
+                    facade.SnapFollowOrientation();
+                }
+            }
+        }
+
+        /// <summary>
+        /// Caches the existing grab state of the <see cref="GrabConfiguration"/> and hides the <see cref="GameObject"/> to prevent grab logic.
+        /// </summary>
+        protected virtual void CacheAndDisableGrabState()
+        {
+            if (GrabConfiguration != null && GrabConfiguration.GrabReceiver != null && GrabConfiguration.GrabReceiver.GrabConsumer != null)
+            {
+                cachedGrabAllowanceState = GrabConfiguration.GrabReceiver.GrabConsumer.gameObject.activeInHierarchy;
+                GrabConfiguration.GrabReceiver.GrabConsumer.gameObject.SetActive(false);
+            }
+        }
+
+        /// <summary>
+        /// Restores the grab state of the <see cref="GrabConfiguration"/> and applies the active state to the <see cref="GameObject"/> from the cached state.
+        /// </summary>
+        protected virtual void RestoreGrabStateFromCache()
+        {
+            if (GrabConfiguration != null && GrabConfiguration.GrabReceiver != null && GrabConfiguration.GrabReceiver.GrabConsumer != null)
+            {
+                GrabConfiguration.GrabReceiver.GrabConsumer.gameObject.SetActive(cachedGrabAllowanceState);
+            }
         }
 
 
