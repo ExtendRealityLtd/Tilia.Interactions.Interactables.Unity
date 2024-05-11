@@ -1,5 +1,7 @@
 ﻿namespace Tilia.Interactions.Interactables.Interactables
 {
+#if ZINNIA_IGNORE_CUSTOM_INSPECTOR_EDITOR
+#else
     using System;
     using Tilia.Interactions.Interactables.Interactables.Grab.Action;
     using UnityEditor;
@@ -422,4 +424,5 @@
             }
         }
     }
+#endif
 }
