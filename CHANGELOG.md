@@ -1,5 +1,21 @@
 # Changelog
 
+## [2.17.0](https://github.com/ExtendRealityLtd/Tilia.Interactions.Interactables.Unity/compare/v2.16.7...v2.17.0) (2024-05-11)
+
+#### Features
+
+* **Facade:** control rigidbody kinematic state from IsVisible ([e89ba29](https://github.com/ExtendRealityLtd/Tilia.Interactions.Interactables.Unity/commit/e89ba299746954fc198fe6c4828c2ddd5127133e))
+  > The IsVisible property also now controls the rigidbody kinematic state otherwise an invisible object will just fall through all other colliders in the scene.
+  > 
+  > A helper component of InteractableVisibilityStatusTag has also been added to the top level of the Interactable prefab that is enabled when the Interactable is visible and disabled when the Interactable is hidden.
+  > 
+  > This can be used in rules to ignore hidden Interactables if needed.
+
+#### Bug Fixes
+
+* **Editor:** disable custom inspector if ignore custom editor is set ([59bd286](https://github.com/ExtendRealityLtd/Tilia.Interactions.Interactables.Unity/commit/59bd286655ccfc812b7357e6d09acf8bcf9d1a36))
+  > If the ZINNIA_IGNORE_CUSTOM_INSPECTOR_EDITOR ifdef is set then the custom editor must also be disabled otherwise an error will occur.
+
 ### [2.16.7](https://github.com/ExtendRealityLtd/Tilia.Interactions.Interactables.Unity/compare/v2.16.6...v2.16.7) (2024-04-17)
 
 #### Miscellaneous Chores
