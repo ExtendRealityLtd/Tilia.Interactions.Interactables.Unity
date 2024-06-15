@@ -1,5 +1,14 @@
 # Changelog
 
+### [2.17.2](https://github.com/ExtendRealityLtd/Tilia.Interactions.Interactables.Unity/compare/v2.17.1...v2.17.2) (2024-06-15)
+
+#### Bug Fixes
+
+* **Prefabs:** disallow collision consumers for invalid interactor ([d40583c](https://github.com/ExtendRealityLtd/Tilia.Interactions.Interactables.Unity/commit/d40583c1bef17de117758daf853363f9e992009b))
+  > The DisallowedGrabInteractors rule was causing an issue when using precision grab due to the collision consumer still being published for an invalid interactor which was causing the precision point container to be created for an invalid interactor. This meant that any other valid interactor was not becoming a precision point grab as the detached precision point for the invalid interactor still existed.
+  > 
+  > The solution is to modify the GrabReceiver prefab so it turns off the OutputActiveCollisionConsumer logic if the interactor is disallowed and then the precision point cannot be created prior to a grab event.
+
 ### [2.17.1](https://github.com/ExtendRealityLtd/Tilia.Interactions.Interactables.Unity/compare/v2.17.0...v2.17.1) (2024-05-11)
 
 #### Miscellaneous Chores
