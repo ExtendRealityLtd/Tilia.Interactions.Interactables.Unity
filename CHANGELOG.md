@@ -1,5 +1,16 @@
 # Changelog
 
+## [2.18.0](https://github.com/ExtendRealityLtd/Tilia.Interactions.Interactables.Unity/compare/v2.17.2...v2.18.0) (2024-09-28)
+
+#### Features
+
+* **Facade:** allow multiple rules for disallowed touch/grab types ([7a4c1d8](https://github.com/ExtendRealityLtd/Tilia.Interactions.Interactables.Unity/commit/7a4c1d8d49da502855a84b49f5b7af1549482cde))
+  > The disallowed touch and grab interactors used to only work on a ListContainsRule and this was hard coded into the facade editor. This meant that no other rule could be replaced as it would throw an error due to the custom editor.
+  > 
+  > This feature introduces a new AnyRule at the heart of both the touch/grab disallowed logic with the first rule being the existing ListContainsRule, so all of the existing logic still works and that ListContainsRule must be at the zero index of the AnyRule list.
+  > 
+  > But now the AnyRule can also contain any other rule that is required to disallow touch or grab interactors.
+
 ### [2.17.2](https://github.com/ExtendRealityLtd/Tilia.Interactions.Interactables.Unity/compare/v2.17.1...v2.17.2) (2024-06-15)
 
 #### Bug Fixes
