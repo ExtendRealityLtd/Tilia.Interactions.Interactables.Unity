@@ -378,8 +378,8 @@
                 return;
             }
 
-            ListContainsRule listRule = (ListContainsRule)rule.Interface;
-
+            AnyRule anyRule = (AnyRule) rule.Interface;
+            ListContainsRule listRule = (ListContainsRule) anyRule.Rules.NonSubscribableElements[0].Interface;
             SerializedObject listObject = new SerializedObject(listRule.Objects);
             DrawPropertyFieldWithChangeHandlers(listObject, "elements", undoRedoWarningPropertyPath);
         }
